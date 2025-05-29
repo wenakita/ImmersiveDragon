@@ -129,7 +129,7 @@ export default function DemoScreen() {
                             <div className="flex flex-col items-center space-y-2">
                               <div className="w-16 h-16 rounded-full bg-black/50 border-2 border-electric-blue/50 flex items-center justify-center">
                                 <img
-                                  src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                                  src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
                                   alt="SONIC Token"
                                   className="w-10 h-10"
                                 />
@@ -156,7 +156,7 @@ export default function DemoScreen() {
                             <div className="flex flex-col items-center space-y-2">
                               <div className="w-16 h-16 rounded-full bg-black/50 border-2 border-dragon-red/50 flex items-center justify-center">
                                 <img
-                                  src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                                  src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                                   alt="DRAGON Token"
                                   className="w-10 h-10"
                                 />
