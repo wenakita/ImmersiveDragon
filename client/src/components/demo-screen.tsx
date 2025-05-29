@@ -6,6 +6,8 @@ import { demoSteps } from "@/lib/demo-steps";
 export default function DemoScreen() {
   const [showBlackScreen, setShowBlackScreen] = useState(true);
   const [showReadyText, setShowReadyText] = useState(false);
+  const [showPoolIntro, setShowPoolIntro] = useState(false);
+  const [showPoolTokens, setShowPoolTokens] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -15,15 +17,27 @@ export default function DemoScreen() {
       setShowReadyText(true);
     }, 1000);
 
-    // Hide black screen and show demo after 4 seconds
+    // Show pool intro after 4 seconds
     const timer2 = setTimeout(() => {
+      setShowPoolIntro(true);
+    }, 4000);
+
+    // Show pool tokens after 6 seconds
+    const timer3 = setTimeout(() => {
+      setShowPoolTokens(true);
+    }, 6000);
+
+    // Hide black screen and show demo after 9 seconds
+    const timer4 = setTimeout(() => {
       setShowBlackScreen(false);
       setShowDemo(true);
-    }, 4000);
+    }, 9000);
 
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
     };
   }, []);
 
@@ -43,11 +57,12 @@ export default function DemoScreen() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {showReadyText && (
+            {showReadyText && !showPoolIntro && (
               <motion.div
                 className="text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-3xl font-light mb-4">
@@ -59,6 +74,113 @@ export default function DemoScreen() {
                   animate={{ width: 64 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 />
+              </motion.div>
+            )}
+
+            {showPoolIntro && (
+              <motion.div
+                className="text-center space-y-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                <motion.h2 
+                  className="text-3xl font-light mb-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  This is a liquidity pool containing SONIC and DRAGON
+                </motion.h2>
+
+                {/* Liquidity Pool Visualization */}
+                <motion.div
+                  className="flex justify-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                >
+                  <div className="relative">
+                    {/* Pool Container */}
+                    <motion.div
+                      className="w-80 h-48 rounded-3xl bg-gradient-to-br from-dark-surface/80 to-charcoal/60 border border-gray-700/50 backdrop-blur-sm"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1.5, delay: 0.8 }}
+                    >
+                      {/* Pool Glow Effect */}
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-golden-amber/10 to-dragon-red/10 animate-pulse" />
+                      
+                      {/* Pool Label */}
+                      <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
+                        <span className="text-sm font-medium text-soft-gray">Liquidity Pool</span>
+                      </div>
+
+                      {/* Token Animations */}
+                      {showPoolTokens && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          {/* SONIC Token */}
+                          <motion.div
+                            className="absolute"
+                            initial={{ x: -100, opacity: 0 }}
+                            animate={{ x: -40, opacity: 1 }}
+                            transition={{ duration: 1.2, ease: "easeOut" }}
+                          >
+                            <div className="flex flex-col items-center space-y-2">
+                              <div className="w-16 h-16 rounded-full bg-black/50 border-2 border-electric-blue/50 flex items-center justify-center">
+                                <img
+                                  src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                                  alt="SONIC Token"
+                                  className="w-10 h-10"
+                                />
+                              </div>
+                              <span className="text-xs font-medium text-electric-blue">SONIC</span>
+                            </div>
+                          </motion.div>
+
+                          {/* Connection Line */}
+                          <motion.div
+                            className="w-16 h-0.5 bg-gradient-to-r from-electric-blue/50 to-dragon-red/50"
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ duration: 0.8, delay: 1.5 }}
+                          />
+
+                          {/* DRAGON Token */}
+                          <motion.div
+                            className="absolute"
+                            initial={{ x: 100, opacity: 0 }}
+                            animate={{ x: 40, opacity: 1 }}
+                            transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+                          >
+                            <div className="flex flex-col items-center space-y-2">
+                              <div className="w-16 h-16 rounded-full bg-black/50 border-2 border-dragon-red/50 flex items-center justify-center">
+                                <img
+                                  src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                                  alt="DRAGON Token"
+                                  className="w-10 h-10"
+                                />
+                              </div>
+                              <span className="text-xs font-medium text-dragon-red">DRAGON</span>
+                            </div>
+                          </motion.div>
+                        </div>
+                      )}
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                {/* Explanatory Text */}
+                {showPoolTokens && (
+                  <motion.p
+                    className="text-soft-gray text-lg max-w-lg mx-auto"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 2 }}
+                  >
+                    These tokens are paired together, allowing seamless exchanges between them
+                  </motion.p>
+                )}
               </motion.div>
             )}
           </motion.div>
