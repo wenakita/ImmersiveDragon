@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 0%; /* Deep black */
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+  
+  /* Custom colors for Sonic Red Dragon */
+  --dragon-red: 0 84% 60%; /* #DC2626 */
+  --golden-amber: 45 93% 47%; /* #FFC107 */
+  --warm-orange: 16 100% 60%; /* #FF6B35 */
+  --electric-blue: 217 91% 60%; /* #3B82F6 */
+  --charcoal: 0 0% 6%; /* #0F0F0F */
+  --soft-gray: 240 5% 65%; /* #A1A1AA */
+  --dark-surface: 0 0% 10%; /* #1A1A1A */
+}
+
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-dragon-red {
+    color: hsl(var(--dragon-red));
+  }
+  
+  .text-golden-amber {
+    color: hsl(var(--golden-amber));
+  }
+  
+  .text-warm-orange {
+    color: hsl(var(--warm-orange));
+  }
+  
+  .text-electric-blue {
+    color: hsl(var(--electric-blue));
+  }
+  
+  .text-soft-gray {
+    color: hsl(var(--soft-gray));
+  }
+  
+  .bg-charcoal {
+    background-color: hsl(var(--charcoal));
+  }
+  
+  .bg-dark-surface {
+    background-color: hsl(var(--dark-surface));
+  }
+  
+  .border-golden-amber {
+    border-color: hsl(var(--golden-amber));
+  }
+  
+  .border-electric-blue {
+    border-color: hsl(var(--electric-blue));
+  }
+  
+  .dragon-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--golden-amber) / 0.3),
+      0 0 40px hsl(var(--golden-amber) / 0.15),
+      0 0 60px hsl(var(--golden-amber) / 0.05);
+  }
+  
+  .gradient-button {
+    background: linear-gradient(135deg, hsl(var(--warm-orange)) 0%, hsl(var(--electric-blue)) 100%);
+  }
+  
+  .glassmorphism {
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Animation keyframes */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px hsl(var(--golden-amber) / 0.3),
+      0 0 40px hsl(var(--golden-amber) / 0.15);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px hsl(var(--golden-amber) / 0.5),
+      0 0 60px hsl(var(--golden-amber) / 0.25);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out;
+}
