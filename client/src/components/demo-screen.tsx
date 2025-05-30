@@ -4,6 +4,7 @@ import StepContent from "@/components/step-content";
 import { demoSteps } from "@/lib/demo-steps";
 import { Typewriter } from "@/components/ui/typewriter";
 import audioFile from "@assets/kwa-tempo-phonk-212904.mp3";
+import { splashSteps, animationVariants, type SplashStep } from "@/lib/splash-config";
 
 interface DemoScreenProps {
   autoStart?: boolean;
@@ -24,101 +25,54 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [audioStarted, setAudioStarted] = useState(autoStart);
   const [showPlayButton, setShowPlayButton] = useState(!autoStart);
+  const [currentSplashStep, setCurrentSplashStep] = useState<SplashStep | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Start audio automatically if autoStart is true with fade-in
+  // Audio-driven animation system
+  useEffect(() => {
+    let raf: number;
+    
+    function animateStep() {
+      if (!audioRef.current || !audioStarted) return;
+      
+      const currentTime = audioRef.current.currentTime * 1000; // Convert to ms
+      
+      // Find current step based on audio time
+      const step = splashSteps.find(
+        s => currentTime >= s.start && currentTime < s.start + s.duration
+      );
+      
+      if (step && step.key !== currentSplashStep?.key) {
+        setCurrentSplashStep(step);
+        
+        // Handle audio fade-in
+        if (step.action === "audioFadeIn") {
+          const progress = Math.min(1, (currentTime / 2000));
+          audioRef.current.volume = 0.7 * progress;
+        }
+      }
+      
+      raf = requestAnimationFrame(animateStep);
+    }
+    
+    if (audioStarted) {
+      raf = requestAnimationFrame(animateStep);
+    }
+    
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [audioStarted, currentSplashStep]);
+
+  // Start audio when autoStart is true
   useEffect(() => {
     if (autoStart && audioRef.current) {
       audioRef.current.volume = 0;
       audioRef.current.play().catch(e => {
         console.log('Audio autoplay prevented:', e);
       });
-      
-      // Fade in audio from 0% to 70% over 2 seconds
-      let currentTime = 0;
-      const fadeInterval = setInterval(() => {
-        currentTime += 50;
-        const progress = currentTime / 2000; // 2 seconds
-        const audio = audioRef.current;
-        if (progress >= 1) {
-          if (audio) audio.volume = 0.7;
-          clearInterval(fadeInterval);
-        } else {
-          if (audio) audio.volume = progress * 0.7;
-        }
-      }, 50);
-      
-      return () => clearInterval(fadeInterval);
     }
   }, [autoStart]);
-
-  // Audio sync function for musical cues
-  const syncToAudio = (timeCode: number, callback: () => void) => {
-    return setTimeout(callback, timeCode * 1000);
-  };
-
-  useEffect(() => {
-    // Only start timers if audio has been started by user interaction
-    if (!audioStarted) return;
-
-    // Cinematic phonk sequence with detailed effects
-    const timers = [
-      // 0:02-0:06: Typewriter "Sonic Red Dragon" with neon glow
-      setTimeout(() => {
-        setShowReadyText(true);
-      }, 2000),
-      
-      // 0:06-0:12: Swap animation with token crossing
-      setTimeout(() => { 
-        setShowReadyText(false); 
-        setShowSwapIntro(true); 
-      }, 6000),
-      
-      // 0:12-0:15: "But there's a twist" with zoom and glitch
-      setTimeout(() => { 
-        setShowSwapIntro(false); 
-        setShowTwist(true); 
-      }, 12000),
-      
-      // 0:15-0:19: "10% fee" slide from left with count-up
-      setTimeout(() => { 
-        setShowTwist(false); 
-        setShowFeeDetails(true); 
-      }, 15000),
-      
-      // 0:19-0:25: "Every swap = lottery ticket" 3D flip with coin burst
-      setTimeout(() => { 
-        setShowFeeDetails(false); 
-        setShowJackpotExplanation(true); 
-      }, 19000),
-      
-      // 0:25-0:30: "Results instantaneous" shimmer with slot spin
-      setTimeout(() => { 
-        setShowJackpotExplanation(false); 
-        setShowFeeBreakdown(true); 
-      }, 25000),
-      
-      // 0:30-0:38: Probability table alternating slide-ins
-      setTimeout(() => { 
-        setShowFeeBreakdown(false); 
-        setShowOddsTable(true); 
-      }, 30000),
-      
-      // 0:38+: VRF finale with fire glow and orbiting icons
-      setTimeout(() => { 
-        setShowOddsTable(false); 
-        setShowVRFDetails(true); 
-      }, 38000),
-      
-      // End sequence
-      setTimeout(() => {
-        setShowBlackScreen(false);
-        setShowDemo(true);
-      }, 48000)
-    ];
-
-    return () => timers.forEach(clearTimeout);
-  }, [audioStarted]);
 
   const handleStepChange = (step: number) => {
     if (step >= 0 && step < demoSteps.length) {
@@ -174,50 +128,126 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Ready Text with Neon Glow and Glitch Exit */}
-            {showReadyText && (
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ 
-                  opacity: 0,
-                  scale: [1, 1.1, 0.9],
-                  filter: ["hue-rotate(0deg)", "hue-rotate(90deg)", "hue-rotate(0deg)"]
-                }}
-                transition={{ 
-                  duration: 0.8, 
-                  ease: "easeOut",
-                  exit: { duration: 0.1 }
-                }}
-              >
-                <motion.div className="relative">
-                  <motion.h2 
-                    className="text-5xl font-light bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10 drop-shadow-[0_0_20px_rgba(255,107,53,0.7)]"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                  >
-                    <Typewriter text="Sonic Red Dragon" delay={0} speed={100} />
-                  </motion.h2>
-                  
-                  {/* Enhanced neon glow */}
+            {/* Audio-driven Animation Rendering */}
+            {currentSplashStep && (
+              <>
+                {/* Typewriter Title */}
+                {currentSplashStep.action === "typewriter" && (
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-warm-orange/30 to-transparent opacity-0"
-                    animate={{ 
-                      opacity: [0, 0.6, 0, 0.4, 0],
-                      x: [0, 3, -3, 2, 0],
-                      scale: [1, 1.02, 0.98, 1.01, 1]
-                    }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity, 
-                      repeatDelay: 1,
-                      ease: "easeInOut"
-                    }}
-                  />
-                </motion.div>
-              </motion.div>
+                    className="text-center"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <motion.h2 
+                      className="text-5xl font-light bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10 drop-shadow-[0_0_20px_rgba(255,107,53,0.7)]"
+                      variants={animationVariants.neonGlow}
+                      initial="hidden"
+                      animate="visible"
+                    >
+                      <Typewriter text={currentSplashStep.text || ""} delay={0} speed={100} />
+                    </motion.h2>
+                  </motion.div>
+                )}
+
+                {/* Glitch Out Effect */}
+                {currentSplashStep.action === "glitchOut" && (
+                  <motion.div
+                    className="text-center"
+                    variants={animationVariants.glitch}
+                    initial="hidden"
+                    animate="visible"
+                    exit={{ opacity: 0 }}
+                  >
+                    <h2 className="text-5xl font-light text-warm-orange">
+                      {currentSplashStep.text}
+                    </h2>
+                  </motion.div>
+                )}
+
+                {/* Swap Animation */}
+                {currentSplashStep.action === "swapPhase" && (
+                  <motion.div className="text-center relative h-32">
+                    <motion.h2 className="text-3xl font-light mb-4">
+                      {currentSplashStep.text}
+                    </motion.h2>
+                    
+                    <motion.div
+                      className="absolute top-12 w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center"
+                      initial={{ 
+                        x: currentSplashStep.direction === "left" ? -200 : 200, 
+                        opacity: 0 
+                      }}
+                      animate={{ 
+                        x: currentSplashStep.direction === "left" ? -80 : 80, 
+                        opacity: 1 
+                      }}
+                      variants={animationVariants.bounce}
+                      transition={{ duration: 0.8, ease: "backOut" }}
+                    >
+                      <img
+                        src={currentSplashStep.token === "S" 
+                          ? "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                          : "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                        }
+                        alt={`${currentSplashStep.token} Token`}
+                        className="w-10 h-10"
+                      />
+                    </motion.div>
+                  </motion.div>
+                )}
+
+                {/* Token Crossing */}
+                {currentSplashStep.action === "swapComplete" && (
+                  <motion.div className="text-center relative h-32">
+                    <motion.div
+                      className="absolute top-12 left-1/2 transform -translate-x-1/2 flex space-x-4"
+                      animate={{ 
+                        x: [0, 100, -100, 0],
+                        rotate: [0, 360, -360, 0]
+                      }}
+                      transition={{ duration: 1, ease: "easeInOut" }}
+                    >
+                      <div className="w-12 h-12 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center">
+                        <img src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" alt="S" className="w-8 h-8" />
+                      </div>
+                      <div className="w-12 h-12 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center">
+                        <img src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" alt="DRAGON" className="w-8 h-8" />
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-green-400 font-bold"
+                      animate={{ 
+                        opacity: [0, 1, 0, 1, 0],
+                        scale: [1, 1.2, 1, 1.3, 1]
+                      }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      Swap Complete!
+                    </motion.div>
+                  </motion.div>
+                )}
+
+                {/* Zoom In Effect for Twist */}
+                {currentSplashStep.action === "zoomIn" && (
+                  <motion.div
+                    className="text-center glitch-effect"
+                    initial={{ opacity: 0, scale: 0.3 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: "backOut" }}
+                  >
+                    <motion.h2 
+                      className="text-4xl font-light text-warm-orange"
+                      variants={animationVariants.glitch}
+                      animate="visible"
+                    >
+                      {currentSplashStep.text}
+                    </motion.h2>
+                  </motion.div>
+                )}
+              </>
             )}
 
             {/* Swap Animation with Token Crossing */}
