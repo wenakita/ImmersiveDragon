@@ -24,14 +24,13 @@ export default function DemoScreen() {
       setTimeout(() => { setShowSwapIntro(false); setShowTwist(true); }, 6000),
       setTimeout(() => { setShowTwist(false); setShowFeeDetails(true); }, 8500),
       setTimeout(() => { setShowFeeDetails(false); setShowFeeBreakdown(true); }, 11000),
-      setTimeout(() => { setShowFeeBreakdown(false); setShowSwapExample(true); }, 13500),
-      setTimeout(() => { setShowSwapExample(false); setShowJackpotExplanation(true); }, 16000),
-      setTimeout(() => { setShowJackpotExplanation(false); setShowOddsTable(true); }, 18500),
-      setTimeout(() => { setShowOddsTable(false); setShowVRFDetails(true); }, 21000),
+      setTimeout(() => { setShowFeeBreakdown(false); setShowJackpotExplanation(true); }, 13500),
+      setTimeout(() => { setShowJackpotExplanation(false); setShowOddsTable(true); }, 16000),
+      setTimeout(() => { setShowOddsTable(false); setShowVRFDetails(true); }, 18500),
       setTimeout(() => {
         setShowBlackScreen(false);
         setShowDemo(true);
-      }, 24000)
+      }, 21000)
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -94,7 +93,7 @@ export default function DemoScreen() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  $S → $DRAGON
+                  Swap $S for $DRAGON
                 </motion.h2>
 
                 <motion.div
@@ -179,66 +178,37 @@ export default function DemoScreen() {
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <motion.h2 
-                  className="text-2xl font-light mb-6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                <motion.div
+                  className="space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  6.9% → Jackpot • 2.41% → LP • 0.69% → Burn
-                </motion.h2>
-                <motion.div
-                  className="flex justify-center space-x-4"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  <div className="w-12 h-12 rounded-full bg-golden-amber/20 border border-golden-amber/50 flex items-center justify-center">
-                    <span className="text-xs font-bold text-golden-amber">6.9%</span>
+                  <div className="flex items-center justify-center space-x-4">
+                    <div className="w-16 h-16 rounded-full bg-golden-amber/20 border-2 border-golden-amber/50 flex items-center justify-center">
+                      <span className="text-sm font-bold text-golden-amber">6.9%</span>
+                    </div>
+                    <span className="text-lg text-golden-amber font-medium">→ Jackpot</span>
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-electric-blue/20 border border-electric-blue/50 flex items-center justify-center">
-                    <span className="text-xs font-bold text-electric-blue">2.41%</span>
+                  
+                  <div className="flex items-center justify-center space-x-4">
+                    <div className="w-16 h-16 rounded-full bg-electric-blue/20 border-2 border-electric-blue/50 flex items-center justify-center">
+                      <span className="text-sm font-bold text-electric-blue">2.41%</span>
+                    </div>
+                    <span className="text-lg text-electric-blue font-medium">→ LP Rewards</span>
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-dragon-red/20 border border-dragon-red/50 flex items-center justify-center">
-                    <span className="text-xs font-bold text-dragon-red">0.69%</span>
+                  
+                  <div className="flex items-center justify-center space-x-4">
+                    <div className="w-16 h-16 rounded-full bg-dragon-red/20 border-2 border-dragon-red/50 flex items-center justify-center">
+                      <span className="text-sm font-bold text-dragon-red">0.69%</span>
+                    </div>
+                    <span className="text-lg text-dragon-red font-medium">→ Burned</span>
                   </div>
                 </motion.div>
               </motion.div>
             )}
 
-            {/* Swap Example */}
-            {showSwapExample && (
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
-                <motion.h2 
-                  className="text-3xl font-light mb-6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  $100 → $90
-                </motion.h2>
-                <motion.div
-                  className="flex justify-center items-center space-x-6"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  <div className="w-16 h-16 rounded-full bg-electric-blue/20 border border-electric-blue/50 flex items-center justify-center">
-                    <span className="text-sm font-bold text-electric-blue">$100</span>
-                  </div>
-                  <div className="w-6 h-0.5 bg-gradient-to-r from-electric-blue to-dragon-red"></div>
-                  <div className="w-16 h-16 rounded-full bg-dragon-red/20 border border-dragon-red/50 flex items-center justify-center">
-                    <span className="text-sm font-bold text-dragon-red">$90</span>
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
+
 
             {/* Jackpot Explanation */}
             {showJackpotExplanation && (
