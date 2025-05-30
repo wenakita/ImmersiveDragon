@@ -90,11 +90,11 @@ export default function DemoScreen() {
               >
                 <motion.h2 
                   className="text-3xl font-light"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <Typewriter text="Swap $S for $DRAGON" delay={300} speed={70} />
+                  Swap $S for $DRAGON
                 </motion.h2>
 
                 <motion.div
@@ -133,11 +133,11 @@ export default function DemoScreen() {
               >
                 <motion.h2 
                   className="text-4xl font-light text-warm-orange"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <Typewriter text="But there's a twist" delay={300} speed={80} />
+                  But there's a twist
                 </motion.h2>
               </motion.div>
             )}
@@ -153,11 +153,11 @@ export default function DemoScreen() {
               >
                 <motion.h2 
                   className="text-4xl font-light mb-6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <Typewriter text="10% fee on all swaps" delay={300} speed={70} className="text-warm-orange font-semibold" />
+                  <span className="text-warm-orange font-semibold">10% fee</span> on all swaps
                 </motion.h2>
                 <motion.div
                   className="w-20 h-20 rounded-full bg-warm-orange/20 border-2 border-warm-orange/50 flex items-center justify-center mx-auto"
@@ -222,20 +222,19 @@ export default function DemoScreen() {
               >
                 <motion.h2 
                   className="text-3xl font-light mb-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  initial={{ opacity: 0, rotateX: 90 }}
+                  animate={{ opacity: 1, rotateX: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <Typewriter text="Every swap = " delay={300} speed={70} />
-                  <Typewriter text="lottery ticket" delay={1200} speed={70} className="text-golden-amber" />
+                  Every swap = <span className="text-golden-amber">lottery ticket</span>
                 </motion.h2>
                 <motion.p
                   className="text-lg text-soft-gray"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  <Typewriter text="Larger swaps = better odds" delay={2000} speed={60} />
+                  Larger swaps = better odds
                 </motion.p>
               </motion.div>
             )}
@@ -251,33 +250,53 @@ export default function DemoScreen() {
               >
                 <motion.div
                   className="space-y-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <div className="flex items-center justify-center space-x-6">
+                  <motion.div 
+                    className="flex items-center justify-center space-x-6"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
                     <span className="text-2xl font-bold text-electric-blue w-16 text-left">$10</span>
                     <span className="text-lg text-soft-gray">=</span>
                     <span className="text-xl font-medium text-electric-blue w-20 text-right">0.004%</span>
-                  </div>
+                  </motion.div>
                   
-                  <div className="flex items-center justify-center space-x-6">
+                  <motion.div 
+                    className="flex items-center justify-center space-x-6"
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
                     <span className="text-2xl font-bold text-warm-orange w-16 text-left">$100</span>
                     <span className="text-lg text-soft-gray">=</span>
                     <span className="text-xl font-medium text-warm-orange w-20 text-right">0.04%</span>
-                  </div>
+                  </motion.div>
                   
-                  <div className="flex items-center justify-center space-x-6">
+                  <motion.div 
+                    className="flex items-center justify-center space-x-6"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                  >
                     <span className="text-2xl font-bold text-golden-amber w-16 text-left">$1K</span>
                     <span className="text-lg text-soft-gray">=</span>
                     <span className="text-xl font-medium text-golden-amber w-20 text-right">0.4%</span>
-                  </div>
+                  </motion.div>
                   
-                  <div className="flex items-center justify-center space-x-6">
+                  <motion.div 
+                    className="flex items-center justify-center space-x-6"
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.0 }}
+                  >
                     <span className="text-2xl font-bold text-dragon-red w-16 text-left">$10K</span>
                     <span className="text-lg text-soft-gray">=</span>
                     <span className="text-xl font-medium text-dragon-red w-20 text-right">4%</span>
-                  </div>
+                  </motion.div>
                 </motion.div>
               </motion.div>
             )}
@@ -293,20 +312,19 @@ export default function DemoScreen() {
               >
                 <motion.h2 
                   className="text-2xl font-light mb-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <Typewriter text="Provably fair with " delay={300} speed={70} />
-                  <Typewriter text="OmniDragonRandomness" delay={1500} speed={80} className="text-golden-amber" />
+                  Provably fair with <span className="text-golden-amber">OmniDragonRandomness</span>
                 </motion.h2>
                 <motion.p
                   className="text-lg text-soft-gray"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  <Typewriter text="Chainlink VRF2.5 + LayerZero + drand aggregation" delay={2800} speed={60} />
+                  Chainlink VRF2.5 + LayerZero + drand aggregation
                 </motion.p>
               </motion.div>
             )}
