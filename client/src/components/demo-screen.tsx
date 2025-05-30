@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StepContent from "@/components/step-content";
 import { demoSteps } from "@/lib/demo-steps";
@@ -17,6 +17,12 @@ export default function DemoScreen() {
   const [showVRFDetails, setShowVRFDetails] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Audio sync function for musical cues
+  const syncToAudio = (timeCode: number, callback: () => void) => {
+    return setTimeout(callback, timeCode * 1000);
+  };
 
   useEffect(() => {
     const timers = [
@@ -45,6 +51,15 @@ export default function DemoScreen() {
 
   return (
     <div className="min-h-screen bg-black">
+      {/* Audio element for phonk track integration */}
+      <audio
+        ref={audioRef}
+        preload="auto"
+        className="hidden"
+      >
+        {/* Add your track here when ready */}
+      </audio>
+      
       <AnimatePresence>
         {showBlackScreen && (
           <motion.div
@@ -62,14 +77,31 @@ export default function DemoScreen() {
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <motion.h2 
-                  className="text-4xl font-light bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  <Typewriter text="Sonic Red Dragon" delay={500} speed={80} />
-                </motion.h2>
+                <motion.div className="relative">
+                  <motion.h2 
+                    className="text-4xl font-light bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    <Typewriter text="Sonic Red Dragon" delay={500} speed={80} />
+                  </motion.h2>
+                  
+                  {/* Digital glitch overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-warm-orange/20 to-transparent opacity-0"
+                    animate={{ 
+                      opacity: [0, 0.3, 0, 0.2, 0],
+                      x: [0, 2, -2, 1, 0]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity, 
+                      repeatDelay: 2,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.div>
                 <motion.div
                   className="w-16 h-0.5 bg-warm-orange mx-auto mt-4"
                   initial={{ width: 0 }}
@@ -88,14 +120,31 @@ export default function DemoScreen() {
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <motion.h2 
-                  className="text-3xl font-light"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  Swap $S for $DRAGON
-                </motion.h2>
+                <motion.div className="relative">
+                  <motion.h2 
+                    className="text-3xl font-light relative z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    Swap $S for $DRAGON
+                  </motion.h2>
+                  
+                  {/* Faint fire/glow effect */}
+                  <motion.div
+                    className="absolute -inset-4 bg-gradient-radial from-orange-500/20 via-orange-400/10 to-transparent rounded-full opacity-0"
+                    animate={{ 
+                      opacity: [0, 0.6, 0.4, 0.8, 0],
+                      scale: [0.8, 1.2, 1.1, 1.3, 1]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      repeatDelay: 1,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.div>
 
                 <motion.div
                   className="flex justify-center items-center space-x-8"
@@ -238,14 +287,46 @@ export default function DemoScreen() {
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <motion.h2 
-                  className="text-3xl font-light mb-4"
-                  initial={{ opacity: 0, rotateX: 90 }}
-                  animate={{ opacity: 1, rotateX: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  Every swap = <span className="text-yellow-400">lottery ticket</span>
-                </motion.h2>
+                <motion.div className="relative">
+                  <motion.h2 
+                    className="text-3xl font-light mb-4 relative z-10"
+                    initial={{ opacity: 0, rotateX: 90 }}
+                    animate={{ opacity: 1, rotateX: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    Every swap = <span className="text-yellow-400">lottery ticket</span>
+                  </motion.h2>
+                  
+                  {/* Sparkle effect */}
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.0 }}
+                  >
+                    {[...Array(8)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-yellow-400 rounded-full"
+                        style={{
+                          left: `${20 + i * 10}%`,
+                          top: `${30 + (i % 3) * 20}%`,
+                        }}
+                        animate={{
+                          opacity: [0, 1, 0],
+                          scale: [0, 1.5, 0],
+                          rotate: [0, 180, 360]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: i * 0.2,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    ))}
+                  </motion.div>
+                </motion.div>
                 <motion.p
                   className="text-lg text-soft-gray"
                   initial={{ opacity: 0, y: 20 }}
@@ -322,12 +403,54 @@ export default function DemoScreen() {
             {/* VRF Details */}
             {showVRFDetails && (
               <motion.div
-                className="text-center"
+                className="text-center relative"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
+                {/* Background fire/dragon effect */}
+                <motion.div
+                  className="absolute inset-0 -inset-12 pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-radial from-orange-600/10 via-red-500/5 to-transparent"
+                    animate={{ 
+                      scale: [1, 1.2, 1.1, 1.3, 1],
+                      rotate: [0, 5, -3, 8, 0]
+                    }}
+                    transition={{ 
+                      duration: 4, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  {/* Floating embers */}
+                  {[...Array(12)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 bg-orange-400 rounded-full"
+                      style={{
+                        left: `${10 + i * 7}%`,
+                        top: `${20 + (i % 4) * 20}%`,
+                      }}
+                      animate={{
+                        y: [0, -20, -40, -60],
+                        opacity: [0, 0.8, 0.6, 0],
+                        scale: [0.5, 1, 0.8, 0.3]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: i * 0.3,
+                        ease: "easeOut"
+                      }}
+                    />
+                  ))}
+                </motion.div>
                 <motion.h2 
                   className="text-2xl font-light mb-4"
                   initial={{ opacity: 0, y: 30 }}
@@ -344,14 +467,29 @@ export default function DemoScreen() {
                 >
                   Chainlink VRF2.5 + LayerZero + drand aggregation
                 </motion.p>
-                <motion.p
-                  className="text-lg text-yellow-400 font-medium"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1.0 }}
-                >
-                  Results are instantaneous and unique to each swap
-                </motion.p>
+                <motion.div className="relative">
+                  <motion.p
+                    className="text-lg text-yellow-400 font-medium relative z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 1.0 }}
+                  >
+                    Results are instantaneous and unique to each swap
+                  </motion.p>
+                  
+                  {/* Shimmer effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent -skew-x-12"
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "200%" }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      repeatDelay: 3,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.div>
               </motion.div>
             )}
           </motion.div>
