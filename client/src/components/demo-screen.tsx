@@ -337,12 +337,20 @@ export default function DemoScreen() {
                   Provably fair with <span className="text-yellow-400">OmniDragonRandomness</span>
                 </motion.h2>
                 <motion.p
-                  className="text-lg text-soft-gray"
+                  className="text-lg text-soft-gray mb-3"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
                   Chainlink VRF2.5 + LayerZero + drand aggregation
+                </motion.p>
+                <motion.p
+                  className="text-lg text-yellow-400 font-medium"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.0 }}
+                >
+                  Results are instantaneous and unique to each swap
                 </motion.p>
               </motion.div>
             )}
