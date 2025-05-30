@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
+import { useEasterEggs } from "../hooks/use-easter-eggs";
 
 interface WelcomeScreenProps {
   termsAccepted: boolean;
@@ -12,6 +13,7 @@ export default function WelcomeScreen({
   onTermsChange, 
   onStartDemo 
 }: WelcomeScreenProps) {
+  const { easterEggs, showEasterEggNotification, handleClick, triggeredCount } = useEasterEggs();
   return (
     <motion.div
       className="fixed inset-0 flex items-center justify-center p-6"
@@ -40,7 +42,8 @@ export default function WelcomeScreen({
             <img
               src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
               alt="Sonic Red Dragon Logo"
-              className="dragon-logo-glow w-24 h-24 rounded-full object-cover"
+              className="dragon-logo-glow w-24 h-24 rounded-full object-cover cursor-pointer"
+              onClick={() => handleClick('dragon-logo')}
             />
           </div>
         </motion.div>
@@ -112,7 +115,10 @@ export default function WelcomeScreen({
           </div>
           <label htmlFor="termsAccept" className="text-sm cursor-pointer">
             I accept the terms and conditions for OmniDragon Protocol listed on the{" "}
-            <span className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer">
+            <span 
+              className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer"
+              onClick={() => handleClick('terms-link')}
+            >
               Terms of Service
             </span>{" "}
             page and the{" "}
@@ -140,7 +146,26 @@ export default function WelcomeScreen({
           <Play className="w-4 h-4" />
           Play Demo
         </motion.button>
+
+        {/* Hidden Easter Egg Counter */}
+        {triggeredCount > 0 && (
+          <motion.div
+            className="absolute bottom-4 left-4 text-xs text-yellow-400 opacity-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            🐉 {triggeredCount}/4 dragons awakened
+          </motion.div>
+        )}
       </motion.div>
+
+      {/* Easter Egg Notification */}
+      {showEasterEggNotification && (
+        <div className="easter-egg-notification">
+          🐉 Easter Egg Unlocked: {showEasterEggNotification}!
+        </div>
+      )}
     </motion.div>
   );
 }
