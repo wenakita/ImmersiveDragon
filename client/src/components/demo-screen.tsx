@@ -23,8 +23,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const [showVRFDetails, setShowVRFDetails] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  const [audioStarted, setAudioStarted] = useState(autoStart);
-  const [showPlayButton, setShowPlayButton] = useState(!autoStart);
+  const [audioStarted, setAudioStarted] = useState(false);
+  const [showPlayButton, setShowPlayButton] = useState(true);
+  
+  console.log('showPlayButton:', showPlayButton, 'autoStart:', autoStart);
   const [currentSplashStep, setCurrentSplashStep] = useState<SplashStep | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -64,13 +66,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     };
   }, [audioStarted, currentSplashStep]);
 
-  // Start audio when autoStart is true
+  // Handle autoStart
   useEffect(() => {
     if (autoStart && audioRef.current) {
-      audioRef.current.volume = 0;
-      audioRef.current.play().catch(e => {
-        console.log('Audio autoplay prevented:', e);
-      });
+      console.log('AutoStart detected, but still showing play button');
+      // Don't auto-play, still require user interaction
     }
   }, [autoStart]);
 
@@ -122,21 +122,20 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
       {/* Play button overlay */}
       {showPlayButton && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-          <motion.button
+        <div className="fixed inset-0 bg-red-500/50 flex items-center justify-center z-[9999]">
+          <button
             onClick={() => {
               console.log('Button clicked!');
               handlePlayAudio();
             }}
             className="bg-warm-orange hover:bg-warm-orange/80 text-black font-bold text-xl px-8 py-4 rounded-lg flex items-center space-x-3 transition-colors cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            style={{ position: 'relative', zIndex: 10000 }}
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
             </svg>
             <span>Play Demo with Audio</span>
-          </motion.button>
+          </button>
         </div>
       )}
       
