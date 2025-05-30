@@ -273,7 +273,8 @@
 /* Dragon logo glow effect */
 .dragon-logo-glow {
   box-shadow: 
-    0 0 20px rgba(255, 107, 53, 0.4),
-    0 0 40px rgba(74, 144, 226, 0.3),
-    0 0 60px rgba(255, 184, 0, 0.2);
+    0 0 0 2px rgba(255, 107, 53, 0.6),
+    0 0 10px rgba(255, 107, 53, 0.4),
+    0 0 20px rgba(74, 144, 226, 0.3),
+    0 0 40px rgba(255, 184, 0, 0.2);
 }
