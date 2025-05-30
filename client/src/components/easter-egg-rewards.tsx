@@ -17,28 +17,32 @@ const REWARDS = {
     description: "Access to exclusive dragon wallpapers",
     content: "🖼️ Unlock high-resolution Sonic Red Dragon wallpapers for desktop and mobile",
     icon: Star,
-    color: "text-blue-400"
+    color: "text-blue-400",
+    logo: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeig4ljnia7ytm27sa46gtvxlbpdio2dwog5zbydkgdadsqstlojkau"
   },
   2: {
     title: "Dragon Scholar", 
     description: "Early access to protocol documentation",
     content: "📚 Get early access to technical documentation and whitepaper drafts",
     icon: Sparkles,
-    color: "text-purple-400"
+    color: "text-purple-400",
+    logo: undefined
   },
   3: {
     title: "Dragon Guardian",
     description: "Beta testing privileges",
     content: "🛡️ Invitation to exclusive beta testing program with direct developer feedback",
     icon: Trophy,
-    color: "text-orange-400"
+    color: "text-orange-400",
+    logo: undefined
   },
   4: {
     title: "Dragon Master",
     description: "Legendary NFT and governance rights",
     content: "👑 Exclusive 'Dragon Master' NFT + governance token allocation + priority support",
     icon: Crown,
-    color: "text-yellow-400"
+    color: "text-yellow-400",
+    logo: undefined
   }
 };
 
@@ -86,7 +90,15 @@ export default function EasterEggRewards({ triggeredCount }: EasterEggRewardsPro
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <currentReward.icon className="w-16 h-16 mx-auto" />
+                {(currentReward as any).logo ? (
+                  <img 
+                    src={(currentReward as any).logo} 
+                    alt={currentReward.title}
+                    className="w-16 h-16 mx-auto rounded-full object-cover"
+                  />
+                ) : (
+                  <currentReward.icon className="w-16 h-16 mx-auto" />
+                )}
               </motion.div>
               
               <h2 className="text-2xl font-bold mb-2 bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
@@ -125,7 +137,11 @@ export default function EasterEggRewards({ triggeredCount }: EasterEggRewardsPro
                   View All Rewards
                 </button>
                 <button
-                  onClick={() => setShowRewards(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setShowRewards(false);
+                  }}
                   className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
                 >
                   ✕
