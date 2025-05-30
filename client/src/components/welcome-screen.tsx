@@ -169,9 +169,6 @@ export default function WelcomeScreen({
         </div>
       )}
 
-      {/* Easter Egg Hints */}
-      <EasterEggHints triggeredCount={triggeredCount} easterEggs={easterEggs} />
-      
       {/* Easter Egg Rewards */}
       <EasterEggRewards triggeredCount={triggeredCount} easterEggs={easterEggs} />
     </motion.div>
