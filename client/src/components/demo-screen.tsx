@@ -123,21 +123,32 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
       {/* Play button overlay */}
       {showPlayButton && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-          <button
-            onClick={() => {
+        <div 
+          className="fixed inset-0 bg-black/80 flex items-center justify-center"
+          style={{ zIndex: 9999 }}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Overlay clicked!');
+          }}
+        >
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               console.log('Button clicked!');
               console.log('showPlayButton before:', showPlayButton);
               console.log('audioStarted before:', audioStarted);
               handlePlayAudio();
             }}
             className="bg-warm-orange hover:bg-warm-orange/80 text-black font-bold text-xl px-8 py-4 rounded-lg flex items-center space-x-3 transition-colors cursor-pointer"
+            style={{ zIndex: 10000 }}
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
             </svg>
             <span>Play Demo with Audio</span>
-          </button>
+          </div>
         </div>
       )}
       
