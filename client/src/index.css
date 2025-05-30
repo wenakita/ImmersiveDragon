@@ -222,41 +222,36 @@
   }
 }
 
-/* Gradient Border Components */
-.gradient-border {
-  position: relative;
+/* Subtle border for main component */
+.subtle-border {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 2px;
-  background: linear-gradient(135deg, #FF6B35, #F7931E, #FFB800, #4A90E2);
-  border-radius: inherit;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-}
-
-.dragon-gradient-border {
+/* Golden glowing border for dragon logo */
+.dragon-golden-border {
   position: relative;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid #FFB800;
+  box-shadow: 
+    0 0 20px rgba(255, 184, 0, 0.4),
+    0 0 40px rgba(255, 184, 0, 0.2),
+    inset 0 0 20px rgba(255, 184, 0, 0.1);
 }
 
-.dragon-gradient-border::before {
+.dragon-golden-border::before {
   content: '';
   position: absolute;
-  inset: 0;
-  padding: 2px;
-  background: linear-gradient(135deg, #FF6B35, #F7931E, #FFB800, #4A90E2);
+  inset: -2px;
   border-radius: inherit;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
+  background: linear-gradient(45deg, #FFB800, #FFA500, #FFD700, #FFB800);
+  z-index: -1;
+  animation: golden-rotate 3s linear infinite;
+}
+
+@keyframes golden-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

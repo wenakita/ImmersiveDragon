@@ -24,7 +24,7 @@ export default function WelcomeScreen({
       transition={{ duration: 0.8 }}
     >
       <motion.div
-        className="gradient-border rounded-3xl p-8 max-w-md w-full text-center"
+        className="subtle-border rounded-3xl p-8 max-w-md w-full text-center"
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -37,7 +37,7 @@ export default function WelcomeScreen({
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="relative">
-            <div className="dragon-gradient-border w-24 h-24 rounded-full dragon-glow animate-glow-pulse flex items-center justify-center p-2">
+            <div className="dragon-golden-border w-24 h-24 rounded-full flex items-center justify-center p-2">
               <img
                 src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                 alt="Sonic Red Dragon Logo"
