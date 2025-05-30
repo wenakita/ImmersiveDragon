@@ -11,7 +11,7 @@ interface DemoScreenProps {
 }
 
 export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
-  const [showBlackScreen, setShowBlackScreen] = useState(true);
+  const [showBlackScreen, setShowBlackScreen] = useState(false);
   const [showReadyText, setShowReadyText] = useState(false);
   const [showSwapIntro, setShowSwapIntro] = useState(false);
   const [showTwist, setShowTwist] = useState(false);
@@ -78,11 +78,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     console.log('Play button clicked');
     if (audioRef.current) {
       console.log('Audio element found, starting play');
-      audioRef.current.volume = 0.7; // Start with audible volume for testing
+      audioRef.current.volume = 0.7;
       audioRef.current.play().then(() => {
         console.log('Audio started successfully');
         setAudioStarted(true);
         setShowPlayButton(false);
+        setShowBlackScreen(true); // Show the splash animation screen
       }).catch(e => {
         console.log('Audio play prevented:', e);
       });
