@@ -133,11 +133,22 @@ export default function DemoScreen() {
               >
                 <motion.h2 
                   className="text-4xl font-light text-warm-orange"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  initial={{ opacity: 0, rotateY: 180, scale: 0.5 }}
+                  animate={{ opacity: 1, rotateY: 0, scale: 1 }}
+                  transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
                 >
-                  But there's a twist
+                  <motion.span
+                    animate={{ 
+                      textShadow: [
+                        "0 0 10px rgba(255, 107, 53, 0.5)",
+                        "0 0 20px rgba(255, 107, 53, 0.8)",
+                        "0 0 10px rgba(255, 107, 53, 0.5)"
+                      ]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    But there's a twist
+                  </motion.span>
                 </motion.h2>
               </motion.div>
             )}
@@ -153,11 +164,18 @@ export default function DemoScreen() {
               >
                 <motion.h2 
                   className="text-4xl font-light mb-6"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                 >
-                  <span className="text-warm-orange font-semibold">10% fee</span> on all swaps
+                  <motion.span 
+                    className="text-warm-orange font-semibold inline-block"
+                    initial={{ scale: 1 }}
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 1.5, delay: 0.8, ease: "easeInOut" }}
+                  >
+                    10% fee
+                  </motion.span> on all swaps
                 </motion.h2>
                 <motion.div
                   className="w-20 h-20 rounded-full bg-warm-orange/20 border-2 border-warm-orange/50 flex items-center justify-center mx-auto"
