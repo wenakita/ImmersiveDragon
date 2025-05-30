@@ -103,15 +103,15 @@ export default function DemoScreen() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  <div className="w-16 h-16 rounded-full bg-electric-blue/20 border border-electric-blue/50 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center">
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
                       alt="SONIC Token"
                       className="w-10 h-10"
                     />
                   </div>
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-electric-blue to-dragon-red"></div>
-                  <div className="w-16 h-16 rounded-full bg-dragon-red/20 border border-dragon-red/50 flex items-center justify-center">
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-blue-400 to-orange-400"></div>
+                  <div className="w-16 h-16 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center">
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                       alt="DRAGON Token"
@@ -186,24 +186,24 @@ export default function DemoScreen() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   <div className="flex items-center justify-center space-x-4">
-                    <div className="w-16 h-16 rounded-full bg-golden-amber/20 border-2 border-golden-amber/50 flex items-center justify-center">
-                      <span className="text-sm font-bold text-golden-amber">6.9%</span>
+                    <div className="w-16 h-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500/50 flex items-center justify-center">
+                      <span className="text-sm font-bold text-yellow-400">6.9%</span>
                     </div>
-                    <span className="text-lg text-golden-amber font-medium">→ Jackpot</span>
+                    <span className="text-lg text-yellow-400 font-medium">→ Jackpot</span>
                   </div>
                   
                   <div className="flex items-center justify-center space-x-4">
-                    <div className="w-16 h-16 rounded-full bg-electric-blue/20 border-2 border-electric-blue/50 flex items-center justify-center">
-                      <span className="text-sm font-bold text-electric-blue">2.41%</span>
+                    <div className="w-16 h-16 rounded-full bg-blue-500/20 border-2 border-blue-500/50 flex items-center justify-center">
+                      <span className="text-sm font-bold text-blue-400">2.41%</span>
                     </div>
-                    <span className="text-lg text-electric-blue font-medium">→ LP Rewards</span>
+                    <span className="text-lg text-blue-400 font-medium">→ LP Rewards</span>
                   </div>
                   
                   <div className="flex items-center justify-center space-x-4">
-                    <div className="w-16 h-16 rounded-full bg-dragon-red/20 border-2 border-dragon-red/50 flex items-center justify-center">
-                      <span className="text-sm font-bold text-dragon-red">0.69%</span>
+                    <div className="w-16 h-16 rounded-full bg-orange-500/20 border-2 border-orange-500/50 flex items-center justify-center">
+                      <span className="text-sm font-bold text-orange-400">0.69%</span>
                     </div>
-                    <span className="text-lg text-dragon-red font-medium">→ Burned</span>
+                    <span className="text-lg text-orange-400 font-medium">→ Burned</span>
                   </div>
                 </motion.div>
               </motion.div>
@@ -226,7 +226,7 @@ export default function DemoScreen() {
                   animate={{ opacity: 1, rotateX: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  Every swap = <span className="text-golden-amber">lottery ticket</span>
+                  Every swap = <span className="text-yellow-400">lottery ticket</span>
                 </motion.h2>
                 <motion.p
                   className="text-lg text-soft-gray"
@@ -260,9 +260,9 @@ export default function DemoScreen() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
-                    <span className="text-2xl font-bold text-electric-blue w-16 text-left">$10</span>
+                    <span className="text-2xl font-bold text-blue-400 w-16 text-left">$10</span>
                     <span className="text-lg text-soft-gray">=</span>
-                    <span className="text-xl font-medium text-electric-blue w-20 text-right">0.004%</span>
+                    <span className="text-xl font-medium text-blue-400 w-20 text-right">0.004%</span>
                   </motion.div>
                   
                   <motion.div 
@@ -271,9 +271,9 @@ export default function DemoScreen() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
                   >
-                    <span className="text-2xl font-bold text-warm-orange w-16 text-left">$100</span>
+                    <span className="text-2xl font-bold text-orange-400 w-16 text-left">$100</span>
                     <span className="text-lg text-soft-gray">=</span>
-                    <span className="text-xl font-medium text-warm-orange w-20 text-right">0.04%</span>
+                    <span className="text-xl font-medium text-orange-400 w-20 text-right">0.04%</span>
                   </motion.div>
                   
                   <motion.div 
@@ -282,9 +282,9 @@ export default function DemoScreen() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
                   >
-                    <span className="text-2xl font-bold text-golden-amber w-16 text-left">$1K</span>
+                    <span className="text-2xl font-bold text-yellow-400 w-16 text-left">$1K</span>
                     <span className="text-lg text-soft-gray">=</span>
-                    <span className="text-xl font-medium text-golden-amber w-20 text-right">0.4%</span>
+                    <span className="text-xl font-medium text-yellow-400 w-20 text-right">0.4%</span>
                   </motion.div>
                   
                   <motion.div 
@@ -293,9 +293,9 @@ export default function DemoScreen() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 1.0 }}
                   >
-                    <span className="text-2xl font-bold text-dragon-red w-16 text-left">$10K</span>
+                    <span className="text-2xl font-bold text-orange-500 w-16 text-left">$10K</span>
                     <span className="text-lg text-soft-gray">=</span>
-                    <span className="text-xl font-medium text-dragon-red w-20 text-right">4%</span>
+                    <span className="text-xl font-medium text-orange-500 w-20 text-right">4%</span>
                   </motion.div>
                 </motion.div>
               </motion.div>
@@ -316,7 +316,7 @@ export default function DemoScreen() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  Provably fair with <span className="text-golden-amber">OmniDragonRandomness</span>
+                  Provably fair with <span className="text-yellow-400">OmniDragonRandomness</span>
                 </motion.h2>
                 <motion.p
                   className="text-lg text-soft-gray"
