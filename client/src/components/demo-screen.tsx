@@ -45,60 +45,60 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     // Only start timers if audio has been started by user interaction
     if (!audioStarted) return;
 
-    // Sync to your script timing (adjusted for phonk track)
+    // Sync to phonk track beats (more aggressive timing)
     const timers = [
-      // [00:00–00:07] Intro / Atmosphere - Typewriter "Sonic Red Dragon"
+      // [00:00–00:04] Intro build-up - Typewriter on ambient start
       setTimeout(() => {
         setShowReadyText(true);
       }, 0),
       
-      // [00:07–00:12] Call to Action - "Swap $S for $DRAGON" on first beat
+      // [00:04–00:08] First beat drop - Swap intro hits hard
       setTimeout(() => { 
         setShowReadyText(false); 
         setShowSwapIntro(true); 
-      }, 7000),
+      }, 4000),
       
-      // [00:12–00:17] Reveal the Twist - "But there's a twist" on synth intensify
+      // [00:08–00:12] Beat intensifies - Twist reveal with impact
       setTimeout(() => { 
         setShowSwapIntro(false); 
         setShowTwist(true); 
-      }, 12000),
+      }, 8000),
       
-      // [00:17–00:22] Mechanic Reveal - "10% fee" on drum hit
+      // [00:12–00:16] Heavy bass section - Fee reveal on drop
       setTimeout(() => { 
         setShowTwist(false); 
         setShowFeeDetails(true); 
-      }, 17000),
+      }, 12000),
       
-      // [00:22–00:28] Game-Changer - "lottery ticket" on musical flourish
+      // [00:16–00:22] Breakdown section - Fee details with rhythm
       setTimeout(() => { 
         setShowFeeDetails(false); 
         setShowFeeBreakdown(true); 
-      }, 22000),
+      }, 16000),
       
-      // [00:28–00:34] Reassurance - "instantaneous results"
+      // [00:22–00:28] Build to climax - Lottery reveal
       setTimeout(() => { 
         setShowFeeBreakdown(false); 
         setShowJackpotExplanation(true); 
-      }, 28000),
+      }, 22000),
       
-      // [00:34–00:54] Probability Table - alternating with beat
+      // [00:28–00:40] Main section - Odds table with beat sync
       setTimeout(() => { 
         setShowJackpotExplanation(false); 
         setShowOddsTable(true); 
-      }, 34000),
+      }, 28000),
       
-      // [00:54–End] Finale - VRF on biggest drop
+      // [00:40–00:50] Final drop - VRF with maximum intensity
       setTimeout(() => { 
         setShowOddsTable(false); 
         setShowVRFDetails(true); 
-      }, 54000),
+      }, 40000),
       
-      // End and transition to interactive demo
+      // [00:50+] Outro and transition
       setTimeout(() => {
         setShowBlackScreen(false);
         setShowDemo(true);
-      }, 70000)
+      }, 50000)
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -213,24 +213,36 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 <motion.div className="relative">
                   <motion.h2 
                     className="text-3xl font-light relative z-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    initial={{ opacity: 0, y: 50, scale: 0.7 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0, 
+                      scale: 1,
+                      rotateX: [0, -15, 0]
+                    }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 0.1,
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 20
+                    }}
                   >
                     Swap $S for $DRAGON
                   </motion.h2>
                   
-                  {/* Faint fire/glow effect */}
+                  {/* Aggressive phonk-style glow effect */}
                   <motion.div
-                    className="absolute -inset-4 bg-gradient-radial from-orange-500/20 via-orange-400/10 to-transparent rounded-full opacity-0"
+                    className="absolute -inset-4 bg-gradient-radial from-orange-500/30 via-orange-400/15 to-transparent rounded-full opacity-0"
                     animate={{ 
-                      opacity: [0, 0.6, 0.4, 0.8, 0],
-                      scale: [0.8, 1.2, 1.1, 1.3, 1]
+                      opacity: [0, 1, 0.2, 1, 0],
+                      scale: [0.5, 1.5, 1.2, 1.8, 1],
+                      rotate: [0, 180, 90, 270, 360]
                     }}
                     transition={{ 
-                      duration: 2, 
+                      duration: 1.5, 
                       repeat: Infinity, 
-                      repeatDelay: 1,
+                      repeatDelay: 0.5,
                       ease: "easeInOut"
                     }}
                   />
@@ -264,7 +276,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {/* The Twist */}
             {showTwist && (
               <motion.div
-                className="text-center"
+                className="text-center glitch-effect"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
@@ -272,19 +284,34 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               >
                 <motion.h2 
                   className="text-4xl font-light text-warm-orange"
-                  initial={{ opacity: 0, rotateY: 180, scale: 0.5 }}
-                  animate={{ opacity: 1, rotateY: 0, scale: 1 }}
-                  transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+                  initial={{ opacity: 0, rotateY: 180, scale: 0.3, y: 100 }}
+                  animate={{ 
+                    opacity: 1, 
+                    rotateY: 0, 
+                    scale: 1, 
+                    y: 0,
+                    rotateZ: [0, -5, 5, 0]
+                  }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 0.1, 
+                    ease: "backOut",
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25
+                  }}
                 >
                   <motion.span
                     animate={{ 
                       textShadow: [
-                        "0 0 10px rgba(255, 107, 53, 0.5)",
                         "0 0 20px rgba(255, 107, 53, 0.8)",
-                        "0 0 10px rgba(255, 107, 53, 0.5)"
-                      ]
+                        "0 0 40px rgba(255, 107, 53, 1)",
+                        "0 0 15px rgba(255, 107, 53, 0.6)",
+                        "0 0 35px rgba(255, 107, 53, 0.9)"
+                      ],
+                      scale: [1, 1.05, 0.98, 1.02, 1]
                     }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     But there's a twist
                   </motion.span>
