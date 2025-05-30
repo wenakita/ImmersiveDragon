@@ -39,32 +39,28 @@ export const splashSteps: SplashStep[] = [
     text: "Sonic Red Dragon"
   },
   {
-    key: "swap-1",
+    key: "swap-phase-1",
     start: 6000,
-    duration: 1200,
-    action: "swapPhase",
+    duration: 1500,
+    action: "swapPhase1",
     text: "Swap $S",
     token: "S",
-    direction: "left",
-    effect: "bounce"
+    direction: "left"
   },
   {
-    key: "swap-2",
-    start: 7200,
-    duration: 1200,
-    action: "swapPhase",
+    key: "swap-phase-2", 
+    start: 7500,
+    duration: 1500,
+    action: "swapPhase2",
     text: "for $DRAGON",
     token: "DRAGON",
-    direction: "right",
-    effect: "bounce"
+    direction: "right"
   },
   {
-    key: "swap-complete",
-    start: 8400,
+    key: "swap-accelerate",
+    start: 9000,
     duration: 1000,
-    action: "swapComplete",
-    tokensCross: true,
-    exitDirection: { S: "left", DRAGON: "right" }
+    action: "swapAccelerate"
   },
   {
     key: "twist",

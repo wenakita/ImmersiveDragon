@@ -122,14 +122,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
       {/* Play button overlay */}
       {showPlayButton && (
-        <div className="fixed inset-0 bg-red-500/50 flex items-center justify-center z-[9999]">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
           <button
             onClick={() => {
               console.log('Button clicked!');
               handlePlayAudio();
             }}
             className="bg-warm-orange hover:bg-warm-orange/80 text-black font-bold text-xl px-8 py-4 rounded-lg flex items-center space-x-3 transition-colors cursor-pointer"
-            style={{ position: 'relative', zIndex: 10000 }}
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
@@ -185,64 +184,112 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   </motion.div>
                 )}
 
-                {/* Swap Animation */}
-                {currentSplashStep.action === "swapPhase" && (
-                  <motion.div className="text-center relative h-32">
-                    <motion.h2 className="text-3xl font-light mb-4">
-                      {currentSplashStep.text}
+                {/* Swap Phase 1: $S slides to center with "Swap $S" text */}
+                {currentSplashStep.action === "swapPhase1" && (
+                  <motion.div className="text-center relative h-40">
+                    <motion.h2 
+                      className="text-3xl font-light mb-8"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      Swap $S
                     </motion.h2>
                     
                     <motion.div
-                      className="absolute top-12 w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center"
-                      initial={{ 
-                        x: currentSplashStep.direction === "left" ? -200 : 200, 
-                        opacity: 0 
-                      }}
-                      animate={{ 
-                        x: currentSplashStep.direction === "left" ? -80 : 80, 
-                        opacity: 1 
-                      }}
-                      variants={animationVariants.bounce}
-                      transition={{ duration: 0.8, ease: "backOut" }}
+                      className="absolute top-16 left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center"
+                      initial={{ x: -400, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 1, ease: "easeOut" }}
                     >
                       <img
-                        src={currentSplashStep.token === "S" 
-                          ? "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                          : "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                        }
-                        alt={`${currentSplashStep.token} Token`}
+                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                        alt="S Token"
                         className="w-10 h-10"
                       />
                     </motion.div>
                   </motion.div>
                 )}
 
-                {/* Token Crossing */}
-                {currentSplashStep.action === "swapComplete" && (
-                  <motion.div className="text-center relative h-32">
-                    <motion.div
-                      className="absolute top-12 left-1/2 transform -translate-x-1/2 flex space-x-4"
-                      animate={{ 
-                        x: [0, 100, -100, 0],
-                        rotate: [0, 360, -360, 0]
-                      }}
-                      transition={{ duration: 1, ease: "easeInOut" }}
+                {/* Swap Phase 2: "for $DRAGON" appears, $DRAGON slides to center next to $S */}
+                {currentSplashStep.action === "swapPhase2" && (
+                  <motion.div className="text-center relative h-40">
+                    <motion.h2 
+                      className="text-3xl font-light mb-8"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
                     >
-                      <div className="w-12 h-12 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center">
-                        <img src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" alt="S" className="w-8 h-8" />
-                      </div>
-                      <div className="w-12 h-12 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center">
-                        <img src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" alt="DRAGON" className="w-8 h-8" />
-                      </div>
+                      for $DRAGON
+                    </motion.h2>
+                    
+                    {/* Keep $S token in place */}
+                    <motion.div
+                      className="absolute top-16 left-1/2 transform -translate-x-1/2 -translate-x-10 w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center"
+                      initial={{ opacity: 1 }}
+                      animate={{ opacity: 1 }}
+                    >
+                      <img
+                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                        alt="S Token"
+                        className="w-10 h-10"
+                      />
                     </motion.div>
                     
+                    {/* $DRAGON slides in from right */}
                     <motion.div
-                      className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-green-400 font-bold"
+                      className="absolute top-16 left-1/2 transform -translate-x-1/2 translate-x-10 w-16 h-16 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center"
+                      initial={{ x: 400, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                    >
+                      <img
+                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                        alt="DRAGON Token"
+                        className="w-10 h-10"
+                      />
+                    </motion.div>
+                  </motion.div>
+                )}
+
+                {/* Swap Accelerate: Both tokens accelerate off screen */}
+                {currentSplashStep.action === "swapAccelerate" && (
+                  <motion.div className="text-center relative h-40">
+                    {/* $S accelerates to the right and off screen */}
+                    <motion.div
+                      className="absolute top-16 left-1/2 transform -translate-x-1/2 -translate-x-10 w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center"
+                      animate={{ x: 400, opacity: 0 }}
+                      transition={{ duration: 0.6, ease: "easeIn" }}
+                    >
+                      <img
+                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                        alt="S Token"
+                        className="w-10 h-10"
+                      />
+                    </motion.div>
+                    
+                    {/* $DRAGON accelerates to the left and off screen */}
+                    <motion.div
+                      className="absolute top-16 left-1/2 transform -translate-x-1/2 translate-x-10 w-16 h-16 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center"
+                      animate={{ x: -400, opacity: 0 }}
+                      transition={{ duration: 0.6, ease: "easeIn" }}
+                    >
+                      <img
+                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                        alt="DRAGON Token"
+                        className="w-10 h-10"
+                      />
+                    </motion.div>
+                    
+                    {/* "Swap Complete!" appears as tokens exit */}
+                    <motion.div
+                      className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-green-400 font-bold text-xl"
+                      initial={{ opacity: 0, scale: 0.5 }}
                       animate={{ 
-                        opacity: [0, 1, 0, 1, 0],
-                        scale: [1, 1.2, 1, 1.3, 1]
+                        opacity: [0, 1, 1, 0],
+                        scale: [0.5, 1.2, 1, 0.8]
                       }}
-                      transition={{ duration: 0.8 }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
                     >
                       Swap Complete!
                     </motion.div>
