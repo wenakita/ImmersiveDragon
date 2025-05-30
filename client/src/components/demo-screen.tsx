@@ -17,6 +17,8 @@ export default function DemoScreen() {
   const [showVRFDetails, setShowVRFDetails] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const [audioStarted, setAudioStarted] = useState(false);
+  const [showPlayButton, setShowPlayButton] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   // Audio sync function for musical cues
@@ -28,7 +30,16 @@ export default function DemoScreen() {
     // Start audio when demo begins
     const startAudio = () => {
       if (audioRef.current) {
-        audioRef.current.play().catch(e => console.log('Audio autoplay prevented:', e));
+        audioRef.current.volume = 0.7;
+        audioRef.current.play().catch(e => {
+          console.log('Audio autoplay prevented:', e);
+          // Show a click-to-play message
+          document.addEventListener('click', () => {
+            if (audioRef.current) {
+              audioRef.current.play();
+            }
+          }, { once: true });
+        });
       }
     };
 
@@ -98,6 +109,15 @@ export default function DemoScreen() {
     }
   };
 
+  const handlePlayClick = () => {
+    setShowPlayButton(false);
+    setAudioStarted(true);
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black">
       {/* Audio element for phonk track integration */}
@@ -105,9 +125,29 @@ export default function DemoScreen() {
         ref={audioRef}
         preload="auto"
         className="hidden"
+        onLoadStart={() => console.log('Audio loading started')}
+        onCanPlay={() => console.log('Audio can play')}
+        onError={(e) => console.log('Audio error:', e)}
       >
-        <source src="/attached_assets/kwa-tempo-phonk-212904.mp3" type="audio/mpeg" />
+        <source src="./attached_assets/kwa-tempo-phonk-212904.mp3" type="audio/mpeg" />
       </audio>
+
+      {/* Play button overlay */}
+      {showPlayButton && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+          <motion.button
+            onClick={handlePlayClick}
+            className="bg-warm-orange hover:bg-warm-orange/80 text-black font-bold text-xl px-8 py-4 rounded-lg flex items-center space-x-3 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span>Play Demo with Audio</span>
+          </motion.button>
+        </div>
+      )}
       
       <AnimatePresence>
         {showBlackScreen && (
