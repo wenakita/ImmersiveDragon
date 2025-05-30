@@ -75,13 +75,19 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   }, [autoStart]);
 
   const handlePlayAudio = () => {
+    console.log('Play button clicked');
     if (audioRef.current) {
+      console.log('Audio element found, starting play');
       audioRef.current.volume = 0;
-      audioRef.current.play().catch(e => {
+      audioRef.current.play().then(() => {
+        console.log('Audio started successfully');
+        setAudioStarted(true);
+        setShowPlayButton(false);
+      }).catch(e => {
         console.log('Audio play prevented:', e);
       });
-      setAudioStarted(true);
-      setShowPlayButton(false);
+    } else {
+      console.log('No audio element found');
     }
   };
 
