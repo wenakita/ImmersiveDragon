@@ -56,6 +56,7 @@ const SPECIAL_CODES = {
 export default function EasterEggRewards({ triggeredCount }: EasterEggRewardsProps) {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [showRewards, setShowRewards] = useState(false);
+  const [dismissedNotification, setDismissedNotification] = useState(false);
 
   if (triggeredCount === 0) return null;
 
@@ -76,7 +77,7 @@ export default function EasterEggRewards({ triggeredCount }: EasterEggRewardsPro
     <>
       {/* Rewards Notification */}
       <AnimatePresence>
-        {currentReward && !showRewards && (
+        {currentReward && !showRewards && !dismissedNotification && (
           <motion.div
             className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[60] max-w-md"
             initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
@@ -140,7 +141,7 @@ export default function EasterEggRewards({ triggeredCount }: EasterEggRewardsPro
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    setShowRewards(false);
+                    setDismissedNotification(true);
                   }}
                   className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
                 >
