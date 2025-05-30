@@ -1,0 +1,205 @@
+Cinematic Phonk Splash Sequence – Detailed Animation Blueprint
+General Rules:
+Audio: Fade in from 0% to 70% volume over the first 2 seconds.
+
+Every scene transition: End with a punchy, surprising, or satisfying motion, not just a fade.
+
+Use real movement, layering, and text effects (glitch, shake, color sweep) to match the beat.
+
+Tokens: Animate the actual tokens—not just text—whenever possible.
+
+Sync all transitions tightly to the beat and energy shifts in the music.
+
+Frame-by-Frame Script (Time Approximate, Adjust to Track’s Real Cues)
+0:00 – 0:02 | Audio Fade-in
+Action: Begin audio at volume 0. Gradually ramp up to 70% over 2 seconds.
+
+Code:
+
+audioRef.current.volume = 0;
+
+Over 2s: smoothly interpolate to 0.7.
+
+0:02 – 0:06 | Title Reveal
+Typewriter Animation:
+
+"Sonic Red Dragon" appears letter-by-letter, center screen, with subtle orange neon/glow.
+
+Glitch Exit:
+
+On the final letter, in the last 100ms, the whole text quickly “glitches” (RGB split, slight shake, scanlines) and distorts/fades out, in sync with a “record scratch” or phonk vocal hit.
+
+0:06 – 0:12 | Swap Animation: "Swap $S" → "for $DRAGON"
+Phase 1:
+
+"Swap $S" appears in the center.
+
+$S token image slides in from the left, bounces next to the text.
+
+Phase 2:
+
+Text transitions to "for $DRAGON" (text animates up, or wipes left).
+
+$DRAGON token slides in from the right, bounces next to new text.
+
+Phase 3:
+
+The $S and $DRAGON tokens cross past each other in the center, then $S slides out left and $DRAGON slides out right, as if swapping places.
+
+Center text flickers “swap complete!” very briefly as the tokens exit.
+
+0:12 – 0:15 | The Twist
+Action:
+
+Screen blurs/vignettes, dramatic bass drop.
+
+Text:
+
+"But there's a twist" zooms in from the center, shakes slightly, then snaps into place.
+
+Subtle digital effect: flicker/glitch on the last word.
+
+0:15 – 0:19 | 10% Fee Reveal
+Action:
+
+"10% fee on all swaps" slides in from the left in big, bold, orange text.
+
+A count-up animation for "10%" (spins up from 0% to 10% quickly) for visual punch.
+
+As the text lands, the whole line does a little “jiggle” or impact shake in sync with the next big beat.
+
+0:19 – 0:25 | Lottery Ticket Flip
+Action:
+
+"Every swap = lottery ticket" 3D flips in (horizontal flip).
+
+As the text settles, dozens of golden tickets or coins burst out from behind, float up, and quickly fade.
+
+Ticket or coin sparkles to accentuate the excitement.
+
+0:25 – 0:30 | Instant Results
+Action:
+
+"Results are instantaneous and unique" fades in with a cool shimmer, and a rapid “clock hand” or lightning sweep through the text to signify speed.
+
+Subtle background animation: a slot machine reel spins and stops, showing the word “WIN!” or a random number.
+
+0:30 – 0:38 | Probability Table (Alternating/Stacked Animations)
+Action:
+
+Each table row (e.g. $10 = 0.004%, $100 = 0.04%, etc.) slides in from alternating left/right, syncing with every new bar or snare hit.
+
+Each percentage animates up from 0 to its final value, or does a pulsing glow as it appears.
+
+As each row appears, a faint spark or digital beep accentuates the arrival.
+
+0:38 – End | VRF / Finale
+Action:
+
+"Provable Fairness Powered by Chainlink VRF" slides up from the bottom, then gently scales up with a fiery glow.
+
+Chainlink VRF icon/logo orbits or pulses behind the text.
+
+Background: subtle animated embers, digital matrix lines, or circuit graphics fade in.
+
+Text shimmer/shine sweeps once as the final highlight.
+
+GPT-Ready JSON Instructions Example
+json
+Copy
+Edit
+[
+  {
+    "time": 0,
+    "action": "audio_fade_in",
+    "duration": 2,
+    "details": { "from": 0, "to": 0.7 }
+  },
+  {
+    "time": 2,
+    "action": "typewriter",
+    "text": "Sonic Red Dragon",
+    "effect": "neon_glow"
+  },
+  {
+    "time": 6,
+    "action": "glitch_out",
+    "text": "Sonic Red Dragon",
+    "duration": 0.1
+  },
+  {
+    "time": 6.1,
+    "action": "swap_animation",
+    "phases": [
+      {
+        "text": "Swap $S",
+        "token_in": "S",
+        "token_direction": "left",
+        "effect": "bounce"
+      },
+      {
+        "text": "for $DRAGON",
+        "token_in": "DRAGON",
+        "token_direction": "right",
+        "effect": "bounce"
+      },
+      {
+        "text": "swap_complete",
+        "tokens_cross": true,
+        "exit_direction": { "S": "left", "DRAGON": "right" }
+      }
+    ]
+  },
+  {
+    "time": 12,
+    "action": "zoom_in",
+    "text": "But there's a twist",
+    "effect": "glitch_last_word"
+  },
+  {
+    "time": 15,
+    "action": "slide_in",
+    "text": "10% fee on all swaps",
+    "from": "left",
+    "effect": "count_up_percent"
+  },
+  {
+    "time": 19,
+    "action": "3d_flip",
+    "text": "Every swap = lottery ticket",
+    "effect": "coin_burst"
+  },
+  {
+    "time": 25,
+    "action": "shimmer_fade_in",
+    "text": "Results are instantaneous and unique",
+    "effect": "slot_spin"
+  },
+  {
+    "time": 30,
+    "action": "alternating_slide_in",
+    "content": [
+      {"row": "$10 = 0.004%", "from": "left"},
+      {"row": "$100 = 0.04%", "from": "right"},
+      {"row": "$1,000 = 0.4%", "from": "left"},
+      {"row": "$10,000 = 4%", "from": "right"}
+    ],
+    "effect": "glow_on_arrival"
+  },
+  {
+    "time": 38,
+    "action": "slide_up_scale",
+    "text": "Provable Fairness Powered by Chainlink VRF",
+    "effect": "fire_glow, orbiting_icon"
+  }
+]
+General Creative Advice for Your GPT
+Never show static text—everything should move, pulse, or transition.
+
+Use real assets (tokens, coins, lottery tickets, icons), not just words.
+
+Sync all punchy effects to the closest kick, snare, or big audio change.
+
+Glitch, glow, and velocity effects should match the genre—subtle for chill sections, aggressive for big drops.
+
+If you want this as a config, markdown, or for a particular animation library (Framer Motion, Lottie, GSAP), let me know your stack and I’ll give you code-level guidance!

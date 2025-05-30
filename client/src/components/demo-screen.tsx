@@ -220,74 +220,119 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Swap Introduction */}
+            {/* Swap Animation with Token Crossing */}
             {showSwapIntro && (
               <motion.div
                 className="text-center space-y-6"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <motion.div className="relative">
+                {/* Phase 1: "Swap $S" with $S token slide in */}
+                <motion.div className="relative h-32">
                   <motion.h2 
-                    className="text-3xl font-light relative z-10"
-                    initial={{ opacity: 0, y: 50, scale: 0.7 }}
-                    animate={{ 
-                      opacity: 1, 
-                      y: 0, 
-                      scale: 1,
-                      rotateX: [0, -15, 0]
-                    }}
-                    transition={{ 
-                      duration: 0.5, 
-                      delay: 0.1,
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 20
-                    }}
+                    className="text-3xl font-light absolute top-0 left-1/2 transform -translate-x-1/2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
                   >
-                    Swap $S for $DRAGON
+                    <motion.span
+                      initial={{ opacity: 1 }}
+                      animate={{ opacity: [1, 1, 0] }}
+                      transition={{ times: [0, 0.5, 1], duration: 3 }}
+                    >
+                      Swap $S
+                    </motion.span>
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0, 0, 1] }}
+                      transition={{ times: [0, 0.5, 1], duration: 3 }}
+                    >
+                      for $DRAGON
+                    </motion.span>
                   </motion.h2>
                   
-                  {/* Aggressive phonk-style glow effect */}
+                  {/* $S Token sliding in from left */}
                   <motion.div
-                    className="absolute -inset-4 bg-gradient-radial from-orange-500/30 via-orange-400/15 to-transparent rounded-full opacity-0"
+                    className="absolute top-12 w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center"
+                    initial={{ x: -200, opacity: 0 }}
                     animate={{ 
-                      opacity: [0, 1, 0.2, 1, 0],
-                      scale: [0.5, 1.5, 1.2, 1.8, 1],
-                      rotate: [0, 180, 90, 270, 360]
+                      x: -80, 
+                      opacity: 1,
+                      y: [0, -10, 0]
                     }}
                     transition={{ 
-                      duration: 1.5, 
-                      repeat: Infinity, 
-                      repeatDelay: 0.5,
-                      ease: "easeInOut"
+                      duration: 1, 
+                      delay: 0.5,
+                      y: { duration: 0.5, delay: 1 }
                     }}
-                  />
-                </motion.div>
-
-                <motion.div
-                  className="flex justify-center items-center space-x-8"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                  <div className="w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center">
+                  >
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
                       alt="SONIC Token"
                       className="w-10 h-10"
                     />
-                  </div>
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-blue-400 to-orange-400"></div>
-                  <div className="w-16 h-16 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center">
+                  </motion.div>
+                  
+                  {/* $DRAGON Token sliding in from right */}
+                  <motion.div
+                    className="absolute top-12 right-0 w-16 h-16 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center"
+                    initial={{ x: 200, opacity: 0 }}
+                    animate={{ 
+                      x: 80, 
+                      opacity: 1,
+                      y: [0, -10, 0]
+                    }}
+                    transition={{ 
+                      duration: 1, 
+                      delay: 1.5,
+                      y: { duration: 0.5, delay: 2.5 }
+                    }}
+                  >
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                       alt="DRAGON Token"
                       className="w-10 h-10"
                     />
-                  </div>
+                  </motion.div>
+                  
+                  {/* Tokens crossing animation */}
+                  <motion.div
+                    className="absolute top-12 left-1/2 transform -translate-x-1/2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 0, 1, 1, 0] }}
+                    transition={{ times: [0, 0.6, 0.7, 0.9, 1], duration: 6 }}
+                  >
+                    <motion.div
+                      className="flex space-x-4"
+                      animate={{ 
+                        x: [0, 100, -100, 0],
+                        rotate: [0, 360, -360, 0]
+                      }}
+                      transition={{ duration: 2, delay: 3 }}
+                    >
+                      <div className="w-12 h-12 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center">
+                        <img src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" alt="S" className="w-8 h-8" />
+                      </div>
+                      <div className="w-12 h-12 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center">
+                        <img src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" alt="DRAGON" className="w-8 h-8" />
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                  
+                  {/* "Swap Complete!" flicker */}
+                  <motion.div
+                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-green-400 font-bold"
+                    initial={{ opacity: 0 }}
+                    animate={{ 
+                      opacity: [0, 0, 1, 0, 1, 0],
+                      scale: [1, 1, 1.2, 1, 1.3, 1]
+                    }}
+                    transition={{ times: [0, 0.7, 0.75, 0.8, 0.85, 1], duration: 6 }}
+                  >
+                    Swap Complete!
+                  </motion.div>
                 </motion.div>
               </motion.div>
             )}
@@ -338,83 +383,142 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Fee Details */}
+            {/* 10% Fee Reveal with Count-up Animation */}
             {showFeeDetails && (
               <motion.div
                 className="text-center"
-                initial={{ opacity: 0, x: -200 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 200 }}
+                initial={{ opacity: 0, x: -300 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0,
+                  y: [0, -5, 0]
+                }}
+                exit={{ opacity: 0, x: 300 }}
                 transition={{ 
-                  duration: 0.6, 
-                  ease: "easeOut"
+                  duration: 0.8, 
+                  ease: "backOut",
+                  y: { duration: 0.3, delay: 0.8 }
                 }}
               >
                 <motion.h2 
-                  className="text-4xl font-light mb-6"
-                  initial={{ opacity: 0, x: -100 }}
+                  className="text-4xl font-bold mb-6 text-warm-orange"
+                  initial={{ opacity: 0, x: -150 }}
                   animate={{ 
                     opacity: 1, 
                     x: 0
                   }}
                   transition={{ 
-                    duration: 0.8, 
+                    duration: 0.6, 
                     delay: 0.2, 
                     ease: "easeOut"
                   }}
                 >
                   <motion.span 
-                    className="text-warm-orange font-semibold inline-block"
-                    initial={{ scale: 0.8 }}
+                    className="inline-block"
+                    initial={{ scale: 0 }}
                     animate={{ 
-                      scale: [0.8, 1.1, 1]
+                      scale: [0, 1.3, 1],
+                      rotate: [0, 360, 0]
                     }}
                     transition={{ 
-                      duration: 0.6, 
-                      delay: 0.4, 
-                      ease: "easeOut"
+                      duration: 1, 
+                      delay: 0.5,
+                      ease: "backOut"
                     }}
                   >
-                    10% fee
-                  </motion.span> on all swaps
+                    {/* Count-up from 0% to 10% */}
+                    <motion.span
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        y: [0, -3, 0]
+                      }}
+                      transition={{ 
+                        duration: 0.5, 
+                        delay: 1.2,
+                        repeat: 2
+                      }}
+                    >
+                      10%
+                    </motion.span>
+                  </motion.span> fee on all swaps
                 </motion.h2>
+                
+                {/* Impact shake effect */}
                 <motion.div
-                  className="w-20 h-20 rounded-full bg-warm-orange/20 border-2 border-warm-orange/50 flex items-center justify-center mx-auto"
-                  initial={{ scale: 0 }}
+                  className="w-full h-1 bg-warm-orange mx-auto"
+                  initial={{ width: 0 }}
                   animate={{ 
-                    scale: [0, 1.2, 1]
+                    width: "100%",
+                    x: [0, -2, 2, -1, 1, 0]
                   }}
                   transition={{ 
-                    duration: 0.6, 
-                    delay: 0.6,
-                    ease: "easeOut"
+                    width: { duration: 0.4, delay: 1.5 },
+                    x: { duration: 0.2, delay: 1.9 }
                   }}
-                >
-                  <span className="text-2xl font-bold text-warm-orange">10%</span>
-                </motion.div>
+                />
               </motion.div>
             )}
 
-            {/* Fee Breakdown */}
+            {/* Instant Results with Shimmer and Slot Machine */}
             {showFeeBreakdown && (
               <motion.div
-                className="text-center"
+                className="text-center relative"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  ease: "easeOut"
-                }}
+                transition={{ duration: 0.6 }}
               >
+                <motion.h2 
+                  className="text-3xl font-light mb-6 relative z-10"
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: 1,
+                    backgroundImage: [
+                      "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
+                      "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)"
+                    ],
+                    backgroundSize: ["200% 100%", "200% 100%"],
+                    backgroundPosition: ["-200% 0", "200% 0"]
+                  }}
+                  transition={{ 
+                    opacity: { duration: 0.5 },
+                    backgroundPosition: { duration: 2, delay: 0.5, repeat: Infinity, repeatDelay: 1 }
+                  }}
+                >
+                  Results are instantaneous and unique
+                  
+                  {/* Lightning sweep effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "100%" }}
+                    transition={{ duration: 0.8, delay: 1, repeat: Infinity, repeatDelay: 2 }}
+                  />
+                </motion.h2>
+                
+                {/* Slot machine reel */}
                 <motion.div
-                  className="space-y-4"
+                  className="mx-auto w-32 h-16 bg-gray-800 rounded border-2 border-yellow-400 overflow-hidden relative"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 flex flex-col items-center justify-center text-2xl font-bold text-yellow-400"
+                    animate={{ y: [-60, 0, 60, 0] }}
+                    transition={{ duration: 1.5, delay: 1.2, ease: "easeInOut" }}
+                  >
+                    <div className="h-16 flex items-center">WIN!</div>
+                    <div className="h-16 flex items-center">777</div>
+                    <div className="h-16 flex items-center">WIN!</div>
+                  </motion.div>
+                </motion.div>
+                
+                <motion.div
+                  className="space-y-4 mt-8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: 0.2
-                  }}
+                  transition={{ duration: 0.6, delay: 2 }}
                 >
                   <motion.div 
                     className="flex items-center justify-center space-x-4"
@@ -457,19 +561,16 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
 
 
-            {/* Jackpot Explanation */}
+            {/* Lottery Ticket 3D Flip with Coin Burst */}
             {showJackpotExplanation && (
               <motion.div
-                className="text-center"
-                initial={{ opacity: 0, rotateY: 180 }}
-                animate={{ opacity: 1, rotateY: 0 }}
-                exit={{ opacity: 0, rotateY: -180 }}
-                transition={{ 
-                  duration: 0.8, 
-                  ease: "easeOut"
-                }}
+                className="text-center relative"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <motion.div className="relative">
+                <motion.div className="relative overflow-hidden">
                   <motion.h2 
                     className="text-3xl font-light mb-4 relative z-10"
                     initial={{ opacity: 0, rotateY: 180 }}
@@ -478,7 +579,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       rotateY: 0
                     }}
                     transition={{ 
-                      duration: 1.0, 
+                      duration: 0.8, 
                       delay: 0.2,
                       ease: "easeOut"
                     }}
@@ -495,6 +596,40 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{ duration: 2, repeat: Infinity }}
                     >lottery ticket</motion.span>
                   </motion.h2>
+                  
+                  {/* Golden coins burst effect */}
+                  <motion.div className="absolute inset-0 pointer-events-none">
+                    {[...Array(12)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-6 h-6 bg-gradient-to-br from-yellow-300 to-yellow-600 rounded-full"
+                        style={{
+                          left: '50%',
+                          top: '50%',
+                        }}
+                        initial={{ 
+                          scale: 0,
+                          x: 0,
+                          y: 0,
+                          opacity: 0
+                        }}
+                        animate={{ 
+                          scale: [0, 1, 0.8, 0],
+                          x: Math.cos(i * 30 * Math.PI / 180) * 150,
+                          y: Math.sin(i * 30 * Math.PI / 180) * 150,
+                          opacity: [0, 1, 1, 0],
+                          rotate: [0, 360]
+                        }}
+                        transition={{ 
+                          duration: 2, 
+                          delay: 1 + i * 0.1,
+                          ease: "easeOut"
+                        }}
+                      >
+                        <div className="w-full h-full bg-yellow-400 rounded-full animate-pulse" />
+                      </motion.div>
+                    ))}
+                  </motion.div>
                   
                   {/* Sparkle effect */}
                   <motion.div
