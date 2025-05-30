@@ -26,13 +26,29 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const [showPlayButton, setShowPlayButton] = useState(!autoStart);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Start audio automatically if autoStart is true
+  // Start audio automatically if autoStart is true with fade-in
   useEffect(() => {
     if (autoStart && audioRef.current) {
-      audioRef.current.volume = 0.7;
+      audioRef.current.volume = 0;
       audioRef.current.play().catch(e => {
         console.log('Audio autoplay prevented:', e);
       });
+      
+      // Fade in audio from 0% to 70% over 2 seconds
+      let currentTime = 0;
+      const fadeInterval = setInterval(() => {
+        currentTime += 50;
+        const progress = currentTime / 2000; // 2 seconds
+        const audio = audioRef.current;
+        if (progress >= 1) {
+          if (audio) audio.volume = 0.7;
+          clearInterval(fadeInterval);
+        } else {
+          if (audio) audio.volume = progress * 0.7;
+        }
+      }, 50);
+      
+      return () => clearInterval(fadeInterval);
     }
   }, [autoStart]);
 
@@ -45,56 +61,56 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     // Only start timers if audio has been started by user interaction
     if (!audioStarted) return;
 
-    // Precise beat-synced timing based on audio analysis
+    // Cinematic phonk sequence with detailed effects
     const timers = [
-      // 0.0s: Typewriter: "Sonic Red Dragon" (ambience, no drums)
+      // 0:02-0:06: Typewriter "Sonic Red Dragon" with neon glow
       setTimeout(() => {
         setShowReadyText(true);
-      }, 0),
+      }, 2000),
       
-      // 4.0s: Slide up: "Swap $S for $DRAGON" (first beat drop)
+      // 0:06-0:12: Swap animation with token crossing
       setTimeout(() => { 
         setShowReadyText(false); 
         setShowSwapIntro(true); 
-      }, 4000),
+      }, 6000),
       
-      // 8.0s: Scale pop: "But there's a twist" (beat intensifies)
+      // 0:12-0:15: "But there's a twist" with zoom and glitch
       setTimeout(() => { 
         setShowSwapIntro(false); 
         setShowTwist(true); 
-      }, 8000),
+      }, 12000),
       
-      // 12.0s: Slide from left: "10% fee on all swaps" (snare hit)
+      // 0:15-0:19: "10% fee" slide from left with count-up
       setTimeout(() => { 
         setShowTwist(false); 
         setShowFeeDetails(true); 
-      }, 12000),
+      }, 15000),
       
-      // 16.0s: 3D flip: "Every swap = lottery ticket" (vocal sample cue)
+      // 0:19-0:25: "Every swap = lottery ticket" 3D flip with coin burst
       setTimeout(() => { 
         setShowFeeDetails(false); 
         setShowJackpotExplanation(true); 
-      }, 16000),
+      }, 19000),
       
-      // 22.0s: Dissolve/shimmer: "Results are instantaneous" (softer bridge)
+      // 0:25-0:30: "Results instantaneous" shimmer with slot spin
       setTimeout(() => { 
         setShowJackpotExplanation(false); 
         setShowFeeBreakdown(true); 
-      }, 22000),
+      }, 25000),
       
-      // 28.0s: Alternating slide-ins: Probability table (beat returns)
+      // 0:30-0:38: Probability table alternating slide-ins
       setTimeout(() => { 
         setShowFeeBreakdown(false); 
         setShowOddsTable(true); 
-      }, 28000),
+      }, 30000),
       
-      // 38.0s: Slide up + scale: VRF/Provable Fair (final chorus)
+      // 0:38+: VRF finale with fire glow and orbiting icons
       setTimeout(() => { 
         setShowOddsTable(false); 
         setShowVRFDetails(true); 
       }, 38000),
       
-      // 48.0s: Outro and transition to interactive demo
+      // End sequence
       setTimeout(() => {
         setShowBlackScreen(false);
         setShowDemo(true);
@@ -158,46 +174,49 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Ready Text */}
+            {/* Ready Text with Neon Glow and Glitch Exit */}
             {showReadyText && (
               <motion.div
                 className="text-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                exit={{ 
+                  opacity: 0,
+                  scale: [1, 1.1, 0.9],
+                  filter: ["hue-rotate(0deg)", "hue-rotate(90deg)", "hue-rotate(0deg)"]
+                }}
+                transition={{ 
+                  duration: 0.8, 
+                  ease: "easeOut",
+                  exit: { duration: 0.1 }
+                }}
               >
                 <motion.div className="relative">
                   <motion.h2 
-                    className="text-4xl font-light bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10"
+                    className="text-5xl font-light bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10 drop-shadow-[0_0_20px_rgba(255,107,53,0.7)]"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    <Typewriter text="Sonic Red Dragon" delay={500} speed={80} />
+                    <Typewriter text="Sonic Red Dragon" delay={0} speed={100} />
                   </motion.h2>
                   
-                  {/* Digital glitch overlay */}
+                  {/* Enhanced neon glow */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-warm-orange/20 to-transparent opacity-0"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-warm-orange/30 to-transparent opacity-0"
                     animate={{ 
-                      opacity: [0, 0.3, 0, 0.2, 0],
-                      x: [0, 2, -2, 1, 0]
+                      opacity: [0, 0.6, 0, 0.4, 0],
+                      x: [0, 3, -3, 2, 0],
+                      scale: [1, 1.02, 0.98, 1.01, 1]
                     }}
                     transition={{ 
-                      duration: 3, 
+                      duration: 2, 
                       repeat: Infinity, 
-                      repeatDelay: 2,
+                      repeatDelay: 1,
                       ease: "easeInOut"
                     }}
                   />
                 </motion.div>
-                <motion.div
-                  className="w-16 h-0.5 bg-warm-orange mx-auto mt-4"
-                  initial={{ width: 0 }}
-                  animate={{ width: 64 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                />
               </motion.div>
             )}
 
