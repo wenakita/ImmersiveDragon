@@ -124,8 +124,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
       {showPlayButton && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
           <motion.button
-            onClick={handlePlayAudio}
-            className="bg-warm-orange hover:bg-warm-orange/80 text-black font-bold text-xl px-8 py-4 rounded-lg flex items-center space-x-3 transition-colors"
+            onClick={() => {
+              console.log('Button clicked!');
+              handlePlayAudio();
+            }}
+            className="bg-warm-orange hover:bg-warm-orange/80 text-black font-bold text-xl px-8 py-4 rounded-lg flex items-center space-x-3 transition-colors cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
