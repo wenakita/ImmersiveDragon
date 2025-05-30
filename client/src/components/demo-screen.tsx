@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StepContent from "@/components/step-content";
 import { demoSteps } from "@/lib/demo-steps";
+import { Typewriter } from "@/components/ui/typewriter";
 
 export default function DemoScreen() {
   const [showBlackScreen, setShowBlackScreen] = useState(true);
@@ -19,18 +20,18 @@ export default function DemoScreen() {
 
   useEffect(() => {
     const timers = [
-      setTimeout(() => setShowReadyText(true), 1000),
-      setTimeout(() => { setShowReadyText(false); setShowSwapIntro(true); }, 3500),
-      setTimeout(() => { setShowSwapIntro(false); setShowTwist(true); }, 6000),
-      setTimeout(() => { setShowTwist(false); setShowFeeDetails(true); }, 8500),
-      setTimeout(() => { setShowFeeDetails(false); setShowFeeBreakdown(true); }, 11000),
-      setTimeout(() => { setShowFeeBreakdown(false); setShowJackpotExplanation(true); }, 13500),
-      setTimeout(() => { setShowJackpotExplanation(false); setShowOddsTable(true); }, 16000),
-      setTimeout(() => { setShowOddsTable(false); setShowVRFDetails(true); }, 18500),
+      setTimeout(() => setShowReadyText(true), 1500),
+      setTimeout(() => { setShowReadyText(false); setShowSwapIntro(true); }, 5000),
+      setTimeout(() => { setShowSwapIntro(false); setShowTwist(true); }, 8500),
+      setTimeout(() => { setShowTwist(false); setShowFeeDetails(true); }, 12000),
+      setTimeout(() => { setShowFeeDetails(false); setShowFeeBreakdown(true); }, 15500),
+      setTimeout(() => { setShowFeeBreakdown(false); setShowJackpotExplanation(true); }, 20000),
+      setTimeout(() => { setShowJackpotExplanation(false); setShowOddsTable(true); }, 24000),
+      setTimeout(() => { setShowOddsTable(false); setShowVRFDetails(true); }, 28000),
       setTimeout(() => {
         setShowBlackScreen(false);
         setShowDemo(true);
-      }, 21000)
+      }, 32000)
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -67,7 +68,7 @@ export default function DemoScreen() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  Sonic Red Dragon
+                  <Typewriter text="Sonic Red Dragon" delay={500} speed={80} />
                 </motion.h2>
                 <motion.div
                   className="w-16 h-0.5 bg-warm-orange mx-auto mt-4"
@@ -93,7 +94,7 @@ export default function DemoScreen() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  Swap $S for $DRAGON
+                  <Typewriter text="Swap $S for $DRAGON" delay={300} speed={70} />
                 </motion.h2>
 
                 <motion.div
@@ -136,7 +137,7 @@ export default function DemoScreen() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  But there's a twist
+                  <Typewriter text="But there's a twist" delay={300} speed={80} />
                 </motion.h2>
               </motion.div>
             )}
@@ -156,7 +157,7 @@ export default function DemoScreen() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <span className="text-warm-orange font-semibold">10% fee</span> on all swaps
+                  <Typewriter text="10% fee on all swaps" delay={300} speed={70} className="text-warm-orange font-semibold" />
                 </motion.h2>
                 <motion.div
                   className="w-20 h-20 rounded-full bg-warm-orange/20 border-2 border-warm-orange/50 flex items-center justify-center mx-auto"
@@ -225,7 +226,8 @@ export default function DemoScreen() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  Every swap = <span className="text-golden-amber">lottery ticket</span>
+                  <Typewriter text="Every swap = " delay={300} speed={70} />
+                  <Typewriter text="lottery ticket" delay={1200} speed={70} className="text-golden-amber" />
                 </motion.h2>
                 <motion.p
                   className="text-lg text-soft-gray"
