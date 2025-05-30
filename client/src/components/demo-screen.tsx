@@ -78,7 +78,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     console.log('Play button clicked');
     if (audioRef.current) {
       console.log('Audio element found, starting play');
-      audioRef.current.volume = 0;
+      audioRef.current.volume = 0.7; // Start with audible volume for testing
       audioRef.current.play().then(() => {
         console.log('Audio started successfully');
         setAudioStarted(true);
