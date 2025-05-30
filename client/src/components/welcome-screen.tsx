@@ -24,7 +24,7 @@ export default function WelcomeScreen({
       transition={{ duration: 0.8 }}
     >
       <motion.div
-        className="glassmorphism rounded-3xl p-8 max-w-md w-full text-center"
+        className="gradient-border rounded-3xl p-8 max-w-md w-full text-center"
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -37,11 +37,16 @@ export default function WelcomeScreen({
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="relative">
-            <div className="w-24 h-24 rounded-full border-2 border-golden-amber dragon-glow animate-glow-pulse flex items-center justify-center bg-black/50">
+            <div 
+              className="w-24 h-24 rounded-full border-2 dragon-glow animate-glow-pulse flex items-center justify-center bg-black/50 p-2"
+              style={{
+                borderImage: "linear-gradient(135deg, #FF6B35, #F7931E, #FFB800, #4A90E2) 1"
+              }}
+            >
               <img
                 src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                 alt="Sonic Red Dragon Logo"
-                className="w-14 h-14 object-contain"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
@@ -114,11 +119,11 @@ export default function WelcomeScreen({
           </div>
           <label htmlFor="termsAccept" className="text-sm cursor-pointer">
             I accept the terms and conditions for OmniDragon Protocol listed on the{" "}
-            <span className="text-dragon-red hover:text-red-400 transition-colors cursor-pointer">
+            <span className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer">
               Terms of Service
             </span>{" "}
             page and the{" "}
-            <span className="text-electric-blue hover:text-blue-400 transition-colors cursor-pointer">
+            <span className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer">
               Privacy Policy
             </span>
           </label>
