@@ -6,10 +6,12 @@ import DemoScreen from "@/components/demo-screen";
 export default function Home() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [startAudio, setStartAudio] = useState(false);
 
   const handleStartDemo = () => {
     if (termsAccepted) {
       setShowWelcome(false);
+      setStartAudio(true);
     }
   };
 
@@ -24,7 +26,7 @@ export default function Home() {
             onStartDemo={handleStartDemo}
           />
         ) : (
-          <DemoScreen key="demo" />
+          <DemoScreen key="demo" autoStart={startAudio} />
         )}
       </AnimatePresence>
     </div>
