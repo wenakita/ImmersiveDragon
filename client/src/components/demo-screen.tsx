@@ -25,19 +25,68 @@ export default function DemoScreen() {
   };
 
   useEffect(() => {
+    // Start audio when demo begins
+    const startAudio = () => {
+      if (audioRef.current) {
+        audioRef.current.play().catch(e => console.log('Audio autoplay prevented:', e));
+      }
+    };
+
+    // Sync to your script timing (adjusted for phonk track)
     const timers = [
-      setTimeout(() => setShowReadyText(true), 1500),
-      setTimeout(() => { setShowReadyText(false); setShowSwapIntro(true); }, 5000),
-      setTimeout(() => { setShowSwapIntro(false); setShowTwist(true); }, 8500),
-      setTimeout(() => { setShowTwist(false); setShowFeeDetails(true); }, 12000),
-      setTimeout(() => { setShowFeeDetails(false); setShowFeeBreakdown(true); }, 15500),
-      setTimeout(() => { setShowFeeBreakdown(false); setShowJackpotExplanation(true); }, 20000),
-      setTimeout(() => { setShowJackpotExplanation(false); setShowOddsTable(true); }, 24000),
-      setTimeout(() => { setShowOddsTable(false); setShowVRFDetails(true); }, 28000),
+      // [00:00–00:07] Intro / Atmosphere - Typewriter "Sonic Red Dragon"
+      setTimeout(() => {
+        startAudio();
+        setShowReadyText(true);
+      }, 0),
+      
+      // [00:07–00:12] Call to Action - "Swap $S for $DRAGON" on first beat
+      setTimeout(() => { 
+        setShowReadyText(false); 
+        setShowSwapIntro(true); 
+      }, 7000),
+      
+      // [00:12–00:17] Reveal the Twist - "But there's a twist" on synth intensify
+      setTimeout(() => { 
+        setShowSwapIntro(false); 
+        setShowTwist(true); 
+      }, 12000),
+      
+      // [00:17–00:22] Mechanic Reveal - "10% fee" on drum hit
+      setTimeout(() => { 
+        setShowTwist(false); 
+        setShowFeeDetails(true); 
+      }, 17000),
+      
+      // [00:22–00:28] Game-Changer - "lottery ticket" on musical flourish
+      setTimeout(() => { 
+        setShowFeeDetails(false); 
+        setShowFeeBreakdown(true); 
+      }, 22000),
+      
+      // [00:28–00:34] Reassurance - "instantaneous results"
+      setTimeout(() => { 
+        setShowFeeBreakdown(false); 
+        setShowJackpotExplanation(true); 
+      }, 28000),
+      
+      // [00:34–00:54] Probability Table - alternating with beat
+      setTimeout(() => { 
+        setShowJackpotExplanation(false); 
+        setShowOddsTable(true); 
+      }, 34000),
+      
+      // [00:54–End] Finale - VRF on biggest drop
+      setTimeout(() => { 
+        setShowOddsTable(false); 
+        setShowVRFDetails(true); 
+      }, 54000),
+      
+      // End and transition to interactive demo
       setTimeout(() => {
         setShowBlackScreen(false);
         setShowDemo(true);
-      }, 32000)
+      }, 70000)
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -57,7 +106,7 @@ export default function DemoScreen() {
         preload="auto"
         className="hidden"
       >
-        {/* Add your track here when ready */}
+        <source src="/attached_assets/kwa-tempo-phonk-212904.mp3" type="audio/mpeg" />
       </audio>
       
       <AnimatePresence>
