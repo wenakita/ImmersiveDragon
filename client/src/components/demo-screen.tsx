@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import StepContent from "@/components/step-content";
 import { demoSteps } from "@/lib/demo-steps";
 import { Typewriter } from "@/components/ui/typewriter";
+import audioFile from "@assets/kwa-tempo-phonk-212904.mp3";
 
 interface DemoScreenProps {
   autoStart?: boolean;
@@ -129,7 +130,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
         onCanPlay={() => console.log('Audio can play')}
         onError={(e) => console.log('Audio error:', e)}
       >
-        <source src="attached_assets/kwa-tempo-phonk-212904.mp3" type="audio/mpeg" />
+        <source src={audioFile} type="audio/mpeg" />
       </audio>
 
       {/* Play button overlay */}
