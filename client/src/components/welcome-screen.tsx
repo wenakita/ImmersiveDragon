@@ -37,16 +37,11 @@ export default function WelcomeScreen({
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="relative">
-            <div 
-              className="w-24 h-24 rounded-full border-2 dragon-glow animate-glow-pulse flex items-center justify-center bg-black/50 p-2"
-              style={{
-                borderImage: "linear-gradient(135deg, #FF6B35, #F7931E, #FFB800, #4A90E2) 1"
-              }}
-            >
+            <div className="dragon-gradient-border w-24 h-24 rounded-full dragon-glow animate-glow-pulse flex items-center justify-center p-2">
               <img
                 src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                 alt="Sonic Red Dragon Logo"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain relative z-10"
               />
             </div>
           </div>
