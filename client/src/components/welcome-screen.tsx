@@ -140,7 +140,7 @@ export default function WelcomeScreen({
           whileTap={termsAccepted ? { scale: 0.98 } : {}}
         >
           <Play className="w-4 h-4" />
-          See Demo
+          Play Demo
         </motion.button>
       </motion.div>
     </motion.div>

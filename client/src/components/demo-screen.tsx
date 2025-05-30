@@ -27,27 +27,13 @@ export default function DemoScreen() {
   };
 
   useEffect(() => {
-    // Start audio when demo begins
-    const startAudio = () => {
-      if (audioRef.current) {
-        audioRef.current.volume = 0.7;
-        audioRef.current.play().catch(e => {
-          console.log('Audio autoplay prevented:', e);
-          // Show a click-to-play message
-          document.addEventListener('click', () => {
-            if (audioRef.current) {
-              audioRef.current.play();
-            }
-          }, { once: true });
-        });
-      }
-    };
+    // Only start timers if audio has been started by user interaction
+    if (!audioStarted) return;
 
     // Sync to your script timing (adjusted for phonk track)
     const timers = [
       // [00:00–00:07] Intro / Atmosphere - Typewriter "Sonic Red Dragon"
       setTimeout(() => {
-        startAudio();
         setShowReadyText(true);
       }, 0),
       
@@ -101,7 +87,7 @@ export default function DemoScreen() {
     ];
 
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [audioStarted]);
 
   const handleStepChange = (step: number) => {
     if (step >= 0 && step < demoSteps.length) {
@@ -448,7 +434,7 @@ export default function DemoScreen() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
-                    <span className="text-2xl font-bold text-blue-400 w-16 text-left">$10</span>
+                    <span className="text-2xl font-bold text-blue-400 w-20 text-left">$10</span>
                     <span className="text-lg text-soft-gray">=</span>
                     <span className="text-xl font-medium text-blue-400 w-20 text-right">0.004%</span>
                   </motion.div>
@@ -459,7 +445,7 @@ export default function DemoScreen() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
                   >
-                    <span className="text-2xl font-bold text-orange-400 w-16 text-left">$100</span>
+                    <span className="text-2xl font-bold text-orange-400 w-20 text-left">$100</span>
                     <span className="text-lg text-soft-gray">=</span>
                     <span className="text-xl font-medium text-orange-400 w-20 text-right">0.04%</span>
                   </motion.div>
@@ -470,7 +456,7 @@ export default function DemoScreen() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
                   >
-                    <span className="text-2xl font-bold text-yellow-400 w-16 text-left">$1K</span>
+                    <span className="text-2xl font-bold text-yellow-400 w-20 text-left">$1,000</span>
                     <span className="text-lg text-soft-gray">=</span>
                     <span className="text-xl font-medium text-yellow-400 w-20 text-right">0.4%</span>
                   </motion.div>
@@ -481,7 +467,7 @@ export default function DemoScreen() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 1.0 }}
                   >
-                    <span className="text-2xl font-bold text-orange-500 w-16 text-left">$10K</span>
+                    <span className="text-2xl font-bold text-orange-500 w-20 text-left">$10,000</span>
                     <span className="text-lg text-soft-gray">=</span>
                     <span className="text-xl font-medium text-orange-500 w-20 text-right">4%</span>
                   </motion.div>
