@@ -45,60 +45,60 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     // Only start timers if audio has been started by user interaction
     if (!audioStarted) return;
 
-    // Sync to phonk track beats (more aggressive timing)
+    // Precise beat-synced timing based on audio analysis
     const timers = [
-      // [00:00–00:04] Intro build-up - Typewriter on ambient start
+      // 0.0s: Typewriter: "Sonic Red Dragon" (ambience, no drums)
       setTimeout(() => {
         setShowReadyText(true);
       }, 0),
       
-      // [00:04–00:08] First beat drop - Swap intro hits hard
+      // 4.0s: Slide up: "Swap $S for $DRAGON" (first beat drop)
       setTimeout(() => { 
         setShowReadyText(false); 
         setShowSwapIntro(true); 
       }, 4000),
       
-      // [00:08–00:12] Beat intensifies - Twist reveal with impact
+      // 8.0s: Scale pop: "But there's a twist" (beat intensifies)
       setTimeout(() => { 
         setShowSwapIntro(false); 
         setShowTwist(true); 
       }, 8000),
       
-      // [00:12–00:16] Heavy bass section - Fee reveal on drop
+      // 12.0s: Slide from left: "10% fee on all swaps" (snare hit)
       setTimeout(() => { 
         setShowTwist(false); 
         setShowFeeDetails(true); 
       }, 12000),
       
-      // [00:16–00:22] Breakdown section - Fee details with rhythm
+      // 16.0s: 3D flip: "Every swap = lottery ticket" (vocal sample cue)
       setTimeout(() => { 
         setShowFeeDetails(false); 
-        setShowFeeBreakdown(true); 
+        setShowJackpotExplanation(true); 
       }, 16000),
       
-      // [00:22–00:28] Build to climax - Lottery reveal
-      setTimeout(() => { 
-        setShowFeeBreakdown(false); 
-        setShowJackpotExplanation(true); 
-      }, 22000),
-      
-      // [00:28–00:40] Main section - Odds table with beat sync
+      // 22.0s: Dissolve/shimmer: "Results are instantaneous" (softer bridge)
       setTimeout(() => { 
         setShowJackpotExplanation(false); 
+        setShowFeeBreakdown(true); 
+      }, 22000),
+      
+      // 28.0s: Alternating slide-ins: Probability table (beat returns)
+      setTimeout(() => { 
+        setShowFeeBreakdown(false); 
         setShowOddsTable(true); 
       }, 28000),
       
-      // [00:40–00:50] Final drop - VRF with maximum intensity
+      // 38.0s: Slide up + scale: VRF/Provable Fair (final chorus)
       setTimeout(() => { 
         setShowOddsTable(false); 
         setShowVRFDetails(true); 
-      }, 40000),
+      }, 38000),
       
-      // [00:50+] Outro and transition
+      // 48.0s: Outro and transition to interactive demo
       setTimeout(() => {
         setShowBlackScreen(false);
         setShowDemo(true);
-      }, 50000)
+      }, 48000)
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -322,65 +322,53 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {/* Fee Details */}
             {showFeeDetails && (
               <motion.div
-                className="text-center bass-pulse"
-                initial={{ opacity: 0, y: 50, scale: 0.5 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -50, scale: 0.5 }}
+                className="text-center"
+                initial={{ opacity: 0, x: -200 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 200 }}
                 transition={{ 
-                  duration: 0.4, 
-                  ease: "backOut",
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 15
+                  duration: 0.6, 
+                  ease: "easeOut"
                 }}
               >
                 <motion.h2 
-                  className="text-4xl font-light mb-6 shake-hard"
-                  initial={{ opacity: 0, y: 100, rotateX: -180 }}
+                  className="text-4xl font-light mb-6"
+                  initial={{ opacity: 0, x: -100 }}
                   animate={{ 
                     opacity: 1, 
-                    y: 0, 
-                    rotateX: 0,
-                    rotateZ: [0, -2, 2, 0]
+                    x: 0
                   }}
                   transition={{ 
-                    duration: 0.6, 
-                    delay: 0.1, 
-                    ease: "backOut",
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 20
+                    duration: 0.8, 
+                    delay: 0.2, 
+                    ease: "easeOut"
                   }}
                 >
                   <motion.span 
-                    className="text-warm-orange font-semibold inline-block glitch-effect"
-                    initial={{ scale: 0.3 }}
+                    className="text-warm-orange font-semibold inline-block"
+                    initial={{ scale: 0.8 }}
                     animate={{ 
-                      scale: [0.3, 1.3, 0.9, 1.1, 1],
-                      rotateY: [0, 180, 90, 270, 0]
+                      scale: [0.8, 1.1, 1]
                     }}
                     transition={{ 
-                      duration: 0.8, 
-                      delay: 0.3, 
-                      ease: "backOut"
+                      duration: 0.6, 
+                      delay: 0.4, 
+                      ease: "easeOut"
                     }}
                   >
                     10% fee
                   </motion.span> on all swaps
                 </motion.h2>
                 <motion.div
-                  className="w-20 h-20 rounded-full bg-warm-orange/20 border-2 border-warm-orange/50 flex items-center justify-center mx-auto glitch-effect"
-                  initial={{ scale: 0, rotate: -180 }}
+                  className="w-20 h-20 rounded-full bg-warm-orange/20 border-2 border-warm-orange/50 flex items-center justify-center mx-auto"
+                  initial={{ scale: 0 }}
                   animate={{ 
-                    scale: [0, 1.4, 0.8, 1.2, 1], 
-                    rotate: [-180, 0, 45, -45, 0] 
+                    scale: [0, 1.2, 1]
                   }}
                   transition={{ 
-                    duration: 0.8, 
-                    delay: 0.4,
-                    type: "spring",
-                    stiffness: 600,
-                    damping: 25
+                    duration: 0.6, 
+                    delay: 0.6,
+                    ease: "easeOut"
                   }}
                 >
                   <span className="text-2xl font-bold text-warm-orange">10%</span>
@@ -391,75 +379,58 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {/* Fee Breakdown */}
             {showFeeBreakdown && (
               <motion.div
-                className="text-center bass-pulse"
-                initial={{ opacity: 0, y: 80, scale: 0.3 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -80, scale: 0.3 }}
+                className="text-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ 
-                  duration: 0.5, 
-                  ease: "backOut",
-                  type: "spring",
-                  stiffness: 500,
-                  damping: 20
+                  duration: 0.6, 
+                  ease: "easeOut"
                 }}
               >
                 <motion.div
-                  className="space-y-4 glitch-effect"
-                  initial={{ opacity: 0, y: 60 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ 
-                    duration: 0.4, 
-                    delay: 0.1,
-                    type: "spring",
-                    stiffness: 400
+                    duration: 0.6, 
+                    delay: 0.2
                   }}
                 >
                   <motion.div 
                     className="flex items-center justify-center space-x-4"
-                    initial={{ x: -200, opacity: 0, rotate: -45 }}
-                    animate={{ x: 0, opacity: 1, rotate: 0 }}
-                    transition={{ duration: 0.3, delay: 0.2, type: "spring", stiffness: 800 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
                   >
-                    <motion.div 
-                      className="w-16 h-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500/50 flex items-center justify-center shake-hard"
-                      animate={{ scale: [1, 1.2, 1], rotateY: [0, 360] }}
-                      transition={{ duration: 0.6, delay: 0.3 }}
-                    >
+                    <div className="w-16 h-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500/50 flex items-center justify-center">
                       <span className="text-sm font-bold text-yellow-400">6.9%</span>
-                    </motion.div>
-                    <span className="text-lg text-yellow-400 font-medium glitch-effect">→ Jackpot</span>
+                    </div>
+                    <span className="text-lg text-yellow-400 font-medium">→ Jackpot</span>
                   </motion.div>
                   
                   <motion.div 
                     className="flex items-center justify-center space-x-4"
-                    initial={{ x: 200, opacity: 0, rotate: 45 }}
-                    animate={{ x: 0, opacity: 1, rotate: 0 }}
-                    transition={{ duration: 0.3, delay: 0.4, type: "spring", stiffness: 800 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
                   >
-                    <motion.div 
-                      className="w-16 h-16 rounded-full bg-blue-500/20 border-2 border-blue-500/50 flex items-center justify-center bass-pulse"
-                      animate={{ scale: [1, 1.15, 1], rotateY: [0, -360] }}
-                      transition={{ duration: 0.6, delay: 0.5 }}
-                    >
+                    <div className="w-16 h-16 rounded-full bg-blue-500/20 border-2 border-blue-500/50 flex items-center justify-center">
                       <span className="text-sm font-bold text-blue-400">2.41%</span>
-                    </motion.div>
-                    <span className="text-lg text-blue-400 font-medium glitch-effect">→ LP Rewards</span>
+                    </div>
+                    <span className="text-lg text-blue-400 font-medium">→ LP Rewards</span>
                   </motion.div>
                   
                   <motion.div 
                     className="flex items-center justify-center space-x-4"
-                    initial={{ y: 100, opacity: 0, scale: 0.3 }}
-                    animate={{ y: 0, opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.6, type: "spring", stiffness: 600 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
                   >
-                    <motion.div 
-                      className="w-16 h-16 rounded-full bg-orange-500/20 border-2 border-orange-500/50 flex items-center justify-center shake-hard"
-                      animate={{ scale: [1, 1.3, 1], rotate: [0, 180, 360] }}
-                      transition={{ duration: 0.7, delay: 0.7 }}
-                    >
+                    <div className="w-16 h-16 rounded-full bg-orange-500/20 border-2 border-orange-500/50 flex items-center justify-center">
                       <span className="text-sm font-bold text-orange-400">0.69%</span>
-                    </motion.div>
-                    <span className="text-lg text-orange-400 font-medium glitch-effect">→ Burned</span>
+                    </div>
+                    <span className="text-lg text-orange-400 font-medium">→ Burned</span>
                   </motion.div>
                 </motion.div>
               </motion.div>
@@ -470,48 +441,39 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {/* Jackpot Explanation */}
             {showJackpotExplanation && (
               <motion.div
-                className="text-center shake-hard"
-                initial={{ opacity: 0, y: 100, scale: 0.2 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -100, scale: 0.2 }}
+                className="text-center"
+                initial={{ opacity: 0, rotateY: 180 }}
+                animate={{ opacity: 1, rotateY: 0 }}
+                exit={{ opacity: 0, rotateY: -180 }}
                 transition={{ 
-                  duration: 0.5, 
-                  ease: "backOut",
-                  type: "spring",
-                  stiffness: 600,
-                  damping: 20
+                  duration: 0.8, 
+                  ease: "easeOut"
                 }}
               >
                 <motion.div className="relative">
                   <motion.h2 
-                    className="text-3xl font-light mb-4 relative z-10 glitch-effect"
-                    initial={{ opacity: 0, rotateX: 180, scale: 0.3 }}
+                    className="text-3xl font-light mb-4 relative z-10"
+                    initial={{ opacity: 0, rotateY: 180 }}
                     animate={{ 
                       opacity: 1, 
-                      rotateX: 0, 
-                      scale: 1,
-                      rotateZ: [0, -5, 5, -3, 3, 0]
+                      rotateY: 0
                     }}
                     transition={{ 
-                      duration: 0.7, 
-                      delay: 0.1,
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 25
+                      duration: 1.0, 
+                      delay: 0.2,
+                      ease: "easeOut"
                     }}
                   >
                     Every swap = <motion.span 
-                      className="text-yellow-400 bass-pulse"
+                      className="text-yellow-400"
                       animate={{ 
-                        scale: [1, 1.2, 0.9, 1.1, 1],
                         textShadow: [
                           "0 0 10px rgba(255, 235, 59, 0.5)",
-                          "0 0 30px rgba(255, 235, 59, 1)",
-                          "0 0 15px rgba(255, 235, 59, 0.7)",
-                          "0 0 25px rgba(255, 235, 59, 0.9)"
+                          "0 0 20px rgba(255, 235, 59, 0.8)",
+                          "0 0 10px rgba(255, 235, 59, 0.5)"
                         ]
                       }}
-                      transition={{ duration: 1, repeat: Infinity }}
+                      transition={{ duration: 2, repeat: Infinity }}
                     >lottery ticket</motion.span>
                   </motion.h2>
                   
