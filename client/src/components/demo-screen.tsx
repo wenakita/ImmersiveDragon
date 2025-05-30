@@ -6,55 +6,35 @@ import { demoSteps } from "@/lib/demo-steps";
 export default function DemoScreen() {
   const [showBlackScreen, setShowBlackScreen] = useState(true);
   const [showReadyText, setShowReadyText] = useState(false);
-  const [showPoolIntro, setShowPoolIntro] = useState(false);
-  const [showPoolTokens, setShowPoolTokens] = useState(false);
-  const [showSwapDemo, setShowSwapDemo] = useState(false);
-  const [showFeeIntro, setShowFeeIntro] = useState(false);
-  const [showFeeDestination, setShowFeeDestination] = useState(false);
-  const [showLotteryExplanation, setShowLotteryExplanation] = useState(false);
+  const [showSwapIntro, setShowSwapIntro] = useState(false);
+  const [showTwist, setShowTwist] = useState(false);
+  const [showFeeDetails, setShowFeeDetails] = useState(false);
+  const [showFeeBreakdown, setShowFeeBreakdown] = useState(false);
+  const [showSwapExample, setShowSwapExample] = useState(false);
+  const [showJackpotExplanation, setShowJackpotExplanation] = useState(false);
+  const [showOddsTable, setShowOddsTable] = useState(false);
+  const [showVRFDetails, setShowVRFDetails] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
-    // Show "Ready to see..." text after 1 second
-    const timer1 = setTimeout(() => {
-      setShowReadyText(true);
-    }, 1000);
+    const timers = [
+      setTimeout(() => setShowReadyText(true), 1000),
+      setTimeout(() => setShowSwapIntro(true), 3500),
+      setTimeout(() => setShowTwist(true), 6000),
+      setTimeout(() => setShowFeeDetails(true), 8500),
+      setTimeout(() => setShowFeeBreakdown(true), 11000),
+      setTimeout(() => setShowSwapExample(true), 14000),
+      setTimeout(() => setShowJackpotExplanation(true), 17000),
+      setTimeout(() => setShowOddsTable(true), 20000),
+      setTimeout(() => setShowVRFDetails(true), 23000),
+      setTimeout(() => {
+        setShowBlackScreen(false);
+        setShowDemo(true);
+      }, 27000)
+    ];
 
-    // Show swap demo after 3 seconds (skip pool intro)
-    const timer2 = setTimeout(() => {
-      setShowSwapDemo(true);
-    }, 3000);
-
-    // Show fee intro after 6 seconds
-    const timer3 = setTimeout(() => {
-      setShowFeeIntro(true);
-    }, 6000);
-
-    // Show fee destination after 9 seconds
-    const timer4 = setTimeout(() => {
-      setShowFeeDestination(true);
-    }, 9000);
-
-    // Show lottery explanation after 12 seconds
-    const timer5 = setTimeout(() => {
-      setShowLotteryExplanation(true);
-    }, 12000);
-
-    // Hide black screen and show demo after 15 seconds
-    const timer6 = setTimeout(() => {
-      setShowBlackScreen(false);
-      setShowDemo(true);
-    }, 15000);
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(timer4);
-      clearTimeout(timer5);
-      clearTimeout(timer6);
-    };
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   const handleStepChange = (step: number) => {
@@ -73,7 +53,8 @@ export default function DemoScreen() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {showReadyText && !showSwapDemo && (
+            {/* Ready Text */}
+            {showReadyText && !showSwapIntro && (
               <motion.div
                 className="text-center"
                 initial={{ opacity: 0, y: 20 }}
@@ -93,8 +74,8 @@ export default function DemoScreen() {
               </motion.div>
             )}
 
-            {/* Remove the liquidity pool intro section completely */}
-            {false && (
+            {/* Swap Introduction */}
+            {showSwapIntro && !showTwist && (
               <motion.div
                 className="text-center space-y-8"
                 initial={{ opacity: 0 }}
@@ -108,132 +89,17 @@ export default function DemoScreen() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  This is a liquidity pool containing SONIC and DRAGON
+                  Users can swap Sonic ($S) for Dragon ($DRAGON) like any other ERC-20 token
                 </motion.h2>
 
-                {/* Liquidity Pool Visualization */}
-                <motion.div
-                  className="flex justify-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                >
-                  <div className="relative">
-                    {/* Pool Container */}
-                    <motion.div
-                      className="w-80 h-48 rounded-3xl bg-gradient-to-br from-dark-surface/80 to-charcoal/60 border border-gray-700/50 backdrop-blur-sm"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 1.5, delay: 0.8 }}
-                    >
-                      {/* Pool Glow Effect */}
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-golden-amber/10 to-dragon-red/10 animate-pulse" />
-                      
-                      {/* Pool Label */}
-                      <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
-                        <span className="text-sm font-medium text-soft-gray">Liquidity Pool</span>
-                      </div>
-
-                      {/* Token Animations */}
-                      {showPoolTokens && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          {/* SONIC Token */}
-                          <motion.div
-                            className="absolute"
-                            initial={{ x: -100, opacity: 0 }}
-                            animate={{ x: -40, opacity: 1 }}
-                            transition={{ duration: 1.2, ease: "easeOut" }}
-                          >
-                            <div className="flex flex-col items-center space-y-2">
-                              <div className="w-16 h-16 rounded-full bg-black/50 border-2 border-electric-blue/50 flex items-center justify-center">
-                                <img
-                                  src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                                  alt="SONIC Token"
-                                  className="w-10 h-10"
-                                />
-                              </div>
-                              <span className="text-xs font-medium text-electric-blue">SONIC</span>
-                            </div>
-                          </motion.div>
-
-                          {/* Connection Line */}
-                          <motion.div
-                            className="w-16 h-0.5 bg-gradient-to-r from-electric-blue/50 to-dragon-red/50"
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: 1 }}
-                            transition={{ duration: 0.8, delay: 1.5 }}
-                          />
-
-                          {/* DRAGON Token */}
-                          <motion.div
-                            className="absolute"
-                            initial={{ x: 100, opacity: 0 }}
-                            animate={{ x: 40, opacity: 1 }}
-                            transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-                          >
-                            <div className="flex flex-col items-center space-y-2">
-                              <div className="w-16 h-16 rounded-full bg-black/50 border-2 border-dragon-red/50 flex items-center justify-center">
-                                <img
-                                  src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                                  alt="DRAGON Token"
-                                  className="w-10 h-10"
-                                />
-                              </div>
-                              <span className="text-xs font-medium text-dragon-red">DRAGON</span>
-                            </div>
-                          </motion.div>
-                        </div>
-                      )}
-                    </motion.div>
-                  </div>
-                </motion.div>
-
-                {/* Explanatory Text */}
-                {showPoolTokens && (
-                  <motion.p
-                    className="text-soft-gray text-lg max-w-lg mx-auto"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 2 }}
-                  >
-                    These tokens are paired together, allowing seamless exchanges between them
-                  </motion.p>
-                )}
-              </motion.div>
-            )}
-
-            {/* Swap Demo Section */}
-            {showSwapDemo && !showFeeIntro && (
-              <motion.div
-                className="text-center space-y-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-              >
-                <motion.h2 
-                  className="text-3xl font-light mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  Users can swap SONIC to DRAGON
-                </motion.h2>
-
-                {/* Swap Visualization */}
+                {/* Token Swap Visualization */}
                 <motion.div
                   className="flex justify-center items-center space-x-8"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, delay: 0.5 }}
                 >
-                  {/* SONIC Token */}
-                  <motion.div
-                    className="flex flex-col items-center space-y-3"
-                    initial={{ x: -50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                  >
+                  <div className="flex flex-col items-center space-y-3">
                     <div className="w-20 h-20 rounded-full bg-black/50 border-2 border-electric-blue/50 flex items-center justify-center">
                       <img
                         src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
@@ -241,27 +107,20 @@ export default function DemoScreen() {
                         className="w-12 h-12"
                       />
                     </div>
-                    <span className="text-sm font-medium text-electric-blue">100 SONIC</span>
-                  </motion.div>
+                    <span className="text-sm font-medium text-electric-blue">$S</span>
+                  </div>
 
-                  {/* Arrow */}
                   <motion.div
                     className="flex items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 1.2 }}
+                    transition={{ duration: 0.6, delay: 1 }}
                   >
                     <div className="w-16 h-0.5 bg-gradient-to-r from-electric-blue to-dragon-red"></div>
                     <div className="w-0 h-0 border-l-8 border-l-dragon-red border-t-4 border-t-transparent border-b-4 border-b-transparent ml-1"></div>
                   </motion.div>
 
-                  {/* DRAGON Token */}
-                  <motion.div
-                    className="flex flex-col items-center space-y-3"
-                    initial={{ x: 50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 1.0 }}
-                  >
+                  <div className="flex flex-col items-center space-y-3">
                     <div className="w-20 h-20 rounded-full bg-black/50 border-2 border-dragon-red/50 flex items-center justify-center">
                       <img
                         src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
@@ -269,14 +128,34 @@ export default function DemoScreen() {
                         className="w-12 h-12"
                       />
                     </div>
-                    <span className="text-sm font-medium text-dragon-red">90 DRAGON</span>
-                  </motion.div>
+                    <span className="text-sm font-medium text-dragon-red">$DRAGON</span>
+                  </div>
                 </motion.div>
               </motion.div>
             )}
 
-            {/* Fee Introduction Section */}
-            {showFeeIntro && !showFeeDestination && (
+            {/* The Twist */}
+            {showTwist && !showFeeDetails && (
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <motion.h2 
+                  className="text-4xl font-light text-warm-orange"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  But there is a twist.
+                </motion.h2>
+              </motion.div>
+            )}
+
+            {/* Fee Details */}
+            {showFeeDetails && !showFeeBreakdown && (
               <motion.div
                 className="text-center space-y-6"
                 initial={{ opacity: 0 }}
@@ -290,24 +169,123 @@ export default function DemoScreen() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  But on DRAGON, things work slightly differently
+                  Every transaction incurs a 10% fee, whether it is a buy or sell
                 </motion.h2>
 
                 <motion.p
-                  className="text-warm-orange text-xl font-medium"
+                  className="text-xl text-soft-gray"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  There is a 10% fee on all swaps
+                  This fee is implemented to fund the jackpot and reward locked liquidity providers
                 </motion.p>
               </motion.div>
             )}
 
-            {/* Fee Destination Section */}
-            {showFeeDestination && !showLotteryExplanation && (
+            {/* Fee Breakdown */}
+            {showFeeBreakdown && !showSwapExample && (
               <motion.div
                 className="text-center space-y-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <motion.h2 
+                  className="text-3xl font-light mb-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  The 10% fee is split into:
+                </motion.h2>
+
+                <motion.div
+                  className="grid grid-cols-3 gap-6 max-w-4xl mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                  <div className="text-center">
+                    <div className="w-20 h-20 rounded-full bg-golden-amber/20 border-2 border-golden-amber/50 flex items-center justify-center mx-auto mb-3">
+                      <span className="text-golden-amber font-bold text-lg">6.9%</span>
+                    </div>
+                    <p className="text-sm text-golden-amber font-medium">($S) to Jackpot</p>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-20 h-20 rounded-full bg-electric-blue/20 border-2 border-electric-blue/50 flex items-center justify-center mx-auto mb-3">
+                      <span className="text-electric-blue font-bold text-lg">2.41%</span>
+                    </div>
+                    <p className="text-sm text-electric-blue font-medium">($S) to Locked LP</p>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-20 h-20 rounded-full bg-dragon-red/20 border-2 border-dragon-red/50 flex items-center justify-center mx-auto mb-3">
+                      <span className="text-dragon-red font-bold text-lg">0.69%</span>
+                    </div>
+                    <p className="text-sm text-dragon-red font-medium">($DRAGON) Burned</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+
+            {/* Swap Example */}
+            {showSwapExample && !showJackpotExplanation && (
+              <motion.div
+                className="text-center space-y-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <motion.h2 
+                  className="text-3xl font-light mb-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  So if a user swaps $100 worth of $S, they should expect to receive about $90 in $DRAGON
+                </motion.h2>
+
+                <motion.div
+                  className="flex justify-center items-center space-x-12"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                >
+                  <div className="text-center">
+                    <div className="w-24 h-24 rounded-full bg-electric-blue/20 border-2 border-electric-blue/50 flex items-center justify-center mb-3">
+                      <span className="text-electric-blue font-bold text-xl">$100</span>
+                    </div>
+                    <p className="text-sm text-electric-blue">$S Input</p>
+                  </div>
+
+                  <motion.div
+                    className="flex items-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 1 }}
+                  >
+                    <div className="w-20 h-0.5 bg-gradient-to-r from-electric-blue to-dragon-red"></div>
+                    <div className="w-0 h-0 border-l-8 border-l-dragon-red border-t-4 border-t-transparent border-b-4 border-b-transparent ml-1"></div>
+                  </motion.div>
+
+                  <div className="text-center">
+                    <div className="w-24 h-24 rounded-full bg-dragon-red/20 border-2 border-dragon-red/50 flex items-center justify-center mb-3">
+                      <span className="text-dragon-red font-bold text-xl">$90</span>
+                    </div>
+                    <p className="text-sm text-dragon-red">$DRAGON Output</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+
+            {/* Jackpot Explanation */}
+            {showJackpotExplanation && !showOddsTable && (
+              <motion.div
+                className="text-center space-y-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -319,42 +297,69 @@ export default function DemoScreen() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  Where do the fees go?
+                  Why would anyone do this?
                 </motion.h2>
 
-                {/* Fee Flow Visualization */}
-                <motion.div
-                  className="flex justify-center items-center space-x-6"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}
+                <motion.p
+                  className="text-xl text-golden-amber font-medium"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  <div className="text-center">
-                    <div className="w-16 h-16 rounded-full bg-warm-orange/20 border-2 border-warm-orange/50 flex items-center justify-center mb-2">
-                      <span className="text-warm-orange font-bold text-lg">10%</span>
-                    </div>
-                    <span className="text-xs text-soft-gray">Swap Fee</span>
+                  Any buy above $10 enters a user into their own individualized chance to win the jackpot!
+                </motion.p>
+              </motion.div>
+            )}
+
+            {/* Odds Table */}
+            {showOddsTable && !showVRFDetails && (
+              <motion.div
+                className="text-center space-y-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <motion.h2 
+                  className="text-2xl font-light mb-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  Jackpot Odds by Swap Amount
+                </motion.h2>
+
+                <motion.div
+                  className="grid grid-cols-2 gap-6 max-w-2xl mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                  <div className="bg-dark-surface/50 rounded-xl p-4 border border-gray-700/50">
+                    <div className="text-2xl font-bold text-electric-blue mb-2">$10</div>
+                    <div className="text-sm text-soft-gray">0.004% chance</div>
                   </div>
 
-                  <motion.div
-                    className="w-8 h-0.5 bg-warm-orange"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 0.8, delay: 1 }}
-                  />
+                  <div className="bg-dark-surface/50 rounded-xl p-4 border border-gray-700/50">
+                    <div className="text-2xl font-bold text-warm-orange mb-2">$100</div>
+                    <div className="text-sm text-soft-gray">0.04% chance</div>
+                  </div>
 
-                  <div className="text-center">
-                    <div className="w-16 h-16 rounded-full bg-golden-amber/20 border-2 border-golden-amber/50 flex items-center justify-center mb-2">
-                      <span className="text-golden-amber font-bold text-sm">🎰</span>
-                    </div>
-                    <span className="text-xs text-soft-gray">Jackpot Pool</span>
+                  <div className="bg-dark-surface/50 rounded-xl p-4 border border-gray-700/50">
+                    <div className="text-2xl font-bold text-golden-amber mb-2">$1,000</div>
+                    <div className="text-sm text-soft-gray">0.4% chance</div>
+                  </div>
+
+                  <div className="bg-dark-surface/50 rounded-xl p-4 border border-dragon-red/50">
+                    <div className="text-2xl font-bold text-dragon-red mb-2">$10,000</div>
+                    <div className="text-sm text-soft-gray">4% chance</div>
                   </div>
                 </motion.div>
               </motion.div>
             )}
 
-            {/* Lottery Explanation Section */}
-            {showLotteryExplanation && (
+            {/* VRF Details */}
+            {showVRFDetails && (
               <motion.div
                 className="text-center space-y-6 max-w-4xl mx-auto"
                 initial={{ opacity: 0 }}
@@ -362,51 +367,22 @@ export default function DemoScreen() {
                 transition={{ duration: 1 }}
               >
                 <motion.h2 
-                  className="text-3xl font-light mb-6"
+                  className="text-2xl font-light mb-6"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  Why is there a 10% fee?
+                  This chance is determined via Chainlink VRF2.5 on Arbitrum using LayerZero messaging
                 </motion.h2>
 
                 <motion.p
-                  className="text-xl text-soft-gray leading-relaxed"
+                  className="text-lg text-soft-gray leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  All swaps are entered into a lottery system. Each person who swaps gets an individualized chance at the jackpot, with larger swaps having better odds.
+                  In addition to drand's League of Entropy, EVMnet and quicknet all aggregated into our VRF aggregator which we call <span className="text-golden-amber font-medium">OmniDragonRandomness</span>
                 </motion.p>
-
-                {/* Lottery Visual */}
-                <motion.div
-                  className="flex justify-center items-center space-x-8 mt-8"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 1 }}
-                >
-                  <div className="text-center">
-                    <div className="w-20 h-20 rounded-full bg-electric-blue/20 border-2 border-electric-blue/50 flex items-center justify-center mb-2">
-                      <span className="text-electric-blue font-bold text-sm">Small<br/>Swap</span>
-                    </div>
-                    <span className="text-xs text-soft-gray">Lower Odds</span>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-24 h-24 rounded-full bg-warm-orange/20 border-2 border-warm-orange/50 flex items-center justify-center mb-2">
-                      <span className="text-warm-orange font-bold text-sm">Large<br/>Swap</span>
-                    </div>
-                    <span className="text-xs text-soft-gray">Higher Odds</span>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-28 h-28 rounded-full bg-golden-amber/20 border-2 border-golden-amber/50 flex items-center justify-center mb-2 animate-pulse">
-                      <span className="text-golden-amber font-bold text-lg">💎<br/>JACKPOT</span>
-                    </div>
-                    <span className="text-xs text-soft-gray">Prize Pool</span>
-                  </div>
-                </motion.div>
               </motion.div>
             )}
           </motion.div>
