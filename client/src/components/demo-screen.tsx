@@ -21,41 +21,31 @@ export default function DemoScreen() {
       setShowReadyText(true);
     }, 1000);
 
-    // Show pool intro after 4 seconds
+    // Show swap demo after 3 seconds (skip pool intro)
     const timer2 = setTimeout(() => {
-      setShowPoolIntro(true);
-    }, 4000);
+      setShowSwapDemo(true);
+    }, 3000);
 
-    // Show pool tokens after 6 seconds
+    // Show fee intro after 6 seconds
     const timer3 = setTimeout(() => {
-      setShowPoolTokens(true);
+      setShowFeeIntro(true);
     }, 6000);
 
-    // Show swap demo after 9 seconds
+    // Show fee destination after 9 seconds
     const timer4 = setTimeout(() => {
-      setShowSwapDemo(true);
+      setShowFeeDestination(true);
     }, 9000);
 
-    // Show fee intro after 12 seconds
+    // Show lottery explanation after 12 seconds
     const timer5 = setTimeout(() => {
-      setShowFeeIntro(true);
+      setShowLotteryExplanation(true);
     }, 12000);
 
-    // Show fee destination after 15 seconds
+    // Hide black screen and show demo after 15 seconds
     const timer6 = setTimeout(() => {
-      setShowFeeDestination(true);
-    }, 15000);
-
-    // Show lottery explanation after 18 seconds
-    const timer7 = setTimeout(() => {
-      setShowLotteryExplanation(true);
-    }, 18000);
-
-    // Hide black screen and show demo after 22 seconds
-    const timer8 = setTimeout(() => {
       setShowBlackScreen(false);
       setShowDemo(true);
-    }, 22000);
+    }, 15000);
 
     return () => {
       clearTimeout(timer1);
@@ -64,8 +54,6 @@ export default function DemoScreen() {
       clearTimeout(timer4);
       clearTimeout(timer5);
       clearTimeout(timer6);
-      clearTimeout(timer7);
-      clearTimeout(timer8);
     };
   }, []);
 
@@ -85,7 +73,7 @@ export default function DemoScreen() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {showReadyText && !showPoolIntro && (
+            {showReadyText && !showSwapDemo && (
               <motion.div
                 className="text-center"
                 initial={{ opacity: 0, y: 20 }}
@@ -105,7 +93,8 @@ export default function DemoScreen() {
               </motion.div>
             )}
 
-            {showPoolIntro && !showSwapDemo && (
+            {/* Remove the liquidity pool intro section completely */}
+            {false && (
               <motion.div
                 className="text-center space-y-8"
                 initial={{ opacity: 0 }}
