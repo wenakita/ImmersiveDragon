@@ -24,7 +24,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const [showDemo, setShowDemo] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [audioStarted, setAudioStarted] = useState(false);
-  const [showPlayButton, setShowPlayButton] = useState(true);
+  const [showPlayButton, setShowPlayButton] = useState(false);
   
   console.log('showPlayButton:', showPlayButton, 'autoStart:', autoStart);
   const [currentSplashStep, setCurrentSplashStep] = useState<SplashStep | null>(null);
@@ -68,22 +68,44 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
   // Handle autoStart
   useEffect(() => {
-    if (autoStart && audioRef.current) {
-      console.log('AutoStart detected, but still showing play button');
-      // Don't auto-play, still require user interaction
+    if (autoStart && audioRef.current && !audioStarted) {
+      console.log('AutoStart detected, starting audio automatically');
+      // Small delay to ensure audio element is ready
+      setTimeout(() => {
+        handlePlayAudio();
+      }, 100);
     }
-  }, [autoStart]);
+  }, [autoStart, audioStarted]);
 
   const handlePlayAudio = () => {
     console.log('Play button clicked');
     if (audioRef.current) {
       console.log('Audio element found, starting play');
-      audioRef.current.volume = 0.7;
+      audioRef.current.volume = 0; // Start at 0 volume
       audioRef.current.play().then(() => {
         console.log('Audio started successfully');
         setAudioStarted(true);
         setShowPlayButton(false);
-        setShowBlackScreen(true); // Show the splash animation screen
+        setShowBlackScreen(true);
+        
+        // Fade in audio from 0% to 70% over 2 seconds
+        const fadeInDuration = 2000; // 2 seconds
+        const targetVolume = 0.7;
+        const startTime = Date.now();
+        
+        const fadeIn = () => {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / fadeInDuration, 1);
+          if (audioRef.current) {
+            audioRef.current.volume = progress * targetVolume;
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(fadeIn);
+          }
+        };
+        
+        fadeIn();
       }).catch(e => {
         console.log('Audio play prevented:', e);
       });

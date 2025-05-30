@@ -64,7 +64,7 @@ export const splashSteps: SplashStep[] = [
   },
   {
     key: "twist",
-    start: 9500,
+    start: 10000,
     duration: 2300,
     action: "zoomIn",
     text: "But there's a twist",
