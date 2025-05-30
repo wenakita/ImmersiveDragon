@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 0%; /* Deep black */
+  --background: 0 0% 0%;
+  /* Deep black */
   --foreground: 0 0% 98%;
   --muted: 240 3.7% 15.9%;
   --muted-foreground: 240 5% 64.9%;
@@ -23,15 +24,22 @@
   --destructive-foreground: 0 0% 98%;
   --ring: 240 4.9% 83.9%;
   --radius: 0.5rem;
-  
+
   /* Custom colors for Sonic Red Dragon */
-  --dragon-red: 0 84% 60%; /* #DC2626 */
-  --golden-amber: 45 93% 47%; /* #FFC107 */
-  --warm-orange: 16 100% 60%; /* #FF6B35 */
-  --electric-blue: 217 91% 60%; /* #3B82F6 */
-  --charcoal: 0 0% 6%; /* #0F0F0F */
-  --soft-gray: 240 5% 65%; /* #A1A1AA */
-  --dark-surface: 0 0% 10%; /* #1A1A1A */
+  --dragon-red: 0 84% 60%;
+  /* #DC2626 */
+  --golden-amber: 45 93% 47%;
+  /* #FFC107 */
+  --warm-orange: 16 100% 60%;
+  /* #FF6B35 */
+  --electric-blue: 217 91% 60%;
+  /* #3B82F6 */
+  --charcoal: 0 0% 6%;
+  /* #0F0F0F */
+  --soft-gray: 240 5% 65%;
+  /* #A1A1AA */
+  --dark-surface: 0 0% 10%;
+  /* #1A1A1A */
 }
 
 .dark {
@@ -71,50 +79,50 @@
   .text-dragon-red {
     color: hsl(var(--dragon-red));
   }
-  
+
   .text-golden-amber {
     color: hsl(var(--golden-amber));
   }
-  
+
   .text-warm-orange {
     color: hsl(var(--warm-orange));
   }
-  
+
   .text-electric-blue {
     color: hsl(var(--electric-blue));
   }
-  
+
   .text-soft-gray {
     color: hsl(var(--soft-gray));
   }
-  
+
   .bg-charcoal {
     background-color: hsl(var(--charcoal));
   }
-  
+
   .bg-dark-surface {
     background-color: hsl(var(--dark-surface));
   }
-  
+
   .border-golden-amber {
     border-color: hsl(var(--golden-amber));
   }
-  
+
   .border-electric-blue {
     border-color: hsl(var(--electric-blue));
   }
-  
+
   .dragon-glow {
-    box-shadow: 
+    box-shadow:
       0 0 20px hsl(var(--golden-amber) / 0.3),
       0 0 40px hsl(var(--golden-amber) / 0.15),
       0 0 60px hsl(var(--golden-amber) / 0.05);
   }
-  
+
   .gradient-button {
     background: linear-gradient(135deg, hsl(var(--warm-orange)) 0%, hsl(var(--electric-blue)) 100%);
   }
-  
+
   .glassmorphism {
     background: rgba(26, 26, 26, 0.8);
     backdrop-filter: blur(10px);
@@ -124,13 +132,16 @@
 
 /* Animation keyframes */
 @keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 
+
+  0%,
+  100% {
+    box-shadow:
       0 0 20px hsl(var(--golden-amber) / 0.3),
       0 0 40px hsl(var(--golden-amber) / 0.15);
   }
+
   50% {
-    box-shadow: 
+    box-shadow:
       0 0 30px hsl(var(--golden-amber) / 0.5),
       0 0 60px hsl(var(--golden-amber) / 0.25);
   }
@@ -141,6 +152,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -164,22 +176,27 @@
     transform: translate(0);
     filter: hue-rotate(0deg);
   }
+
   20% {
     transform: translate(-2px, 2px);
     filter: hue-rotate(90deg);
   }
+
   40% {
     transform: translate(-2px, -2px);
     filter: hue-rotate(180deg);
   }
+
   60% {
     transform: translate(2px, 2px);
     filter: hue-rotate(270deg);
   }
+
   80% {
     transform: translate(2px, -2px);
     filter: hue-rotate(360deg);
   }
+
   100% {
     transform: translate(0);
     filter: hue-rotate(0deg);
@@ -191,16 +208,47 @@
 }
 
 @keyframes shakeHard {
-  0%, 100% { transform: translateX(0); }
-  10% { transform: translateX(-8px) rotate(1deg); }
-  20% { transform: translateX(8px) rotate(-1deg); }
-  30% { transform: translateX(-6px) rotate(1deg); }
-  40% { transform: translateX(6px) rotate(-1deg); }
-  50% { transform: translateX(-4px) rotate(1deg); }
-  60% { transform: translateX(4px) rotate(-1deg); }
-  70% { transform: translateX(-2px) rotate(0.5deg); }
-  80% { transform: translateX(2px) rotate(-0.5deg); }
-  90% { transform: translateX(-1px) rotate(0.25deg); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10% {
+    transform: translateX(-8px) rotate(1deg);
+  }
+
+  20% {
+    transform: translateX(8px) rotate(-1deg);
+  }
+
+  30% {
+    transform: translateX(-6px) rotate(1deg);
+  }
+
+  40% {
+    transform: translateX(6px) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateX(-4px) rotate(1deg);
+  }
+
+  60% {
+    transform: translateX(4px) rotate(-1deg);
+  }
+
+  70% {
+    transform: translateX(-2px) rotate(0.5deg);
+  }
+
+  80% {
+    transform: translateX(2px) rotate(-0.5deg);
+  }
+
+  90% {
+    transform: translateX(-1px) rotate(0.25deg);
+  }
 }
 
 .bass-pulse {
@@ -208,16 +256,18 @@
 }
 
 @keyframes bassPulse {
-  0% { 
-    transform: scale(1); 
+  0% {
+    transform: scale(1);
     filter: brightness(1);
   }
-  50% { 
-    transform: scale(1.1); 
+
+  50% {
+    transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
   }
-  100% { 
-    transform: scale(1); 
+
+  100% {
+    transform: scale(1);
     filter: brightness(1);
   }
 }
@@ -227,7 +277,7 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
+  box-shadow:
     0 8px 32px 0 rgba(31, 38, 135, 0.37),
     0 0 40px rgba(255, 107, 53, 0.2),
     0 0 80px rgba(74, 144, 226, 0.15);
@@ -238,7 +288,7 @@
   position: relative;
   background: rgba(0, 0, 0, 0.8);
   border: 4px solid #FFB800;
-  box-shadow: 
+  box-shadow:
     0 0 30px rgba(255, 107, 53, 0.6),
     0 0 60px rgba(74, 144, 226, 0.4),
     0 0 90px rgba(255, 184, 0, 0.3);
@@ -266,13 +316,18 @@
 }
 
 @keyframes golden-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Dragon logo glow effect */
 .dragon-logo-glow {
-  box-shadow: 
+  box-shadow:
     0 0 10px rgba(255, 184, 0, 0.5),
     0 0 20px rgba(74, 144, 226, 0.3),
     0 0 40px rgba(255, 107, 53, 0.2);
@@ -284,11 +339,25 @@
 }
 
 @keyframes rainbow-cycle {
-  0% { filter: hue-rotate(0deg) saturate(1.5); }
-  25% { filter: hue-rotate(90deg) saturate(1.5); }
-  50% { filter: hue-rotate(180deg) saturate(1.5); }
-  75% { filter: hue-rotate(270deg) saturate(1.5); }
-  100% { filter: hue-rotate(360deg) saturate(1.5); }
+  0% {
+    filter: hue-rotate(0deg) saturate(1.5);
+  }
+
+  25% {
+    filter: hue-rotate(90deg) saturate(1.5);
+  }
+
+  50% {
+    filter: hue-rotate(180deg) saturate(1.5);
+  }
+
+  75% {
+    filter: hue-rotate(270deg) saturate(1.5);
+  }
+
+  100% {
+    filter: hue-rotate(360deg) saturate(1.5);
+  }
 }
 
 .screen-shake {
@@ -296,9 +365,19 @@
 }
 
 @keyframes screen-shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px) translateY(-2px); }
-  75% { transform: translateX(5px) translateY(2px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px) translateY(-2px);
+  }
+
+  75% {
+    transform: translateX(5px) translateY(2px);
+  }
 }
 
 .golden-everything * {
@@ -308,8 +387,15 @@
 }
 
 @keyframes golden-pulse {
-  0%, 100% { filter: brightness(1) contrast(1); }
-  50% { filter: brightness(1.3) contrast(1.2); }
+
+  0%,
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+
+  50% {
+    filter: brightness(1.3) contrast(1.2);
+  }
 }
 
 .matrix-rain {
@@ -324,7 +410,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     linear-gradient(transparent 50%, rgba(0, 255, 0, 0.03) 50%),
     linear-gradient(90deg, transparent 50%, rgba(0, 255, 0, 0.03) 50%);
   background-size: 2px 4px, 4px 2px;
@@ -334,8 +420,13 @@
 }
 
 @keyframes matrix-fall {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(4px); }
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(4px);
+  }
 }
 
 /* Easter Egg Notification */
@@ -354,13 +445,14 @@
 }
 
 @keyframes easter-egg-appear {
-  0% { 
-    opacity: 0; 
-    transform: translateX(100px) scale(0.8); 
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.8);
   }
-  100% { 
-    opacity: 1; 
-    transform: translateX(0) scale(1); 
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
