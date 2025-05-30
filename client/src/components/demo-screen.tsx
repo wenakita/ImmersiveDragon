@@ -127,6 +127,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
           <button
             onClick={() => {
               console.log('Button clicked!');
+              console.log('showPlayButton before:', showPlayButton);
+              console.log('audioStarted before:', audioStarted);
               handlePlayAudio();
             }}
             className="bg-warm-orange hover:bg-warm-orange/80 text-black font-bold text-xl px-8 py-4 rounded-lg flex items-center space-x-3 transition-colors cursor-pointer"
