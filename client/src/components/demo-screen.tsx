@@ -74,6 +74,17 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     }
   }, [autoStart]);
 
+  const handlePlayAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0;
+      audioRef.current.play().catch(e => {
+        console.log('Audio play prevented:', e);
+      });
+      setAudioStarted(true);
+      setShowPlayButton(false);
+    }
+  };
+
   const handleStepChange = (step: number) => {
     if (step >= 0 && step < demoSteps.length) {
       setCurrentStep(step);
@@ -107,7 +118,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
       {showPlayButton && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
           <motion.button
-            onClick={handlePlayClick}
+            onClick={handlePlayAudio}
             className="bg-warm-orange hover:bg-warm-orange/80 text-black font-bold text-xl px-8 py-4 rounded-lg flex items-center space-x-3 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
