@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useEasterEggs } from "../hooks/use-easter-eggs";
 import EasterEggHints from "./easter-egg-hints";
+import EasterEggRewards from "./easter-egg-rewards";
 
 interface WelcomeScreenProps {
   termsAccepted: boolean;
@@ -170,6 +171,9 @@ export default function WelcomeScreen({
 
       {/* Easter Egg Hints */}
       <EasterEggHints triggeredCount={triggeredCount} easterEggs={easterEggs} />
+      
+      {/* Easter Egg Rewards */}
+      <EasterEggRewards triggeredCount={triggeredCount} easterEggs={easterEggs} />
     </motion.div>
   );
 }

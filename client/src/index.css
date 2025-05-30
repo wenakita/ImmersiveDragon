@@ -363,3 +363,9 @@
     transform: translateX(0) scale(1); 
   }
 }
+
+/* Gradient border for reward panels */
+.border-gradient {
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #FF6B35, #F7931E, #FFB800, #4A90E2) 1;
+}
