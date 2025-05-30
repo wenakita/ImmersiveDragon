@@ -227,7 +227,10 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    0 0 40px rgba(255, 107, 53, 0.2),
+    0 0 80px rgba(74, 144, 226, 0.15);
 }
 
 /* Golden glowing border for dragon logo */
@@ -265,4 +268,12 @@
 @keyframes golden-rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Dragon logo glow effect */
+.dragon-logo-glow {
+  box-shadow: 
+    0 0 20px rgba(255, 107, 53, 0.4),
+    0 0 40px rgba(74, 144, 226, 0.3),
+    0 0 60px rgba(255, 184, 0, 0.2);
 }

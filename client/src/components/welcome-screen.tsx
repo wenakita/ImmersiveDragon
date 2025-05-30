@@ -37,7 +37,7 @@ export default function WelcomeScreen({
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="relative">
-            <div className="w-24 h-24 rounded-full overflow-hidden">
+            <div className="dragon-logo-glow w-24 h-24 rounded-full overflow-hidden">
               <img
                 src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                 alt="Sonic Red Dragon Logo"
