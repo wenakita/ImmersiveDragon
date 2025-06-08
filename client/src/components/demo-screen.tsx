@@ -182,12 +182,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
                   
                   <motion.h1
-                    className="text-7xl font-semibold tracking-wider bg-gradient-to-r from-white via-red-500 to-white bg-clip-text text-transparent relative z-10"
+                    className="text-7xl font-semibold tracking-wider bg-gradient-to-r from-white via-amber-400 to-white bg-clip-text text-transparent relative z-10"
                     initial={{ scale: 0.8, y: 30, opacity: 0 }}
                     animate={{ scale: 1, y: 0, opacity: 1 }}
                     transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
                     style={{
-                      filter: "drop-shadow(0 0 40px rgba(239,68,68,0.4))",
+                      filter: "drop-shadow(0 0 40px rgba(251,191,36,0.4))",
                       fontFamily: "system-ui, -apple-system, sans-serif",
                       fontWeight: 600
                     }}
@@ -248,12 +248,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         SWAP $S
                       </motion.span>
                       <motion.span
-                        className="text-red-500 ml-4 font-medium"
+                        className="text-amber-400 ml-4 font-medium"
                         initial={{ y: -30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.5 }}
                         style={{
-                          filter: "drop-shadow(0 0 25px rgba(239,68,68,0.5))",
+                          filter: "drop-shadow(0 0 25px rgba(251,191,36,0.5))",
                           fontWeight: 500
                         }}
                       >
@@ -351,7 +351,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               >
                 <div className="text-center relative">
                   <motion.h2
-                    className="text-7xl font-semibold text-red-500 relative z-10 tracking-wide"
+                    className="text-7xl font-semibold text-amber-400 relative z-10 tracking-wide"
                     initial={{ scale: 0.5, y: 50, opacity: 0 }}
                     animate={{ 
                       scale: [0.5, 1.1, 1], 
@@ -364,7 +364,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       times: [0, 0.8, 1]
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 50px rgba(239,68,68,0.8))",
+                      filter: "drop-shadow(0 0 50px rgba(251,191,36,0.8))",
                       fontWeight: 600
                     }}
                   >
@@ -515,7 +515,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                   <div className="space-y-12">
                     {[
-                      { percent: "6.9%", label: "JACKPOT FUND", description: "Win massive prizes every trade", color: "red", delay: 0.5 },
+                      { percent: "6.9%", label: "JACKPOT FUND", description: "Win massive prizes every trade", color: "amber", delay: 0.5 },
                       { percent: "2.41%", label: "LP REWARDS", description: "Earn passive income", color: "blue", delay: 1 },
                       { percent: "0.69%", label: "TOKEN BURN", description: "Increase scarcity & value", color: "yellow", delay: 1.5 }
                     ].map((item, i) => (
@@ -532,26 +532,26 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       >
                         <motion.div
                           className={`w-28 h-28 rounded-full border-2 flex items-center justify-center backdrop-blur-sm ${
-                            item.color === 'red' ? 'bg-red-500/10 border-red-400/60' :
+                            item.color === 'amber' ? 'bg-amber-500/10 border-amber-400/60' :
                             item.color === 'blue' ? 'bg-blue-500/10 border-blue-400/60' :
                             'bg-yellow-500/10 border-yellow-400/60'
                           }`}
 
                           style={{
                             filter: `drop-shadow(0 0 25px ${
-                              item.color === 'red' ? 'rgba(239,68,68,0.4)' :
+                              item.color === 'amber' ? 'rgba(251,191,36,0.4)' :
                               item.color === 'blue' ? 'rgba(59,130,246,0.4)' :
                               'rgba(234,179,8,0.4)'
                             })`,
                             boxShadow: `inset 0 0 20px ${
-                              item.color === 'red' ? 'rgba(239,68,68,0.1)' :
+                              item.color === 'amber' ? 'rgba(251,191,36,0.1)' :
                               item.color === 'blue' ? 'rgba(59,130,246,0.1)' :
                               'rgba(234,179,8,0.1)'
                             }`
                           }}
                         >
                           <span className={`text-xl font-medium ${
-                            item.color === 'red' ? 'text-red-400' :
+                            item.color === 'amber' ? 'text-amber-400' :
                             item.color === 'blue' ? 'text-blue-400' :
                             'text-yellow-400'
                           }`}>
@@ -562,7 +562,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         <div className="text-left">
                           <motion.div
                             className={`text-3xl font-medium tracking-wide ${
-                              item.color === 'red' ? 'text-red-400' :
+                              item.color === 'amber' ? 'text-amber-400' :
                               item.color === 'blue' ? 'text-blue-400' :
                               'text-yellow-400'
                             }`}
