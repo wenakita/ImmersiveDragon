@@ -666,7 +666,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         transition={{ 
                           duration: 1.6, 
                           delay: item.delay,
-                          ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)"
+                          ease: [0.25, 0.46, 0.45, 0.94]
                         }}
                       >
                         <motion.span
