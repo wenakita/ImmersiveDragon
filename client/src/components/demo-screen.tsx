@@ -789,9 +789,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                   <div className="space-y-12">
                     {[
-                      { percent: "6.9%", label: "JACKPOT FUND", description: "Win massive prizes every trade", color: "amber", delay: 0.5 },
-                      { percent: "2.41%", label: "LP REWARDS", description: "Earn passive income", color: "blue", delay: 1 },
-                      { percent: "0.69%", label: "TOKEN BURN", description: "Increase scarcity & value", color: "yellow", delay: 1.5 }
+                      { percent: "6.9%", label: "JACKPOT FUND", description: "Win massive prizes every trade", color: "amber", delay: 0.5, size: 120 }, // Base size * 6.9
+                      { percent: "2.41%", label: "LP REWARDS", description: "Earn passive income", color: "blue", delay: 1, size: 84 }, // Base size * 2.41
+                      { percent: "0.69%", label: "TOKEN BURN", description: "Increase scarcity & value", color: "yellow", delay: 1.5, size: 48 } // Base size * 0.69
                     ].map((item, i) => (
                       <motion.div
                         key={i}
@@ -805,13 +805,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         }}
                       >
                         <motion.div
-                          className={`w-28 h-28 rounded-full border-2 flex items-center justify-center backdrop-blur-sm ${
+                          className={`rounded-full border-2 flex items-center justify-center backdrop-blur-sm ${
                             item.color === 'amber' ? 'bg-amber-500/10 border-amber-400/60' :
                             item.color === 'blue' ? 'bg-blue-500/10 border-blue-400/60' :
                             'bg-yellow-500/10 border-yellow-400/60'
                           }`}
-
                           style={{
+                            width: `${item.size}px`,
+                            height: `${item.size}px`,
                             filter: `drop-shadow(0 0 25px ${
                               item.color === 'amber' ? 'rgba(251,191,36,0.4)' :
                               item.color === 'blue' ? 'rgba(59,130,246,0.4)' :
@@ -823,12 +824,24 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                               'rgba(234,179,8,0.1)'
                             }`
                           }}
+                          animate={{
+                            scale: [1, 1.05, 1],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: item.delay + 1
+                          }}
                         >
-                          <span className={`text-xl font-medium ${
+                          <span className={`font-medium ${
                             item.color === 'amber' ? 'text-amber-400' :
                             item.color === 'blue' ? 'text-blue-400' :
                             'text-yellow-400'
-                          }`}>
+                          }`}
+                          style={{
+                            fontSize: `${Math.max(item.size * 0.15, 14)}px`
+                          }}>
                             {item.percent}
                           </span>
                         </motion.div>
