@@ -490,11 +490,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             'bg-orange-500/10 border-orange-400/60'
                           }`}
                           animate={{
-                            rotateZ: [0, 360],
                             scale: [1, 1.08, 1]
                           }}
                           transition={{
-                            rotateZ: { duration: 8, repeat: Infinity, ease: "linear" },
                             scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                           }}
                           style={{
