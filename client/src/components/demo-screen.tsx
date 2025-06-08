@@ -866,7 +866,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 5: Elegant Lottery */}
+            {/* Step 5: Chainlink VRF Lottery */}
             {currentStep === 5 && (
               <motion.div
                 key="lottery"
@@ -877,21 +877,85 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 1, ease: "easeOut" }}
               >
                 <div className="text-center relative">
+                  {/* Chainlink Logo */}
+                  <motion.div
+                    className="flex items-center justify-center mb-8"
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                  >
+                    <motion.div
+                      className="flex items-center space-x-4"
+                      animate={{
+                        scale: [1, 1.02, 1],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {/* Chainlink Logo SVG */}
+                      <motion.svg
+                        width="60"
+                        height="60"
+                        viewBox="0 0 100 100"
+                        style={{
+                          filter: "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))"
+                        }}
+                        animate={{
+                          filter: [
+                            "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))",
+                            "drop-shadow(0 0 30px rgba(55, 126, 254, 0.7))",
+                            "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))"
+                          ]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <polygon
+                          points="50,10 85,30 85,70 50,90 15,70 15,30"
+                          fill="#377EFE"
+                          stroke="none"
+                        />
+                        <polygon
+                          points="50,25 70,35 70,65 50,75 30,65 30,35"
+                          fill="#1e293b"
+                          stroke="none"
+                        />
+                      </motion.svg>
+                      
+                      <motion.span
+                        className="text-4xl font-bold tracking-wider"
+                        style={{
+                          color: "#377EFE",
+                          fontFamily: "system-ui, -apple-system, sans-serif",
+                          fontWeight: 700,
+                          letterSpacing: "0.1em",
+                          filter: "drop-shadow(0 0 20px rgba(55, 126, 254, 0.3))"
+                        }}
+                      >
+                        CHAINLINK
+                      </motion.span>
+                    </motion.div>
+                  </motion.div>
+
                   <motion.h2
                     className="text-6xl font-light mb-8 tracking-wide"
                     initial={{ rotateX: 45, opacity: 0 }}
                     animate={{ rotateX: 0, opacity: 1 }}
-                    transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                     style={{
-                      background: "linear-gradient(135deg, #FFD700, #FFA500, #FFD700)",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                      color: "transparent",
-                      filter: "drop-shadow(0 0 40px rgba(255,215,0,0.6))",
-                      fontWeight: 300
+                      color: "#377EFE", // Chainlink blue
+                      filter: "drop-shadow(0 0 40px rgba(55, 126, 254, 0.6))",
+                      fontWeight: 300,
+                      textShadow: "0 0 30px rgba(55, 126, 254, 0.4)"
                     }}
                   >
-                    CHAINLINK VRF 2.5 LOTTERY
+                    VRF 2.5 LOTTERY
                   </motion.h2>
 
                   <motion.p
