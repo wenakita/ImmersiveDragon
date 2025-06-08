@@ -270,10 +270,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </motion.p>
                   </div>
 
-                  {/* Sophisticated token animations */}
+                  {/* Clean token animations */}
                   <motion.div
-                    className="absolute left-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-blue-400/20 to-blue-600/30 border border-blue-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
-                    initial={{ x: -800, rotateY: 180, scale: 0, opacity: 0 }}
+                    className="absolute left-16 top-1/2 w-36 h-36 rounded-full border-2 border-yellow-400/60 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
+                    initial={{ x: -800, scale: 0, opacity: 0 }}
                     animate={{ 
                       x: [0, 320, 1400], 
                       scale: [0, 1.2, 1],
@@ -286,8 +286,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       delay: 0.5
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 30px rgba(59,130,246,0.6))",
-                      boxShadow: "inset 0 0 30px rgba(59,130,246,0.2)"
+                      filter: "drop-shadow(0 0 25px rgba(234,179,8,0.6))",
+                      boxShadow: "0 0 30px rgba(234,179,8,0.3)"
                     }}
                   >
                     <img
@@ -298,8 +298,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   </motion.div>
 
                   <motion.div
-                    className="absolute right-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-orange-400/20 to-orange-600/30 border border-orange-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
-                    initial={{ x: 800, rotateY: -180, scale: 0, opacity: 0 }}
+                    className="absolute right-16 top-1/2 w-36 h-36 rounded-full border-2 border-amber-400/60 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
+                    initial={{ x: 800, scale: 0, opacity: 0 }}
                     animate={{ 
                       x: [0, -320, -1400], 
                       scale: [0, 1.2, 1],
@@ -312,8 +312,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       delay: 1
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 30px rgba(249,115,22,0.6))",
-                      boxShadow: "inset 0 0 30px rgba(249,115,22,0.2)"
+                      filter: "drop-shadow(0 0 25px rgba(251,191,36,0.6))",
+                      boxShadow: "0 0 30px rgba(251,191,36,0.3)"
                     }}
                   >
                     <img
