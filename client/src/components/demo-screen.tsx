@@ -182,14 +182,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
                   
                   <motion.h1
-                    className="text-7xl font-light tracking-wider bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10"
+                    className="text-7xl font-semibold tracking-wider bg-gradient-to-r from-white via-purple-400 to-white bg-clip-text text-transparent relative z-10"
                     initial={{ scale: 0.8, y: 30, opacity: 0 }}
                     animate={{ scale: 1, y: 0, opacity: 1 }}
                     transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
                     style={{
-                      filter: "drop-shadow(0 0 40px rgba(255,107,53,0.4))",
+                      filter: "drop-shadow(0 0 40px rgba(139,92,246,0.4))",
                       fontFamily: "system-ui, -apple-system, sans-serif",
-                      fontWeight: 200
+                      fontWeight: 600
                     }}
                   >
                     <Typewriter text="SONIC RED DRAGON" delay={1000} speed={90} />
@@ -248,13 +248,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         SWAP $S
                       </motion.span>
                       <motion.span
-                        className="text-warm-orange ml-4"
+                        className="text-purple-400 ml-4 font-medium"
                         initial={{ y: -30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.5 }}
                         style={{
-                          filter: "drop-shadow(0 0 25px rgba(255,107,53,0.5))",
-                          fontWeight: 300
+                          filter: "drop-shadow(0 0 25px rgba(139,92,246,0.5))",
+                          fontWeight: 500
                         }}
                       >
                         FOR $DRAGON
@@ -351,7 +351,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               >
                 <div className="text-center relative">
                   <motion.h2
-                    className="text-7xl font-light text-warm-orange relative z-10 tracking-wide"
+                    className="text-7xl font-semibold text-purple-400 relative z-10 tracking-wide"
                     initial={{ scale: 0.5, y: 50, opacity: 0 }}
                     animate={{ 
                       scale: [0.5, 1.1, 1], 
@@ -364,8 +364,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       times: [0, 0.8, 1]
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 50px rgba(255,107,53,0.8))",
-                      fontWeight: 300
+                      filter: "drop-shadow(0 0 50px rgba(139,92,246,0.8))",
+                      fontWeight: 600
                     }}
                   >
                     AND GET A CHANCE TO WIN THE JACKPOT!
@@ -517,7 +517,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     {[
                       { percent: "6.9%", label: "JACKPOT FUND", description: "Win massive prizes every trade", color: "yellow", delay: 0.5 },
                       { percent: "2.41%", label: "LP REWARDS", description: "Earn passive income", color: "blue", delay: 1 },
-                      { percent: "0.69%", label: "TOKEN BURN", description: "Increase scarcity & value", color: "orange", delay: 1.5 }
+                      { percent: "0.69%", label: "TOKEN BURN", description: "Increase scarcity & value", color: "purple", delay: 1.5 }
                     ].map((item, i) => (
                       <motion.div
                         key={i}
