@@ -567,8 +567,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   y: { duration: 0.4, delay: 1 },
                 }}
               >
-                {/* Main content area */}
-                <div className="text-center relative z-10">
+                {/* Trading animation */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
                       key={i}
                       className="absolute flex items-center justify-center"
                       style={{
