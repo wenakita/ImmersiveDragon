@@ -2531,13 +2531,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             )}
           </AnimatePresence>
 
-          {/* Persistent Jackpot Vault - Shows from Step 2 onwards */}
+          {/* Persistent Jackpot Vault - Shows from Step 2 onwards after jackpot reveal */}
           {currentStep >= 2 && (
             <motion.div
               className="fixed top-4 right-4 z-50 pointer-events-none"
               initial={{ opacity: 0, scale: 0.5, x: 100 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 1, ease: "backOut" }}
+              transition={{ duration: 1, ease: "backOut", delay: 2 }}
             >
               <motion.div
                 className="bg-gradient-to-br from-yellow-500/20 to-orange-600/20 backdrop-blur-md border border-yellow-400/30 rounded-xl p-4 min-w-[200px]"
@@ -2550,25 +2550,27 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <div className="text-yellow-300 text-sm font-medium mb-2 flex items-center">
+                <div className="text-yellow-300 text-sm font-medium mb-2 flex items-center justify-center">
                   <span className="mr-2">🏆</span>
                   JACKPOT VAULT
                 </div>
-                <motion.div 
-                  className="text-2xl font-bold text-yellow-100"
-                  animate={{ 
-                    scale: [1, 1.05, 1],
-                    textShadow: [
-                      "0 0 10px rgba(251, 191, 36, 0.5)",
-                      "0 0 20px rgba(251, 191, 36, 0.8)",
-                      "0 0 10px rgba(251, 191, 36, 0.5)"
-                    ]
-                  }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <AnimatedCounter />
-                </motion.div>
-                <div className="text-yellow-400/80 text-xs mt-1">
+                <div className="flex justify-center">
+                  <motion.div 
+                    className="text-2xl font-bold text-yellow-100"
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                      textShadow: [
+                        "0 0 10px rgba(251, 191, 36, 0.5)",
+                        "0 0 20px rgba(251, 191, 36, 0.8)",
+                        "0 0 10px rgba(251, 191, 36, 0.5)"
+                      ]
+                    }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <AnimatedCounter />
+                  </motion.div>
+                </div>
+                <div className="text-yellow-400/80 text-xs mt-1 text-center">
                   Growing with every swap
                 </div>
               </motion.div>
