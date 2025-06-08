@@ -1058,7 +1058,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     ].map((item, i) => (
                       <motion.div
                         key={i}
-                        className="flex items-center justify-center space-x-12"
+                        className="flex items-center justify-center space-x-8"
                         initial={{ 
                           x: i % 2 === 0 ? -800 : 800, 
                           opacity: 0, 
@@ -1078,7 +1078,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         }}
                       >
                         <motion.span
-                          className={`text-4xl font-light w-40 text-left tracking-wide ${
+                          className={`text-4xl font-light w-32 text-center tracking-wide ${
                             item.color === 'red' ? 'text-red-400' :
                             item.color === 'orange' ? 'text-orange-400' :
                             item.color === 'yellow' ? 'text-yellow-400' :
@@ -1111,47 +1111,53 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           =
                         </motion.span>
                         
-                        <div className="flex flex-col items-center space-y-1">
-                          <motion.span
-                            className={`text-3xl font-light tracking-wide ${
-                              item.color === 'red' ? 'text-red-400' :
-                              item.color === 'orange' ? 'text-orange-400' :
-                              item.color === 'yellow' ? 'text-yellow-400' :
-                              'text-green-400'
-                            }`}
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ 
-                              duration: 2, 
-                              repeat: Infinity, 
-                              ease: "easeInOut",
-                              delay: item.delay + 2
-                            }}
-                          >
-                            {item.odds}
-                          </motion.span>
-                          
+                        <motion.span
+                          className={`text-3xl font-light w-24 text-center tracking-wide ${
+                            item.color === 'red' ? 'text-red-400' :
+                            item.color === 'orange' ? 'text-orange-400' :
+                            item.color === 'yellow' ? 'text-yellow-400' :
+                            'text-green-400'
+                          }`}
+                          animate={{ scale: [1, 1.05, 1] }}
+                          transition={{ 
+                            duration: 2, 
+                            repeat: Infinity, 
+                            ease: "easeInOut",
+                            delay: item.delay + 2
+                          }}
+                        >
+                          {item.odds}
+                        </motion.span>
+
+                        <motion.span
+                          className="text-2xl text-white/40 font-light"
+                          animate={{ opacity: [0.4, 0.7, 0.4] }}
+                          transition={{ duration: 3, repeat: Infinity }}
+                        >
+                          →
+                        </motion.span>
+
+                        <motion.div
+                          className="text-center"
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: item.delay + 2.5 }}
+                        >
+                          <div className="text-sm text-gray-400 mb-1">veDRAGON 2.5x</div>
                           <motion.div
-                            className="text-center"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: item.delay + 2.5 }}
+                            className="text-3xl font-medium text-blue-300 w-24 text-center"
+                            animate={{ 
+                              textShadow: [
+                                "0 0 10px rgba(147,197,253,0.3)",
+                                "0 0 20px rgba(147,197,253,0.6)",
+                                "0 0 10px rgba(147,197,253,0.3)"
+                              ]
+                            }}
+                            transition={{ duration: 2, repeat: Infinity }}
                           >
-                            <div className="text-sm text-gray-400 mb-1">veDRAGON Boosted:</div>
-                            <motion.div
-                              className="text-xl font-medium text-blue-300"
-                              animate={{ 
-                                textShadow: [
-                                  "0 0 10px rgba(147,197,253,0.3)",
-                                  "0 0 20px rgba(147,197,253,0.6)",
-                                  "0 0 10px rgba(147,197,253,0.3)"
-                                ]
-                              }}
-                              transition={{ duration: 2, repeat: Infinity }}
-                            >
-                              {item.boostedOdds} (2.5x)
-                            </motion.div>
+                            {item.boostedOdds}
                           </motion.div>
-                        </div>
+                        </motion.div>
                       </motion.div>
                     ))}
                   </div>
