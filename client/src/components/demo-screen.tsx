@@ -489,12 +489,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             item.color === 'blue' ? 'bg-blue-500/10 border-blue-400/60' :
                             'bg-orange-500/10 border-orange-400/60'
                           }`}
-                          animate={{
-                            scale: [1, 1.08, 1]
-                          }}
-                          transition={{
-                            scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                          }}
+
                           style={{
                             filter: `drop-shadow(0 0 25px ${
                               item.color === 'yellow' ? 'rgba(234,179,8,0.4)' :
