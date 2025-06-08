@@ -3,6 +3,40 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
+// Sonic Token Component
+const SonicToken = ({ 
+  size = "w-12 h-12", 
+  borderColor = "border-blue-300", 
+  gradientFrom = "from-blue-400", 
+  gradientTo = "to-cyan-500",
+  imageSize = "w-full h-full",
+  animateProps = {},
+  transitionProps = {},
+  style = {}
+}: {
+  size?: string;
+  borderColor?: string;
+  gradientFrom?: string;
+  gradientTo?: string;
+  imageSize?: string;
+  animateProps?: any;
+  transitionProps?: any;
+  style?: any;
+}) => (
+  <motion.div
+    className={`${size} rounded-full bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center shadow-lg border-2 ${borderColor} overflow-hidden`}
+    animate={animateProps}
+    transition={transitionProps}
+    style={style}
+  >
+    <img 
+      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" 
+      alt="Sonic" 
+      className={`${imageSize} object-cover rounded-full`}
+    />
+  </motion.div>
+);
+
 // Shared jackpot state
 let globalJackpotCount = 69000;
 let globalLastIncrease = 0;
@@ -230,7 +264,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
           }}
         />
         <motion.div
-          className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-400 to-transparent opacity-15"
+          className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-white-400 to-transparent opacity-15"
           animate={{
             opacity: [0.1, 0.2, 0.1],
             scaleY: [1.2, 0.8, 1.2],
@@ -624,24 +658,17 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       }}
                     >
                       {/* Sonic Token */}
-                      <motion.div
-                        className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center shadow-lg border-2 border-blue-300 overflow-hidden"
-                        animate={{
+                      <SonicToken
+                        animateProps={{
                           x: [0, 80, 0],
                           rotate: [0, 180, 360],
                         }}
-                        transition={{
+                        transitionProps={{
                           duration: 2,
                           repeat: Infinity,
                           delay: i * 1,
                         }}
-                      >
-                        <img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                          alt="Sonic"
-                          className="w-full h-full object-cover rounded-full"
-                        />
-                      </motion.div>
+                      />
 
                       {/* Swap Action */}
                       <div className="mx-3 flex flex-col items-center relative">
@@ -908,24 +935,18 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       }}
                     >
                       {/* Sonic Token */}
-                      <motion.div
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center shadow-lg border-2 border-blue-300 overflow-hidden"
-                        animate={{
+                      <SonicToken
+                        size="w-10 h-10"
+                        animateProps={{
                           x: [0, 60, 0],
                           rotate: [0, 180, 360],
                         }}
-                        transition={{
+                        transitionProps={{
                           duration: 2.5,
                           repeat: Infinity,
                           delay: i * 0.8,
                         }}
-                      >
-                        <img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                          alt="Sonic"
-                          className="w-full h-full object-cover rounded-full"
-                        />
-                      </motion.div>
+                      />
 
                       {/* Swap Action */}
                       <div className="mx-2 flex flex-col items-center relative">
