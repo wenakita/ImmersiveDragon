@@ -573,7 +573,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       {/* Sonic Token */}
                       <motion.div
-                        className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white font-bold text-sm shadow-lg border-2 border-blue-300"
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center shadow-lg border-2 border-blue-300 overflow-hidden"
                         animate={{
                           x: [0, 80, 0],
                           rotate: [0, 180, 360],
@@ -584,7 +584,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 1,
                         }}
                       >
-                        S
+                        <img 
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" 
+                          alt="Sonic" 
+                          className="w-full h-full object-cover rounded-full"
+                        />
                       </motion.div>
                       
                       {/* Swap Arrow */}
@@ -605,7 +609,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       
                       {/* Dragon Token */}
                       <motion.div
-                        className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center text-white font-bold text-xs shadow-lg border-2 border-red-300"
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-lg border-2 border-red-300 overflow-hidden"
                         animate={{
                           x: [0, -80, 0],
                           rotate: [0, -180, -360],
@@ -616,7 +620,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 1,
                         }}
                       >
-                        🐉
+                        <img 
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" 
+                          alt="Dragon" 
+                          className="w-full h-full object-cover rounded-full"
+                        />
                       </motion.div>
                     </motion.div>
                   ))}
@@ -805,7 +813,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       {/* Sonic Token */}
                       <motion.div
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white font-bold text-xs shadow-lg border-2 border-blue-300"
+                        className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center shadow-lg border-2 border-blue-300 overflow-hidden"
                         animate={{
                           x: [0, 60, 0],
                           rotate: [0, 180, 360],
@@ -816,7 +824,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 0.8,
                         }}
                       >
-                        S
+                        <img 
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" 
+                          alt="Sonic" 
+                          className="w-full h-full object-cover rounded-full"
+                        />
                       </motion.div>
                       
                       {/* Swap Arrow */}
@@ -837,7 +849,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       
                       {/* Dragon Token */}
                       <motion.div
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center text-white font-bold text-xs shadow-lg border-2 border-red-300"
+                        className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-lg border-2 border-red-300 overflow-hidden"
                         animate={{
                           x: [0, -60, 0],
                           rotate: [0, -180, -360],
@@ -848,7 +860,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 0.8,
                         }}
                       >
-                        🐉
+                        <img 
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" 
+                          alt="Dragon" 
+                          className="w-full h-full object-cover rounded-full"
+                        />
                       </motion.div>
                     </motion.div>
                   ))}
@@ -970,7 +986,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       {/* Sonic Token */}
                       <motion.div
-                        className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white font-bold text-xs shadow-lg border border-blue-300"
+                        className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center shadow-lg border border-blue-300 overflow-hidden"
                         animate={{
                           x: [0, 50, 0],
                           rotate: [0, 180, 360],
@@ -981,7 +997,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 0.6,
                         }}
                       >
-                        S
+                        <img 
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" 
+                          alt="Sonic" 
+                          className="w-full h-full object-cover rounded-full"
+                        />
                       </motion.div>
                       
                       {/* Swap Arrow */}
@@ -1002,7 +1022,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       
                       {/* Dragon Token */}
                       <motion.div
-                        className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center text-white font-bold text-xs shadow-lg border border-red-300"
+                        className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-lg border border-red-300 overflow-hidden"
                         animate={{
                           x: [0, -50, 0],
                           rotate: [0, -180, -360],
@@ -1013,7 +1033,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 0.6,
                         }}
                       >
-                        🐉
+                        <img 
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" 
+                          alt="Dragon" 
+                          className="w-full h-full object-cover rounded-full"
+                        />
                       </motion.div>
                     </motion.div>
                   ))}
@@ -1563,23 +1587,35 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                         <motion.div
                           className="text-center"
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: item.delay + 2.5 }}
+                          initial={{ opacity: 0, x: 20, scale: 0.8 }}
+                          animate={{ opacity: 1, x: 0, scale: 1 }}
+                          transition={{ delay: item.delay + 4.5, duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                         >
-                          <div className="text-sm text-gray-400 mb-1">
+                          <motion.div 
+                            className="text-sm text-gray-400 mb-1"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: item.delay + 4.8, duration: 0.8 }}
+                          >
                             veDRAGON 2.5x
-                          </div>
+                          </motion.div>
                           <motion.div
                             className="text-3xl font-medium text-blue-300 w-24 text-center"
-                            animate={{
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ 
+                              opacity: 1, 
+                              scale: 1,
                               textShadow: [
                                 "0 0 10px rgba(147,197,253,0.3)",
                                 "0 0 20px rgba(147,197,253,0.6)",
                                 "0 0 10px rgba(147,197,253,0.3)",
                               ],
                             }}
-                            transition={{ duration: 2, repeat: Infinity }}
+                            transition={{ 
+                              opacity: { delay: item.delay + 5.2, duration: 1 },
+                              scale: { delay: item.delay + 5.2, duration: 1, ease: "backOut" },
+                              textShadow: { duration: 2, repeat: Infinity, delay: item.delay + 6 }
+                            }}
                           >
                             {item.boostedOdds}
                           </motion.div>
