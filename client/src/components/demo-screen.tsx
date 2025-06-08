@@ -620,34 +620,50 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 3: Sophisticated Fee Reveal */}
+            {/* Step 3: Bridge to Fee Structure */}
             {currentStep === 3 && (
               <motion.div
-                key="fee"
+                key="fee-bridge"
                 className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, y: -200 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 200, rotateX: 45 }}
-                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, y: -100, filter: "blur(10px)" }}
+                transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <div className="text-center relative">
+                <div className="text-center relative max-w-4xl">
+                  {/* Connecting question */}
+                  <motion.h2
+                    className="text-5xl font-light text-gray-300 mb-12 tracking-wide"
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    style={{
+                      filter: "drop-shadow(0 0 25px rgba(255,255,255,0.2))",
+                      fontWeight: 300
+                    }}
+                  >
+                    BUT HOW DOES THE JACKPOT GROW?
+                  </motion.h2>
+
+                  {/* Dramatic fee reveal */}
                   <motion.div
-                    className="text-8xl font-light text-warm-orange mb-10 tracking-wider"
-                    initial={{ scale: 0.3, rotateY: 90, opacity: 0 }}
+                    className="text-9xl font-bold text-warm-orange mb-8 tracking-wider"
+                    initial={{ scale: 0.2, rotateZ: -20, opacity: 0 }}
                     animate={{ 
-                      scale: [0.3, 1.15, 1], 
-                      rotateY: [90, 0, 0],
-                      opacity: [0, 1, 1],
-                      y: [0, -20, 0]
+                      scale: [0.2, 1.2, 1], 
+                      rotateZ: [-20, 10, 0],
+                      opacity: [0, 1, 1]
                     }}
                     transition={{ 
-                      duration: 2, 
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                      delay: 0.3
+                      duration: 2.5, 
+                      ease: [0.16, 1, 0.3, 1],
+                      delay: 1.5,
+                      times: [0, 0.7, 1]
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 60px rgba(255,107,53,0.7))",
-                      fontWeight: 200
+                      filter: "drop-shadow(0 0 80px rgba(255,107,53,1))",
+                      fontWeight: 800,
+                      textShadow: "0 0 60px rgba(255,107,53,0.8)"
                     }}
                   >
                     10% FEE
@@ -657,14 +673,24 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="text-4xl font-light text-yellow-400 tracking-wide"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2, duration: 1 }}
+                    transition={{ delay: 3, duration: 1 }}
                     style={{
-                      filter: "drop-shadow(0 0 25px rgba(255,235,59,0.6))",
+                      filter: "drop-shadow(0 0 30px rgba(255,235,59,0.6))",
                       fontWeight: 300
                     }}
                   >
-                    ON ALL SWAPS
+                    ON EVERY SINGLE SWAP
                   </motion.div>
+
+                  {/* Subtle hint of what's coming */}
+                  <motion.p
+                    className="text-xl text-gray-400 mt-8 font-light"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 4, duration: 1 }}
+                  >
+                    Every trade feeds the ecosystem...
+                  </motion.p>
                   
                   {/* Elegant expanding rings */}
                   {[...Array(3)].map((_, i) => (
@@ -687,37 +713,57 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 4: Refined Fee Breakdown */}
+            {/* Step 4: Enhanced Fee Breakdown with Transition */}
             {currentStep === 4 && (
               <motion.div
                 key="breakdown"
                 className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0, filter: "blur(15px)" }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
+                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="text-center">
                   <div className="mb-16">
+                    {/* Transition from previous slide */}
+                    <motion.div
+                      className="text-3xl text-gray-400 mb-8 font-light"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                    >
+                      Here's where it gets interesting...
+                    </motion.div>
+
                     <motion.h2
-                      className="text-5xl font-light mb-6 text-yellow-400 tracking-wide"
-                      initial={{ y: -40, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="text-6xl font-light mb-6 text-yellow-400 tracking-wide"
+                      initial={{ y: -40, opacity: 0, rotateX: 45 }}
+                      animate={{ 
+                        y: 0, 
+                        opacity: 1, 
+                        rotateX: 0 
+                      }}
+                      transition={{ 
+                        duration: 1.5, 
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        delay: 0.8
+                      }}
                       style={{
-                        filter: "drop-shadow(0 0 30px rgba(255,235,59,0.5))",
+                        filter: "drop-shadow(0 0 40px rgba(255,235,59,0.6))",
                         fontWeight: 300
                       }}
                     >
                       YOUR 10% FEE BECOMES
                     </motion.h2>
+                    
                     <motion.p
-                      className="text-xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed"
+                      className="text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
+                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 1.3 }}
                     >
-                      Unlike traditional DEXs that just take your fees, Sonic Red Dragon turns them into opportunities
+                      Unlike traditional DEXs that just take your fees, 
+                      <span className="text-amber-400 font-medium"> Sonic Red Dragon transforms them into opportunities</span>
                     </motion.p>
                   </div>
 

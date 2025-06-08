@@ -10,17 +10,19 @@ interface WelcomeScreenProps {
   onStartDemo: () => void;
 }
 
-export default function WelcomeScreen({ 
-  termsAccepted, 
-  onTermsChange, 
-  onStartDemo 
+export default function WelcomeScreen({
+  termsAccepted,
+  onTermsChange,
+  onStartDemo,
 }: WelcomeScreenProps) {
-  const { easterEggs, showEasterEggNotification, handleClick, triggeredCount } = useEasterEggs();
+  const { easterEggs, showEasterEggNotification, handleClick, triggeredCount } =
+    useEasterEggs();
   return (
     <motion.div
       className="fixed inset-0 flex items-center justify-center p-6"
       style={{
-        background: "radial-gradient(ellipse at center, rgba(41, 27, 12, 0.4) 0%, rgba(0, 0, 0, 0.9) 70%)"
+        background:
+          "radial-gradient(ellipse at center, rgba(41, 27, 12, 0.4) 0%, rgba(0, 0, 0, 0.9) 70%)",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -45,7 +47,7 @@ export default function WelcomeScreen({
               src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
               alt="Sonic Red Dragon Logo"
               className="dragon-logo-glow w-24 h-24 rounded-full object-cover cursor-pointer"
-              onClick={() => handleClick('dragon-logo')}
+              onClick={() => handleClick("dragon-logo")}
             />
           </div>
         </motion.div>
@@ -66,8 +68,9 @@ export default function WelcomeScreen({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          A cutting-edge blockchain protocol designed to revolutionize token swaps with provably fair
-          jackpot mechanics and cross-chain connectivity, providing an immersive financial gaming experience.
+          A cutting-edge blockchain protocol designed to revolutionize token
+          swaps with provably fair jackpot mechanics via cross-chain VRF,
+          providing an immersive financial gaming experience.
         </motion.p>
 
         {/* Terms Checkbox */}
@@ -87,9 +90,9 @@ export default function WelcomeScreen({
             />
             <motion.div
               className={`w-5 h-5 border-2 rounded cursor-pointer flex items-center justify-center transition-all duration-200 ${
-                termsAccepted 
-                  ? 'bg-electric-blue border-electric-blue' 
-                  : 'border-electric-blue bg-transparent'
+                termsAccepted
+                  ? "bg-electric-blue border-electric-blue"
+                  : "border-electric-blue bg-transparent"
               }`}
               onClick={() => onTermsChange(!termsAccepted)}
               whileHover={{ scale: 1.1 }}
@@ -116,10 +119,11 @@ export default function WelcomeScreen({
             </motion.div>
           </div>
           <label htmlFor="termsAccept" className="text-sm cursor-pointer">
-            I accept the terms and conditions for OmniDragon Protocol listed on the{" "}
-            <span 
+            I accept the terms and conditions for OmniDragon Protocol listed on
+            the{" "}
+            <span
               className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer"
-              onClick={() => handleClick('terms-link')}
+              onClick={() => handleClick("terms-link")}
             >
               Terms of Service
             </span>{" "}
@@ -134,8 +138,8 @@ export default function WelcomeScreen({
         <motion.button
           className={`w-full py-3 px-6 rounded-lg font-medium text-white transition-all duration-300 flex items-center justify-center gap-2 ${
             termsAccepted
-              ? 'gradient-button hover:scale-105 cursor-pointer'
-              : 'opacity-50 cursor-not-allowed bg-gray-600'
+              ? "gradient-button hover:scale-105 cursor-pointer"
+              : "opacity-50 cursor-not-allowed bg-gray-600"
           }`}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -170,7 +174,10 @@ export default function WelcomeScreen({
       )}
 
       {/* Easter Egg Rewards */}
-      <EasterEggRewards triggeredCount={triggeredCount} easterEggs={easterEggs} />
+      <EasterEggRewards
+        triggeredCount={triggeredCount}
+        easterEggs={easterEggs}
+      />
     </motion.div>
   );
 }
