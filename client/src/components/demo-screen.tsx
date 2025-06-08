@@ -1146,31 +1146,25 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       }}
                     >
                       {/* Sonic Token */}
-                      <motion.div
-                        className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl border-2 border-blue-300/60 overflow-hidden backdrop-blur-sm"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
-                          boxShadow:
-                            "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)",
-                        }}
-                        animate={{
+                      {/* Sonic Token */}
+                      <SonicToken
+                        borderColor="border-blue-300/60"
+                        imageSize="w-8 h-8"
+                        animateProps={{
                           x: [0, 60, 0],
                           rotate: [0, 180, 360],
                         }}
-                        transition={{
+                        transitionProps={{
                           duration: 4,
                           repeat: Infinity,
                           delay: i * 1.2,
                           ease: "easeInOut",
                         }}
-                      >
-                        <img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                          alt="Sonic"
-                          className="w-8 h-8 object-cover rounded-full"
-                        />
-                      </motion.div>
+                        style={{
+                          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
+                          boxShadow: "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                        }}
+                      />
 
                       {/* Swap Action Center */}
                       <div className="mx-3 flex flex-col items-center relative">
@@ -1576,31 +1570,25 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       }}
                     >
                       {/* Sonic Token */}
-                      <motion.div
-                        className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl border-2 border-blue-300/60 overflow-hidden backdrop-blur-sm"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
-                          boxShadow:
-                            "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)",
-                        }}
-                        animate={{
+                      {/* Sonic Token */}
+                      <SonicToken
+                        borderColor="border-blue-300/60"
+                        imageSize="w-8 h-8"
+                        animateProps={{
                           x: [0, 60, 0],
                           rotate: [0, 180, 360],
                         }}
-                        transition={{
+                        transitionProps={{
                           duration: 4,
                           repeat: Infinity,
                           delay: i * 1.2,
                           ease: "easeInOut",
                         }}
-                      >
-                        <img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                          alt="Sonic"
-                          className="w-8 h-8 object-cover rounded-full"
-                        />
-                      </motion.div>
+                        style={{
+                          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
+                          boxShadow: "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                        }}
+                      />
 
                       {/* Swap Action Center */}
                       <div className="mx-3 flex flex-col items-center relative">
