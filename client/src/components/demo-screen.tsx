@@ -895,38 +895,36 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ease: "easeInOut"
                       }}
                     >
-                      {/* Chainlink Logo SVG */}
-                      <motion.svg
-                        width="60"
-                        height="60"
-                        viewBox="0 0 100 100"
-                        style={{
-                          filter: "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))"
-                        }}
+                      {/* Official Chainlink Logo */}
+                      <motion.div
+                        className="relative"
                         animate={{
-                          filter: [
-                            "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))",
-                            "drop-shadow(0 0 30px rgba(55, 126, 254, 0.7))",
-                            "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))"
-                          ]
+                          scale: [1, 1.05, 1],
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 3,
                           repeat: Infinity,
                           ease: "easeInOut"
                         }}
                       >
-                        <polygon
-                          points="50,10 85,30 85,70 50,90 15,70 15,30"
-                          fill="#377EFE"
-                          stroke="none"
+                        <motion.img
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreia6gvcvo7bk52hr7pphega2i63rxh5xbijlkjko7wf24ycutfelfm"
+                          alt="Chainlink"
+                          className="w-16 h-16"
+                          animate={{
+                            filter: [
+                              "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))",
+                              "drop-shadow(0 0 30px rgba(55, 126, 254, 0.7))",
+                              "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))"
+                            ]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
                         />
-                        <polygon
-                          points="50,25 70,35 70,65 50,75 30,65 30,35"
-                          fill="#1e293b"
-                          stroke="none"
-                        />
-                      </motion.svg>
+                      </motion.div>
                       
                       <motion.span
                         className="text-4xl font-bold tracking-wider"
