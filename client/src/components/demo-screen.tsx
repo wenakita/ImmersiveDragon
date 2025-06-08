@@ -341,7 +341,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     }}
                     transition={{ 
                       duration: 1.8, 
-                      ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)",
+                      ease: [0.25, 0.46, 0.45, 0.94],
                       times: [0, 0.8, 1]
                     }}
                     style={{
@@ -388,7 +388,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 initial={{ opacity: 0, y: -200 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 200, rotateX: 45 }}
-                transition={{ duration: 1.2, ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)" }}
+                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="text-center relative">
                   <motion.div
@@ -402,7 +402,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     }}
                     transition={{ 
                       duration: 2, 
-                      ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)",
+                      ease: [0.25, 0.46, 0.45, 0.94],
                       delay: 0.3
                     }}
                     style={{
@@ -485,7 +485,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         transition={{ 
                           duration: 1.5, 
                           delay: item.delay,
-                          ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)"
+                          ease: [0.25, 0.46, 0.45, 0.94]
                         }}
                       >
                         <motion.div
