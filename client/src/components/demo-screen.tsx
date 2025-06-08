@@ -8,19 +8,21 @@ interface DemoScreenProps {
 }
 
 export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
-  const [audioStarted, setAudioStarted] = useState(false);
+  const [audioStarted, setAudioStarted] = useState(autoStart);
   const [showPlayButton, setShowPlayButton] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  console.log("DemoScreen render - audioStarted:", audioStarted, "autoStart:", autoStart);
+
   // Handle autoStart
   useEffect(() => {
-    if (autoStart && audioRef.current && !audioStarted) {
+    if (autoStart && audioRef.current) {
       console.log("AutoStart detected, starting audio automatically");
       setTimeout(() => {
         handlePlayAudio();
       }, 100);
     }
-  }, [autoStart, audioStarted]);
+  }, [autoStart]);
 
   const handlePlayAudio = () => {
     console.log("Play button clicked");
@@ -31,6 +33,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
         .play()
         .then(() => {
           console.log("Audio started successfully");
+          console.log("Setting audioStarted to true");
           setAudioStarted(true);
           setShowPlayButton(false);
 
@@ -93,13 +96,18 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
       <AnimatePresence>
         {audioStarted && (
           <motion.div
-            className="fixed inset-0 bg-black overflow-y-auto"
+            className="fixed inset-0 bg-red-900 overflow-y-auto z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
             <div className="space-y-32 py-16">
+              
+              {/* Debug Test Element */}
+              <div className="fixed top-4 left-4 bg-green-500 text-black p-4 z-[100]">
+                ANIMATIONS ARE WORKING - audioStarted: {audioStarted.toString()}
+              </div>
               
               {/* Section 1: Title */}
               <div className="flex items-center justify-center min-h-screen">
