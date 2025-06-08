@@ -68,8 +68,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const steps = [
     { delay: 0, duration: 6500 },      // [0:00–0:06.5] Title intro: swell begins
     { delay: 6500, duration: 7500 },   // [0:06.5–0:14] Swap animation buildup
-    { delay: 14000, duration: 6000 },  // [0:14–0:20] Jackpot reveal at first drop
-    { delay: 20000, duration: 8500 },  // [0:20–0:28.5] Fee tension – ambient mood
+    { delay: 14000, duration: 9000 },  // [0:14–0:23] Jackpot reveal at first drop - EXTENDED
+    { delay: 23000, duration: 5500 },  // [0:23–0:28.5] Fee tension – ambient mood
     { delay: 28500, duration: 10000 }, // [0:28.5–0:38.5] Fee breakdown – cinematic swell
     { delay: 38500, duration: 8000 },  // [0:38.5–0:46.5] Lottery mechanics
     { delay: 46500, duration: 7000 },  // [0:46.5–0:53.5] VRF finale
