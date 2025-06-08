@@ -1070,7 +1070,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   </motion.div>
 
                   <motion.h2
-                    className="text-6xl font-light mb-8 tracking-wide"
+                    className="text-6xl font-light mb-4 tracking-wide"
                     initial={{ rotateX: 45, opacity: 0 }}
                     animate={{ rotateX: 0, opacity: 1 }}
                     transition={{
@@ -1087,6 +1087,33 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   >
                     VRF 2.5 LOTTERY
                   </motion.h2>
+                  
+                  <motion.div
+                    className="mb-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 1 }}
+                  >
+                    <motion.div
+                      className="inline-block px-4 py-2 rounded-full bg-purple-500/10 border border-purple-400/30"
+                      animate={{
+                        boxShadow: [
+                          "0 0 15px rgba(147, 51, 234, 0.2)",
+                          "0 0 25px rgba(147, 51, 234, 0.4)",
+                          "0 0 15px rgba(147, 51, 234, 0.2)"
+                        ]
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <div className="text-purple-300 text-sm font-medium">
+                        Chainlink VRF 2.5 via LayerZero Cross-Chain
+                      </div>
+                    </motion.div>
+                  </motion.div>
 
                   <motion.p
                     className="text-2xl text-gray-300 mb-6 font-light leading-relaxed max-w-3xl mx-auto"
@@ -1140,32 +1167,35 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     BIGGER SWAPS = BETTER ODDS
                   </motion.p>
 
-                  {/* Sophisticated floating elements */}
-                  {[...Array(15)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 backdrop-blur-sm"
-                      style={{
-                        width: 8 + Math.random() * 8 + "px",
-                        height: 8 + Math.random() * 8 + "px",
-                        left: `${10 + (i % 5) * 18}%`,
-                        top: `${20 + Math.floor(i / 5) * 20}%`,
-                        filter: "drop-shadow(0 0 10px rgba(255,165,0,0.6))",
-                      }}
-                      animate={{
-                        y: [0, -50 - Math.random() * 30, 0],
-                        rotateZ: [0, 360],
-                        scale: [1, 1.4, 1],
-                        opacity: [0.7, 1, 0.7],
-                      }}
-                      transition={{
-                        duration: 3 + i * 0.2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: i * 0.15,
-                      }}
-                    />
-                  ))}
+                  {/* Expanded floating elements across full viewport */}
+                  <div className="fixed inset-0 pointer-events-none">
+                    {[...Array(20)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 backdrop-blur-sm"
+                        style={{
+                          width: 6 + Math.random() * 8 + "px",
+                          height: 6 + Math.random() * 8 + "px",
+                          left: Math.random() * 100 + "vw",
+                          top: Math.random() * 100 + "vh",
+                          filter: "drop-shadow(0 0 8px rgba(255,165,0,0.4))",
+                        }}
+                        animate={{
+                          x: [0, (Math.random() - 0.5) * 200, 0],
+                          y: [0, (Math.random() - 0.5) * 200, 0],
+                          rotateZ: [0, 360],
+                          scale: [1, 1.3, 1],
+                          opacity: [0.3, 0.7, 0.3],
+                        }}
+                        transition={{
+                          duration: 8 + Math.random() * 4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: Math.random() * 2,
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             )}
