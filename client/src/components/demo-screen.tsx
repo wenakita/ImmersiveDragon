@@ -37,6 +37,40 @@ const SonicToken = ({
   </motion.div>
 );
 
+// Dragon Token Component
+const DragonToken = ({ 
+  size = "w-12 h-12", 
+  borderColor = "border-red-300", 
+  gradientFrom = "from-red-500", 
+  gradientTo = "to-orange-600",
+  imageSize = "w-full h-full",
+  animateProps = {},
+  transitionProps = {},
+  style = {}
+}: {
+  size?: string;
+  borderColor?: string;
+  gradientFrom?: string;
+  gradientTo?: string;
+  imageSize?: string;
+  animateProps?: any;
+  transitionProps?: any;
+  style?: any;
+}) => (
+  <motion.div
+    className={`${size} rounded-full bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center shadow-lg border-2 ${borderColor} overflow-hidden`}
+    animate={animateProps}
+    transition={transitionProps}
+    style={style}
+  >
+    <img 
+      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" 
+      alt="Dragon" 
+      className={`${imageSize} object-cover rounded-full`}
+    />
+  </motion.div>
+);
+
 // Shared jackpot state
 let globalJackpotCount = 69000;
 let globalLastIncrease = 0;
@@ -731,24 +765,18 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </div>
 
                       {/* Dragon Token */}
-                      <motion.div
-                        className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-lg border-2 border-red-300 overflow-hidden"
-                        animate={{
+                      {/* Dragon Token */}
+                      <DragonToken
+                        animateProps={{
                           x: [0, -80, 0],
                           rotate: [0, -180, -360],
                         }}
-                        transition={{
+                        transitionProps={{
                           duration: 2,
                           repeat: Infinity,
                           delay: i * 1,
                         }}
-                      >
-                        <img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                          alt="Dragon"
-                          className="w-full h-full object-cover rounded-full"
-                        />
-                      </motion.div>
+                      />
                     </motion.div>
                   ))}
                 </div>
@@ -1009,24 +1037,19 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </div>
 
                       {/* Dragon Token */}
-                      <motion.div
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-lg border-2 border-red-300 overflow-hidden"
-                        animate={{
+                      {/* Dragon Token */}
+                      <DragonToken
+                        size="w-10 h-10"
+                        animateProps={{
                           x: [0, -60, 0],
                           rotate: [0, -180, -360],
                         }}
-                        transition={{
+                        transitionProps={{
                           duration: 2.5,
                           repeat: Infinity,
                           delay: i * 0.8,
                         }}
-                      >
-                        <img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                          alt="Dragon"
-                          className="w-full h-full object-cover rounded-full"
-                        />
-                      </motion.div>
+                      />
                     </motion.div>
                   ))}
                 </div>
@@ -1319,31 +1342,25 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </div>
 
                       {/* Dragon Token */}
-                      <motion.div
-                        className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl border-2 border-orange-300/60 overflow-hidden backdrop-blur-sm"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
-                          boxShadow:
-                            "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)",
-                        }}
-                        animate={{
+                      {/* Dragon Token */}
+                      <DragonToken
+                        borderColor="border-orange-300/60"
+                        imageSize="w-8 h-8"
+                        animateProps={{
                           x: [0, -60, 0],
                           rotate: [0, -180, -360],
                         }}
-                        transition={{
+                        transitionProps={{
                           duration: 4,
                           repeat: Infinity,
                           delay: i * 1.2,
                           ease: "easeInOut",
                         }}
-                      >
-                        <img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                          alt="Dragon"
-                          className="w-8 h-8 object-cover rounded-full"
-                        />
-                      </motion.div>
+                        style={{
+                          background: "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
+                          boxShadow: "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                        }}
+                      />
                     </motion.div>
                   ))}
                 </div>
@@ -1743,32 +1760,24 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </div>
 
                       {/* Dragon Token */}
-                      <motion.div
-                        className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl border-2 border-orange-300/60 overflow-hidden backdrop-blur-sm"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
-                          boxShadow:
-                            "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)",
-                        }}
-                        animate={{
+                      <DragonToken
+                        borderColor="border-orange-300/60"
+                        imageSize="w-8 h-8"
+                        animateProps={{
                           x: [0, -60, 0],
                           rotate: [0, -180, -360],
                         }}
-                        transition={{
+                        transitionProps={{
                           duration: 4,
                           repeat: Infinity,
                           delay: i * 1.2,
                           ease: "easeInOut",
                         }}
-                      >
-                        <img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                          alt="Dragon"
-                          className="w-8 h-8 object-cover rounded-full"
-                        />
-                      </motion.div>
-                    </motion.div>
+                        style={{
+                          background: "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
+                          boxShadow: "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                        }}
+                      />
                   ))}
                 </div>
 
