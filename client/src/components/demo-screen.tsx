@@ -1126,7 +1126,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         
                         {/* Fee Breakdown Below - Dollar Amounts */}
                         <motion.div
-                          className="absolute top-6 flex flex-col items-start text-xs space-y-1"
+                          className="absolute top-6 flex flex-col items-center text-xs space-y-0.5"
                           initial={{ opacity: 0, y: 2 }}
                           animate={{ opacity: [0, 0.6, 0], y: [2, 14, 26] }}
                           transition={{
@@ -1135,26 +1135,29 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             delay: i * 0.6 + 0.6,
                           }}
                         >
-                          <div className="flex items-center space-x-1 text-yellow-400">
-                            <span>Jackpot: $6.90</span>
-                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                          <div className="flex items-center space-x-1 text-yellow-400 whitespace-nowrap">
+                            <span>$6.90</span>
+                            <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
                               <circle cx="12" cy="12" r="10" fill="#00D4FF"/>
                               <text x="12" y="16" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">S</text>
                             </svg>
+                            <span>Jackpot</span>
                           </div>
-                          <div className="flex items-center space-x-1 text-blue-400">
-                            <span>LP Rewards: $2.41</span>
-                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                          <div className="flex items-center space-x-1 text-blue-400 whitespace-nowrap">
+                            <span>$2.41</span>
+                            <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
                               <circle cx="12" cy="12" r="10" fill="#00D4FF"/>
                               <text x="12" y="16" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">S</text>
                             </svg>
+                            <span>LP</span>
                           </div>
-                          <div className="flex items-center space-x-1 text-orange-400">
-                            <span>Burned: $0.69</span>
-                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                          <div className="flex items-center space-x-1 text-orange-400 whitespace-nowrap">
+                            <span>$0.69</span>
+                            <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
                               <circle cx="12" cy="12" r="10" fill="#DC2626"/>
-                              <text x="12" y="16" textAnchor="middle" fontSize="6" fill="white" fontWeight="bold">DRAG</text>
+                              <text x="12" y="16" textAnchor="middle" fontSize="6" fill="white" fontWeight="bold">D</text>
                             </svg>
+                            <span>Burn</span>
                           </div>
                         </motion.div>
                       </div>
