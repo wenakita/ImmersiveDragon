@@ -260,7 +260,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ 
                       duration: 3, 
                       times: [0, 0.7, 1],
-                      ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)",
+                      ease: [0.25, 0.46, 0.45, 0.94],
                       delay: 0.5
                     }}
                     style={{
@@ -288,7 +288,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ 
                       duration: 3, 
                       times: [0, 0.7, 1],
-                      ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)",
+                      ease: [0.25, 0.46, 0.45, 0.94],
                       delay: 1
                     }}
                     style={{
@@ -755,7 +755,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="text-6xl font-light mb-12 tracking-wider"
                     initial={{ scale: 0.5, rotateZ: -20, opacity: 0 }}
                     animate={{ scale: 1, rotateZ: 0, opacity: 1 }}
-                    transition={{ duration: 1.5, delay: 0.8, ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)" }}
+                    transition={{ duration: 1.5, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                     style={{
                       background: "linear-gradient(135deg, #FFD700, #FF6B35, #3B82F6)",
                       backgroundClip: "text",
