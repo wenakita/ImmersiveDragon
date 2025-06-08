@@ -229,8 +229,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 className="flex items-center justify-center min-h-screen"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0, x: -500, rotateY: 45 }}
-                transition={{ duration: 0.8 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5 }}
               >
                 <div className="relative w-full h-96">
                   <motion.h2
