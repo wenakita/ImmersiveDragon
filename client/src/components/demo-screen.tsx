@@ -591,21 +591,51 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         />
                       </motion.div>
                       
-                      {/* Swap Arrow */}
-                      <motion.div
-                        className="mx-3 text-xl text-white"
-                        animate={{
-                          opacity: [0.4, 0.8, 0.4],
-                          scale: [1, 1.3, 1],
-                        }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          delay: i * 1 + 0.5,
-                        }}
-                      >
-                        ⇄
-                      </motion.div>
+                      {/* Swap Action */}
+                      <div className="mx-3 flex flex-col items-center">
+                        <motion.div
+                          className="text-xl text-white mb-1"
+                          animate={{
+                            opacity: [0.4, 0.8, 0.4],
+                            scale: [1, 1.3, 1],
+                          }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            delay: i * 1 + 0.5,
+                          }}
+                        >
+                          ⇄
+                        </motion.div>
+                        <motion.div
+                          className="text-xs text-green-400 font-semibold px-2 py-1 bg-green-500/20 rounded"
+                          animate={{ opacity: [0.6, 1, 0.6] }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            delay: i * 1 + 0.3,
+                          }}
+                        >
+                          {i % 2 === 0 ? 'BUY' : 'SELL'}
+                        </motion.div>
+                        
+                        {/* Fee Flow Animation */}
+                        <motion.div
+                          className="absolute top-12 flex flex-col items-center text-xs"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: [0, 0.8, 0], y: [0, 20, 40] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i * 1 + 1,
+                          }}
+                        >
+                          <div className="text-red-400 font-bold mb-1">10% Fee</div>
+                          <div className="text-yellow-400 text-xs">6.9% → Jackpot</div>
+                          <div className="text-blue-400 text-xs">2.41% → LP Rewards</div>
+                          <div className="text-orange-400 text-xs">0.69% → Burn</div>
+                        </motion.div>
+                      </div>
                       
                       {/* Dragon Token */}
                       <motion.div
@@ -831,21 +861,51 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         />
                       </motion.div>
                       
-                      {/* Swap Arrow */}
-                      <motion.div
-                        className="mx-2 text-lg text-white"
-                        animate={{
-                          opacity: [0.3, 0.7, 0.3],
-                          scale: [1, 1.2, 1],
-                        }}
-                        transition={{
-                          duration: 1.2,
-                          repeat: Infinity,
-                          delay: i * 0.8 + 0.3,
-                        }}
-                      >
-                        ⇄
-                      </motion.div>
+                      {/* Swap Action */}
+                      <div className="mx-2 flex flex-col items-center">
+                        <motion.div
+                          className="text-lg text-white mb-1"
+                          animate={{
+                            opacity: [0.3, 0.7, 0.3],
+                            scale: [1, 1.2, 1],
+                          }}
+                          transition={{
+                            duration: 1.2,
+                            repeat: Infinity,
+                            delay: i * 0.8 + 0.3,
+                          }}
+                        >
+                          ⇄
+                        </motion.div>
+                        <motion.div
+                          className="text-xs text-green-400 font-semibold px-1 py-0.5 bg-green-500/20 rounded"
+                          animate={{ opacity: [0.5, 0.9, 0.5] }}
+                          transition={{
+                            duration: 1.8,
+                            repeat: Infinity,
+                            delay: i * 0.8 + 0.2,
+                          }}
+                        >
+                          {i % 2 === 0 ? 'BUY' : 'SELL'}
+                        </motion.div>
+                        
+                        {/* Fee Flow Animation */}
+                        <motion.div
+                          className="absolute top-10 flex flex-col items-center text-xs"
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: [0, 0.7, 0], y: [0, 15, 30] }}
+                          transition={{
+                            duration: 2.5,
+                            repeat: Infinity,
+                            delay: i * 0.8 + 0.8,
+                          }}
+                        >
+                          <div className="text-red-400 font-bold mb-0.5">10% Fee</div>
+                          <div className="text-yellow-400 text-xs">6.9% → Jackpot</div>
+                          <div className="text-blue-400 text-xs">2.41% → LP</div>
+                          <div className="text-orange-400 text-xs">0.69% → Burn</div>
+                        </motion.div>
+                      </div>
                       
                       {/* Dragon Token */}
                       <motion.div
@@ -1004,21 +1064,51 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         />
                       </motion.div>
                       
-                      {/* Swap Arrow */}
-                      <motion.div
-                        className="mx-2 text-sm text-white"
-                        animate={{
-                          opacity: [0.2, 0.6, 0.2],
-                          scale: [1, 1.1, 1],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: i * 0.6 + 0.2,
-                        }}
-                      >
-                        ⇄
-                      </motion.div>
+                      {/* Swap Action */}
+                      <div className="mx-2 flex flex-col items-center">
+                        <motion.div
+                          className="text-sm text-white mb-1"
+                          animate={{
+                            opacity: [0.2, 0.6, 0.2],
+                            scale: [1, 1.1, 1],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            delay: i * 0.6 + 0.2,
+                          }}
+                        >
+                          ⇄
+                        </motion.div>
+                        <motion.div
+                          className="text-xs text-green-400 font-semibold px-1 py-0.5 bg-green-500/20 rounded"
+                          animate={{ opacity: [0.4, 0.8, 0.4] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i * 0.6 + 0.1,
+                          }}
+                        >
+                          {i % 2 === 0 ? 'BUY' : 'SELL'}
+                        </motion.div>
+                        
+                        {/* Fee Flow Animation */}
+                        <motion.div
+                          className="absolute top-8 flex flex-col items-center text-xs"
+                          initial={{ opacity: 0, y: -6 }}
+                          animate={{ opacity: [0, 0.6, 0], y: [0, 12, 24] }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: i * 0.6 + 0.6,
+                          }}
+                        >
+                          <div className="text-red-400 font-bold mb-0.5">10% Fee</div>
+                          <div className="text-yellow-400 text-xs">6.9% → Jackpot</div>
+                          <div className="text-blue-400 text-xs">2.41% → LP</div>
+                          <div className="text-orange-400 text-xs">0.69% → Burn</div>
+                        </motion.div>
+                      </div>
                       
                       {/* Dragon Token */}
                       <motion.div
