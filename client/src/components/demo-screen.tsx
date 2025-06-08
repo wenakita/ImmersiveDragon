@@ -233,31 +233,41 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 1.5 }}
               >
                 <div className="relative w-full h-96">
-                  <div className="text-center text-5xl font-light mb-20 tracking-wide">
-                    <motion.span
-                      className="text-yellow-400"
-                      initial={{ y: -30, opacity: 0 }}
+                  <div className="text-center mb-16">
+                    <div className="text-5xl font-light mb-6 tracking-wide">
+                      <motion.span
+                        className="text-yellow-400"
+                        initial={{ y: -30, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        style={{
+                          filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
+                          fontWeight: 300
+                        }}
+                      >
+                        SWAP $S
+                      </motion.span>
+                      <motion.span
+                        className="text-warm-orange ml-4"
+                        initial={{ y: -30, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.5 }}
+                        style={{
+                          filter: "drop-shadow(0 0 25px rgba(255,107,53,0.5))",
+                          fontWeight: 300
+                        }}
+                      >
+                        FOR $DRAGON
+                      </motion.span>
+                    </div>
+                    <motion.p
+                      className="text-xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed"
+                      initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      style={{
-                        filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
-                        fontWeight: 300
-                      }}
+                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 1 }}
                     >
-                      SWAP $S
-                    </motion.span>
-                    <motion.span
-                      className="text-warm-orange ml-4"
-                      initial={{ y: -30, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.5 }}
-                      style={{
-                        filter: "drop-shadow(0 0 25px rgba(255,107,53,0.5))",
-                        fontWeight: 300
-                      }}
-                    >
-                      FOR $DRAGON
-                    </motion.span>
+                      Trade Sonic tokens on the fastest cross-chain protocol with instant settlements and zero slippage
+                    </motion.p>
                   </div>
 
                   {/* Sophisticated token animations */}
@@ -360,6 +370,19 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   >
                     AND GET A CHANCE TO WIN THE JACKPOT!
                   </motion.h2>
+
+                  <motion.div
+                    className="mt-12 max-w-3xl mx-auto"
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.8 }}
+                  >
+                    <p className="text-2xl text-gray-300 font-light leading-relaxed text-center">
+                      Every swap automatically enters you into our{' '}
+                      <span className="text-yellow-400 font-medium">VRF-powered lottery</span>
+                      {' '}where your trading fees can become massive rewards
+                    </p>
+                  </motion.div>
                   
                   {/* Elegant energy waves */}
                   {[...Array(6)].map((_, i) => (
@@ -467,24 +490,34 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-center">
-                  <motion.h2
-                    className="text-5xl font-light mb-20 text-yellow-400 tracking-wide"
-                    initial={{ y: -40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    style={{
-                      filter: "drop-shadow(0 0 30px rgba(255,235,59,0.5))",
-                      fontWeight: 300
-                    }}
-                  >
-                    FEE BREAKDOWN
-                  </motion.h2>
+                  <div className="mb-16">
+                    <motion.h2
+                      className="text-5xl font-light mb-6 text-yellow-400 tracking-wide"
+                      initial={{ y: -40, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      style={{
+                        filter: "drop-shadow(0 0 30px rgba(255,235,59,0.5))",
+                        fontWeight: 300
+                      }}
+                    >
+                      YOUR 10% FEE BECOMES
+                    </motion.h2>
+                    <motion.p
+                      className="text-xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
+                    >
+                      Unlike traditional DEXs that just take your fees, Sonic Red Dragon turns them into opportunities
+                    </motion.p>
+                  </div>
 
                   <div className="space-y-12">
                     {[
-                      { percent: "6.9%", label: "JACKPOT", color: "yellow", delay: 0.5 },
-                      { percent: "2.41%", label: "LP REWARDS", color: "blue", delay: 1 },
-                      { percent: "0.69%", label: "BURNED", color: "orange", delay: 1.5 }
+                      { percent: "6.9%", label: "JACKPOT FUND", description: "Win massive prizes every trade", color: "yellow", delay: 0.5 },
+                      { percent: "2.41%", label: "LP REWARDS", description: "Earn passive income", color: "blue", delay: 1 },
+                      { percent: "0.69%", label: "TOKEN BURN", description: "Increase scarcity & value", color: "orange", delay: 1.5 }
                     ].map((item, i) => (
                       <motion.div
                         key={i}
@@ -526,22 +559,32 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           </span>
                         </motion.div>
                         
-                        <motion.span
-                          className={`text-3xl font-light tracking-wide ${
-                            item.color === 'yellow' ? 'text-yellow-400' :
-                            item.color === 'blue' ? 'text-blue-400' :
-                            'text-orange-400'
-                          }`}
-                          animate={{ x: [0, 8, 0] }}
-                          transition={{ 
-                            duration: 3, 
-                            repeat: Infinity, 
-                            ease: "easeInOut",
-                            delay: item.delay + 1
-                          }}
-                        >
-                          → {item.label}
-                        </motion.span>
+                        <div className="text-left">
+                          <motion.div
+                            className={`text-3xl font-light tracking-wide ${
+                              item.color === 'yellow' ? 'text-yellow-400' :
+                              item.color === 'blue' ? 'text-blue-400' :
+                              'text-orange-400'
+                            }`}
+                            animate={{ x: [0, 8, 0] }}
+                            transition={{ 
+                              duration: 3, 
+                              repeat: Infinity, 
+                              ease: "easeInOut",
+                              delay: item.delay + 1
+                            }}
+                          >
+                            → {item.label}
+                          </motion.div>
+                          <motion.p
+                            className="text-lg text-gray-400 font-light mt-2 ml-8"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: item.delay + 1.5 }}
+                          >
+                            {item.description}
+                          </motion.p>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
@@ -561,7 +604,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               >
                 <div className="text-center relative">
                   <motion.h2
-                    className="text-6xl font-light mb-12 tracking-wide"
+                    className="text-6xl font-light mb-8 tracking-wide"
                     initial={{ rotateX: 45, opacity: 0 }}
                     animate={{ rotateX: 0, opacity: 1 }}
                     transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -574,8 +617,17 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       fontWeight: 300
                     }}
                   >
-                    EVERY SWAP = LOTTERY TICKET
+                    CHAINLINK VRF 2.5 LOTTERY
                   </motion.h2>
+
+                  <motion.p
+                    className="text-2xl text-gray-300 mb-8 font-light leading-relaxed max-w-3xl mx-auto"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 1 }}
+                  >
+                    Provably fair randomness ensures every trader has a legitimate chance to win massive jackpots
+                  </motion.p>
                   
                   <motion.p
                     className="text-3xl text-yellow-400 mb-16 font-light tracking-wide"
