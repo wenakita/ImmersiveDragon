@@ -199,7 +199,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   {[...Array(16)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-1 h-1 rounded-full bg-warm-orange opacity-60"
+                      className="absolute w-1 h-1 rounded-full bg-purple-400 opacity-60"
                       style={{
                         left: "50%",
                         top: "50%",
@@ -534,26 +534,26 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           className={`w-28 h-28 rounded-full border-2 flex items-center justify-center backdrop-blur-sm ${
                             item.color === 'yellow' ? 'bg-yellow-500/10 border-yellow-400/60' :
                             item.color === 'blue' ? 'bg-blue-500/10 border-blue-400/60' :
-                            'bg-orange-500/10 border-orange-400/60'
+                            'bg-purple-500/10 border-purple-400/60'
                           }`}
 
                           style={{
                             filter: `drop-shadow(0 0 25px ${
                               item.color === 'yellow' ? 'rgba(234,179,8,0.4)' :
                               item.color === 'blue' ? 'rgba(59,130,246,0.4)' :
-                              'rgba(249,115,22,0.4)'
+                              'rgba(139,92,246,0.4)'
                             })`,
                             boxShadow: `inset 0 0 20px ${
                               item.color === 'yellow' ? 'rgba(234,179,8,0.1)' :
                               item.color === 'blue' ? 'rgba(59,130,246,0.1)' :
-                              'rgba(249,115,22,0.1)'
+                              'rgba(139,92,246,0.1)'
                             }`
                           }}
                         >
-                          <span className={`text-xl font-light ${
+                          <span className={`text-xl font-medium ${
                             item.color === 'yellow' ? 'text-yellow-400' :
                             item.color === 'blue' ? 'text-blue-400' :
-                            'text-orange-400'
+                            'text-purple-400'
                           }`}>
                             {item.percent}
                           </span>
@@ -561,10 +561,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         
                         <div className="text-left">
                           <motion.div
-                            className={`text-3xl font-light tracking-wide ${
+                            className={`text-3xl font-medium tracking-wide ${
                               item.color === 'yellow' ? 'text-yellow-400' :
                               item.color === 'blue' ? 'text-blue-400' :
-                              'text-orange-400'
+                              'text-purple-400'
                             }`}
                             animate={{ x: [0, 8, 0] }}
                             transition={{ 
