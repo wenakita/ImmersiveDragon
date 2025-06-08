@@ -252,10 +252,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     initial={{ x: -800, rotateY: 180, scale: 0, opacity: 0 }}
                     animate={{ 
                       x: [0, 320, 1400], 
-                      rotateY: [180, 0, 0], 
-                      scale: [0, 1.2, 0.8],
-                      opacity: [0, 1, 0],
-                      rotateZ: [0, 180, 540]
+                      scale: [0, 1.2, 1],
+                      opacity: [0, 1, 1]
                     }}
                     transition={{ 
                       duration: 4, 
@@ -280,10 +278,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     initial={{ x: 800, rotateY: -180, scale: 0, opacity: 0 }}
                     animate={{ 
                       x: [0, -320, -1400], 
-                      rotateY: [-180, 0, 0], 
-                      scale: [0, 1.2, 0.8],
-                      opacity: [0, 1, 0],
-                      rotateZ: [0, -180, -540]
+                      scale: [0, 1.2, 1],
+                      opacity: [0, 1, 1]
                     }}
                     transition={{ 
                       duration: 4, 
