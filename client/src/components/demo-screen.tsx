@@ -8,26 +8,30 @@ interface DemoScreenProps {
 }
 
 export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(-1); // Start with pre-credits
   const [showAnimations, setShowAnimations] = useState(autoStart);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  // Enhanced timing based on waveform analysis
   const steps = [
-    { delay: 0, duration: 6000 },      // Title - Extended dramatic entrance
-    { delay: 6000, duration: 8000 },   // Token Swap - Slow build-up
-    { delay: 14000, duration: 6000 },  // Jackpot reveal - Epic moment
-    { delay: 20000, duration: 8000 },  // Fee breakdown intro - Suspense
-    { delay: 28000, duration: 10000 }, // Fee breakdown details - Climactic
-    { delay: 38000, duration: 8000 },  // Lottery explanation - Grand reveal
-    { delay: 46000, duration: 7000 },  // VRF details - Final act
-    { delay: 53000, duration: 5000 },  // Conclusion
+    { delay: 0, duration: 6500 },      // [0:00–0:06.5] Title intro: swell begins
+    { delay: 6500, duration: 7500 },   // [0:06.5–0:14] Swap animation buildup
+    { delay: 14000, duration: 6000 },  // [0:14–0:20] Jackpot reveal at first drop
+    { delay: 20000, duration: 8500 },  // [0:20–0:28.5] Fee tension – ambient mood
+    { delay: 28500, duration: 10000 }, // [0:28.5–0:38.5] Fee breakdown – cinematic swell
+    { delay: 38500, duration: 8000 },  // [0:38.5–0:46.5] Lottery mechanics
+    { delay: 46500, duration: 7000 },  // [0:46.5–0:53.5] VRF finale
+    { delay: 53500, duration: 8000 },  // [0:53.5–1:01.5] Final CTA + logo out
   ];
 
   useEffect(() => {
     if (autoStart) {
       setShowAnimations(true);
       
-      // Start audio with fade in
+      // Start with pre-credits, then move to step 0 after 3 seconds
+      setTimeout(() => setCurrentStep(0), 3000);
+      
+      // Start audio with fade in after pre-credits
       if (audioRef.current) {
         setTimeout(() => {
           audioRef.current!.volume = 0;
@@ -41,14 +45,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             };
             fadeIn();
           }).catch(console.log);
-        }, 100);
+        }, 2800); // Start audio just before step 0
       }
 
-      // Auto-advance steps
+      // Auto-advance steps (adjusted for 3-second pre-credits delay)
       steps.forEach((step, index) => {
         setTimeout(() => {
           setCurrentStep(index);
-        }, step.delay);
+        }, step.delay + 3000); // Add 3 seconds for pre-credits
       });
     }
   }, [autoStart]);
@@ -151,6 +155,30 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
       {showAnimations && (
         <div className="fixed inset-0 z-10">
           <AnimatePresence mode="wait">
+            
+            {/* Pre-Credits: From the creators of OmniDragon */}
+            {currentStep === -1 && (
+              <motion.div
+                key="precredits"
+                className="flex items-center justify-center min-h-screen bg-black text-white"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 2 }}
+              >
+                <motion.p
+                  className="text-xl tracking-wider text-gray-400 font-light"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1, duration: 1.5 }}
+                  style={{
+                    filter: "drop-shadow(0 0 20px rgba(156,163,175,0.3))"
+                  }}
+                >
+                  From the creators of OmniDragon
+                </motion.p>
+              </motion.div>
+            )}
             
             {/* Step 0: Sophisticated Title Reveal */}
             {currentStep === 0 && (
@@ -335,55 +363,113 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     />
                   </motion.div>
 
-                  {/* Simple collision effect */}
+                  {/* Epic collision effect with screen shake */}
                   <motion.div
                     className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ 
-                      scale: [0, 3, 0], 
-                      opacity: [0, 0.8, 0]
+                      scale: [0, 5, 2, 0], 
+                      opacity: [0, 1, 0.6, 0],
+                      rotateZ: [0, 180, 360]
                     }}
-                    transition={{ duration: 1, delay: 2.5 }}
+                    transition={{ duration: 2, delay: 2.5, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-orange-400 opacity-30 blur-sm" />
+                    <div className="w-40 h-40 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-orange-400 opacity-40 blur-lg" />
                   </motion.div>
+
+                  {/* Screen shake effect for collision */}
+                  <motion.div
+                    className="absolute inset-0"
+                    animate={{ 
+                      x: [0, -5, 5, -3, 3, 0],
+                      y: [0, 3, -3, 2, -2, 0]
+                    }}
+                    transition={{ 
+                      duration: 0.3, 
+                      delay: 2.5,
+                      ease: "easeInOut"
+                    }}
+                  />
+
+                  {/* Energy burst particles */}
+                  {[...Array(25)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-2 h-2 rounded-full bg-white"
+                      style={{
+                        left: "50%",
+                        top: "50%",
+                        boxShadow: `0 0 10px ${i % 2 === 0 ? '#FFD700' : '#FF6B35'}`
+                      }}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ 
+                        scale: [0, 1.5, 0],
+                        x: Math.cos(i * 14.4 * Math.PI / 180) * (100 + Math.random() * 100),
+                        y: Math.sin(i * 14.4 * Math.PI / 180) * (100 + Math.random() * 100),
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        delay: 2.5 + i * 0.02,
+                        ease: "easeOut"
+                      }}
+                    />
+                  ))}
                 </div>
               </motion.div>
             )}
 
-            {/* Step 2: Refined Twist Reveal */}
+            {/* Step 2: Epic Jackpot Reveal with Screen Impact */}
             {currentStep === 2 && (
               <motion.div
-                key="twist"
+                key="jackpot"
                 className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, rotateX: 45 }}
-                animate={{ opacity: 1, rotateX: 0 }}
-                exit={{ opacity: 0, scale: 1.2, filter: "blur(8px)" }}
-                transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: 1,
+                  x: [0, -8, 8, -4, 4, 0], // Screen shake effect
+                  y: [0, 4, -4, 2, -2, 0]
+                }}
+                exit={{ opacity: 0, scale: 1.3, filter: "blur(12px)" }}
+                transition={{ 
+                  duration: 1.5, 
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  x: { duration: 0.4, delay: 1 },
+                  y: { duration: 0.4, delay: 1 }
+                }}
               >
                 <div className="text-center relative">
+                  {/* Flash effect */}
+                  <motion.div
+                    className="fixed inset-0 bg-white pointer-events-none z-50"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 0.6, 0] }}
+                    transition={{ duration: 0.2, delay: 0.8 }}
+                  />
+
                   <motion.h2
-                    className="text-8xl font-bold text-amber-400 relative z-10 tracking-wide"
-                    initial={{ scale: 0.2, y: 200, opacity: 0, rotateX: 90 }}
+                    className="text-9xl font-bold text-amber-400 relative z-10 tracking-wide mb-8"
+                    initial={{ scale: 0.1, y: 300, opacity: 0, rotateX: 180 }}
                     animate={{ 
-                      scale: [0.2, 0.8, 1.2, 1], 
-                      y: [200, 100, -30, 0],
-                      opacity: [0, 0.5, 1, 1],
-                      rotateX: [90, 45, -10, 0]
+                      scale: [0.1, 0.6, 1.3, 1], 
+                      y: [300, 150, -50, 0],
+                      opacity: [0, 0.3, 1, 1],
+                      rotateX: [180, 90, -15, 0]
                     }}
                     transition={{ 
-                      duration: 3, 
+                      duration: 2.5, 
                       ease: [0.16, 1, 0.3, 1],
-                      times: [0, 0.4, 0.8, 1],
-                      delay: 0.5
+                      times: [0, 0.3, 0.7, 1],
+                      delay: 0.3
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 80px rgba(251,191,36,1)) drop-shadow(0 0 120px rgba(251,191,36,0.6))",
-                      fontWeight: 800,
-                      textShadow: "0 0 50px rgba(251,191,36,0.8)"
+                      filter: "drop-shadow(0 0 100px rgba(251,191,36,1)) drop-shadow(0 0 150px rgba(251,191,36,0.8))",
+                      fontWeight: 900,
+                      textShadow: "0 0 80px rgba(251,191,36,1)"
                     }}
                   >
-                    AND GET A CHANCE TO WIN THE JACKPOT!
+                    WIN THE JACKPOT!
                   </motion.h2>
 
                   <motion.div
@@ -840,103 +926,174 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 7: Sophisticated VRF Finale */}
+            {/* Step 7: Epic Finale with CTA */}
             {currentStep === 7 && (
               <motion.div
-                key="vrf"
+                key="finale"
                 className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, rotateX: 45 }}
-                animate={{ opacity: 1, rotateX: 0 }}
-                exit={{ opacity: 0, scale: 1.5, filter: "blur(15px)" }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.2, filter: "blur(20px)" }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
               >
                 <div className="text-center relative max-w-6xl">
-                  <motion.h2
-                    className="text-4xl font-light mb-10 text-yellow-400 tracking-wide"
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    style={{
-                      filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
-                      fontWeight: 300
+                  {/* Main Title */}
+                  <motion.h1
+                    className="text-8xl font-bold mb-8 tracking-wider"
+                    initial={{ scale: 0.3, rotateX: 90, opacity: 0 }}
+                    animate={{ 
+                      scale: [0.3, 1.1, 1], 
+                      rotateX: [90, -10, 0],
+                      opacity: [0, 1, 1]
                     }}
-                  >
-                    PROVABLY FAIR WITH
-                  </motion.h2>
-                  
-                  <motion.div
-                    className="text-6xl font-light mb-12 tracking-wider"
-                    initial={{ scale: 0.5, rotateZ: -20, opacity: 0 }}
-                    animate={{ scale: 1, rotateZ: 0, opacity: 1 }}
-                    transition={{ duration: 1.5, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ 
+                      duration: 2.5, 
+                      delay: 0.5,
+                      ease: [0.16, 1, 0.3, 1],
+                      times: [0, 0.7, 1]
+                    }}
                     style={{
-                      background: "linear-gradient(135deg, #FFD700, #FF6B35, #3B82F6)",
+                      background: "linear-gradient(135deg, #FFD700, #FF6B35, #FFEB3B)",
                       backgroundClip: "text",
                       WebkitBackgroundClip: "text",
                       color: "transparent",
-                      filter: "drop-shadow(0 0 50px rgba(255,215,0,0.6))",
-                      fontWeight: 200
+                      filter: "drop-shadow(0 0 80px rgba(255,215,0,1))",
+                      fontWeight: 800
                     }}
                   >
-                    OMNIDRAGONRANDOMNESS
-                  </motion.div>
-                  
-                  <motion.div
-                    className="space-y-8 text-2xl"
+                    SONIC RED DRAGON
+                  </motion.h1>
+
+                  {/* Subtitle */}
+                  <motion.h2
+                    className="text-4xl font-light mb-12 text-gray-300 tracking-wide"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2, duration: 1 }}
+                    transition={{ duration: 1.5, delay: 1.5 }}
+                    style={{
+                      filter: "drop-shadow(0 0 25px rgba(255,255,255,0.2))",
+                      fontWeight: 300
+                    }}
+                  >
+                    The Future of Cross-Chain Lottery DeFi
+                  </motion.h2>
+
+                  {/* Tech Features */}
+                  <motion.div
+                    className="mb-16 space-y-4"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.5, duration: 1.5 }}
                   >
                     <motion.p
-                      className="text-blue-400 font-light tracking-wide"
-                      animate={{ opacity: [0.8, 1, 0.8] }}
+                      className="text-xl text-blue-400 font-light tracking-wide"
+                      animate={{ opacity: [0.7, 1, 0.7] }}
                       transition={{ duration: 3, repeat: Infinity }}
                       style={{
                         filter: "drop-shadow(0 0 15px rgba(59,130,246,0.4))"
                       }}
                     >
-                      Chainlink VRF2.5 + LayerZero + drand aggregation
+                      ⚡ Chainlink VRF2.5 • LayerZero Cross-Chain • Provably Fair
                     </motion.p>
                     <motion.p
-                      className="text-warm-orange font-light tracking-wide"
+                      className="text-xl text-warm-orange font-light tracking-wide"
                       animate={{ scale: [1, 1.02, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                       style={{
                         filter: "drop-shadow(0 0 15px rgba(255,107,53,0.4))"
                       }}
                     >
-                      Results are instantaneous and unique to each swap
+                      🎯 Every Swap = Lottery Entry • Win Up to $69,000
                     </motion.p>
                   </motion.div>
 
-                  {/* Refined orbiting tech elements */}
-                  {["VRF", "L0", "DRAND"].map((tech, i) => {
-                    const angle = i * 120;
-                    return (
-                      <motion.div
-                        key={tech}
-                        className="absolute w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-600/30 border border-blue-400/40 flex items-center justify-center text-sm font-light backdrop-blur-sm"
-                        style={{
-                          left: "50%",
-                          top: "50%",
-                          filter: "drop-shadow(0 0 20px rgba(99,102,241,0.4))",
-                          boxShadow: "inset 0 0 20px rgba(99,102,241,0.1)"
-                        }}
-                        animate={{
-                          x: Math.cos((angle) * Math.PI / 180) * 200,
-                          y: Math.sin((angle) * Math.PI / 180) * 200,
-                          rotateZ: [0, 360],
-                        }}
-                        transition={{
-                          x: { duration: 10, repeat: Infinity, ease: "linear" },
-                          y: { duration: 10, repeat: Infinity, ease: "linear" },
-                          rotateZ: { duration: 4, repeat: Infinity, ease: "linear" }
-                        }}
-                      >
-                        {tech}
-                      </motion.div>
-                    );
-                  })}
+                  {/* CTA Section */}
+                  <motion.div
+                    className="space-y-6"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 4, duration: 1.5 }}
+                  >
+                    <motion.p
+                      className="text-2xl text-white/80 font-light"
+                      animate={{ opacity: [0.8, 1, 0.8] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      Coming Soon
+                    </motion.p>
+                    <motion.p
+                      className="text-4xl text-yellow-400 font-medium tracking-wider"
+                      animate={{ 
+                        scale: [1, 1.05, 1],
+                        textShadow: [
+                          "0 0 20px rgba(255,235,59,0.5)",
+                          "0 0 40px rgba(255,235,59,0.8)",
+                          "0 0 20px rgba(255,235,59,0.5)"
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      style={{
+                        filter: "drop-shadow(0 0 30px rgba(255,235,59,0.7))"
+                      }}
+                    >
+                      sonicreddragon.io
+                    </motion.p>
+                  </motion.div>
+
+                  {/* Epic particle explosion */}
+                  {[...Array(50)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute rounded-full"
+                      style={{
+                        width: 3 + Math.random() * 6 + 'px',
+                        height: 3 + Math.random() * 6 + 'px',
+                        background: i % 3 === 0 ? '#FFD700' : i % 3 === 1 ? '#FF6B35' : '#FFEB3B',
+                        left: "50%",
+                        top: "50%",
+                        boxShadow: `0 0 15px ${i % 3 === 0 ? '#FFD700' : i % 3 === 1 ? '#FF6B35' : '#FFEB3B'}`
+                      }}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ 
+                        scale: [0, 1.5, 0],
+                        x: (Math.random() - 0.5) * 800,
+                        y: (Math.random() - 0.5) * 600,
+                        opacity: [0, 1, 0],
+                        rotateZ: [0, 720 * (Math.random() > 0.5 ? 1 : -1)]
+                      }}
+                      transition={{
+                        duration: 4 + Math.random() * 2,
+                        delay: 3 + Math.random() * 2,
+                        ease: [0.16, 1, 0.3, 1]
+                      }}
+                    />
+                  ))}
+
+                  {/* Dramatic light rays */}
+                  {[...Array(8)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute bg-gradient-to-t from-yellow-400/30 via-orange-400/20 to-transparent"
+                      style={{
+                        width: "2px",
+                        height: "400px",
+                        left: "50%",
+                        top: "50%",
+                        transformOrigin: "bottom",
+                        transform: `rotate(${i * 45}deg)`,
+                        filter: "blur(1px)"
+                      }}
+                      animate={{
+                        scaleY: [0, 1, 0.7, 0],
+                        opacity: [0, 0.8, 0.4, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        delay: 2 + i * 0.2,
+                        ease: "easeOut"
+                      }}
+                    />
+                  ))}
                 </div>
               </motion.div>
             )}
