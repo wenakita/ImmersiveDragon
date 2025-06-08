@@ -54,38 +54,96 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   }, [autoStart]);
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
       <audio ref={audioRef} preload="auto" className="hidden">
         <source src={audioFile} type="audio/mpeg" />
       </audio>
 
-      {/* Background Effects */}
+      {/* Enhanced Background Effects */}
       <div className="fixed inset-0 pointer-events-none">
+        {/* Animated gradient mesh */}
         <motion.div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0"
           style={{
-            background: "radial-gradient(circle at center, rgba(255,107,53,0.3) 0%, rgba(0,0,0,0) 70%)"
+            background: `
+              radial-gradient(ellipse at 30% 70%, rgba(255,107,53,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 30%, rgba(59,130,246,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 50% 50%, rgba(255,235,59,0.06) 0%, transparent 60%)
+            `
           }}
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
+            scale: [1, 1.1, 1],
+            opacity: [0.4, 0.7, 0.4],
           }}
           transition={{
-            duration: 4,
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         
+        {/* Floating particles */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-30"
+            style={{
+              width: Math.random() * 3 + 1 + 'px',
+              height: Math.random() * 3 + 1 + 'px',
+              left: Math.random() * 100 + '%',
+              top: Math.random() * 100 + '%',
+              background: i % 3 === 0 ? '#FF6B35' : i % 3 === 1 ? '#FFEB3B' : '#3B82F6'
+            }}
+            animate={{
+              y: [0, -150, 0],
+              opacity: [0, 0.6, 0],
+              scale: [0, 1.5, 0],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+        
+        {/* Subtle geometric overlay */}
+        <div 
+          className="absolute inset-0 opacity-3"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px'
+          }}
+        />
+        
+        {/* Ambient light streaks */}
         <motion.div
-          className="absolute w-full h-px bg-gradient-to-r from-transparent via-warm-orange to-transparent opacity-30"
+          className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-warm-orange to-transparent opacity-20"
           animate={{
-            y: [-100, 800],
+            opacity: [0.1, 0.3, 0.1],
+            scaleY: [0.8, 1.2, 0.8]
           }}
           transition={{
-            duration: 3,
+            duration: 6,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-400 to-transparent opacity-15"
+          animate={{
+            opacity: [0.1, 0.2, 0.1],
+            scaleY: [1.2, 0.8, 1.2]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
           }}
         />
       </div>
@@ -94,64 +152,69 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
         <div className="fixed inset-0 z-10">
           <AnimatePresence mode="wait">
             
-            {/* Step 0: Epic Title Reveal */}
+            {/* Step 0: Sophisticated Title Reveal */}
             {currentStep === 0 && (
               <motion.div
                 key="title"
                 className="flex items-center justify-center min-h-screen"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.8 }}
+                exit={{ opacity: 0, scale: 0.9, filter: "blur(5px)" }}
+                transition={{ duration: 1 }}
               >
                 <div className="text-center relative">
+                  {/* Elegant glow backdrop */}
                   <motion.div
-                    className="absolute inset-0 text-6xl font-black bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent"
+                    className="absolute inset-0 rounded-3xl opacity-20"
+                    style={{
+                      background: "radial-gradient(ellipse, rgba(255,107,53,0.3) 0%, transparent 70%)",
+                      filter: "blur(30px)"
+                    }}
                     animate={{
-                      x: [0, -2, 2, 0],
-                      filter: ["hue-rotate(0deg)", "hue-rotate(180deg)", "hue-rotate(0deg)"],
+                      scale: [1, 1.2, 1],
+                      opacity: [0.2, 0.4, 0.2],
                     }}
                     transition={{
-                      duration: 0.1,
+                      duration: 4,
                       repeat: Infinity,
-                      repeatType: "mirror"
+                      ease: "easeInOut"
                     }}
-                  >
-                    SONIC RED DRAGON
-                  </motion.div>
+                  />
                   
                   <motion.h1
-                    className="text-6xl font-black bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10"
-                    initial={{ scale: 0.5, rotateX: 90 }}
-                    animate={{ scale: 1, rotateX: 0 }}
-                    transition={{ duration: 1, ease: "backOut", delay: 0.5 }}
+                    className="text-7xl font-light tracking-wider bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10"
+                    initial={{ scale: 0.8, y: 30, opacity: 0 }}
+                    animate={{ scale: 1, y: 0, opacity: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
                     style={{
-                      filter: "drop-shadow(0 0 30px rgba(255,107,53,0.8))",
-                      textShadow: "0 0 40px rgba(255,107,53,0.6)"
+                      filter: "drop-shadow(0 0 40px rgba(255,107,53,0.4))",
+                      fontFamily: "system-ui, -apple-system, sans-serif",
+                      fontWeight: 200
                     }}
                   >
-                    <Typewriter text="SONIC RED DRAGON" delay={1500} speed={80} />
+                    <Typewriter text="SONIC RED DRAGON" delay={1000} speed={90} />
                   </motion.h1>
                   
-                  {/* Particle burst */}
-                  {[...Array(12)].map((_, i) => (
+                  {/* Refined particle system */}
+                  {[...Array(16)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-2 h-2 bg-warm-orange rounded-full"
+                      className="absolute w-1 h-1 rounded-full bg-warm-orange opacity-60"
                       style={{
                         left: "50%",
                         top: "50%",
                       }}
                       animate={{
-                        x: Math.cos(i * 30 * Math.PI / 180) * 200,
-                        y: Math.sin(i * 30 * Math.PI / 180) * 200,
-                        opacity: [1, 0],
-                        scale: [0, 1, 0],
+                        x: Math.cos(i * 22.5 * Math.PI / 180) * (150 + Math.random() * 50),
+                        y: Math.sin(i * 22.5 * Math.PI / 180) * (150 + Math.random() * 50),
+                        opacity: [0.6, 0, 0.6],
+                        scale: [0, 1.5, 0],
                       }}
                       transition={{
-                        duration: 2,
-                        delay: 2 + i * 0.1,
-                        ease: "easeOut"
+                        duration: 3,
+                        delay: 2.5 + i * 0.05,
+                        ease: "easeOut",
+                        repeat: 1
                       }}
                     />
                   ))}
@@ -159,212 +222,156 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 1: Token Collision */}
+            {/* Step 1: Elegant Token Interaction */}
             {currentStep === 1 && (
               <motion.div
                 key="tokens"
                 className="flex items-center justify-center min-h-screen"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0, x: -1000, rotateY: 90 }}
-                transition={{ duration: 0.6 }}
+                exit={{ opacity: 0, x: -500, rotateY: 45 }}
+                transition={{ duration: 0.8 }}
               >
                 <div className="relative w-full h-96">
                   <motion.h2
-                    className="text-center text-5xl font-light mb-16 text-yellow-400"
-                    initial={{ y: -50, opacity: 0 }}
+                    className="text-center text-5xl font-light mb-20 text-yellow-400 tracking-wide"
+                    initial={{ y: -30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
                     style={{
-                      filter: "drop-shadow(0 0 20px rgba(255,235,59,0.8))"
+                      filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
+                      fontWeight: 300
                     }}
                   >
                     SWAP $S FOR $DRAGON
                   </motion.h2>
 
-                  {/* S Token */}
+                  {/* Sophisticated token animations */}
                   <motion.div
-                    className="absolute left-10 top-1/2 w-32 h-32 rounded-full bg-blue-500/30 border-4 border-blue-400 flex items-center justify-center transform -translate-y-1/2"
-                    initial={{ x: -600, rotateY: 180, scale: 0 }}
+                    className="absolute left-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-blue-400/20 to-blue-600/30 border border-blue-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
+                    initial={{ x: -800, rotateY: 180, scale: 0, opacity: 0 }}
                     animate={{ 
-                      x: [0, 500, 300], 
+                      x: [0, 450, 320], 
                       rotateY: [180, 0, 0], 
-                      scale: [0, 1.3, 1],
-                      rotateZ: [0, 0, 360]
+                      scale: [0, 1.2, 1],
+                      opacity: [0, 1, 1],
+                      rotateZ: [0, 0, 180]
                     }}
                     transition={{ 
-                      duration: 2.5, 
-                      times: [0, 0.6, 1],
-                      ease: "backOut",
+                      duration: 3, 
+                      times: [0, 0.7, 1],
+                      ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)",
                       delay: 0.5
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 30px rgba(59,130,246,0.8))"
+                      filter: "drop-shadow(0 0 30px rgba(59,130,246,0.6))",
+                      boxShadow: "inset 0 0 30px rgba(59,130,246,0.2)"
                     }}
                   >
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
                       alt="S Token"
-                      className="w-20 h-20"
+                      className="w-24 h-24"
                     />
                   </motion.div>
 
-                  {/* DRAGON Token */}
                   <motion.div
-                    className="absolute right-10 top-1/2 w-32 h-32 rounded-full bg-orange-500/30 border-4 border-orange-400 flex items-center justify-center transform -translate-y-1/2"
-                    initial={{ x: 600, rotateY: -180, scale: 0 }}
+                    className="absolute right-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-orange-400/20 to-orange-600/30 border border-orange-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
+                    initial={{ x: 800, rotateY: -180, scale: 0, opacity: 0 }}
                     animate={{ 
-                      x: [0, -500, -300], 
+                      x: [0, -450, -320], 
                       rotateY: [-180, 0, 0], 
-                      scale: [0, 1.3, 1],
-                      rotateZ: [0, 0, -360]
+                      scale: [0, 1.2, 1],
+                      opacity: [0, 1, 1],
+                      rotateZ: [0, 0, -180]
                     }}
                     transition={{ 
-                      duration: 2.5, 
-                      times: [0, 0.6, 1],
-                      ease: "backOut",
+                      duration: 3, 
+                      times: [0, 0.7, 1],
+                      ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)",
                       delay: 1
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 30px rgba(249,115,22,0.8))"
+                      filter: "drop-shadow(0 0 30px rgba(249,115,22,0.6))",
+                      boxShadow: "inset 0 0 30px rgba(249,115,22,0.2)"
                     }}
                   >
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                       alt="DRAGON Token"
-                      className="w-20 h-20"
+                      className="w-24 h-24"
                     />
                   </motion.div>
 
-                  {/* Collision Effect */}
+                  {/* Elegant collision effect */}
                   <motion.div
                     className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: [0, 4, 0], opacity: [0, 1, 0] }}
-                    transition={{ duration: 1.5, delay: 2.8 }}
+                    animate={{ 
+                      scale: [0, 3, 1.5, 0], 
+                      opacity: [0, 0.8, 0.4, 0],
+                      rotate: [0, 180, 360]
+                    }}
+                    transition={{ duration: 2, delay: 3 }}
                   >
-                    <div className="w-40 h-40 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 opacity-30" />
+                    <div className="w-48 h-48 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-orange-400 opacity-20 blur-sm" />
                   </motion.div>
                 </div>
               </motion.div>
             )}
 
-            {/* Step 2: The Twist */}
+            {/* Step 2: Refined Twist Reveal */}
             {currentStep === 2 && (
               <motion.div
                 key="twist"
                 className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, rotateX: 90 }}
+                initial={{ opacity: 0, rotateX: 45 }}
                 animate={{ opacity: 1, rotateX: 0 }}
-                exit={{ opacity: 0, scale: 1.5, filter: "blur(10px)" }}
-                transition={{ duration: 0.8, ease: "backOut" }}
+                exit={{ opacity: 0, scale: 1.2, filter: "blur(8px)" }}
+                transition={{ duration: 1, ease: "easeOut" }}
               >
                 <div className="text-center relative">
                   <motion.h2
-                    className="text-7xl font-black text-warm-orange relative z-10"
-                    initial={{ scale: 0, rotateZ: -45 }}
+                    className="text-7xl font-light text-warm-orange relative z-10 tracking-wide"
+                    initial={{ scale: 0.5, y: 50, opacity: 0 }}
                     animate={{ 
-                      scale: [0, 1.4, 1], 
-                      rotateZ: [-45, 15, 0],
+                      scale: [0.5, 1.1, 1], 
+                      y: [50, -10, 0],
+                      opacity: [0, 1, 1]
                     }}
                     transition={{ 
-                      duration: 1.5, 
-                      ease: "backOut",
-                      times: [0, 0.7, 1]
+                      duration: 1.8, 
+                      ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)",
+                      times: [0, 0.8, 1]
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 40px rgba(255,107,53,1))",
-                      textShadow: "0 0 60px rgba(255,107,53,0.9)"
+                      filter: "drop-shadow(0 0 50px rgba(255,107,53,0.8))",
+                      fontWeight: 300
                     }}
                   >
                     BUT THERE'S A TWIST...
                   </motion.h2>
                   
-                  {/* Lightning effects */}
-                  {[...Array(8)].map((_, i) => (
+                  {/* Elegant energy waves */}
+                  {[...Array(6)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-1 bg-gradient-to-b from-yellow-400 to-transparent"
+                      className="absolute w-2 bg-gradient-to-b from-yellow-400 via-orange-400 to-transparent opacity-60"
                       style={{
-                        height: "120px",
-                        left: `${15 + i * 12}%`,
-                        top: "-60px",
-                        transformOrigin: "top"
+                        height: "140px",
+                        left: `${20 + i * 13}%`,
+                        top: "-70px",
+                        transformOrigin: "bottom",
+                        filter: "blur(0.5px)"
                       }}
                       animate={{
-                        scaleY: [0, 1, 0],
-                        opacity: [0, 1, 0],
-                        rotateZ: [0, (i % 2 === 0 ? 15 : -15), 0]
+                        scaleY: [0, 1, 0.3, 0],
+                        opacity: [0, 0.8, 0.4, 0],
+                        rotateZ: [0, (i % 2 === 0 ? 8 : -8), 0]
                       }}
                       transition={{
-                        duration: 0.4,
-                        delay: 1 + i * 0.1,
-                        repeat: 3,
-                        repeatDelay: 0.3
-                      }}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-            )}
-
-            {/* Step 3: Fee Bomb */}
-            {currentStep === 3 && (
-              <motion.div
-                key="fee"
-                className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, y: -1000 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 1000, rotateX: 90 }}
-                transition={{ duration: 1, ease: "backOut" }}
-              >
-                <div className="text-center relative">
-                  <motion.div
-                    className="text-8xl font-black text-warm-orange mb-8"
-                    initial={{ scale: 0, rotateY: 180 }}
-                    animate={{ 
-                      scale: [0, 1.3, 1], 
-                      rotateY: [180, 0, 0],
-                      y: [0, -30, 0]
-                    }}
-                    transition={{ 
-                      duration: 1.5, 
-                      ease: "backOut",
-                      delay: 0.3
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 0 50px rgba(255,107,53,0.9))",
-                      textShadow: "0 0 80px rgba(255,107,53,0.8)"
-                    }}
-                  >
-                    10% FEE
-                  </motion.div>
-                  
-                  <motion.div
-                    className="text-4xl font-light text-yellow-400"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.5, duration: 0.8 }}
-                    style={{
-                      filter: "drop-shadow(0 0 20px rgba(255,235,59,0.8))"
-                    }}
-                  >
-                    ON ALL SWAPS
-                  </motion.div>
-                  
-                  {/* Explosion rings */}
-                  {[...Array(4)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute inset-0 border-2 border-warm-orange rounded-full"
-                      initial={{ scale: 0, opacity: 1 }}
-                      animate={{ 
-                        scale: [0, 3 + i, 4 + i], 
-                        opacity: [1, 0.5, 0] 
-                      }}
-                      transition={{ 
-                        duration: 2, 
-                        delay: 0.8 + i * 0.2,
+                        duration: 1.2,
+                        delay: 1.5 + i * 0.15,
                         ease: "easeOut"
                       }}
                     />
@@ -373,30 +380,98 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 4: Fee Breakdown */}
+            {/* Step 3: Sophisticated Fee Reveal */}
+            {currentStep === 3 && (
+              <motion.div
+                key="fee"
+                className="flex items-center justify-center min-h-screen"
+                initial={{ opacity: 0, y: -200 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 200, rotateX: 45 }}
+                transition={{ duration: 1.2, ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)" }}
+              >
+                <div className="text-center relative">
+                  <motion.div
+                    className="text-8xl font-light text-warm-orange mb-10 tracking-wider"
+                    initial={{ scale: 0.3, rotateY: 90, opacity: 0 }}
+                    animate={{ 
+                      scale: [0.3, 1.15, 1], 
+                      rotateY: [90, 0, 0],
+                      opacity: [0, 1, 1],
+                      y: [0, -20, 0]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)",
+                      delay: 0.3
+                    }}
+                    style={{
+                      filter: "drop-shadow(0 0 60px rgba(255,107,53,0.7))",
+                      fontWeight: 200
+                    }}
+                  >
+                    10% FEE
+                  </motion.div>
+                  
+                  <motion.div
+                    className="text-4xl font-light text-yellow-400 tracking-wide"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2, duration: 1 }}
+                    style={{
+                      filter: "drop-shadow(0 0 25px rgba(255,235,59,0.6))",
+                      fontWeight: 300
+                    }}
+                  >
+                    ON ALL SWAPS
+                  </motion.div>
+                  
+                  {/* Elegant expanding rings */}
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute inset-0 border border-warm-orange/30 rounded-full"
+                      initial={{ scale: 0, opacity: 1 }}
+                      animate={{ 
+                        scale: [0, 2.5 + i * 0.5, 3 + i * 0.5], 
+                        opacity: [1, 0.3, 0] 
+                      }}
+                      transition={{ 
+                        duration: 2.5, 
+                        delay: 1.2 + i * 0.3,
+                        ease: "easeOut"
+                      }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 4: Refined Fee Breakdown */}
             {currentStep === 4 && (
               <motion.div
                 key="breakdown"
                 className="flex items-center justify-center min-h-screen"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0, filter: "blur(20px)" }}
-                transition={{ duration: 0.6 }}
+                exit={{ opacity: 0, filter: "blur(15px)" }}
+                transition={{ duration: 0.8 }}
               >
                 <div className="text-center">
                   <motion.h2
-                    className="text-5xl font-light mb-16 text-yellow-400"
-                    initial={{ y: -30, opacity: 0 }}
+                    className="text-5xl font-light mb-20 text-yellow-400 tracking-wide"
+                    initial={{ y: -40, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
                     style={{
-                      filter: "drop-shadow(0 0 25px rgba(255,235,59,0.8))"
+                      filter: "drop-shadow(0 0 30px rgba(255,235,59,0.5))",
+                      fontWeight: 300
                     }}
                   >
                     FEE BREAKDOWN
                   </motion.h2>
 
-                  <div className="space-y-10">
+                  <div className="space-y-12">
                     {[
                       { percent: "6.9%", label: "JACKPOT", color: "yellow", delay: 0.5 },
                       { percent: "2.41%", label: "LP REWARDS", color: "blue", delay: 1 },
@@ -404,38 +479,43 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     ].map((item, i) => (
                       <motion.div
                         key={i}
-                        className="flex items-center justify-center space-x-12"
-                        initial={{ x: i % 2 === 0 ? -800 : 800, opacity: 0, rotateY: 90 }}
+                        className="flex items-center justify-center space-x-16"
+                        initial={{ x: i % 2 === 0 ? -600 : 600, opacity: 0, rotateY: 45 }}
                         animate={{ x: 0, opacity: 1, rotateY: 0 }}
                         transition={{ 
-                          duration: 1.2, 
+                          duration: 1.5, 
                           delay: item.delay,
-                          ease: "backOut"
+                          ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)"
                         }}
                       >
                         <motion.div
-                          className={`w-24 h-24 rounded-full border-4 flex items-center justify-center ${
-                            item.color === 'yellow' ? 'bg-yellow-500/20 border-yellow-400' :
-                            item.color === 'blue' ? 'bg-blue-500/20 border-blue-400' :
-                            'bg-orange-500/20 border-orange-400'
+                          className={`w-28 h-28 rounded-full border-2 flex items-center justify-center backdrop-blur-sm ${
+                            item.color === 'yellow' ? 'bg-yellow-500/10 border-yellow-400/60' :
+                            item.color === 'blue' ? 'bg-blue-500/10 border-blue-400/60' :
+                            'bg-orange-500/10 border-orange-400/60'
                           }`}
                           animate={{
                             rotateZ: [0, 360],
-                            scale: [1, 1.15, 1]
+                            scale: [1, 1.08, 1]
                           }}
                           transition={{
-                            rotateZ: { duration: 4, repeat: Infinity, ease: "linear" },
-                            scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                            rotateZ: { duration: 8, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                           }}
                           style={{
                             filter: `drop-shadow(0 0 25px ${
-                              item.color === 'yellow' ? 'rgba(234,179,8,0.8)' :
-                              item.color === 'blue' ? 'rgba(59,130,246,0.8)' :
-                              'rgba(249,115,22,0.8)'
-                            })`
+                              item.color === 'yellow' ? 'rgba(234,179,8,0.4)' :
+                              item.color === 'blue' ? 'rgba(59,130,246,0.4)' :
+                              'rgba(249,115,22,0.4)'
+                            })`,
+                            boxShadow: `inset 0 0 20px ${
+                              item.color === 'yellow' ? 'rgba(234,179,8,0.1)' :
+                              item.color === 'blue' ? 'rgba(59,130,246,0.1)' :
+                              'rgba(249,115,22,0.1)'
+                            }`
                           }}
                         >
-                          <span className={`text-xl font-bold ${
+                          <span className={`text-xl font-light ${
                             item.color === 'yellow' ? 'text-yellow-400' :
                             item.color === 'blue' ? 'text-blue-400' :
                             'text-orange-400'
@@ -445,17 +525,17 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         </motion.div>
                         
                         <motion.span
-                          className={`text-3xl font-medium ${
+                          className={`text-3xl font-light tracking-wide ${
                             item.color === 'yellow' ? 'text-yellow-400' :
                             item.color === 'blue' ? 'text-blue-400' :
                             'text-orange-400'
                           }`}
-                          animate={{ x: [0, 15, 0] }}
+                          animate={{ x: [0, 8, 0] }}
                           transition={{ 
-                            duration: 2, 
+                            duration: 3, 
                             repeat: Infinity, 
                             ease: "easeInOut",
-                            delay: item.delay + 0.5
+                            delay: item.delay + 1
                           }}
                         >
                           → {item.label}
@@ -467,67 +547,69 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 5: Lottery */}
+            {/* Step 5: Elegant Lottery */}
             {currentStep === 5 && (
               <motion.div
                 key="lottery"
                 className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, scale: 0.5 }}
+                initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, rotateY: 180 }}
-                transition={{ duration: 0.8, ease: "backOut" }}
+                exit={{ opacity: 0, rotateY: 90 }}
+                transition={{ duration: 1, ease: "easeOut" }}
               >
                 <div className="text-center relative">
                   <motion.h2
-                    className="text-6xl font-light mb-8"
-                    initial={{ rotateX: 90, opacity: 0 }}
+                    className="text-6xl font-light mb-12 tracking-wide"
+                    initial={{ rotateX: 45, opacity: 0 }}
                     animate={{ rotateX: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.3 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
                     style={{
-                      background: "linear-gradient(45deg, #FFD700, #FFA500, #FFD700)",
+                      background: "linear-gradient(135deg, #FFD700, #FFA500, #FFD700)",
                       backgroundClip: "text",
                       WebkitBackgroundClip: "text",
                       color: "transparent",
-                      filter: "drop-shadow(0 0 30px rgba(255,215,0,0.8))"
+                      filter: "drop-shadow(0 0 40px rgba(255,215,0,0.6))",
+                      fontWeight: 300
                     }}
                   >
                     EVERY SWAP = LOTTERY TICKET
                   </motion.h2>
                   
                   <motion.p
-                    className="text-3xl text-yellow-400 mb-12"
+                    className="text-3xl text-yellow-400 mb-16 font-light tracking-wide"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.5, duration: 0.8 }}
+                    transition={{ delay: 1.8, duration: 1 }}
                     style={{
-                      filter: "drop-shadow(0 0 15px rgba(255,235,59,0.6))"
+                      filter: "drop-shadow(0 0 20px rgba(255,235,59,0.4))"
                     }}
                   >
                     BIGGER SWAPS = BETTER ODDS
                   </motion.p>
 
-                  {/* Floating lottery balls */}
-                  {[...Array(12)].map((_, i) => (
+                  {/* Sophisticated floating elements */}
+                  {[...Array(15)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500"
+                      className="absolute rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 backdrop-blur-sm"
                       style={{
-                        left: `${15 + (i % 4) * 20}%`,
-                        top: `${25 + Math.floor(i / 4) * 25}%`,
+                        width: 8 + Math.random() * 8 + 'px',
+                        height: 8 + Math.random() * 8 + 'px',
+                        left: `${10 + (i % 5) * 18}%`,
+                        top: `${20 + Math.floor(i / 5) * 20}%`,
+                        filter: "drop-shadow(0 0 10px rgba(255,165,0,0.6))"
                       }}
                       animate={{
-                        y: [0, -40, 0],
+                        y: [0, -50 - Math.random() * 30, 0],
                         rotateZ: [0, 360],
-                        scale: [1, 1.3, 1],
+                        scale: [1, 1.4, 1],
+                        opacity: [0.7, 1, 0.7]
                       }}
                       transition={{
-                        duration: 2.5 + i * 0.3,
+                        duration: 3 + i * 0.2,
                         repeat: Infinity,
                         ease: "easeInOut",
-                        delay: i * 0.2
-                      }}
-                      style={{
-                        filter: "drop-shadow(0 0 15px rgba(255,165,0,0.8))"
+                        delay: i * 0.15
                       }}
                     />
                   ))}
@@ -535,30 +617,31 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 6: Odds Table */}
+            {/* Step 6: Refined Odds Table */}
             {currentStep === 6 && (
               <motion.div
                 key="odds"
                 className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, z: -1000 }}
+                initial={{ opacity: 0, z: -500 }}
                 animate={{ opacity: 1, z: 0 }}
-                exit={{ opacity: 0, scale: 0.3, rotateX: 90 }}
-                transition={{ duration: 1, ease: "backOut" }}
+                exit={{ opacity: 0, scale: 0.5, rotateX: 45 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
               >
                 <div className="text-center">
                   <motion.h2
-                    className="text-5xl font-light mb-16 text-yellow-400"
-                    initial={{ opacity: 0, scale: 0 }}
+                    className="text-5xl font-light mb-20 text-yellow-400 tracking-wide"
+                    initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    transition={{ duration: 1, delay: 0.2 }}
                     style={{
-                      filter: "drop-shadow(0 0 25px rgba(255,235,59,0.8))"
+                      filter: "drop-shadow(0 0 30px rgba(255,235,59,0.5))",
+                      fontWeight: 300
                     }}
                   >
                     ODDS TABLE
                   </motion.h2>
 
-                  <div className="space-y-8">
+                  <div className="space-y-10">
                     {[
                       { amount: "$10", odds: "0.004%", color: "blue", delay: 0.5 },
                       { amount: "$100", odds: "0.04%", color: "green", delay: 0.8 },
@@ -567,12 +650,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     ].map((item, i) => (
                       <motion.div
                         key={i}
-                        className="flex items-center justify-center space-x-12"
+                        className="flex items-center justify-center space-x-16"
                         initial={{ 
-                          x: i % 2 === 0 ? -1000 : 1000, 
+                          x: i % 2 === 0 ? -800 : 800, 
                           opacity: 0, 
-                          rotateY: 180,
-                          scale: 0.5
+                          rotateY: 90,
+                          scale: 0.8
                         }}
                         animate={{ 
                           x: 0, 
@@ -581,31 +664,31 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           scale: 1
                         }}
                         transition={{ 
-                          duration: 1.4, 
+                          duration: 1.6, 
                           delay: item.delay,
-                          ease: "backOut"
+                          ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)"
                         }}
                       >
                         <motion.span
-                          className={`text-4xl font-black w-40 text-left ${
+                          className={`text-4xl font-light w-48 text-left tracking-wide ${
                             item.color === 'blue' ? 'text-blue-400' :
                             item.color === 'green' ? 'text-green-400' :
                             item.color === 'yellow' ? 'text-yellow-400' :
                             'text-orange-400'
                           }`}
-                          animate={{ scale: [1, 1.15, 1] }}
+                          animate={{ scale: [1, 1.05, 1] }}
                           transition={{ 
-                            duration: 1.5, 
+                            duration: 2, 
                             repeat: Infinity, 
                             ease: "easeInOut",
-                            delay: item.delay + 1
+                            delay: item.delay + 1.5
                           }}
                           style={{
                             filter: `drop-shadow(0 0 20px ${
-                              item.color === 'blue' ? 'rgba(59,130,246,0.8)' :
-                              item.color === 'green' ? 'rgba(34,197,94,0.8)' :
-                              item.color === 'yellow' ? 'rgba(234,179,8,0.8)' :
-                              'rgba(249,115,22,0.8)'
+                              item.color === 'blue' ? 'rgba(59,130,246,0.4)' :
+                              item.color === 'green' ? 'rgba(34,197,94,0.4)' :
+                              item.color === 'yellow' ? 'rgba(234,179,8,0.4)' :
+                              'rgba(249,115,22,0.4)'
                             })`
                           }}
                         >
@@ -613,26 +696,26 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         </motion.span>
                         
                         <motion.span
-                          className="text-3xl text-white font-light"
-                          animate={{ opacity: [0.5, 1, 0.5] }}
-                          transition={{ duration: 2, repeat: Infinity }}
+                          className="text-3xl text-white/60 font-light"
+                          animate={{ opacity: [0.6, 1, 0.6] }}
+                          transition={{ duration: 3, repeat: Infinity }}
                         >
                           =
                         </motion.span>
                         
                         <motion.span
-                          className={`text-4xl font-black w-40 text-right ${
+                          className={`text-4xl font-light w-48 text-right tracking-wide ${
                             item.color === 'blue' ? 'text-blue-400' :
                             item.color === 'green' ? 'text-green-400' :
                             item.color === 'yellow' ? 'text-yellow-400' :
                             'text-orange-400'
                           }`}
-                          animate={{ scale: [1, 1.15, 1] }}
+                          animate={{ scale: [1, 1.05, 1] }}
                           transition={{ 
-                            duration: 1.5, 
+                            duration: 2, 
                             repeat: Infinity, 
                             ease: "easeInOut",
-                            delay: item.delay + 1.5
+                            delay: item.delay + 2
                           }}
                         >
                           {item.odds}
@@ -644,96 +727,97 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 7: VRF Tech Finale */}
+            {/* Step 7: Sophisticated VRF Finale */}
             {currentStep === 7 && (
               <motion.div
                 key="vrf"
                 className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, rotateX: 90 }}
+                initial={{ opacity: 0, rotateX: 45 }}
                 animate={{ opacity: 1, rotateX: 0 }}
-                exit={{ opacity: 0, scale: 2, filter: "blur(20px)" }}
-                transition={{ duration: 1, ease: "backOut" }}
+                exit={{ opacity: 0, scale: 1.5, filter: "blur(15px)" }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
               >
-                <div className="text-center relative max-w-5xl">
+                <div className="text-center relative max-w-6xl">
                   <motion.h2
-                    className="text-4xl font-light mb-8 text-yellow-400"
-                    initial={{ opacity: 0, y: -50 }}
+                    className="text-4xl font-light mb-10 text-yellow-400 tracking-wide"
+                    initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
+                    transition={{ duration: 1, delay: 0.3 }}
                     style={{
-                      filter: "drop-shadow(0 0 20px rgba(255,235,59,0.8))"
+                      filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
+                      fontWeight: 300
                     }}
                   >
                     PROVABLY FAIR WITH
                   </motion.h2>
                   
                   <motion.div
-                    className="text-6xl font-black mb-10"
-                    initial={{ scale: 0, rotateZ: -45 }}
-                    animate={{ scale: 1, rotateZ: 0 }}
-                    transition={{ duration: 1, delay: 0.8, ease: "backOut" }}
+                    className="text-6xl font-light mb-12 tracking-wider"
+                    initial={{ scale: 0.5, rotateZ: -20, opacity: 0 }}
+                    animate={{ scale: 1, rotateZ: 0, opacity: 1 }}
+                    transition={{ duration: 1.5, delay: 0.8, ease: "cubicBezier(0.25, 0.46, 0.45, 0.94)" }}
                     style={{
-                      background: "linear-gradient(45deg, #FFD700, #FF6B35, #00BFFF)",
+                      background: "linear-gradient(135deg, #FFD700, #FF6B35, #3B82F6)",
                       backgroundClip: "text",
                       WebkitBackgroundClip: "text",
                       color: "transparent",
-                      filter: "drop-shadow(0 0 40px rgba(255,215,0,0.8))"
+                      filter: "drop-shadow(0 0 50px rgba(255,215,0,0.6))",
+                      fontWeight: 200
                     }}
                   >
                     OMNIDRAGONRANDOMNESS
                   </motion.div>
                   
                   <motion.div
-                    className="space-y-6 text-2xl"
-                    initial={{ opacity: 0, y: 50 }}
+                    className="space-y-8 text-2xl"
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.5, duration: 0.8 }}
+                    transition={{ delay: 2, duration: 1 }}
                   >
                     <motion.p
-                      className="text-blue-400"
-                      animate={{ opacity: [0.7, 1, 0.7] }}
-                      transition={{ duration: 2, repeat: Infinity }}
+                      className="text-blue-400 font-light tracking-wide"
+                      animate={{ opacity: [0.8, 1, 0.8] }}
+                      transition={{ duration: 3, repeat: Infinity }}
                       style={{
-                        filter: "drop-shadow(0 0 15px rgba(59,130,246,0.6))"
+                        filter: "drop-shadow(0 0 15px rgba(59,130,246,0.4))"
                       }}
                     >
                       Chainlink VRF2.5 + LayerZero + drand aggregation
                     </motion.p>
                     <motion.p
-                      className="text-warm-orange font-medium"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      className="text-warm-orange font-light tracking-wide"
+                      animate={{ scale: [1, 1.02, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                       style={{
-                        filter: "drop-shadow(0 0 15px rgba(255,107,53,0.6))"
+                        filter: "drop-shadow(0 0 15px rgba(255,107,53,0.4))"
                       }}
                     >
                       Results are instantaneous and unique to each swap
                     </motion.p>
                   </motion.div>
 
-                  {/* Tech orbiting elements */}
+                  {/* Refined orbiting tech elements */}
                   {["VRF", "L0", "DRAND"].map((tech, i) => {
                     const angle = i * 120;
                     return (
                       <motion.div
                         key={tech}
-                        className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold"
+                        className="absolute w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-600/30 border border-blue-400/40 flex items-center justify-center text-sm font-light backdrop-blur-sm"
                         style={{
                           left: "50%",
                           top: "50%",
+                          filter: "drop-shadow(0 0 20px rgba(99,102,241,0.4))",
+                          boxShadow: "inset 0 0 20px rgba(99,102,241,0.1)"
                         }}
                         animate={{
-                          x: Math.cos((angle) * Math.PI / 180) * 180,
-                          y: Math.sin((angle) * Math.PI / 180) * 180,
+                          x: Math.cos((angle) * Math.PI / 180) * 200,
+                          y: Math.sin((angle) * Math.PI / 180) * 200,
                           rotateZ: [0, 360],
                         }}
                         transition={{
-                          x: { duration: 6, repeat: Infinity, ease: "linear" },
-                          y: { duration: 6, repeat: Infinity, ease: "linear" },
-                          rotateZ: { duration: 3, repeat: Infinity, ease: "linear" }
-                        }}
-                        style={{
-                          filter: "drop-shadow(0 0 15px rgba(99,102,241,0.8))"
+                          x: { duration: 10, repeat: Infinity, ease: "linear" },
+                          y: { duration: 10, repeat: Infinity, ease: "linear" },
+                          rotateZ: { duration: 4, repeat: Infinity, ease: "linear" }
                         }}
                       >
                         {tech}
