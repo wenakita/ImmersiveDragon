@@ -1427,23 +1427,82 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 5: Chainlink VRF Lottery */}
+            {/* Step 5: Chainlink VRF Lottery - Immersive Camera Dive */}
             {currentStep === 5 && (
               <motion.div
                 key="lottery"
-                className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, rotateY: 90 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
               >
-                <div className="text-center relative">
-                  {/* Chainlink Logo */}
+                {/* Persistent Background Swap Animation */}
+                <motion.div
+                  className="absolute inset-0 opacity-20 pointer-events-none overflow-hidden"
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  {[...Array(4)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute flex items-center justify-center"
+                      style={{
+                        left: `${15 + i * 20}%`,
+                        top: `${20 + (i % 2) * 35}%`,
+                      }}
+                      animate={{
+                        opacity: [0, 0.7, 0.7, 0],
+                        scale: [0.8, 1.1, 1.1, 0.8],
+                        rotate: [0, 360]
+                      }}
+                      transition={{
+                        duration: 15,
+                        repeat: Infinity,
+                        delay: i * 2.5,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <div className="w-14 h-14 rounded-full flex items-center justify-center shadow-xl border-2 border-blue-300/30 overflow-hidden backdrop-blur-sm"
+                           style={{
+                             background: "linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))",
+                             boxShadow: "0 0 25px rgba(59, 130, 246, 0.3)"
+                           }}>
+                        <img 
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" 
+                          alt="Sonic" 
+                          className="w-8 h-8 object-cover rounded-full"
+                        />
+                      </div>
+                      <div className="mx-3 text-white/60">⇄</div>
+                      <div className="w-14 h-14 rounded-full flex items-center justify-center shadow-xl border-2 border-orange-300/30 overflow-hidden backdrop-blur-sm"
+                           style={{
+                             background: "linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(249, 115, 22, 0.2))",
+                             boxShadow: "0 0 25px rgba(239, 68, 68, 0.3)"
+                           }}>
+                        <img 
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" 
+                          alt="Dragon" 
+                          className="w-8 h-8 object-cover rounded-full"
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                {/* Main Content with Camera Zoom Effect */}
+                <motion.div
+                  className="text-center relative z-10"
+                  initial={{ scale: 0.3, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 2.5, ease: "easeOut" }}
+                >
+                  {/* Chainlink Logo with Dramatic Entrance */}
                   <motion.div
                     className="flex items-center justify-center mb-8"
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.2 }}
+                    initial={{ y: -200, rotateX: 90, opacity: 0 }}
+                    animate={{ y: 0, rotateX: 0, opacity: 1 }}
+                    transition={{ duration: 2, delay: 0.8, ease: "backOut" }}
                   >
                     <motion.div
                       className="flex items-center space-x-4"
@@ -1456,17 +1515,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ease: "easeInOut",
                       }}
                     >
-                      {/* Official Chainlink Logo */}
                       <motion.div
                         className="relative"
-                        animate={{
-                          scale: [1, 1.05, 1],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
+                        initial={{ rotateY: 180, scale: 0 }}
+                        animate={{ rotateY: 0, scale: 1 }}
+                        transition={{ duration: 1.5, delay: 1.5, ease: "backOut" }}
                       >
                         <motion.img
                           src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreia6gvcvo7bk52hr7pphega2i63rxh5xbijlkjko7wf24ycutfelfm"
@@ -1475,7 +1528,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           animate={{
                             filter: [
                               "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))",
-                              "drop-shadow(0 0 30px rgba(55, 126, 254, 0.7))",
+                              "drop-shadow(0 0 40px rgba(55, 126, 254, 0.8))",
                               "drop-shadow(0 0 20px rgba(55, 126, 254, 0.4))",
                             ],
                           }}
@@ -1489,13 +1542,15 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                       <motion.span
                         className="text-4xl font-bold tracking-wider"
+                        initial={{ x: 100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 1.2, delay: 2, ease: "easeOut" }}
                         style={{
                           color: "#377EFE",
                           fontFamily: "system-ui, -apple-system, sans-serif",
                           fontWeight: 700,
                           letterSpacing: "0.1em",
-                          filter:
-                            "drop-shadow(0 0 20px rgba(55, 126, 254, 0.3))",
+                          filter: "drop-shadow(0 0 20px rgba(55, 126, 254, 0.3))",
                         }}
                       >
                         CHAINLINK
@@ -1503,17 +1558,20 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </motion.div>
                   </motion.div>
 
+                  {/* Title with 3D Rotation */}
                   <motion.h2
                     className="text-6xl font-light mb-4 tracking-wide"
-                    initial={{ rotateX: 45, opacity: 0 }}
-                    animate={{ rotateX: 0, opacity: 1 }}
+                    initial={{ rotateX: 90, scale: 0.5, opacity: 0 }}
+                    animate={{ rotateX: 0, scale: 1, opacity: 1 }}
                     transition={{
-                      duration: 1.2,
-                      delay: 0.5,
+                      duration: 2,
+                      delay: 2.5,
                       ease: [0.25, 0.46, 0.45, 0.94],
+                      type: "spring",
+                      stiffness: 100
                     }}
                     style={{
-                      color: "#377EFE", // Chainlink blue
+                      color: "#377EFE",
                       filter: "drop-shadow(0 0 40px rgba(55, 126, 254, 0.6))",
                       fontWeight: 300,
                       textShadow: "0 0 30px rgba(55, 126, 254, 0.4)",
@@ -1605,7 +1663,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       />
                     ))}
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             )}
 
