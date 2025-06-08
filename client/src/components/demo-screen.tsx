@@ -251,7 +251,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="absolute left-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-blue-400/20 to-blue-600/30 border border-blue-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
                     initial={{ x: -800, rotateY: 180, scale: 0, opacity: 0 }}
                     animate={{ 
-                      x: [0, 320, 900], 
+                      x: [0, 320, 1400], 
                       rotateY: [180, 0, 0], 
                       scale: [0, 1.2, 0.8],
                       opacity: [0, 1, 0],
@@ -279,7 +279,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="absolute right-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-orange-400/20 to-orange-600/30 border border-orange-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
                     initial={{ x: 800, rotateY: -180, scale: 0, opacity: 0 }}
                     animate={{ 
-                      x: [0, -320, -900], 
+                      x: [0, -320, -1400], 
                       rotateY: [-180, 0, 0], 
                       scale: [0, 1.2, 0.8],
                       opacity: [0, 1, 0],
