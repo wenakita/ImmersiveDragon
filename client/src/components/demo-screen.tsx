@@ -71,10 +71,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     { delay: 14000, duration: 12000 }, // [0:14–0:26] Jackpot reveal at first drop - EXTENDED +3s
     { delay: 26000, duration: 8000 }, // [0:26–0:34] Fee tension – ambient mood - EXTENDED +2.5s
     { delay: 34000, duration: 12000 }, // [0:34–0:46] Fee breakdown – cinematic swell - EXTENDED +2s
-    { delay: 46000, duration: 8000 }, // [0:46–0:54] Lottery mechanics
-    { delay: 54000, duration: 7000 }, // [0:54–1:01] Chainlink VRF
-    { delay: 61000, duration: 8000 }, // [1:01–1:09] LayerZero cross-chain
-    { delay: 69000, duration: 8000 }, // [1:09–1:17] Final CTA + logo out
+    { delay: 46000, duration: 12000 }, // [0:46–0:58] Lottery mechanics - EXTENDED +4s for veDRAGON readability
+    { delay: 58000, duration: 7000 }, // [0:58–1:05] Chainlink VRF
+    { delay: 65000, duration: 8000 }, // [1:05–1:13] LayerZero cross-chain
+    { delay: 73000, duration: 8000 }, // [1:13–1:21] Final CTA + logo out
   ];
 
   useEffect(() => {
@@ -1079,7 +1079,20 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       
                       {/* Swap Action */}
                       <div className="mx-2 flex flex-col items-center relative">
-                        {/* Buy/Sell Indicator Above */}
+                        {/* 10% Fee Indicator - Top */}
+                        <motion.div
+                          className="absolute -top-8 text-xs font-bold text-red-400 px-2 py-1 bg-red-500/10 rounded border border-red-500/30"
+                          animate={{ opacity: [0.6, 1, 0.6] }}
+                          transition={{
+                            duration: 1.8,
+                            repeat: Infinity,
+                            delay: i * 0.6,
+                          }}
+                        >
+                          10% FEE
+                        </motion.div>
+                        
+                        {/* Buy/Sell Indicator */}
                         <motion.div
                           className={`absolute -top-5 text-xs font-semibold px-1 py-0.5 rounded ${
                             i % 2 === 0 
@@ -1111,9 +1124,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           ⇄
                         </motion.div>
                         
-                        {/* Fee Flow Animation Below */}
+                        {/* Fee Breakdown Below - Dollar Amounts */}
                         <motion.div
-                          className="absolute top-5 flex flex-col items-center text-xs"
+                          className="absolute top-6 flex flex-col items-start text-xs space-y-1"
                           initial={{ opacity: 0, y: 2 }}
                           animate={{ opacity: [0, 0.6, 0], y: [2, 14, 26] }}
                           transition={{
@@ -1122,10 +1135,27 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             delay: i * 0.6 + 0.6,
                           }}
                         >
-                          <div className="text-red-400 font-bold mb-0.5">10% Fee</div>
-                          <div className="text-yellow-400 text-xs">6.9% → Jackpot</div>
-                          <div className="text-blue-400 text-xs">2.41% → LP</div>
-                          <div className="text-orange-400 text-xs">0.69% → Burn</div>
+                          <div className="flex items-center space-x-1 text-yellow-400">
+                            <span>Jackpot: $6.90</span>
+                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                              <circle cx="12" cy="12" r="10" fill="#00D4FF"/>
+                              <text x="12" y="16" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">S</text>
+                            </svg>
+                          </div>
+                          <div className="flex items-center space-x-1 text-blue-400">
+                            <span>LP Rewards: $2.41</span>
+                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                              <circle cx="12" cy="12" r="10" fill="#00D4FF"/>
+                              <text x="12" y="16" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">S</text>
+                            </svg>
+                          </div>
+                          <div className="flex items-center space-x-1 text-orange-400">
+                            <span>Burned: $0.69</span>
+                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                              <circle cx="12" cy="12" r="10" fill="#DC2626"/>
+                              <text x="12" y="16" textAnchor="middle" fontSize="6" fill="white" fontWeight="bold">DRAG</text>
+                            </svg>
+                          </div>
                         </motion.div>
                       </div>
                       
