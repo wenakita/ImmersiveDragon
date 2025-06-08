@@ -251,15 +251,15 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="absolute left-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-blue-400/20 to-blue-600/30 border border-blue-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
                     initial={{ x: -800, rotateY: 180, scale: 0, opacity: 0 }}
                     animate={{ 
-                      x: [0, 320, 600], 
+                      x: [0, 320, 900], 
                       rotateY: [180, 0, 0], 
-                      scale: [0, 1.2, 1],
-                      opacity: [0, 1, 1],
-                      rotateZ: [0, 180, 360]
+                      scale: [0, 1.2, 0.8],
+                      opacity: [0, 1, 0],
+                      rotateZ: [0, 180, 540]
                     }}
                     transition={{ 
                       duration: 4, 
-                      times: [0, 0.5, 1],
+                      times: [0, 0.6, 1],
                       ease: [0.25, 0.46, 0.45, 0.94],
                       delay: 0.5
                     }}
@@ -279,15 +279,15 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="absolute right-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-orange-400/20 to-orange-600/30 border border-orange-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
                     initial={{ x: 800, rotateY: -180, scale: 0, opacity: 0 }}
                     animate={{ 
-                      x: [0, -320, -600], 
+                      x: [0, -320, -900], 
                       rotateY: [-180, 0, 0], 
-                      scale: [0, 1.2, 1],
-                      opacity: [0, 1, 1],
-                      rotateZ: [0, -180, -360]
+                      scale: [0, 1.2, 0.8],
+                      opacity: [0, 1, 0],
+                      rotateZ: [0, -180, -540]
                     }}
                     transition={{ 
                       duration: 4, 
-                      times: [0, 0.5, 1],
+                      times: [0, 0.6, 1],
                       ease: [0.25, 0.46, 0.45, 0.94],
                       delay: 1
                     }}
