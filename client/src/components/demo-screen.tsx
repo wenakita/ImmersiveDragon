@@ -377,12 +377,51 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.8 }}
                   >
-                    <p className="text-2xl text-gray-300 font-light leading-relaxed text-center">
+                    <p className="text-2xl text-gray-300 font-light leading-relaxed text-center mb-8">
                       Every swap automatically enters you into our{' '}
                       <span className="text-yellow-400 font-medium">VRF-powered lottery</span>
                       {' '}where your trading fees can become massive rewards
                     </p>
+                    
+                    <motion.div
+                      className="text-center"
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 1.5 }}
+                    >
+                      <div className="text-5xl font-bold text-green-400 mb-2">
+                        $69,000
+                      </div>
+                      <div className="text-lg text-gray-400 font-light">
+                        Current Jackpot Prize
+                      </div>
+                    </motion.div>
                   </motion.div>
+
+                  {/* Confetti animation */}
+                  {[...Array(20)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-3 h-3 rounded-full"
+                      style={{
+                        background: i % 4 === 0 ? '#FFD700' : i % 4 === 1 ? '#FFA500' : i % 4 === 2 ? '#FF6B35' : '#10B981',
+                        left: `${20 + Math.random() * 60}%`,
+                        top: `${10 + Math.random() * 30}%`,
+                      }}
+                      initial={{ scale: 0, y: 0, opacity: 0 }}
+                      animate={{ 
+                        scale: [0, 1, 0],
+                        y: [0, -200 - Math.random() * 100],
+                        opacity: [0, 1, 0],
+                        rotateZ: [0, 360 * (Math.random() > 0.5 ? 1 : -1)]
+                      }}
+                      transition={{
+                        duration: 2 + Math.random() * 2,
+                        delay: 1.8 + Math.random() * 2,
+                        ease: "easeOut"
+                      }}
+                    />
+                  ))}
                   
                   {/* Elegant energy waves */}
                   {[...Array(6)].map((_, i) => (
