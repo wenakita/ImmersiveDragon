@@ -571,9 +571,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ease: "easeInOut",
                       }}
                     >
-                      {/* Token A */}
+                      {/* Sonic Token */}
                       <motion.div
-                        className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-lg"
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white font-bold text-sm shadow-lg border-2 border-blue-300"
                         animate={{
                           x: [0, 80, 0],
                           rotate: [0, 180, 360],
@@ -603,9 +603,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ⇄
                       </motion.div>
                       
-                      {/* Token B */}
+                      {/* Dragon Token */}
                       <motion.div
-                        className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center text-white font-bold text-xs shadow-lg border-2 border-red-300"
                         animate={{
                           x: [0, -80, 0],
                           rotate: [0, -180, -360],
@@ -616,7 +616,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 1,
                         }}
                       >
-                        ETH
+                        🐉
                       </motion.div>
                     </motion.div>
                   ))}
@@ -803,9 +803,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ease: "easeInOut",
                       }}
                     >
-                      {/* Token A */}
+                      {/* Sonic Token */}
                       <motion.div
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white font-bold text-xs shadow-lg border-2 border-blue-300"
                         animate={{
                           x: [0, 60, 0],
                           rotate: [0, 180, 360],
@@ -835,9 +835,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ⇄
                       </motion.div>
                       
-                      {/* Token B */}
+                      {/* Dragon Token */}
                       <motion.div
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center text-white font-bold text-xs shadow-lg border-2 border-red-300"
                         animate={{
                           x: [0, -60, 0],
                           rotate: [0, -180, -360],
@@ -848,7 +848,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 0.8,
                         }}
                       >
-                        ETH
+                        🐉
                       </motion.div>
                     </motion.div>
                   ))}
@@ -968,9 +968,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ease: "easeInOut",
                       }}
                     >
-                      {/* Token A */}
+                      {/* Sonic Token */}
                       <motion.div
-                        className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white font-bold text-xs shadow-lg border border-blue-300"
                         animate={{
                           x: [0, 50, 0],
                           rotate: [0, 180, 360],
@@ -1000,9 +1000,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ⇄
                       </motion.div>
                       
-                      {/* Token B */}
+                      {/* Dragon Token */}
                       <motion.div
-                        className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center text-white font-bold text-xs shadow-lg border border-red-300"
                         animate={{
                           x: [0, -50, 0],
                           rotate: [0, -180, -360],
@@ -1013,7 +1013,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: i * 0.6,
                         }}
                       >
-                        ETH
+                        🐉
                       </motion.div>
                     </motion.div>
                   ))}
