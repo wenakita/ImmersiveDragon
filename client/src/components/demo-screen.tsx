@@ -199,7 +199,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   {[...Array(16)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-1 h-1 rounded-full bg-red-400 opacity-60"
+                      className="absolute w-1 h-1 rounded-full bg-amber-400 opacity-60"
                       style={{
                         left: "50%",
                         top: "50%",
