@@ -1584,9 +1584,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                   <motion.p
                     className="text-2xl text-gray-300 mb-6 font-light leading-relaxed max-w-3xl mx-auto"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2, duration: 1 }}
+                    initial={{ x: -300, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 3.2, duration: 1.5, ease: "easeOut" }}
                   >
                     Provably fair randomness ensures every trader has a
                     legitimate chance to win massive jackpots
@@ -1854,22 +1854,71 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 7: LayerZero Cross-Chain Implementation */}
+            {/* Step 7: LayerZero Cross-Chain Implementation - Immersive Deep Dive */}
             {currentStep === 7 && (
               <motion.div
                 key="layerzero"
-                className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, rotateY: 90 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
               >
-                <div className="text-center relative">
+                {/* Persistent Cross-Chain Background Animation */}
+                <motion.div
+                  className="absolute inset-0 opacity-15 pointer-events-none overflow-hidden"
+                  animate={{ scale: [1, 1.08, 1] }}
+                  transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute"
+                      style={{
+                        left: `${10 + i * 15}%`,
+                        top: `${25 + (i % 3) * 25}%`,
+                      }}
+                      animate={{
+                        opacity: [0, 0.8, 0.8, 0],
+                        scale: [0.6, 1.2, 1.2, 0.6],
+                        rotate: [0, 180, 360]
+                      }}
+                      transition={{
+                        duration: 18,
+                        repeat: Infinity,
+                        delay: i * 3,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {/* Chain Link Visual */}
+                      <div className="flex items-center space-x-2">
+                        <div className="w-8 h-8 border-2 border-blue-400/40 rounded-full flex items-center justify-center"
+                             style={{ background: "rgba(59, 130, 246, 0.1)" }}>
+                          <div className="w-3 h-3 bg-blue-400/60 rounded-full"></div>
+                        </div>
+                        <div className="w-6 h-1 bg-gradient-to-r from-blue-400/40 to-purple-400/40"></div>
+                        <div className="w-8 h-8 border-2 border-purple-400/40 rounded-full flex items-center justify-center"
+                             style={{ background: "rgba(147, 51, 234, 0.1)" }}>
+                          <div className="w-3 h-3 bg-purple-400/60 rounded-full"></div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                {/* Main Content with Cinematic Camera Movement */}
+                <motion.div
+                  className="text-center relative z-10"
+                  initial={{ scale: 0.2, opacity: 0, rotateZ: 45 }}
+                  animate={{ scale: 1, opacity: 1, rotateZ: 0 }}
+                  transition={{ duration: 3, ease: "easeOut", type: "spring", stiffness: 80 }}
+                >
+                  {/* Title with Dramatic Zoom */}
                   <motion.h2
                     className="text-5xl font-light mb-8 tracking-wide"
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.3 }}
+                    initial={{ scale: 5, opacity: 0, blur: 20 }}
+                    animate={{ scale: 1, opacity: 1, blur: 0 }}
+                    transition={{ duration: 2.5, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
                     style={{
                       color: "#E1E8ED",
                       filter: "drop-shadow(0 0 30px rgba(225,232,237,0.4))",
@@ -1879,22 +1928,23 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     CROSS-CHAIN RANDOMNESS
                   </motion.h2>
 
+                  {/* Problem Statement Slide In */}
                   <motion.p
                     className="text-xl text-gray-300 mb-8 font-light leading-relaxed max-w-4xl mx-auto"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8, duration: 1 }}
+                    initial={{ x: 400, opacity: 0, rotateY: 45 }}
+                    animate={{ x: 0, opacity: 1, rotateY: 0 }}
+                    transition={{ delay: 2, duration: 2, ease: "easeOut" }}
                   >
                     Chainlink VRF 2.5 doesn't exist locally on Sonic, so we leverage the most robust 
                     cross-chain messaging protocol to handle randomness requests from Sonic to Arbitrum and back
                   </motion.p>
 
-                  {/* LayerZero Logo Section */}
+                  {/* LayerZero Logo with 3D Entrance */}
                   <motion.div
                     className="flex items-center justify-center mb-8"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 1.2 }}
+                    initial={{ rotateX: 90, scale: 0, opacity: 0 }}
+                    animate={{ rotateX: 0, scale: 1, opacity: 1 }}
+                    transition={{ duration: 2, delay: 3.5, ease: "backOut" }}
                   >
                     <motion.div
                       className="flex items-center space-x-6"
@@ -1907,94 +1957,132 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         ease: "easeInOut"
                       }}
                     >
-                      <img 
+                      <motion.img 
                         src="https://file.notion.so/f/f/c681a46c-dbda-4853-b36e-c19abcbf93e6/9d47bc94-e0dd-46b4-a606-8c9bc16cd7ba/LayerZero_logo.svg?table=block&id=88b1ad69-2659-424a-956a-cab1172961f7&spaceId=c681a46c-dbda-4853-b36e-c19abcbf93e6&expirationTimestamp=1749390483053&signature=M9aJg5OSCQXPdzwZ9LbDFqsv2ZEL4PcD7LWAyBIXZKA&downloadName=LayerZero_logo.svg"
                         alt="LayerZero" 
                         className="h-16 filter brightness-110"
+                        initial={{ rotateY: 180 }}
+                        animate={{ rotateY: 0 }}
+                        transition={{ duration: 1.5, delay: 4 }}
                         style={{
-                          filter: "drop-shadow(0 0 20px rgba(74, 144, 226, 0.5))"
+                          filter: "drop-shadow(0 0 25px rgba(74, 144, 226, 0.6))"
                         }}
                       />
                       <motion.span 
                         className="text-3xl font-light text-blue-300"
-                        animate={{
-                          textShadow: [
-                            "0 0 15px rgba(147,197,253,0.3)",
-                            "0 0 25px rgba(147,197,253,0.6)",
-                            "0 0 15px rgba(147,197,253,0.3)"
-                          ]
+                        initial={{ x: 100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 4.5, duration: 1.2 }}
+                        style={{
+                          textShadow: "0 0 20px rgba(147,197,253,0.5)"
                         }}
-                        transition={{ duration: 2, repeat: Infinity }}
                       >
                         V2 ENDPOINTS
                       </motion.span>
                     </motion.div>
                   </motion.div>
 
-                  {/* DVN Section */}
+                  {/* DVN Section with Staggered Reveals */}
                   <motion.div
                     className="mb-12"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.8, duration: 1 }}
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 5, duration: 1.5, ease: "easeOut" }}
                   >
                     <motion.h3
                       className="text-2xl text-gray-300 mb-6 font-light"
-                      animate={{ opacity: [0.8, 1, 0.8] }}
-                      transition={{ duration: 3, repeat: Infinity }}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 5.5, duration: 1, ease: "backOut" }}
                     >
                       Secured by Trusted DVNs
                     </motion.h3>
                     
                     <div className="flex items-center justify-center space-x-12">
-                      {/* LayerZero Labs DVN */}
+                      {/* LayerZero Labs DVN with Camera Zoom */}
                       <motion.div
                         className="flex flex-col items-center"
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 2.2, duration: 0.8 }}
+                        initial={{ scale: 0, rotateZ: -45, opacity: 0 }}
+                        animate={{ scale: 1, rotateZ: 0, opacity: 1 }}
+                        transition={{ delay: 6, duration: 1.2, ease: "backOut" }}
                       >
-                        <img 
+                        <motion.img 
                           src="https://file.notion.so/f/f/c681a46c-dbda-4853-b36e-c19abcbf93e6/afc25f0c-f605-441e-bd9a-c61b4349b3e8/LayerZero_emblem.svg?table=block&id=e20fa247-1779-4bd7-b434-82cad1b4fb68&spaceId=c681a46c-dbda-4853-b36e-c19abcbf93e6&expirationTimestamp=1749390499263&signature=nlbSkRk2HAYhs8tXQQIndc3hnubqpFEcQsTLzsKYAL8&downloadName=LayerZero_emblem.svg"
                           alt="LayerZero Labs" 
                           className="h-12 mb-2"
+                          animate={{
+                            filter: [
+                              "drop-shadow(0 0 10px rgba(74, 144, 226, 0.3))",
+                              "drop-shadow(0 0 20px rgba(74, 144, 226, 0.6))",
+                              "drop-shadow(0 0 10px rgba(74, 144, 226, 0.3))"
+                            ]
+                          }}
+                          transition={{ duration: 2.5, repeat: Infinity }}
                         />
-                        <div className="text-blue-300 text-sm font-medium">LayerZero Labs</div>
+                        <motion.div 
+                          className="text-blue-300 text-sm font-medium"
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 6.3, duration: 0.8 }}
+                        >
+                          LayerZero Labs
+                        </motion.div>
                       </motion.div>
 
-                      {/* Google Cloud DVN */}
+                      {/* Google Cloud DVN with Mirror Effect */}
                       <motion.div
                         className="flex flex-col items-center"
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 2.5, duration: 0.8 }}
+                        initial={{ scale: 0, rotateZ: 45, opacity: 0 }}
+                        animate={{ scale: 1, rotateZ: 0, opacity: 1 }}
+                        transition={{ delay: 6.5, duration: 1.2, ease: "backOut" }}
                       >
-                        <img 
+                        <motion.img 
                           src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg"
                           alt="Google Cloud" 
                           className="h-12 mb-2"
+                          animate={{
+                            filter: [
+                              "drop-shadow(0 0 10px rgba(66, 133, 244, 0.3))",
+                              "drop-shadow(0 0 20px rgba(66, 133, 244, 0.6))",
+                              "drop-shadow(0 0 10px rgba(66, 133, 244, 0.3))"
+                            ]
+                          }}
+                          transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
                         />
-                        <div className="text-blue-300 text-sm font-medium">Google Cloud</div>
+                        <motion.div 
+                          className="text-blue-300 text-sm font-medium"
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 6.8, duration: 0.8 }}
+                        >
+                          Google Cloud
+                        </motion.div>
                       </motion.div>
                     </div>
                   </motion.div>
 
-                  {/* Technical Flow Animation */}
+                  {/* Technical Flow with Typewriter Effect */}
                   <motion.div
                     className="relative"
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 3, duration: 1 }}
+                    transition={{ delay: 7.5, duration: 1.5 }}
                   >
                     <motion.div
-                      className="text-lg text-gray-400 font-light"
-                      animate={{ opacity: [0.6, 1, 0.6] }}
-                      transition={{ duration: 2, repeat: Infinity }}
+                      className="text-lg text-gray-400 font-light font-mono"
+                      initial={{ width: 0 }}
+                      animate={{ width: "auto" }}
+                      transition={{ delay: 8, duration: 2, ease: "easeOut" }}
+                      style={{
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        borderRight: "2px solid rgba(147,197,253,0.6)"
+                      }}
                     >
                       Sonic → LayerZero → Arbitrum → Chainlink VRF → LayerZero → Sonic
                     </motion.div>
                   </motion.div>
-                </div>
+                </motion.div>
               </motion.div>
             )}
 
