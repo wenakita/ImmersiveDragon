@@ -13,14 +13,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const steps = [
-    { delay: 0, duration: 3000 },      // Title
-    { delay: 3000, duration: 5000 },   // Token Swap (extended)
-    { delay: 8000, duration: 3000 },   // Twist
-    { delay: 11000, duration: 3500 },  // Fee
-    { delay: 14500, duration: 4500 },  // Breakdown
-    { delay: 19000, duration: 4000 },  // Lottery
-    { delay: 23000, duration: 5000 },  // Odds
-    { delay: 28000, duration: 5000 },  // VRF
+    { delay: 0, duration: 4000 },      // Title
+    { delay: 4000, duration: 7000 },   // Token Swap (extended for reading)
+    { delay: 11000, duration: 5000 },  // Twist/Jackpot
+    { delay: 16000, duration: 6000 },  // Fee breakdown intro
+    { delay: 22000, duration: 8000 },  // Fee breakdown details
+    { delay: 30000, duration: 7000 },  // Lottery explanation
+    { delay: 37000, duration: 6000 },  // VRF details
+    { delay: 43000, duration: 5000 },  // Final
   ];
 
   useEffect(() => {
