@@ -71,10 +71,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     { delay: 14000, duration: 12000 }, // [0:14–0:26] Jackpot reveal at first drop - EXTENDED +3s
     { delay: 26000, duration: 8000 }, // [0:26–0:34] Fee tension – ambient mood - EXTENDED +2.5s
     { delay: 34000, duration: 12000 }, // [0:34–0:46] Fee breakdown – cinematic swell - EXTENDED +2s
-    { delay: 46000, duration: 14000 }, // [0:46–1:00] Lottery mechanics - EXTENDED +6s for veDRAGON readability
-    { delay: 60000, duration: 7000 }, // [1:00–1:07] Chainlink VRF
-    { delay: 67000, duration: 8000 }, // [1:07–1:15] LayerZero cross-chain
-    { delay: 75000, duration: 8000 }, // [1:15–1:23] Final CTA + logo out
+    { delay: 46000, duration: 15000 }, // [0:46–1:00] Lottery mechanics - EXTENDED +6s for veDRAGON readability
+    { delay: 61000, duration: 7000 }, // [1:00–1:07] Chainlink VRF
+    { delay: 68000, duration: 8000 }, // [1:07–1:15] LayerZero cross-chain
+    { delay: 76000, duration: 8000 }, // [1:15–1:23] Final CTA + logo out
   ];
 
   useEffect(() => {
@@ -2566,7 +2566,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  $847,293
+                  <AnimatedCounter />
                 </motion.div>
                 <div className="text-yellow-400/80 text-xs mt-1">
                   Growing with every swap
