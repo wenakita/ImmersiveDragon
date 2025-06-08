@@ -42,7 +42,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
       {showAnimations && (
         <div className="fixed inset-0 bg-black overflow-y-auto z-50">
-          <div className="space-y-32 py-16">
+          <div className="space-y-8 py-16">
             
             {/* Section 1: Title */}
             <div className="flex items-center justify-center min-h-screen">
@@ -73,7 +73,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 className="text-center relative h-40"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 3 }}
+                transition={{ delay: 2.5 }}
               >
                 <motion.h2
                   className="text-3xl font-light mb-8"
@@ -118,7 +118,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 className="text-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 5 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 4 }}
               >
                 <motion.h2
                   className="text-4xl font-light text-warm-orange"
@@ -146,7 +146,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 className="text-center"
                 initial={{ opacity: 0, x: -300 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "backOut", delay: 7 }}
+                transition={{ duration: 0.8, ease: "backOut", delay: 5.5 }}
               >
                 <motion.h2
                   className="text-4xl font-bold mb-6 text-warm-orange"
@@ -177,7 +177,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 className="text-center relative"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 9 }}
+                transition={{ duration: 0.6, delay: 7 }}
               >
                 <motion.h2
                   className="text-3xl font-light mb-6"
@@ -234,7 +234,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 className="text-center relative"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 11 }}
+                transition={{ duration: 0.3, delay: 8.5 }}
               >
                 <motion.h2
                   className="text-3xl font-light mb-4"
@@ -266,7 +266,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 className="text-center"
                 initial={{ opacity: 0, y: 150, scale: 0.1 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, ease: "backOut", delay: 13 }}
+                transition={{ duration: 0.6, ease: "backOut", delay: 10 }}
               >
                 <motion.div className="space-y-3">
                   <motion.div
@@ -322,7 +322,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 className="text-center relative"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 15 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 11.5 }}
               >
                 <motion.h2
                   className="text-2xl font-light mb-4"
