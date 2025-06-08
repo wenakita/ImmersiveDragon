@@ -72,8 +72,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     { delay: 26000, duration: 8000 }, // [0:26–0:34] Fee tension – ambient mood - EXTENDED +2.5s
     { delay: 34000, duration: 12000 }, // [0:34–0:46] Fee breakdown – cinematic swell - EXTENDED +2s
     { delay: 46000, duration: 8000 }, // [0:46–0:54] Lottery mechanics
-    { delay: 54000, duration: 7000 }, // [0:54–1:01] VRF finale
-    { delay: 61000, duration: 8000 }, // [1:01–1:09] Final CTA + logo out
+    { delay: 54000, duration: 7000 }, // [0:54–1:01] Chainlink VRF
+    { delay: 61000, duration: 8000 }, // [1:01–1:09] LayerZero cross-chain
+    { delay: 69000, duration: 8000 }, // [1:09–1:17] Final CTA + logo out
   ];
 
   useEffect(() => {
@@ -1436,32 +1437,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     VRF 2.5 LOTTERY
                   </motion.h2>
                   
-                  <motion.div
-                    className="mb-8"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8, duration: 1 }}
-                  >
-                    <motion.div
-                      className="inline-block px-4 py-2 rounded-full bg-purple-500/10 border border-purple-400/30"
-                      animate={{
-                        boxShadow: [
-                          "0 0 15px rgba(147, 51, 234, 0.2)",
-                          "0 0 25px rgba(147, 51, 234, 0.4)",
-                          "0 0 15px rgba(147, 51, 234, 0.2)"
-                        ]
-                      }}
-                      transition={{
-                        duration: 2.5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      <div className="text-purple-300 text-sm font-medium">
-                        Chainlink VRF 2.5 via LayerZero Cross-Chain
-                      </div>
-                    </motion.div>
-                  </motion.div>
+
 
                   <motion.p
                     className="text-2xl text-gray-300 mb-6 font-light leading-relaxed max-w-3xl mx-auto"
@@ -1735,8 +1711,152 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 7: Epic Finale with CTA */}
+            {/* Step 7: LayerZero Cross-Chain Implementation */}
             {currentStep === 7 && (
+              <motion.div
+                key="layerzero"
+                className="flex items-center justify-center min-h-screen"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, rotateY: 90 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                <div className="text-center relative">
+                  <motion.h2
+                    className="text-5xl font-light mb-8 tracking-wide"
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    style={{
+                      color: "#E1E8ED",
+                      filter: "drop-shadow(0 0 30px rgba(225,232,237,0.4))",
+                      fontWeight: 300,
+                    }}
+                  >
+                    CROSS-CHAIN RANDOMNESS
+                  </motion.h2>
+
+                  <motion.p
+                    className="text-xl text-gray-300 mb-8 font-light leading-relaxed max-w-4xl mx-auto"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 1 }}
+                  >
+                    Chainlink VRF 2.5 doesn't exist locally on Sonic, so we leverage the most robust 
+                    cross-chain messaging protocol to handle randomness requests from Sonic to Arbitrum and back
+                  </motion.p>
+
+                  {/* LayerZero Logo Section */}
+                  <motion.div
+                    className="flex items-center justify-center mb-8"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 1.2 }}
+                  >
+                    <motion.div
+                      className="flex items-center space-x-6"
+                      animate={{
+                        scale: [1, 1.02, 1],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <img 
+                        src="https://file.notion.so/f/f/c681a46c-dbda-4853-b36e-c19abcbf93e6/9d47bc94-e0dd-46b4-a606-8c9bc16cd7ba/LayerZero_logo.svg?table=block&id=88b1ad69-2659-424a-956a-cab1172961f7&spaceId=c681a46c-dbda-4853-b36e-c19abcbf93e6&expirationTimestamp=1749390483053&signature=M9aJg5OSCQXPdzwZ9LbDFqsv2ZEL4PcD7LWAyBIXZKA&downloadName=LayerZero_logo.svg"
+                        alt="LayerZero" 
+                        className="h-16 filter brightness-110"
+                        style={{
+                          filter: "drop-shadow(0 0 20px rgba(74, 144, 226, 0.5))"
+                        }}
+                      />
+                      <motion.span 
+                        className="text-3xl font-light text-blue-300"
+                        animate={{
+                          textShadow: [
+                            "0 0 15px rgba(147,197,253,0.3)",
+                            "0 0 25px rgba(147,197,253,0.6)",
+                            "0 0 15px rgba(147,197,253,0.3)"
+                          ]
+                        }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        V2 ENDPOINTS
+                      </motion.span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* DVN Section */}
+                  <motion.div
+                    className="mb-12"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 1 }}
+                  >
+                    <motion.h3
+                      className="text-2xl text-gray-300 mb-6 font-light"
+                      animate={{ opacity: [0.8, 1, 0.8] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    >
+                      Secured by Trusted DVNs
+                    </motion.h3>
+                    
+                    <div className="flex items-center justify-center space-x-12">
+                      {/* LayerZero Labs DVN */}
+                      <motion.div
+                        className="flex flex-col items-center"
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 2.2, duration: 0.8 }}
+                      >
+                        <img 
+                          src="https://file.notion.so/f/f/c681a46c-dbda-4853-b36e-c19abcbf93e6/afc25f0c-f605-441e-bd9a-c61b4349b3e8/LayerZero_emblem.svg?table=block&id=e20fa247-1779-4bd7-b434-82cad1b4fb68&spaceId=c681a46c-dbda-4853-b36e-c19abcbf93e6&expirationTimestamp=1749390499263&signature=nlbSkRk2HAYhs8tXQQIndc3hnubqpFEcQsTLzsKYAL8&downloadName=LayerZero_emblem.svg"
+                          alt="LayerZero Labs" 
+                          className="h-12 mb-2"
+                        />
+                        <div className="text-blue-300 text-sm font-medium">LayerZero Labs</div>
+                      </motion.div>
+
+                      {/* Google Cloud DVN */}
+                      <motion.div
+                        className="flex flex-col items-center"
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 2.5, duration: 0.8 }}
+                      >
+                        <img 
+                          src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg"
+                          alt="Google Cloud" 
+                          className="h-12 mb-2"
+                        />
+                        <div className="text-blue-300 text-sm font-medium">Google Cloud</div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+
+                  {/* Technical Flow Animation */}
+                  <motion.div
+                    className="relative"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 3, duration: 1 }}
+                  >
+                    <motion.div
+                      className="text-lg text-gray-400 font-light"
+                      animate={{ opacity: [0.6, 1, 0.6] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      Sonic → LayerZero → Arbitrum → Chainlink VRF → LayerZero → Sonic
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 8: Epic Finale with CTA */}
+            {currentStep === 8 && (
               <motion.div
                 key="finale"
                 className="flex items-center justify-center min-h-screen"
