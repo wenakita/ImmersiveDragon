@@ -363,7 +363,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   <div className="text-center mb-16">
                     <div className="text-5xl font-light mb-6 tracking-wide">
                       <motion.span
-                        className="text-yellow-400"
+                        className="text-white"
                         initial={{ y: -30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{
@@ -371,14 +371,22 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           ease: [0.25, 0.46, 0.45, 0.94],
                         }}
                         style={{
-                          filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
                           fontWeight: 300,
                         }}
                       >
-                        SWAP $S
+                        SWAP{" "}
+                        <span 
+                          className="text-yellow-400 font-bold"
+                          style={{
+                            filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
+                            fontWeight: 700,
+                          }}
+                        >
+                          $S
+                        </span>
                       </motion.span>
                       <motion.span
-                        className="text-amber-400 ml-4 font-medium"
+                        className="text-white ml-4"
                         initial={{ y: -30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{
@@ -387,11 +395,19 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           delay: 0.5,
                         }}
                         style={{
-                          filter: "drop-shadow(0 0 25px rgba(251,191,36,0.5))",
-                          fontWeight: 500,
+                          fontWeight: 300,
                         }}
                       >
-                        FOR $DRAGON
+                        FOR{" "}
+                        <span 
+                          className="text-amber-400 font-medium"
+                          style={{
+                            filter: "drop-shadow(0 0 25px rgba(251,191,36,0.5))",
+                            fontWeight: 500,
+                          }}
+                        >
+                          $DRAGON
+                        </span>
                       </motion.span>
                     </div>
                     <motion.p
@@ -1037,56 +1053,67 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 {/* Continuous Background Swap Animation */}
-                <div className="absolute inset-0 opacity-50 pointer-events-none overflow-hidden">
-                  {[...Array(6)].map((_, i) => (
+                <div className="absolute inset-0 opacity-60 pointer-events-none overflow-hidden">
+                  {[...Array(5)].map((_, i) => (
                     <motion.div
                       key={i}
                       className="absolute flex items-center justify-center"
                       style={{
-                        left: `${8 + i * 15}%`,
-                        top: `${12 + (i % 4) * 20}%`,
+                        left: `${10 + i * 18}%`,
+                        top: `${15 + (i % 3) * 25}%`,
                       }}
                       animate={{
-                        opacity: [0, 0.5, 0.5, 0],
-                        scale: [0.4, 0.8, 0.8, 0.4],
+                        opacity: [0, 0.8, 0.8, 0],
+                        scale: [0.6, 1, 1, 0.6],
                       }}
                       transition={{
-                        duration: 6,
+                        duration: 8,
                         repeat: Infinity,
-                        delay: i * 0.6,
+                        delay: i * 1.2,
                         ease: "easeInOut",
                       }}
                     >
                       {/* Sonic Token */}
                       <motion.div
-                        className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center shadow-lg border border-blue-300 overflow-hidden"
+                        className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl border-2 border-blue-300/60 overflow-hidden backdrop-blur-sm"
+                        style={{
+                          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
+                          boxShadow: "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                        }}
                         animate={{
-                          x: [0, 50, 0],
+                          x: [0, 60, 0],
                           rotate: [0, 180, 360],
                         }}
                         transition={{
-                          duration: 3,
+                          duration: 4,
                           repeat: Infinity,
-                          delay: i * 0.6,
+                          delay: i * 1.2,
+                          ease: "easeInOut",
                         }}
                       >
                         <img 
                           src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" 
                           alt="Sonic" 
-                          className="w-full h-full object-cover rounded-full"
+                          className="w-8 h-8 object-cover rounded-full"
                         />
                       </motion.div>
                       
-                      {/* Swap Action */}
-                      <div className="mx-2 flex flex-col items-center relative">
+                      {/* Swap Action Center */}
+                      <div className="mx-3 flex flex-col items-center relative">
                         {/* 10% Fee Indicator - Top */}
                         <motion.div
-                          className="absolute -top-8 text-xs font-bold text-red-400 px-2 py-1 bg-red-500/10 rounded border border-red-500/30"
-                          animate={{ opacity: [0.6, 1, 0.6] }}
+                          className="absolute -top-10 text-xs font-bold text-red-400 px-3 py-1.5 bg-red-500/15 rounded-lg border border-red-500/40 backdrop-blur-sm"
+                          animate={{ 
+                            opacity: [0.7, 1, 0.7],
+                            scale: [0.95, 1.05, 0.95]
+                          }}
                           transition={{
-                            duration: 1.8,
+                            duration: 2.5,
                             repeat: Infinity,
-                            delay: i * 0.6,
+                            delay: i * 1.2,
+                          }}
+                          style={{
+                            boxShadow: "0 0 15px rgba(239, 68, 68, 0.3)"
                           }}
                         >
                           10% FEE
@@ -1094,91 +1121,116 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         
                         {/* Buy/Sell Indicator */}
                         <motion.div
-                          className={`absolute -top-5 text-xs font-semibold px-1 py-0.5 rounded ${
+                          className={`absolute -top-6 text-xs font-bold px-2 py-1 rounded-md border ${
                             i % 2 === 0 
-                              ? 'text-green-400 bg-green-500/20' 
-                              : 'text-red-400 bg-red-500/20'
+                              ? 'text-green-300 bg-green-500/20 border-green-500/50' 
+                              : 'text-red-300 bg-red-500/20 border-red-500/50'
                           }`}
-                          animate={{ opacity: [0.4, 0.8, 0.4] }}
+                          animate={{ 
+                            opacity: [0.6, 1, 0.6],
+                            y: [0, -2, 0]
+                          }}
                           transition={{
-                            duration: 2,
+                            duration: 2.8,
                             repeat: Infinity,
-                            delay: i * 0.6 + 0.1,
+                            delay: i * 1.2 + 0.3,
+                          }}
+                          style={{
+                            boxShadow: i % 2 === 0 
+                              ? "0 0 12px rgba(34, 197, 94, 0.4)"
+                              : "0 0 12px rgba(239, 68, 68, 0.4)"
                           }}
                         >
                           {i % 2 === 0 ? 'BUY' : 'SELL'}
                         </motion.div>
                         
+                        {/* Enhanced Swap Arrow */}
                         <motion.div
-                          className="text-sm text-white"
+                          className="text-lg text-white relative"
                           animate={{
-                            opacity: [0.2, 0.6, 0.2],
-                            scale: [1, 1.1, 1],
+                            opacity: [0.4, 0.9, 0.4],
+                            scale: [1, 1.2, 1],
+                            rotateZ: [0, 180, 360]
                           }}
                           transition={{
-                            duration: 1.5,
+                            duration: 3,
                             repeat: Infinity,
-                            delay: i * 0.6 + 0.2,
+                            delay: i * 1.2 + 0.5,
+                          }}
+                          style={{
+                            filter: "drop-shadow(0 0 8px rgba(255, 255, 255, 0.6))"
                           }}
                         >
                           ⇄
                         </motion.div>
                         
-                        {/* Fee Breakdown Below - Dollar Amounts */}
+                        {/* Enhanced Fee Breakdown */}
                         <motion.div
-                          className="absolute top-6 flex flex-col items-center text-xs space-y-0.5"
-                          initial={{ opacity: 0, y: 2 }}
-                          animate={{ opacity: [0, 0.6, 0], y: [2, 14, 26] }}
+                          className="absolute top-8 flex flex-col items-center text-xs space-y-1 bg-black/30 backdrop-blur-md rounded-lg px-2 py-1.5 border border-white/10"
+                          initial={{ opacity: 0, y: 4, scale: 0.8 }}
+                          animate={{ 
+                            opacity: [0, 0.9, 0.9, 0], 
+                            y: [4, 16, 32, 48],
+                            scale: [0.8, 1, 1, 0.8]
+                          }}
                           transition={{
-                            duration: 3,
+                            duration: 5,
                             repeat: Infinity,
-                            delay: i * 0.6 + 0.6,
+                            delay: i * 1.2 + 1,
+                          }}
+                          style={{
+                            boxShadow: "0 0 20px rgba(0, 0, 0, 0.8)"
                           }}
                         >
-                          <div className="flex items-center space-x-1 text-yellow-400 whitespace-nowrap">
-                            <span>$6.90</span>
-                            <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
+                          <div className="flex items-center space-x-1.5 text-yellow-300 whitespace-nowrap">
+                            <span className="font-semibold">$6.90</span>
+                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                               <circle cx="12" cy="12" r="10" fill="#00D4FF"/>
                               <text x="12" y="16" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">S</text>
                             </svg>
-                            <span>Jackpot</span>
+                            <span className="text-yellow-200">Jackpot</span>
                           </div>
-                          <div className="flex items-center space-x-1 text-blue-400 whitespace-nowrap">
-                            <span>$2.41</span>
-                            <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
+                          <div className="flex items-center space-x-1.5 text-blue-300 whitespace-nowrap">
+                            <span className="font-semibold">$2.41</span>
+                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                               <circle cx="12" cy="12" r="10" fill="#00D4FF"/>
                               <text x="12" y="16" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">S</text>
                             </svg>
-                            <span>LP</span>
+                            <span className="text-blue-200">LP</span>
                           </div>
-                          <div className="flex items-center space-x-1 text-orange-400 whitespace-nowrap">
-                            <span>$0.69</span>
-                            <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
+                          <div className="flex items-center space-x-1.5 text-orange-300 whitespace-nowrap">
+                            <span className="font-semibold">$0.69</span>
+                            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                               <circle cx="12" cy="12" r="10" fill="#DC2626"/>
-                              <text x="12" y="16" textAnchor="middle" fontSize="6" fill="white" fontWeight="bold">D</text>
+                              <text x="12" y="16" textAnchor="middle" fontSize="7" fill="white" fontWeight="bold">D</text>
                             </svg>
-                            <span>Burn</span>
+                            <span className="text-orange-200">Burn</span>
                           </div>
                         </motion.div>
                       </div>
                       
                       {/* Dragon Token */}
                       <motion.div
-                        className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-lg border border-red-300 overflow-hidden"
+                        className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl border-2 border-orange-300/60 overflow-hidden backdrop-blur-sm"
+                        style={{
+                          background: "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
+                          boxShadow: "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                        }}
                         animate={{
-                          x: [0, -50, 0],
+                          x: [0, -60, 0],
                           rotate: [0, -180, -360],
                         }}
                         transition={{
-                          duration: 3,
+                          duration: 4,
                           repeat: Infinity,
-                          delay: i * 0.6,
+                          delay: i * 1.2,
+                          ease: "easeInOut",
                         }}
                       >
                         <img 
                           src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" 
                           alt="Dragon" 
-                          className="w-full h-full object-cover rounded-full"
+                          className="w-8 h-8 object-cover rounded-full"
                         />
                       </motion.div>
                     </motion.div>
