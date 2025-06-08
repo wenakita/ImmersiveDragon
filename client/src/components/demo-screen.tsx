@@ -170,12 +170,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   className="text-xl tracking-wider text-gray-400 font-light"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 1.5 }}
+                  transition={{ delay: 2, duration: 2.5 }}
                   style={{
                     filter: "drop-shadow(0 0 20px rgba(156,163,175,0.3))"
                   }}
                 >
-                  From the creators of OmniDragon
+                  From the creator of $AKITA V2, $AKITA V3, $oooOOO GODDOG aka Vitalik's Mum's Doge, $WAIT aka We're All In Together, etc..
                 </motion.p>
               </motion.div>
             )}
@@ -308,19 +308,19 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </motion.p>
                   </div>
 
-                  {/* Epic token animations with suspenseful build-up */}
+                  {/* Simultaneous token convergence and exchange */}
                   <motion.div
                     className="absolute left-16 top-1/2 w-40 h-40 rounded-full border-3 border-yellow-400/80 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-md"
                     initial={{ x: -1200, scale: 0, opacity: 0, rotateZ: -90 }}
                     animate={{ 
-                      x: [-1200, -600, 0, 320, 1600], 
-                      scale: [0, 0.5, 1, 1.4, 1.2],
-                      opacity: [0, 0.3, 1, 1, 1],
-                      rotateZ: [-90, -45, 0, 15, 0]
+                      x: [-1200, -200, 200, 1600], 
+                      scale: [0, 1, 1.2, 1.2],
+                      opacity: [0, 1, 1, 1],
+                      rotateZ: [-90, 0, 360, 720]
                     }}
                     transition={{ 
-                      duration: 6, 
-                      times: [0, 0.2, 0.5, 0.8, 1],
+                      duration: 5, 
+                      times: [0, 0.4, 0.6, 1],
                       ease: [0.16, 1, 0.3, 1],
                       delay: 2
                     }}
@@ -340,16 +340,16 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="absolute right-16 top-1/2 w-40 h-40 rounded-full border-3 border-amber-400/80 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-md"
                     initial={{ x: 1200, scale: 0, opacity: 0, rotateZ: 90 }}
                     animate={{ 
-                      x: [1200, 600, 0, -320, -1600], 
-                      scale: [0, 0.5, 1, 1.4, 1.2],
-                      opacity: [0, 0.3, 1, 1, 1],
-                      rotateZ: [90, 45, 0, -15, 0]
+                      x: [1200, 200, -200, -1600], 
+                      scale: [0, 1, 1.2, 1.2],
+                      opacity: [0, 1, 1, 1],
+                      rotateZ: [90, 0, -360, -720]
                     }}
                     transition={{ 
-                      duration: 6, 
-                      times: [0, 0.2, 0.5, 0.8, 1],
+                      duration: 5, 
+                      times: [0, 0.4, 0.6, 1],
                       ease: [0.16, 1, 0.3, 1],
-                      delay: 3
+                      delay: 2
                     }}
                     style={{
                       filter: "drop-shadow(0 0 40px rgba(251,191,36,0.8))",
@@ -363,54 +363,55 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     />
                   </motion.div>
 
-                  {/* Epic collision effect with screen shake */}
+                  {/* Epic collision effect when tokens meet */}
                   <motion.div
                     className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ 
-                      scale: [0, 5, 2, 0], 
-                      opacity: [0, 1, 0.6, 0],
-                      rotateZ: [0, 180, 360]
+                      scale: [0, 6, 3, 0], 
+                      opacity: [0, 1, 0.7, 0],
+                      rotateZ: [0, 360, 720]
                     }}
-                    transition={{ duration: 2, delay: 2.5, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 1.5, delay: 4, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="w-40 h-40 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-orange-400 opacity-40 blur-lg" />
+                    <div className="w-48 h-48 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-orange-400 opacity-50 blur-lg" />
                   </motion.div>
 
                   {/* Screen shake effect for collision */}
                   <motion.div
                     className="absolute inset-0"
                     animate={{ 
-                      x: [0, -5, 5, -3, 3, 0],
-                      y: [0, 3, -3, 2, -2, 0]
+                      x: [0, -8, 8, -5, 5, 0],
+                      y: [0, 5, -5, 3, -3, 0]
                     }}
                     transition={{ 
-                      duration: 0.3, 
-                      delay: 2.5,
+                      duration: 0.4, 
+                      delay: 4,
                       ease: "easeInOut"
                     }}
                   />
 
                   {/* Energy burst particles */}
-                  {[...Array(25)].map((_, i) => (
+                  {[...Array(30)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-2 h-2 rounded-full bg-white"
+                      className="absolute w-3 h-3 rounded-full bg-white"
                       style={{
                         left: "50%",
                         top: "50%",
-                        boxShadow: `0 0 10px ${i % 2 === 0 ? '#FFD700' : '#FF6B35'}`
+                        boxShadow: `0 0 15px ${i % 3 === 0 ? '#FFD700' : i % 3 === 1 ? '#FF6B35' : '#FFEB3B'}`
                       }}
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ 
-                        scale: [0, 1.5, 0],
-                        x: Math.cos(i * 14.4 * Math.PI / 180) * (100 + Math.random() * 100),
-                        y: Math.sin(i * 14.4 * Math.PI / 180) * (100 + Math.random() * 100),
-                        opacity: [0, 1, 0]
+                        scale: [0, 2, 0],
+                        x: Math.cos(i * 12 * Math.PI / 180) * (120 + Math.random() * 150),
+                        y: Math.sin(i * 12 * Math.PI / 180) * (120 + Math.random() * 150),
+                        opacity: [0, 1, 0],
+                        rotateZ: [0, 360 * (Math.random() > 0.5 ? 1 : -1)]
                       }}
                       transition={{
-                        duration: 1.5,
-                        delay: 2.5 + i * 0.02,
+                        duration: 2,
+                        delay: 4 + i * 0.03,
                         ease: "easeOut"
                       }}
                     />
