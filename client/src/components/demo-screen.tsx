@@ -1778,6 +1778,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           boxShadow: "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
                         }}
                       />
+                    </motion.div>
                   ))}
                 </div>
 
