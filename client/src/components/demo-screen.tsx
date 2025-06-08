@@ -185,7 +185,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="text-7xl font-light tracking-wider bg-gradient-to-r from-white via-warm-orange to-white bg-clip-text text-transparent relative z-10"
                     initial={{ scale: 0.8, y: 30, opacity: 0 }}
                     animate={{ scale: 1, y: 0, opacity: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+                    transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
                     style={{
                       filter: "drop-shadow(0 0 40px rgba(255,107,53,0.4))",
                       fontFamily: "system-ui, -apple-system, sans-serif",
@@ -237,7 +237,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="text-center text-5xl font-light mb-20 text-yellow-400 tracking-wide"
                     initial={{ y: -30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
+                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
                     style={{
                       filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
                       fontWeight: 300
@@ -323,7 +323,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 initial={{ opacity: 0, rotateX: 45 }}
                 animate={{ opacity: 1, rotateX: 0 }}
                 exit={{ opacity: 0, scale: 1.2, filter: "blur(8px)" }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="text-center relative">
                   <motion.h2
@@ -457,7 +457,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="text-5xl font-light mb-20 text-yellow-400 tracking-wide"
                     initial={{ y: -40, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
+                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
                     style={{
                       filter: "drop-shadow(0 0 30px rgba(255,235,59,0.5))",
                       fontWeight: 300
@@ -550,7 +550,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="text-6xl font-light mb-12 tracking-wide"
                     initial={{ rotateX: 45, opacity: 0 }}
                     animate={{ rotateX: 0, opacity: 1 }}
-                    transition={{ duration: 1.2, delay: 0.3 }}
+                    transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     style={{
                       background: "linear-gradient(135deg, #FFD700, #FFA500, #FFD700)",
                       backgroundClip: "text",
