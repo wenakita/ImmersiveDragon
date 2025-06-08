@@ -376,7 +376,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 1 }}
                     >
-                      Trade Sonic tokens on the fastest cross-chain protocol with instant settlements and zero slippage
+                      Trade for Dragon tokens on Sonic the highest-performing EVM L1
                     </motion.p>
                   </div>
 
@@ -789,9 +789,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                   <div className="space-y-12">
                     {[
-                      { percent: "6.9%", label: "JACKPOT FUND", description: "Win massive prizes every trade", color: "amber", delay: 0.5, size: 120 }, // Base size * 6.9
+                      { percent: "6.9%", label: "JACKPOT VAULT", description: "Win massive prizes every trade", color: "amber", delay: 0.5, size: 120 }, // Base size * 6.9
                       { percent: "2.41%", label: "LP REWARDS", description: "Earn passive income", color: "blue", delay: 1, size: 84 }, // Base size * 2.41
-                      { percent: "0.69%", label: "TOKEN BURN", description: "Increase scarcity & value", color: "yellow", delay: 1.5, size: 48 } // Base size * 0.69
+                      { percent: "0.69%", label: "TOKEN BURN", description: "Increase scarcity & value", color: "red", delay: 1.5, size: 48 } // Base size * 0.69
                     ].map((item, i) => (
                       <motion.div
                         key={i}
@@ -808,6 +808,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           className={`rounded-full border-2 flex items-center justify-center backdrop-blur-sm ${
                             item.color === 'amber' ? 'bg-amber-500/10 border-amber-400/60' :
                             item.color === 'blue' ? 'bg-blue-500/10 border-blue-400/60' :
+                            item.color === 'red' ? 'bg-red-500/10 border-red-400/60' :
                             'bg-yellow-500/10 border-yellow-400/60'
                           }`}
                           style={{
@@ -816,11 +817,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             filter: `drop-shadow(0 0 25px ${
                               item.color === 'amber' ? 'rgba(251,191,36,0.4)' :
                               item.color === 'blue' ? 'rgba(59,130,246,0.4)' :
+                              item.color === 'red' ? 'rgba(239,68,68,0.4)' :
                               'rgba(234,179,8,0.4)'
                             })`,
                             boxShadow: `inset 0 0 20px ${
                               item.color === 'amber' ? 'rgba(251,191,36,0.1)' :
                               item.color === 'blue' ? 'rgba(59,130,246,0.1)' :
+                              item.color === 'red' ? 'rgba(239,68,68,0.1)' :
                               'rgba(234,179,8,0.1)'
                             }`
                           }}
@@ -837,6 +840,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           <span className={`font-medium ${
                             item.color === 'amber' ? 'text-amber-400' :
                             item.color === 'blue' ? 'text-blue-400' :
+                            item.color === 'red' ? 'text-red-400' :
                             'text-yellow-400'
                           }`}
                           style={{
@@ -851,6 +855,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             className={`text-3xl font-medium tracking-wide ${
                               item.color === 'amber' ? 'text-amber-400' :
                               item.color === 'blue' ? 'text-blue-400' :
+                              item.color === 'red' ? 'text-red-400' :
                               'text-yellow-400'
                             }`}
                             animate={{ x: [0, 8, 0] }}
