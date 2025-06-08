@@ -497,7 +497,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       ease: [0.16, 1, 0.3, 1],
                     }}
                   >
-                    <div className="w-48 h-48 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-orange-400 opacity-50 blur-lg" />
+
                   </motion.div>
 
                   {/* Screen shake effect for collision */}
@@ -567,10 +567,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   y: { duration: 0.4, delay: 1 },
                 }}
               >
-                {/* Continuous Background Swap Animation */}
-                <div className="absolute inset-0 opacity-50 pointer-events-none overflow-hidden">
-                  {[...Array(4)].map((_, i) => (
-                    <motion.div
+                {/* Main content area */}
+                <div className="text-center relative z-10">
                       key={i}
                       className="absolute flex items-center justify-center"
                       style={{
