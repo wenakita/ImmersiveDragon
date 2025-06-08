@@ -212,17 +212,37 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {currentStep === -1 && (
               <motion.div
                 key="precredits"
-                className="flex items-center justify-center min-h-screen bg-black text-white"
+                className="flex flex-col items-center justify-center min-h-screen bg-black text-white"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 2 }}
               >
+                <motion.div
+                  className="mb-8"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5, duration: 1.5 }}
+                >
+                  <video
+                    className="w-24 h-24 opacity-70"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    style={{
+                      filter: "drop-shadow(0 0 30px rgba(156,163,175,0.5))"
+                    }}
+                  >
+                    <source src={`@assets/omnidragon_1749365523315.mp4`} type="video/mp4" />
+                  </video>
+                </motion.div>
+                
                 <motion.p
-                  className="text-xl tracking-wider text-gray-400 font-light"
+                  className="text-xl tracking-wider text-gray-400 font-light text-center max-w-4xl"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 2, duration: 2.5 }}
+                  transition={{ delay: 1.5, duration: 1.5 }}
                   style={{
                     filter: "drop-shadow(0 0 20px rgba(156,163,175,0.3))"
                   }}
@@ -1070,26 +1090,60 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 1.5, ease: "easeOut" }}
               >
                 <div className="text-center relative max-w-6xl">
-                  {/* Modern Logo/Brand Element */}
+                  {/* Modern Logo/Brand Element with Dragon Emblem */}
                   <motion.div
                     className="mb-12"
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   >
+                    {/* Dragon Emblem Video */}
+                    <motion.div
+                      className="relative mb-8"
+                      initial={{ opacity: 0, rotateZ: -10 }}
+                      animate={{ opacity: 1, rotateZ: 0 }}
+                      transition={{ duration: 2, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <motion.video
+                        className="w-32 h-32 mx-auto opacity-80"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        animate={{
+                          scale: [1, 1.05, 1],
+                          filter: [
+                            "drop-shadow(0 0 30px rgba(239,68,68,0.5))",
+                            "drop-shadow(0 0 50px rgba(249,115,22,0.8))",
+                            "drop-shadow(0 0 30px rgba(239,68,68,0.5))"
+                          ]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                        style={{
+                          filter: "drop-shadow(0 0 40px rgba(239,68,68,0.6))"
+                        }}
+                      >
+                        <source src={`@assets/dragon6_1749365546292.mp4`} type="video/mp4" />
+                      </motion.video>
+                    </motion.div>
+
                     <motion.div
                       className="relative inline-block"
                       animate={{
-                        rotateY: [0, 5, -5, 0],
+                        rotateY: [0, 2, -2, 0],
                       }}
                       transition={{
-                        duration: 8,
+                        duration: 10,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
                     >
                       {/* Modern minimalist brand mark */}
-                      <div className="text-7xl font-thin tracking-[0.3em] mb-4"
+                      <div className="text-6xl font-thin tracking-[0.3em] mb-4"
                         style={{
                           background: "linear-gradient(135deg, #ffffff 0%, #fbbf24 50%, #f59e0b 100%)",
                           backgroundClip: "text",
@@ -1106,13 +1160,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       <div className="flex items-center justify-center space-x-4 mb-4">
                         <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-60"></div>
                         <motion.div
-                          className="w-3 h-3 rounded-full bg-gradient-to-r from-red-500 to-orange-500"
+                          className="w-2 h-2 rounded-full bg-gradient-to-r from-red-500 to-orange-500"
                           animate={{
-                            scale: [1, 1.2, 1],
+                            scale: [1, 1.3, 1],
                             boxShadow: [
-                              "0 0 20px rgba(239,68,68,0.5)",
-                              "0 0 30px rgba(249,115,22,0.8)",
-                              "0 0 20px rgba(239,68,68,0.5)"
+                              "0 0 15px rgba(239,68,68,0.5)",
+                              "0 0 25px rgba(249,115,22,0.8)",
+                              "0 0 15px rgba(239,68,68,0.5)"
                             ]
                           }}
                           transition={{
@@ -1123,7 +1177,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         />
                         <div className="w-16 h-px bg-gradient-to-l from-transparent via-amber-400 to-transparent opacity-60"></div>
                       </div>
-                      <div className="text-5xl font-light tracking-[0.2em]"
+                      <div className="text-4xl font-light tracking-[0.2em]"
                         style={{
                           background: "linear-gradient(135deg, #ef4444 0%, #f97316 50%, #fbbf24 100%)",
                           backgroundClip: "text",
