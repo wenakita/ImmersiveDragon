@@ -210,7 +210,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
       <audio ref={audioRef} preload="auto" className="hidden">
-        <source src="/audio/demo-audio.mp3" type="audio/mp3" />
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav" />
         Your browser does not support the audio element.
       </audio>
 
