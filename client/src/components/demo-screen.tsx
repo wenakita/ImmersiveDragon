@@ -13,14 +13,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const steps = [
-    { delay: 0, duration: 4000 },      // Title
-    { delay: 4000, duration: 7000 },   // Token Swap (extended for reading)
-    { delay: 11000, duration: 5000 },  // Twist/Jackpot
-    { delay: 16000, duration: 6000 },  // Fee breakdown intro
-    { delay: 22000, duration: 8000 },  // Fee breakdown details
-    { delay: 30000, duration: 7000 },  // Lottery explanation
-    { delay: 37000, duration: 6000 },  // VRF details
-    { delay: 43000, duration: 5000 },  // Final
+    { delay: 0, duration: 6000 },      // Title - Extended dramatic entrance
+    { delay: 6000, duration: 8000 },   // Token Swap - Slow build-up
+    { delay: 14000, duration: 6000 },  // Jackpot reveal - Epic moment
+    { delay: 20000, duration: 8000 },  // Fee breakdown intro - Suspense
+    { delay: 28000, duration: 10000 }, // Fee breakdown details - Climactic
+    { delay: 38000, duration: 8000 },  // Lottery explanation - Grand reveal
+    { delay: 46000, duration: 7000 },  // VRF details - Final act
+    { delay: 53000, duration: 5000 },  // Conclusion
   ];
 
   useEffect(() => {
@@ -182,17 +182,27 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
                   
                   <motion.h1
-                    className="text-7xl font-semibold tracking-wider bg-gradient-to-r from-white via-amber-400 to-white bg-clip-text text-transparent relative z-10"
-                    initial={{ scale: 0.8, y: 30, opacity: 0 }}
-                    animate={{ scale: 1, y: 0, opacity: 1 }}
-                    transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
+                    className="text-8xl font-bold tracking-wider bg-gradient-to-r from-white via-amber-400 to-white bg-clip-text text-transparent relative z-10"
+                    initial={{ scale: 0.3, y: 100, opacity: 0, rotateX: 45 }}
+                    animate={{ 
+                      scale: [0.3, 1.1, 1], 
+                      y: [100, -20, 0], 
+                      opacity: [0, 1, 1],
+                      rotateX: [45, -5, 0]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      ease: [0.16, 1, 0.3, 1], 
+                      delay: 1,
+                      times: [0, 0.7, 1]
+                    }}
                     style={{
-                      filter: "drop-shadow(0 0 40px rgba(251,191,36,0.4))",
+                      filter: "drop-shadow(0 0 60px rgba(251,191,36,0.6))",
                       fontFamily: "system-ui, -apple-system, sans-serif",
-                      fontWeight: 600
+                      fontWeight: 700
                     }}
                   >
-                    <Typewriter text="SONIC RED DRAGON" delay={1000} speed={90} />
+                    <Typewriter text="SONIC RED DRAGON" delay={2000} speed={120} />
                   </motion.h1>
                   
                   {/* Refined particle system */}
@@ -270,50 +280,52 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </motion.p>
                   </div>
 
-                  {/* Clean token animations */}
+                  {/* Epic token animations with suspenseful build-up */}
                   <motion.div
-                    className="absolute left-16 top-1/2 w-36 h-36 rounded-full border-2 border-yellow-400/60 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
-                    initial={{ x: -800, scale: 0, opacity: 0 }}
+                    className="absolute left-16 top-1/2 w-40 h-40 rounded-full border-3 border-yellow-400/80 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-md"
+                    initial={{ x: -1200, scale: 0, opacity: 0, rotateZ: -90 }}
                     animate={{ 
-                      x: [0, 320, 1400], 
-                      scale: [0, 1.2, 1],
-                      opacity: [0, 1, 1]
+                      x: [-1200, -600, 0, 320, 1600], 
+                      scale: [0, 0.5, 1, 1.4, 1.2],
+                      opacity: [0, 0.3, 1, 1, 1],
+                      rotateZ: [-90, -45, 0, 15, 0]
                     }}
                     transition={{ 
-                      duration: 4, 
-                      times: [0, 0.6, 1],
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                      delay: 0.5
+                      duration: 6, 
+                      times: [0, 0.2, 0.5, 0.8, 1],
+                      ease: [0.16, 1, 0.3, 1],
+                      delay: 2
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 25px rgba(234,179,8,0.6))",
-                      boxShadow: "0 0 30px rgba(234,179,8,0.3)"
+                      filter: "drop-shadow(0 0 40px rgba(234,179,8,0.8))",
+                      boxShadow: "0 0 50px rgba(234,179,8,0.4), inset 0 0 30px rgba(234,179,8,0.2)"
                     }}
                   >
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
                       alt="S Token"
-                      className="w-24 h-24"
+                      className="w-28 h-28"
                     />
                   </motion.div>
 
                   <motion.div
-                    className="absolute right-16 top-1/2 w-36 h-36 rounded-full border-2 border-amber-400/60 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
-                    initial={{ x: 800, scale: 0, opacity: 0 }}
+                    className="absolute right-16 top-1/2 w-40 h-40 rounded-full border-3 border-amber-400/80 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-md"
+                    initial={{ x: 1200, scale: 0, opacity: 0, rotateZ: 90 }}
                     animate={{ 
-                      x: [0, -320, -1400], 
-                      scale: [0, 1.2, 1],
-                      opacity: [0, 1, 1]
+                      x: [1200, 600, 0, -320, -1600], 
+                      scale: [0, 0.5, 1, 1.4, 1.2],
+                      opacity: [0, 0.3, 1, 1, 1],
+                      rotateZ: [90, 45, 0, -15, 0]
                     }}
                     transition={{ 
-                      duration: 4, 
-                      times: [0, 0.6, 1],
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                      delay: 1
+                      duration: 6, 
+                      times: [0, 0.2, 0.5, 0.8, 1],
+                      ease: [0.16, 1, 0.3, 1],
+                      delay: 3
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 25px rgba(251,191,36,0.6))",
-                      boxShadow: "0 0 30px rgba(251,191,36,0.3)"
+                      filter: "drop-shadow(0 0 40px rgba(251,191,36,0.8))",
+                      boxShadow: "0 0 50px rgba(251,191,36,0.4), inset 0 0 30px rgba(251,191,36,0.2)"
                     }}
                   >
                     <img
@@ -351,21 +363,24 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               >
                 <div className="text-center relative">
                   <motion.h2
-                    className="text-7xl font-semibold text-amber-400 relative z-10 tracking-wide"
-                    initial={{ scale: 0.5, y: 50, opacity: 0 }}
+                    className="text-8xl font-bold text-amber-400 relative z-10 tracking-wide"
+                    initial={{ scale: 0.2, y: 200, opacity: 0, rotateX: 90 }}
                     animate={{ 
-                      scale: [0.5, 1.1, 1], 
-                      y: [50, -10, 0],
-                      opacity: [0, 1, 1]
+                      scale: [0.2, 0.8, 1.2, 1], 
+                      y: [200, 100, -30, 0],
+                      opacity: [0, 0.5, 1, 1],
+                      rotateX: [90, 45, -10, 0]
                     }}
                     transition={{ 
-                      duration: 1.8, 
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                      times: [0, 0.8, 1]
+                      duration: 3, 
+                      ease: [0.16, 1, 0.3, 1],
+                      times: [0, 0.4, 0.8, 1],
+                      delay: 0.5
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 50px rgba(251,191,36,0.8))",
-                      fontWeight: 600
+                      filter: "drop-shadow(0 0 80px rgba(251,191,36,1)) drop-shadow(0 0 120px rgba(251,191,36,0.6))",
+                      fontWeight: 800,
+                      textShadow: "0 0 50px rgba(251,191,36,0.8)"
                     }}
                   >
                     AND GET A CHANCE TO WIN THE JACKPOT!
@@ -398,27 +413,32 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </motion.div>
                   </motion.div>
 
-                  {/* Confetti animation */}
-                  {[...Array(20)].map((_, i) => (
+                  {/* Epic confetti burst */}
+                  {[...Array(35)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-3 h-3 rounded-full"
+                      className="absolute rounded-full"
                       style={{
-                        background: i % 4 === 0 ? '#FFD700' : i % 4 === 1 ? '#FFA500' : i % 4 === 2 ? '#FF6B35' : '#10B981',
-                        left: `${20 + Math.random() * 60}%`,
-                        top: `${10 + Math.random() * 30}%`,
+                        width: 4 + Math.random() * 8 + 'px',
+                        height: 4 + Math.random() * 8 + 'px',
+                        background: i % 4 === 0 ? '#FFD700' : i % 4 === 1 ? '#FFA500' : i % 4 === 2 ? '#FBBF24' : '#10B981',
+                        left: `${15 + Math.random() * 70}%`,
+                        top: `${5 + Math.random() * 40}%`,
+                        boxShadow: `0 0 20px ${i % 4 === 0 ? '#FFD700' : i % 4 === 1 ? '#FFA500' : i % 4 === 2 ? '#FBBF24' : '#10B981'}`
                       }}
-                      initial={{ scale: 0, y: 0, opacity: 0 }}
+                      initial={{ scale: 0, y: 0, opacity: 0, rotateZ: 0 }}
                       animate={{ 
-                        scale: [0, 1, 0],
-                        y: [0, -200 - Math.random() * 100],
-                        opacity: [0, 1, 0],
-                        rotateZ: [0, 360 * (Math.random() > 0.5 ? 1 : -1)]
+                        scale: [0, 1.5, 0.8, 0],
+                        y: [0, -400 - Math.random() * 200, -600 - Math.random() * 100],
+                        x: [0, (Math.random() - 0.5) * 400],
+                        opacity: [0, 1, 0.8, 0],
+                        rotateZ: [0, 720 * (Math.random() > 0.5 ? 1 : -1)]
                       }}
                       transition={{
-                        duration: 2 + Math.random() * 2,
-                        delay: 1.8 + Math.random() * 2,
-                        ease: "easeOut"
+                        duration: 4 + Math.random() * 3,
+                        delay: 2.5 + Math.random() * 1.5,
+                        ease: [0.16, 1, 0.3, 1],
+                        times: [0, 0.3, 0.7, 1]
                       }}
                     />
                   ))}
