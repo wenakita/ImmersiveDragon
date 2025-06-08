@@ -233,18 +233,32 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 1.5 }}
               >
                 <div className="relative w-full h-96">
-                  <motion.h2
-                    className="text-center text-5xl font-light mb-20 text-yellow-400 tracking-wide"
-                    initial={{ y: -30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    style={{
-                      filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
-                      fontWeight: 300
-                    }}
-                  >
-                    SWAP $S FOR $DRAGON
-                  </motion.h2>
+                  <div className="text-center text-5xl font-light mb-20 tracking-wide">
+                    <motion.span
+                      className="text-yellow-400"
+                      initial={{ y: -30, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      style={{
+                        filter: "drop-shadow(0 0 25px rgba(255,235,59,0.5))",
+                        fontWeight: 300
+                      }}
+                    >
+                      SWAP $S
+                    </motion.span>
+                    <motion.span
+                      className="text-warm-orange ml-4"
+                      initial={{ y: -30, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.5 }}
+                      style={{
+                        filter: "drop-shadow(0 0 25px rgba(255,107,53,0.5))",
+                        fontWeight: 300
+                      }}
+                    >
+                      FOR $DRAGON
+                    </motion.span>
+                  </div>
 
                   {/* Sophisticated token animations */}
                   <motion.div
@@ -344,7 +358,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       fontWeight: 300
                     }}
                   >
-                    BUT THERE'S A TWIST...
+                    AND GET A CHANCE TO WIN THE JACKPOT!
                   </motion.h2>
                   
                   {/* Elegant energy waves */}
