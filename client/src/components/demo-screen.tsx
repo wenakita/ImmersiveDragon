@@ -592,9 +592,26 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </motion.div>
                       
                       {/* Swap Action */}
-                      <div className="mx-3 flex flex-col items-center">
+                      <div className="mx-3 flex flex-col items-center relative">
+                        {/* Buy/Sell Indicator Above */}
                         <motion.div
-                          className="text-xl text-white mb-1"
+                          className={`absolute -top-8 text-xs font-semibold px-2 py-1 rounded ${
+                            i % 2 === 0 
+                              ? 'text-green-400 bg-green-500/20' 
+                              : 'text-red-400 bg-red-500/20'
+                          }`}
+                          animate={{ opacity: [0.6, 1, 0.6] }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            delay: i * 1 + 0.3,
+                          }}
+                        >
+                          {i % 2 === 0 ? 'BUY' : 'SELL'}
+                        </motion.div>
+                        
+                        <motion.div
+                          className="text-xl text-white"
                           animate={{
                             opacity: [0.4, 0.8, 0.4],
                             scale: [1, 1.3, 1],
@@ -607,23 +624,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         >
                           ⇄
                         </motion.div>
-                        <motion.div
-                          className="text-xs text-green-400 font-semibold px-2 py-1 bg-green-500/20 rounded"
-                          animate={{ opacity: [0.6, 1, 0.6] }}
-                          transition={{
-                            duration: 1.5,
-                            repeat: Infinity,
-                            delay: i * 1 + 0.3,
-                          }}
-                        >
-                          {i % 2 === 0 ? 'BUY' : 'SELL'}
-                        </motion.div>
                         
-                        {/* Fee Flow Animation */}
+                        {/* Fee Flow Animation Below */}
                         <motion.div
-                          className="absolute top-12 flex flex-col items-center text-xs"
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: [0, 0.8, 0], y: [0, 20, 40] }}
+                          className="absolute top-8 flex flex-col items-center text-xs"
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: [0, 0.8, 0], y: [5, 25, 45] }}
                           transition={{
                             duration: 2,
                             repeat: Infinity,
@@ -862,9 +868,26 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </motion.div>
                       
                       {/* Swap Action */}
-                      <div className="mx-2 flex flex-col items-center">
+                      <div className="mx-2 flex flex-col items-center relative">
+                        {/* Buy/Sell Indicator Above */}
                         <motion.div
-                          className="text-lg text-white mb-1"
+                          className={`absolute -top-6 text-xs font-semibold px-1 py-0.5 rounded ${
+                            i % 2 === 0 
+                              ? 'text-green-400 bg-green-500/20' 
+                              : 'text-red-400 bg-red-500/20'
+                          }`}
+                          animate={{ opacity: [0.5, 0.9, 0.5] }}
+                          transition={{
+                            duration: 1.8,
+                            repeat: Infinity,
+                            delay: i * 0.8 + 0.2,
+                          }}
+                        >
+                          {i % 2 === 0 ? 'BUY' : 'SELL'}
+                        </motion.div>
+                        
+                        <motion.div
+                          className="text-lg text-white"
                           animate={{
                             opacity: [0.3, 0.7, 0.3],
                             scale: [1, 1.2, 1],
@@ -877,23 +900,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         >
                           ⇄
                         </motion.div>
-                        <motion.div
-                          className="text-xs text-green-400 font-semibold px-1 py-0.5 bg-green-500/20 rounded"
-                          animate={{ opacity: [0.5, 0.9, 0.5] }}
-                          transition={{
-                            duration: 1.8,
-                            repeat: Infinity,
-                            delay: i * 0.8 + 0.2,
-                          }}
-                        >
-                          {i % 2 === 0 ? 'BUY' : 'SELL'}
-                        </motion.div>
                         
-                        {/* Fee Flow Animation */}
+                        {/* Fee Flow Animation Below */}
                         <motion.div
-                          className="absolute top-10 flex flex-col items-center text-xs"
-                          initial={{ opacity: 0, y: -8 }}
-                          animate={{ opacity: [0, 0.7, 0], y: [0, 15, 30] }}
+                          className="absolute top-6 flex flex-col items-center text-xs"
+                          initial={{ opacity: 0, y: 3 }}
+                          animate={{ opacity: [0, 0.7, 0], y: [3, 18, 33] }}
                           transition={{
                             duration: 2.5,
                             repeat: Infinity,
@@ -1065,9 +1077,26 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </motion.div>
                       
                       {/* Swap Action */}
-                      <div className="mx-2 flex flex-col items-center">
+                      <div className="mx-2 flex flex-col items-center relative">
+                        {/* Buy/Sell Indicator Above */}
                         <motion.div
-                          className="text-sm text-white mb-1"
+                          className={`absolute -top-5 text-xs font-semibold px-1 py-0.5 rounded ${
+                            i % 2 === 0 
+                              ? 'text-green-400 bg-green-500/20' 
+                              : 'text-red-400 bg-red-500/20'
+                          }`}
+                          animate={{ opacity: [0.4, 0.8, 0.4] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i * 0.6 + 0.1,
+                          }}
+                        >
+                          {i % 2 === 0 ? 'BUY' : 'SELL'}
+                        </motion.div>
+                        
+                        <motion.div
+                          className="text-sm text-white"
                           animate={{
                             opacity: [0.2, 0.6, 0.2],
                             scale: [1, 1.1, 1],
@@ -1080,23 +1109,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         >
                           ⇄
                         </motion.div>
-                        <motion.div
-                          className="text-xs text-green-400 font-semibold px-1 py-0.5 bg-green-500/20 rounded"
-                          animate={{ opacity: [0.4, 0.8, 0.4] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: i * 0.6 + 0.1,
-                          }}
-                        >
-                          {i % 2 === 0 ? 'BUY' : 'SELL'}
-                        </motion.div>
                         
-                        {/* Fee Flow Animation */}
+                        {/* Fee Flow Animation Below */}
                         <motion.div
-                          className="absolute top-8 flex flex-col items-center text-xs"
-                          initial={{ opacity: 0, y: -6 }}
-                          animate={{ opacity: [0, 0.6, 0], y: [0, 12, 24] }}
+                          className="absolute top-5 flex flex-col items-center text-xs"
+                          initial={{ opacity: 0, y: 2 }}
+                          animate={{ opacity: [0, 0.6, 0], y: [2, 14, 26] }}
                           transition={{
                             duration: 3,
                             repeat: Infinity,
