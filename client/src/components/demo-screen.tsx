@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
-import audioFile from "@assets/kwa-tempo-phonk-212904.mp3";
+import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
 interface DemoScreenProps {
   autoStart?: boolean;
