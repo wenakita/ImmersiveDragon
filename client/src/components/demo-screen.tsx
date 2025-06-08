@@ -3,6 +3,58 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
+// Animated Counter Component with Growth Indicators
+const AnimatedCounter = () => {
+  const [count, setCount] = useState(69000);
+  const [isIncreasing, setIsIncreasing] = useState(false);
+  const [lastIncrease, setLastIncrease] = useState(0);
+  const [showIncrease, setShowIncrease] = useState(false);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const increase = Math.floor(Math.random() * 200) + 75;
+      setLastIncrease(increase);
+      setIsIncreasing(true);
+      setShowIncrease(true);
+      setCount(prev => prev + increase);
+      
+      // Reset the flash effect
+      setTimeout(() => {
+        setIsIncreasing(false);
+        setShowIncrease(false);
+      }, 800);
+    }, 1400); // Update every 1.4 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  return (
+    <div className="relative">
+      <motion.span
+        animate={{
+          scale: isIncreasing ? [1, 1.08, 1] : 1,
+          color: isIncreasing ? ["#22c55e", "#10b981", "#22c55e"] : "#22c55e"
+        }}
+        transition={{ duration: 0.4 }}
+      >
+        ${count.toLocaleString()}
+      </motion.span>
+      
+      {/* Growing indicator */}
+      {showIncrease && (
+        <motion.div
+          className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xl font-medium text-yellow-400"
+          initial={{ opacity: 0, y: 0, scale: 0.8 }}
+          animate={{ opacity: [0, 1, 0], y: -20, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          +${lastIncrease}
+        </motion.div>
+      )}
+    </div>
+  );
+};
+
 interface DemoScreenProps {
   autoStart?: boolean;
 }
@@ -491,9 +543,19 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 1.5 }}
                     >
-                      <div className="text-5xl font-bold text-green-400 mb-2">
-                        $69,000
-                      </div>
+                      <motion.div
+                        className="text-5xl font-bold text-green-400 mb-2"
+                        animate={{
+                          textShadow: [
+                            "0 0 20px rgba(34,197,94,0.5)",
+                            "0 0 40px rgba(34,197,94,0.8)",
+                            "0 0 20px rgba(34,197,94,0.5)"
+                          ]
+                        }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <AnimatedCounter />
+                      </motion.div>
                       <div className="text-lg text-gray-400 font-light">
                         Current Jackpot Prize
                       </div>
