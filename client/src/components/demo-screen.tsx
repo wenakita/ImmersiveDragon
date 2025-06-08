@@ -251,15 +251,15 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="absolute left-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-blue-400/20 to-blue-600/30 border border-blue-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
                     initial={{ x: -800, rotateY: 180, scale: 0, opacity: 0 }}
                     animate={{ 
-                      x: [0, 200, 0, 600], 
-                      rotateY: [180, 0, 0, 0], 
-                      scale: [0, 1.2, 1.3, 1],
-                      opacity: [0, 1, 1, 1],
-                      rotateZ: [0, 0, 360, 720]
+                      x: [0, 320, 600], 
+                      rotateY: [180, 0, 0], 
+                      scale: [0, 1.2, 1],
+                      opacity: [0, 1, 1],
+                      rotateZ: [0, 180, 360]
                     }}
                     transition={{ 
-                      duration: 4.5, 
-                      times: [0, 0.35, 0.65, 1],
+                      duration: 4, 
+                      times: [0, 0.5, 1],
                       ease: [0.25, 0.46, 0.45, 0.94],
                       delay: 0.5
                     }}
@@ -279,15 +279,15 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="absolute right-16 top-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-orange-400/20 to-orange-600/30 border border-orange-400/50 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-sm"
                     initial={{ x: 800, rotateY: -180, scale: 0, opacity: 0 }}
                     animate={{ 
-                      x: [0, -200, 0, -600], 
-                      rotateY: [-180, 0, 0, 0], 
-                      scale: [0, 1.2, 1.3, 1],
-                      opacity: [0, 1, 1, 1],
-                      rotateZ: [0, 0, -360, -720]
+                      x: [0, -320, -600], 
+                      rotateY: [-180, 0, 0], 
+                      scale: [0, 1.2, 1],
+                      opacity: [0, 1, 1],
+                      rotateZ: [0, -180, -360]
                     }}
                     transition={{ 
-                      duration: 4.5, 
-                      times: [0, 0.35, 0.65, 1],
+                      duration: 4, 
+                      times: [0, 0.5, 1],
                       ease: [0.25, 0.46, 0.45, 0.94],
                       delay: 1
                     }}
@@ -303,30 +303,17 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     />
                   </motion.div>
 
-                  {/* Enhanced collision and swap effect */}
+                  {/* Simple collision effect */}
                   <motion.div
                     className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ 
-                      scale: [0, 4, 2, 5, 0], 
-                      opacity: [0, 0.8, 1, 0.6, 0],
-                      rotate: [0, 180, 360, 540, 720]
+                      scale: [0, 3, 0], 
+                      opacity: [0, 0.8, 0]
                     }}
-                    transition={{ duration: 2.5, delay: 2.8 }}
+                    transition={{ duration: 1, delay: 2.5 }}
                   >
-                    <div className="w-48 h-48 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-orange-400 opacity-25 blur-sm" />
-                  </motion.div>
-
-                  {/* Swap completion indicator */}
-                  <motion.div
-                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: [0, 1.2, 1], opacity: [0, 1, 0] }}
-                    transition={{ duration: 1.2, delay: 3.8 }}
-                  >
-                    <div className="text-green-400 text-2xl font-light tracking-wide backdrop-blur-sm bg-black/20 px-6 py-2 rounded-2xl border border-green-400/30">
-                      ✓ SWAP COMPLETE
-                    </div>
+                    <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-orange-400 opacity-30 blur-sm" />
                   </motion.div>
                 </div>
               </motion.div>
