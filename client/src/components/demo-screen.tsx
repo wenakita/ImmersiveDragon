@@ -64,16 +64,16 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const [showAnimations, setShowAnimations] = useState(autoStart);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Enhanced timing based on waveform analysis
+  // Enhanced timing based on waveform analysis - Extended for better comprehension
   const steps = [
     { delay: 0, duration: 6500 }, // [0:00–0:06.5] Title intro: swell begins
     { delay: 6500, duration: 7500 }, // [0:06.5–0:14] Swap animation buildup
-    { delay: 14000, duration: 9000 }, // [0:14–0:23] Jackpot reveal at first drop - EXTENDED
-    { delay: 23000, duration: 5500 }, // [0:23–0:28.5] Fee tension – ambient mood
-    { delay: 28500, duration: 10000 }, // [0:28.5–0:38.5] Fee breakdown – cinematic swell
-    { delay: 38500, duration: 8000 }, // [0:38.5–0:46.5] Lottery mechanics
-    { delay: 46500, duration: 7000 }, // [0:46.5–0:53.5] VRF finale
-    { delay: 53500, duration: 8000 }, // [0:53.5–1:01.5] Final CTA + logo out
+    { delay: 14000, duration: 12000 }, // [0:14–0:26] Jackpot reveal at first drop - EXTENDED +3s
+    { delay: 26000, duration: 8000 }, // [0:26–0:34] Fee tension – ambient mood - EXTENDED +2.5s
+    { delay: 34000, duration: 12000 }, // [0:34–0:46] Fee breakdown – cinematic swell - EXTENDED +2s
+    { delay: 46000, duration: 8000 }, // [0:46–0:54] Lottery mechanics
+    { delay: 54000, duration: 7000 }, // [0:54–1:01] VRF finale
+    { delay: 61000, duration: 8000 }, // [1:01–1:09] Final CTA + logo out
   ];
 
   useEffect(() => {
@@ -534,7 +534,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {currentStep === 2 && (
               <motion.div
                 key="jackpot"
-                className="flex items-center justify-center min-h-screen"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{
                   opacity: 1,
@@ -550,7 +550,79 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   y: { duration: 0.4, delay: 1 },
                 }}
               >
-                <div className="text-center relative">
+                {/* Continuous Background Swap Animation */}
+                <div className="absolute inset-0 opacity-50 pointer-events-none overflow-hidden">
+                  {[...Array(4)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute flex items-center justify-center"
+                      style={{
+                        left: `${15 + i * 20}%`,
+                        top: `${20 + (i % 2) * 40}%`,
+                      }}
+                      animate={{
+                        opacity: [0, 0.7, 0.7, 0],
+                        scale: [0.6, 1, 1, 0.6],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: i * 1,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {/* Token A */}
+                      <motion.div
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-lg"
+                        animate={{
+                          x: [0, 80, 0],
+                          rotate: [0, 180, 360],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: i * 1,
+                        }}
+                      >
+                        S
+                      </motion.div>
+                      
+                      {/* Swap Arrow */}
+                      <motion.div
+                        className="mx-3 text-xl text-white"
+                        animate={{
+                          opacity: [0.4, 0.8, 0.4],
+                          scale: [1, 1.3, 1],
+                        }}
+                        transition={{
+                          duration: 1,
+                          repeat: Infinity,
+                          delay: i * 1 + 0.5,
+                        }}
+                      >
+                        ⇄
+                      </motion.div>
+                      
+                      {/* Token B */}
+                      <motion.div
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        animate={{
+                          x: [0, -80, 0],
+                          rotate: [0, -180, -360],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: i * 1,
+                        }}
+                      >
+                        ETH
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="text-center relative z-10">
                   {/* Flash effect */}
                   <motion.div
                     className="fixed inset-0 bg-white pointer-events-none z-50"
@@ -704,13 +776,85 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {currentStep === 3 && (
               <motion.div
                 key="fee-bridge"
-                className="flex items-center justify-center min-h-screen"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, y: -100, filter: "blur(10px)" }}
                 transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <div className="text-center relative max-w-4xl">
+                {/* Continuous Background Swap Animation */}
+                <div className="absolute inset-0 opacity-50 pointer-events-none overflow-hidden">
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute flex items-center justify-center"
+                      style={{
+                        left: `${10 + i * 18}%`,
+                        top: `${15 + (i % 3) * 25}%`,
+                      }}
+                      animate={{
+                        opacity: [0, 0.6, 0.6, 0],
+                        scale: [0.5, 0.9, 0.9, 0.5],
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        delay: i * 0.8,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {/* Token A */}
+                      <motion.div
+                        className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        animate={{
+                          x: [0, 60, 0],
+                          rotate: [0, 180, 360],
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          delay: i * 0.8,
+                        }}
+                      >
+                        S
+                      </motion.div>
+                      
+                      {/* Swap Arrow */}
+                      <motion.div
+                        className="mx-2 text-lg text-white"
+                        animate={{
+                          opacity: [0.3, 0.7, 0.3],
+                          scale: [1, 1.2, 1],
+                        }}
+                        transition={{
+                          duration: 1.2,
+                          repeat: Infinity,
+                          delay: i * 0.8 + 0.3,
+                        }}
+                      >
+                        ⇄
+                      </motion.div>
+                      
+                      {/* Token B */}
+                      <motion.div
+                        className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        animate={{
+                          x: [0, -60, 0],
+                          rotate: [0, -180, -360],
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          delay: i * 0.8,
+                        }}
+                      >
+                        ETH
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="text-center relative max-w-4xl z-10">
                   {/* Connecting question */}
                   <motion.h2
                     className="text-5xl font-light text-gray-300 mb-12 tracking-wide"
@@ -797,13 +941,85 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {currentStep === 4 && (
               <motion.div
                 key="breakdown"
-                className="flex items-center justify-center min-h-screen"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
                 transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <div className="text-center">
+                {/* Continuous Background Swap Animation */}
+                <div className="absolute inset-0 opacity-50 pointer-events-none overflow-hidden">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute flex items-center justify-center"
+                      style={{
+                        left: `${8 + i * 15}%`,
+                        top: `${12 + (i % 4) * 20}%`,
+                      }}
+                      animate={{
+                        opacity: [0, 0.5, 0.5, 0],
+                        scale: [0.4, 0.8, 0.8, 0.4],
+                      }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        delay: i * 0.6,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {/* Token A */}
+                      <motion.div
+                        className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        animate={{
+                          x: [0, 50, 0],
+                          rotate: [0, 180, 360],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: i * 0.6,
+                        }}
+                      >
+                        S
+                      </motion.div>
+                      
+                      {/* Swap Arrow */}
+                      <motion.div
+                        className="mx-2 text-sm text-white"
+                        animate={{
+                          opacity: [0.2, 0.6, 0.2],
+                          scale: [1, 1.1, 1],
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          delay: i * 0.6 + 0.2,
+                        }}
+                      >
+                        ⇄
+                      </motion.div>
+                      
+                      {/* Token B */}
+                      <motion.div
+                        className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xs shadow-lg"
+                        animate={{
+                          x: [0, -50, 0],
+                          rotate: [0, -180, -360],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: i * 0.6,
+                        }}
+                      >
+                        ETH
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="text-center relative z-10">
                   <div className="mb-16">
                     {/* Transition from previous slide */}
                     <motion.div
@@ -1535,8 +1751,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         filter: "drop-shadow(0 0 15px rgba(59,130,246,0.4))",
                       }}
                     >
-                      ⚡ Chainlink VRF2.5 • LayerZero Cross-Chain • Provably
-                      Fair
+                      ⚡ Chainlink VRF2.5 • LayerZero V2 • drand League of Entropy
                     </motion.p>
                     <motion.p
                       className="text-xl text-warm-orange font-light tracking-wide"
@@ -1550,7 +1765,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         filter: "drop-shadow(0 0 15px rgba(255,107,53,0.4))",
                       }}
                     >
-                      🎯 Every Swap = Lottery Entry • Win Up to $69,000
+                      🎯 Every Swap = Unique Lottery Entry
                     </motion.p>
                   </motion.div>
 
