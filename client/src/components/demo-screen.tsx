@@ -1036,7 +1036,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: item.delay + 2.5 }}
                           >
-                            <div className="text-sm text-gray-400 mb-1">veCRV Boosted:</div>
+                            <div className="text-sm text-gray-400 mb-1">veDRAGON Boosted:</div>
                             <motion.div
                               className="text-xl font-medium text-blue-300"
                               animate={{ 
@@ -1070,45 +1070,89 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 1.5, ease: "easeOut" }}
               >
                 <div className="text-center relative max-w-6xl">
-                  {/* Main Title */}
-                  <motion.h1
-                    className="text-8xl font-bold mb-8 tracking-wider"
-                    initial={{ scale: 0.3, rotateX: 90, opacity: 0 }}
-                    animate={{ 
-                      scale: [0.3, 1.1, 1], 
-                      rotateX: [90, -10, 0],
-                      opacity: [0, 1, 1]
-                    }}
-                    transition={{ 
-                      duration: 2.5, 
-                      delay: 0.5,
-                      ease: [0.16, 1, 0.3, 1],
-                      times: [0, 0.7, 1]
-                    }}
-                    style={{
-                      background: "linear-gradient(135deg, #FFD700, #FF6B35, #FFEB3B)",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                      color: "transparent",
-                      filter: "drop-shadow(0 0 80px rgba(255,215,0,1))",
-                      fontWeight: 800
-                    }}
+                  {/* Modern Logo/Brand Element */}
+                  <motion.div
+                    className="mb-12"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    SONIC RED DRAGON
-                  </motion.h1>
+                    <motion.div
+                      className="relative inline-block"
+                      animate={{
+                        rotateY: [0, 5, -5, 0],
+                      }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {/* Modern minimalist brand mark */}
+                      <div className="text-7xl font-thin tracking-[0.3em] mb-4"
+                        style={{
+                          background: "linear-gradient(135deg, #ffffff 0%, #fbbf24 50%, #f59e0b 100%)",
+                          backgroundClip: "text",
+                          WebkitBackgroundClip: "text",
+                          color: "transparent",
+                          filter: "drop-shadow(0 0 40px rgba(251,191,36,0.3))",
+                          fontFamily: "system-ui, -apple-system, sans-serif",
+                          fontWeight: 100,
+                          letterSpacing: "0.3em"
+                        }}
+                      >
+                        SONIC
+                      </div>
+                      <div className="flex items-center justify-center space-x-4 mb-4">
+                        <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-60"></div>
+                        <motion.div
+                          className="w-3 h-3 rounded-full bg-gradient-to-r from-red-500 to-orange-500"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            boxShadow: [
+                              "0 0 20px rgba(239,68,68,0.5)",
+                              "0 0 30px rgba(249,115,22,0.8)",
+                              "0 0 20px rgba(239,68,68,0.5)"
+                            ]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                        <div className="w-16 h-px bg-gradient-to-l from-transparent via-amber-400 to-transparent opacity-60"></div>
+                      </div>
+                      <div className="text-5xl font-light tracking-[0.2em]"
+                        style={{
+                          background: "linear-gradient(135deg, #ef4444 0%, #f97316 50%, #fbbf24 100%)",
+                          backgroundClip: "text",
+                          WebkitBackgroundClip: "text",
+                          color: "transparent",
+                          filter: "drop-shadow(0 0 30px rgba(239,68,68,0.3))",
+                          fontFamily: "system-ui, -apple-system, sans-serif",
+                          fontWeight: 300,
+                          letterSpacing: "0.2em"
+                        }}
+                      >
+                        RED DRAGON
+                      </div>
+                    </motion.div>
+                  </motion.div>
 
-                  {/* Subtitle */}
+                  {/* Elegant Subtitle */}
                   <motion.h2
-                    className="text-4xl font-light mb-12 text-gray-300 tracking-wide"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 1.5 }}
+                    className="text-3xl font-light mb-16 text-gray-300 tracking-wide opacity-80"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 0.8, y: 0 }}
+                    transition={{ duration: 1.5, delay: 1.8 }}
                     style={{
-                      filter: "drop-shadow(0 0 25px rgba(255,255,255,0.2))",
-                      fontWeight: 300
+                      fontFamily: "system-ui, -apple-system, sans-serif",
+                      fontWeight: 200,
+                      letterSpacing: "0.1em"
                     }}
                   >
-                    The Future of Cross-Chain Lottery DeFi
+                    Next-Generation Cross-Chain Lottery Protocol
                   </motion.h2>
 
                   {/* Tech Features */}
@@ -1140,37 +1184,67 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </motion.p>
                   </motion.div>
 
-                  {/* CTA Section */}
+                  {/* Modern CTA Section */}
                   <motion.div
-                    className="space-y-6"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 4, duration: 1.5 }}
+                    className="space-y-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 4.5, duration: 1.5 }}
                   >
-                    <motion.p
-                      className="text-2xl text-white/80 font-light"
-                      animate={{ opacity: [0.8, 1, 0.8] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      Coming Soon
-                    </motion.p>
-                    <motion.p
-                      className="text-4xl text-yellow-400 font-medium tracking-wider"
-                      animate={{ 
-                        scale: [1, 1.05, 1],
-                        textShadow: [
-                          "0 0 20px rgba(255,235,59,0.5)",
-                          "0 0 40px rgba(255,235,59,0.8)",
-                          "0 0 20px rgba(255,235,59,0.5)"
-                        ]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    <motion.div
+                      className="text-xl text-white/60 font-light tracking-wide"
+                      animate={{ opacity: [0.6, 0.9, 0.6] }}
+                      transition={{ duration: 3, repeat: Infinity }}
                       style={{
-                        filter: "drop-shadow(0 0 30px rgba(255,235,59,0.7))"
+                        fontFamily: "system-ui, -apple-system, sans-serif",
+                        fontWeight: 200,
+                        letterSpacing: "0.1em"
                       }}
                     >
-                      sonicreddragon.io
-                    </motion.p>
+                      LAUNCHING Q2 2025
+                    </motion.div>
+                    
+                    <motion.div
+                      className="relative inline-block"
+                      animate={{ 
+                        y: [0, -5, 0],
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <motion.div
+                        className="text-3xl font-light tracking-[0.15em] text-amber-300"
+                        animate={{
+                          textShadow: [
+                            "0 0 20px rgba(252,211,77,0.3)",
+                            "0 0 40px rgba(252,211,77,0.6)",
+                            "0 0 20px rgba(252,211,77,0.3)"
+                          ]
+                        }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                        style={{
+                          fontFamily: "system-ui, -apple-system, sans-serif",
+                          fontWeight: 300,
+                          letterSpacing: "0.15em"
+                        }}
+                      >
+                        sonicreddragon.io
+                      </motion.div>
+                      
+                      {/* Subtle underline animation */}
+                      <motion.div
+                        className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"
+                        animate={{
+                          width: ["0%", "100%", "0%"],
+                          opacity: [0, 0.8, 0]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 1
+                        }}
+                      />
+                    </motion.div>
                   </motion.div>
 
                   {/* Epic particle explosion */}
