@@ -56,7 +56,12 @@ async function setupVite() {
 
   // Setup Vite in development
   if (process.env.NODE_ENV === "development") {
-    await setupVite();
+    try {
+      await setupVite();
+    } catch (error) {
+      console.error("Vite setup failed:", error);
+      // Continue without Vite for now
+    }
   }
 
   const PORT = 5000;

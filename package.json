@@ -374,7 +374,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development tsx server/index.ts"
+    "dev": "NODE_ENV=development tsx server/simple-server.ts"
   },
   "keywords": [],
   "author": "",
