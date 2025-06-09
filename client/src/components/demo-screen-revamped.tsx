@@ -33,6 +33,7 @@ const TECH_SPECS = [
 export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProps) {
   const [currentStep, setCurrentStep] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const steps = [
@@ -49,21 +50,34 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
     if (autoStart) {
       setIsPlaying(true);
       
-      // Start audio
-      if (audioRef.current) {
-        audioRef.current.volume = 0;
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().then(() => {
-          // Smooth fade in
-          const fadeIn = () => {
-            if (audioRef.current && audioRef.current.volume < 0.6) {
-              audioRef.current.volume = Math.min(audioRef.current.volume + 0.01, 0.6);
-              requestAnimationFrame(fadeIn);
-            }
-          };
-          fadeIn();
-        }).catch(console.log);
-      }
+      // Start audio with user gesture handling
+      const startAudio = async () => {
+        if (audioRef.current) {
+          try {
+            audioRef.current.volume = 0;
+            audioRef.current.currentTime = 0;
+            
+            // Try to play
+            await audioRef.current.play();
+            setAudioPlaying(true);
+            
+            // Smooth fade in
+            const fadeIn = () => {
+              if (audioRef.current && audioRef.current.volume < 0.6) {
+                audioRef.current.volume = Math.min(audioRef.current.volume + 0.015, 0.6);
+                requestAnimationFrame(fadeIn);
+              }
+            };
+            fadeIn();
+          } catch (error) {
+            console.log("Audio play failed:", error);
+            // Continue without audio if it fails
+          }
+        }
+      };
+
+      // Small delay before starting audio
+      setTimeout(startAudio, 500);
 
       // Auto-advance steps
       let totalDelay = 2000;
@@ -73,6 +87,23 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
       });
     }
   }, [autoStart]);
+
+  const toggleAudio = async () => {
+    if (audioRef.current) {
+      try {
+        if (audioPlaying) {
+          audioRef.current.pause();
+          setAudioPlaying(false);
+        } else {
+          audioRef.current.volume = 0.6;
+          await audioRef.current.play();
+          setAudioPlaying(true);
+        }
+      } catch (error) {
+        console.log("Audio toggle failed:", error);
+      }
+    }
+  };
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -89,8 +120,9 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
-      <audio ref={audioRef} preload="auto" className="hidden">
+      <audio ref={audioRef} preload="auto" loop>
         <source src={audioFile} type="audio/mpeg" />
+        Your browser does not support the audio element.
       </audio>
 
       {/* Minimal background effects */}
@@ -424,6 +456,19 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
           </div>
         </div>
       )}
+
+      {/* Audio Control */}
+      <motion.button
+        onClick={toggleAudio}
+        className="fixed top-6 right-6 z-20 bg-slate-900/80 backdrop-blur-lg border border-slate-700/50 rounded-xl p-3 hover:bg-slate-800/80 transition-colors"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1 }}
+      >
+        <div className="text-white text-lg">
+          {audioPlaying ? "🔊" : "🔇"}
+        </div>
+      </motion.button>
 
       {/* Live counter */}
       <motion.div
