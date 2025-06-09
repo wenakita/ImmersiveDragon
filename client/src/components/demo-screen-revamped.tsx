@@ -497,143 +497,120 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
 
             {/* Chainlink VRF */}
             {currentStep === 4 && (
-              <motion.div key="odds" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
+              <motion.div key="vrf" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
                 <motion.h2
                   {...slideUp}
-                  className="text-4xl font-light mb-12 tracking-wide"
+                  className="text-4xl font-light mb-8 tracking-wide"
                 >
-                  dynamic probability system
+                  provably fair randomness
                 </motion.h2>
-                <div className="bg-slate-800/20 rounded-xl p-8 backdrop-blur-sm border border-slate-700/20">
-                  <div className="grid grid-cols-4 gap-4 mb-6 text-sm text-slate-400 font-light">
-                    <div>tier</div>
-                    <div>odds</div>
-                    <div>multiplier</div>
-                    <div>allocation</div>
-                  </div>
-                  <div className="space-y-3">
-                    {LOTTERY_TIERS.map((tier, index) => (
-                      <motion.div
-                        key={tier.name}
-                        {...slideUp}
-                        transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
-                        className="grid grid-cols-4 gap-4 py-3 border-b border-slate-700/30 last:border-b-0"
-                      >
-                        <div className="text-left font-light text-white">
-                          {tier.name}
-                        </div>
-                        <div className="font-mono text-slate-300">
-                          {tier.odds}
-                        </div>
-                        <div className="font-light text-green-400">
-                          {tier.multiplier}
-                        </div>
-                        <div className="font-light text-blue-400">
-                          {tier.allocation}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Technology */}
-            {currentStep === 5 && (
-              <motion.div key="tech" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
-                <motion.h2
-                  {...slideUp}
-                  className="text-4xl font-light mb-12 tracking-wide"
-                >
-                  enterprise infrastructure
-                </motion.h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <motion.div
-                    {...slideUp}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="bg-slate-800/20 rounded-xl p-6 backdrop-blur-sm border border-slate-700/20"
-                  >
-                    <h3 className="text-xl font-light mb-4 text-blue-400">
-                      chainlink vrf 2.5
-                    </h3>
-                    <div className="space-y-3">
-                      {TECH_SPECS.map((spec, index) => (
-                        <div key={spec.label} className="flex justify-between">
-                          <span className="text-slate-400 font-light">
-                            {spec.label}
-                          </span>
-                          <span className="text-white font-light">
-                            {spec.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    {...slideUp}
-                    transition={{ delay: 0.7, duration: 1 }}
-                    className="bg-slate-800/20 rounded-xl p-6 backdrop-blur-sm border border-slate-700/20"
-                  >
-                    <h3 className="text-xl font-light mb-4 text-purple-400">
-                      layerzero protocol
-                    </h3>
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-light">
-                          cross-chain messaging
-                        </span>
-                        <span className="text-white font-light">
-                          unified
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-light">
-                          supported networks
-                        </span>
-                        <span className="text-white font-light">
-                          7 blockchains
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-light">
-                          liquidity pooling
-                        </span>
-                        <span className="text-white font-light">
-                          global
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Future */}
-            {currentStep === 6 && (
-              <motion.div key="future" {...fadeIn} className="text-center max-w-5xl mx-auto p-8">
-                <motion.h2
-                  {...slideUp}
-                  className="text-5xl font-extralight mb-8 tracking-wide"
-                  style={{ fontWeight: 100 }}
-                >
-                  the future of defi
-                </motion.h2>
-                <motion.p
+                <motion.div
                   {...slideUp}
                   transition={{ delay: 0.5, duration: 1 }}
-                  className="text-xl text-slate-300 font-light mb-8"
+                  className="grid grid-cols-2 gap-8 mb-8"
                 >
-                  where every transaction creates opportunity
+                  <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 rounded-lg p-8 backdrop-blur-sm border border-blue-700/30">
+                    <div className="text-6xl font-light text-blue-400 mb-4">VRF 2.5</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">chainlink integration</div>
+                    <div className="text-sm text-slate-400 font-light">cryptographically secure randomness ensures every lottery draw is completely unpredictable and verifiable on-chain</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/20 rounded-lg p-8 backdrop-blur-sm border border-purple-700/30">
+                    <div className="text-6xl font-light text-purple-400 mb-4">24/7</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">automated draws</div>
+                    <div className="text-sm text-slate-400 font-light">smart contracts execute lottery draws automatically based on trading volume thresholds and time intervals</div>
+                  </div>
+                </motion.div>
+                <motion.p
+                  {...slideUp}
+                  transition={{ delay: 1, duration: 1 }}
+                  className="text-lg text-slate-400 font-light"
+                >
+                  no human intervention • transparent algorithms • immutable results
                 </motion.p>
+              </motion.div>
+            )}
+
+            {/* LayerZero Cross-Chain */}
+            {currentStep === 5 && (
+              <motion.div key="layerzero" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
+                <motion.h2
+                  {...slideUp}
+                  className="text-4xl font-light mb-8 tracking-wide"
+                >
+                  cross-chain infrastructure
+                </motion.h2>
+                <motion.div
+                  {...slideUp}
+                  transition={{ delay: 0.5, duration: 1 }}
+                  className="grid grid-cols-3 gap-6 mb-8"
+                >
+                  <div className="bg-slate-800/50 rounded-lg p-6 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl mb-4">🌉</div>
+                    <div className="text-lg font-light text-slate-300 mb-2">unified liquidity</div>
+                    <div className="text-sm text-slate-400 font-light">access tokens across multiple chains seamlessly</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-6 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl mb-4">⚡</div>
+                    <div className="text-lg font-light text-slate-300 mb-2">instant messaging</div>
+                    <div className="text-sm text-slate-400 font-light">real-time lottery updates across all supported networks</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-6 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl mb-4">🔗</div>
+                    <div className="text-lg font-light text-slate-300 mb-2">omnichain protocol</div>
+                    <div className="text-sm text-slate-400 font-light">single interface for multi-chain defi operations</div>
+                  </div>
+                </motion.div>
+                <motion.p
+                  {...slideUp}
+                  transition={{ delay: 1, duration: 1 }}
+                  className="text-lg text-slate-400 font-light"
+                >
+                  powered by layerzero • ethereum • polygon • arbitrum • optimism
+                </motion.p>
+              </motion.div>
+            )}
+
+            {/* Complete */}
+            {currentStep === 6 && (
+              <motion.div key="complete" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
+                <motion.h2
+                  {...slideUp}
+                  className="text-5xl font-light mb-8 tracking-wide"
+                >
+                  next generation defi
+                </motion.h2>
+                <motion.div
+                  {...slideUp}
+                  transition={{ delay: 0.5, duration: 1 }}
+                  className="space-y-6 mb-8"
+                >
+                  <div className="text-2xl font-light text-slate-300">
+                    trade • earn • win
+                  </div>
+                  <div className="text-lg text-slate-400 font-light max-w-3xl mx-auto">
+                    experience the future of decentralized finance where every transaction contributes to a transparent, community-driven ecosystem powered by cutting-edge blockchain technology
+                  </div>
+                </motion.div>
                 <motion.div
                   {...slideUp}
                   transition={{ delay: 1, duration: 1 }}
-                  className="text-sm text-slate-400 font-light"
+                  className="flex justify-center space-x-8"
                 >
-                  sonic red dragon
+                  <div className="text-center">
+                    <div className="text-3xl font-light text-cyan-400 mb-2">$SONIC</div>
+                    <div className="text-sm text-slate-400 font-light">speed & efficiency</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-light text-amber-400 mb-2">$DRAGON</div>
+                    <div className="text-sm text-slate-400 font-light">power & rewards</div>
+                  </div>
                 </motion.div>
               </motion.div>
             )}
+
+            {/* Legacy content removed for cleaner structure */}
+
+
           </AnimatePresence>
         </div>
       )}
