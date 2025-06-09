@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import WelcomeScreen from "@/components/welcome-screen";
-import DemoScreenRevamped from "@/components/demo-screen-revamped";
+import DemoScreenRevampedFixed from "@/components/demo-screen-revamped-fixed";
 
 export default function Home() {
   const [showWelcome, setShowWelcome] = useState(true);

@@ -278,112 +278,169 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
               </motion.div>
             )}
 
-            {/* Token Swap */}
+            {/* Elegant Token Exchange */}
             {currentStep === 1 && (
-              <motion.div key="swap" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
-                <motion.h2
-                  {...slideUp}
-                  className="text-4xl font-light mb-12 tracking-wide"
+              <motion.div key="swap" {...fadeIn} className="relative min-h-screen flex items-center justify-center">
+                {/* Floating Exchange Interface */}
+                <motion.div
+                  className="relative z-20 bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl rounded-3xl border border-slate-700/50 p-12 max-w-2xl mx-auto"
+                  initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
-                  seamless token exchange
-                </motion.h2>
-                
-                {/* Epic Token Convergence - Full Screen */}
-                <div className="fixed inset-0 z-10 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-                  {/* Title Section */}
-                  <div className="text-center mb-16 pt-20">
-                    <div className="text-5xl font-light mb-6 tracking-wide">
-                      <motion.span
-                        className="text-white"
-                        initial={{ y: -30, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{
-                          duration: 1,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                        }}
-                        style={{ fontWeight: 300 }}
-                      >
-                        SWAP{" "}
-                        <span
-                          className="text-cyan-400 font-bold"
-                          style={{
-                            filter: "drop-shadow(0 0 25px rgba(34, 211, 238, 0.5))",
-                            fontWeight: 700,
-                          }}
-                        >
-                          $SONIC
-                        </span>
-                      </motion.span>
-                      <motion.span
-                        className="text-white ml-4"
-                        initial={{ y: -30, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{
-                          duration: 1,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                          delay: 0.5,
-                        }}
-                        style={{ fontWeight: 300 }}
-                      >
-                        FOR{" "}
-                        <span
-                          className="text-amber-400 font-medium"
-                          style={{
-                            filter: "drop-shadow(0 0 25px rgba(251, 191, 36, 0.5))",
-                            fontWeight: 500,
-                          }}
-                        >
-                          $DRAGON
-                        </span>
-                      </motion.span>
-                    </div>
-                    <motion.p
-                      className="text-xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 1,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 1,
-                      }}
+                  <motion.h2
+                    className="text-4xl font-light text-center mb-12 tracking-wide"
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                  >
+                    seamless exchange
+                  </motion.h2>
+
+                  {/* Token Pair Display */}
+                  <div className="relative mb-12">
+                    {/* From Token */}
+                    <motion.div
+                      className="flex items-center justify-between bg-slate-800/60 rounded-2xl p-6 mb-4"
+                      initial={{ x: -100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.5, duration: 0.8 }}
                     >
-                      Trade for Dragon tokens on Sonic the highest-performing EVM L1
-                    </motion.p>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-400/25">
+                          <img
+                            src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                            alt="Sonic"
+                            className="w-10 h-10"
+                          />
+                        </div>
+                        <div>
+                          <div className="text-xl font-medium text-white">SONIC</div>
+                          <div className="text-sm text-slate-400">Balance: 1,247.83</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-2xl font-light text-white">100.00</div>
+                        <div className="text-sm text-slate-400">≈ $124.78</div>
+                      </div>
+                    </motion.div>
+
+                    {/* Exchange Icon */}
+                    <motion.div
+                      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+                      initial={{ scale: 0, rotate: 0 }}
+                      animate={{ scale: 1, rotate: 180 }}
+                      transition={{ delay: 1, duration: 0.6, ease: "backOut" }}
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/25">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                        </svg>
+                      </div>
+                    </motion.div>
+
+                    {/* To Token */}
+                    <motion.div
+                      className="flex items-center justify-between bg-slate-800/60 rounded-2xl p-6"
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.7, duration: 0.8 }}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-400/25">
+                          <img
+                            src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                            alt="Dragon"
+                            className="w-10 h-10"
+                          />
+                        </div>
+                        <div>
+                          <div className="text-xl font-medium text-white">DRAGON</div>
+                          <div className="text-sm text-slate-400">Balance: 847,293.21</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <motion.div
+                          className="text-2xl font-light text-white"
+                          animate={{ opacity: [0.7, 1, 0.7] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          1,181.25
+                        </motion.div>
+                        <div className="text-sm text-slate-400">≈ $124.78</div>
+                      </div>
+                    </motion.div>
                   </div>
 
-                  {/* Sonic Token - Left Side */}
+                  {/* Exchange Button */}
                   <motion.div
-                    className="absolute left-16 top-1/2 w-40 h-40 rounded-full border-3 border-cyan-400/80 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-md"
-                    initial={{ x: -1200, scale: 0, opacity: 0, rotateZ: -90 }}
-                    animate={{
-                      x: [-1200, -200, 200, 1600],
-                      scale: [0, 1, 1.2, 1.2],
-                      opacity: [0, 1, 1, 1],
-                      rotateZ: [-90, 0, 360, 720],
-                    }}
-                    transition={{
-                      duration: 5,
-                      times: [0, 0.4, 0.6, 1],
-                      ease: [0.16, 1, 0.3, 1],
-                      delay: 2,
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 0 40px rgba(34, 211, 238, 0.8))",
-                      boxShadow: "0 0 50px rgba(34, 211, 238, 0.4), inset 0 0 30px rgba(34, 211, 238, 0.2)",
-                    }}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 1.2, duration: 0.8 }}
                   >
-                    <img
-                      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                      alt="Sonic Token"
-                      className="w-28 h-28"
-                    />
+                    <motion.button
+                      className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-medium py-4 px-8 rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/25"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      animate={{
+                        boxShadow: [
+                          "0 10px 30px rgba(6, 182, 212, 0.25)",
+                          "0 10px 30px rgba(147, 51, 234, 0.25)",
+                          "0 10px 30px rgba(6, 182, 212, 0.25)",
+                        ]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    >
+                      Execute Exchange
+                    </motion.button>
                   </motion.div>
 
-                  {/* Dragon Token - Right Side */}
+                  {/* Fee Information */}
                   <motion.div
-                    className="absolute right-16 top-1/2 w-40 h-40 rounded-full border-3 border-amber-400/80 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-md"
-                    initial={{ x: 1200, scale: 0, opacity: 0, rotateZ: 90 }}
-                    animate={{
+                    className="mt-8 p-4 bg-slate-900/40 rounded-xl border border-slate-700/30"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 0.8 }}
+                  >
+                    <div className="text-sm text-slate-400 mb-2">Network Fee: 10% total</div>
+                    <div className="grid grid-cols-3 gap-4 text-xs">
+                      <div className="text-yellow-400">6.9% → Jackpot</div>
+                      <div className="text-blue-400">2.41% → Liquidity</div>
+                      <div className="text-red-400">0.69% → Burn</div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Floating Elements */}
+                <motion.div
+                  className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-full blur-xl"
+                  animate={{
+                    y: [0, -20, 0],
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                />
+
+                <motion.div
+                  className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full blur-xl"
+                  animate={{
+                    y: [0, 20, 0],
+                    scale: [1, 0.9, 1],
+                    opacity: [0.2, 0.5, 0.2],
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                />
+
+                <motion.p
+                  {...slideUp}
+                  transition={{ delay: 2, duration: 1 }}
+                  className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-lg text-slate-400 font-light text-center"
+                >
+                  powered by sonic's lightning-fast finality
+                </motion.p>
+              </motion.div>
+            )}
                       x: [1200, 200, -200, -1600],
                       scale: [0, 1, 1.2, 1.2],
                       opacity: [0, 1, 1, 1],
