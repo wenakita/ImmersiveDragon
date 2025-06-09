@@ -1,0 +1,112 @@
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+
+interface TokenExchangeAnimationProps {
+  delay?: number;
+  duration?: number;
+  repeat?: boolean;
+  compact?: boolean;
+}
+
+const Token = ({
+  type,
+  animateProps,
+  transitionProps,
+  size = "w-14 h-14",
+  iconSize = "w-8 h-8",
+}: {
+  type: "sonic" | "dragon";
+  animateProps?: any;
+  transitionProps?: any;
+  size?: string;
+  iconSize?: string;
+}) => {
+  const sources = {
+    sonic: {
+      img: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy",
+      bg: "linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(59, 130, 246, 0.25))",
+      shadow: "0 0 24px rgba(34, 211, 238, 0.4)"
+    },
+    dragon: {
+      img: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam",
+      bg: "linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.25))",
+      shadow: "0 0 24px rgba(251, 191, 36, 0.4)"
+    }
+  };
+
+  const { img, bg, shadow } = sources[type];
+
+  return (
+    <motion.div
+      className={`${size} rounded-full border-2 flex items-center justify-center backdrop-blur-md shadow-md`}
+      style={{ background: bg, boxShadow: `${shadow}, inset 0 0 12px rgba(255, 255, 255, 0.1)` }}
+      animate={animateProps}
+      transition={transitionProps}
+    >
+      <img src={img} alt={type} className={iconSize} style={{ filter: `drop-shadow(0 0 10px ${shadow.split(' ')[4]})` }} />
+    </motion.div>
+  );
+};
+
+export default function TokenExchangeAnimation({
+  delay = 0,
+  duration = 4,
+  repeat = true,
+  compact = false,
+}: TokenExchangeAnimationProps) {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [audioTime, setAudioTime] = useState(0);
+  const scale = compact ? 0.75 : 1;
+  const size = compact ? "w-10 h-10" : "w-14 h-14";
+  const iconSize = compact ? "w-6 h-6" : "w-8 h-8";
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (audioRef.current) setAudioTime(audioRef.current.currentTime);
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  const syncedDelay = (audioTime % duration) + delay;
+
+  return (
+    <div className="relative flex flex-col items-center justify-center">
+      <audio
+        ref={audioRef}
+        src="/your-audio.mp3"
+        controls
+        className="mb-2"
+        onPlay={() => console.log("Audio Started")}
+      />
+
+      <motion.div
+        className="perspective-1000 flex items-center justify-center"
+        initial={{ scale: 0.6, rotateX: 75, y: 100, z: -300, opacity: 0 }}
+        animate={{ scale: 1, rotateX: 0, y: 0, z: 0, opacity: 1 }}
+        transition={{ duration: 2, delay: 0.5, ease: [0.25, 0.8, 0.25, 1], type: "spring", stiffness: 60 }}
+      >
+        <motion.div
+          className="flex items-center justify-center"
+          style={{ transform: `scale(${scale})` }}
+          animate={{ opacity: [0, 1, 1, 0], scale: [0.9, 1, 1, 0.9] }}
+          transition={{ duration, repeat: repeat ? Infinity : 0, delay: syncedDelay, ease: "easeInOut" }}
+        >
+          <Token type="sonic" animateProps={{ x: [0, 60, 0], rotate: [0, 180, 360] }} transitionProps={{ duration: duration / 2, repeat: repeat ? Infinity : 0, delay: syncedDelay }} size={size} iconSize={iconSize} />
+
+          <div className="mx-4 flex flex-col items-center relative">
+            <motion.div
+              className="text-white text-2xl"
+              animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: repeat ? Infinity : 0, delay: syncedDelay + 0.4 }}
+              style={{ filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))" }}
+            >
+              ⇄
+            </motion.div>
+          </div>
+
+          <Token type="dragon" animateProps={{ x: [0, -60, 0], rotate: [0, -180, -360] }} transitionProps={{ duration: duration / 2, repeat: repeat ? Infinity : 0, delay: syncedDelay }} size={size} iconSize={iconSize} />
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}

@@ -316,29 +316,21 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
 
                   <motion.h1
-                    className="text-9xl font-black mb-12 bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent relative z-10"
-                    initial={{ scale: 0.1, y: 400, opacity: 0, rotateX: 180 }}
-                    animate={{
-                      scale: [0.1, 0.7, 1.4, 1],
-                      y: [400, 200, -80, 0],
-                      opacity: [0, 0.4, 1, 1],
-                      rotateX: [180, 90, -20, 0],
-                    }}
+                    className="text-8xl font-light mb-16 text-white relative z-10"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{
-                      duration: 3.5,
-                      ease: [0.16, 1, 0.3, 1],
-                      times: [0, 0.3, 0.7, 1],
-                      delay: 0.5,
+                      duration: 2,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: 0.8,
                     }}
                     style={{
-                      filter:
-                        "drop-shadow(0 0 120px rgba(251,191,36,1)) drop-shadow(0 0 200px rgba(251,191,36,0.8))",
-                      fontWeight: 900,
-                      textShadow: "0 0 100px rgba(251,191,36,1)",
-                      letterSpacing: "-0.02em",
+                      fontWeight: 200,
+                      letterSpacing: "0.05em",
+                      textShadow: "0 0 40px rgba(255,255,255,0.3)",
                     }}
                   >
-                    SONIC RED DRAGON
+                    sonic red dragon
                   </motion.h1>
 
                   <motion.div
@@ -348,30 +340,29 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ delay: 2.5, duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
                   >
                     <motion.p
-                      className="text-4xl text-gray-200 font-light mb-6"
-                      animate={{
-                        textShadow: [
-                          "0 0 20px rgba(255,255,255,0.3)",
-                          "0 0 40px rgba(255,255,255,0.5)",
-                          "0 0 20px rgba(255,255,255,0.3)",
-                        ],
+                      className="text-2xl text-gray-300 font-light mb-8"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.5, duration: 1.5 }}
+                      style={{
+                        fontWeight: 300,
+                        letterSpacing: "0.02em",
                       }}
-                      transition={{ duration: 3, repeat: Infinity }}
                     >
-                      The Most{" "}
-                      <span className="text-amber-400 font-medium">
-                        Revolutionary
-                      </span>{" "}
-                      Token Ecosystem
+                      revolutionary defi ecosystem
                     </motion.p>
                     
                     <motion.div
-                      className="text-xl text-gray-400 font-light"
+                      className="text-lg text-gray-400 font-light"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 4, duration: 1.5 }}
+                      transition={{ delay: 2.5, duration: 1.5 }}
+                      style={{
+                        fontWeight: 200,
+                        letterSpacing: "0.01em",
+                      }}
                     >
-                      Where every trade becomes an opportunity
+                      where every trade creates opportunity
                     </motion.div>
                   </motion.div>
                 </div>
@@ -390,44 +381,21 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               >
                 <div className="relative w-full h-96">
                   <div className="text-center mb-20">
-                    <div className="text-6xl font-light mb-8 tracking-wide">
-                      <motion.span
-                        className="text-white"
-                        initial={{ y: -50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{
-                          duration: 1.5,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                        }}
-                        style={{
-                          fontWeight: 300,
-                          textShadow: "0 0 30px rgba(255,255,255,0.3)",
-                        }}
-                      >
-                        SWAP{" "}
-                        <span
-                          className="text-yellow-400 font-bold"
-                          style={{
-                            filter:
-                              "drop-shadow(0 0 35px rgba(255,235,59,0.6))",
-                            fontWeight: 700,
-                          }}
-                        >
-                          $S
-                        </span>
-                        {" "}FOR{" "}
-                        <span
-                          className="text-amber-400 font-bold"
-                          style={{
-                            filter:
-                              "drop-shadow(0 0 35px rgba(251,191,36,0.6))",
-                            fontWeight: 700,
-                          }}
-                        >
-                          $DRAGON
-                        </span>
-                      </motion.span>
-                    </div>
+                    <motion.div
+                      className="text-4xl font-light mb-8 tracking-wide text-white"
+                      initial={{ y: -30, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 1.5,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                      }}
+                      style={{
+                        fontWeight: 200,
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      token swap
+                    </motion.div>
                   </div>
 
                   {/* Enhanced token convergence animation */}
@@ -601,29 +569,21 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
 
                   <motion.h2
-                    className="text-10xl font-black text-amber-400 relative z-10 tracking-tight mb-12"
-                    initial={{ scale: 0.1, y: 400, opacity: 0, rotateX: 180 }}
-                    animate={{
-                      scale: [0.1, 0.7, 1.5, 1],
-                      y: [400, 200, -80, 0],
-                      opacity: [0, 0.4, 1, 1],
-                      rotateX: [180, 90, -20, 0],
-                    }}
+                    className="text-6xl font-light text-white relative z-10 mb-16"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{
-                      duration: 3,
-                      ease: [0.16, 1, 0.3, 1],
-                      times: [0, 0.3, 0.7, 1],
-                      delay: 0.5,
+                      duration: 1.5,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: 0.8,
                     }}
                     style={{
-                      filter:
-                        "drop-shadow(0 0 150px rgba(251,191,36,1)) drop-shadow(0 0 250px rgba(251,191,36,0.8))",
-                      fontWeight: 900,
-                      textShadow: "0 0 120px rgba(251,191,36,1)",
-                      fontSize: "clamp(4rem, 12vw, 10rem)",
+                      fontWeight: 200,
+                      letterSpacing: "0.04em",
+                      textShadow: "0 0 30px rgba(255,255,255,0.2)",
                     }}
                   >
-                    WIN THE JACKPOT!
+                    jackpot system
                   </motion.h2>
 
                   <motion.div
@@ -636,12 +596,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       delay: 1.5,
                     }}
                   >
-                    <p className="text-3xl text-gray-200 font-light leading-relaxed text-center mb-12">
-                      Every swap automatically enters you into our{" "}
-                      <span className="text-yellow-400 font-medium bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                        Chainlink VRF-powered lottery
-                      </span>{" "}
-                      where your trading fees transform into massive rewards
+                    <p className="text-xl text-gray-300 font-light leading-relaxed text-center mb-12">
+                      automated lottery system powered by chainlink vrf
                     </p>
 
                     <motion.div
@@ -900,28 +856,29 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     ].map((item, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-center justify-center space-x-12 bg-black/30 backdrop-blur-md rounded-2xl p-8 border border-white/10"
-                        initial={{ opacity: 0, x: -150, rotateY: 45 }}
-                        animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                        className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/5"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{
-                          duration: 1.5,
-                          delay: 2.5 + index * 0.4,
+                          duration: 1,
+                          delay: 2.5 + index * 0.2,
                           ease: [0.25, 0.46, 0.45, 0.94]
                         }}
                         style={{
                           boxShadow: `0 0 40px rgba(255,255,255,0.1)`,
                         }}
                       >
-                        <div className={`text-6xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
-                          {item.percent}
-                        </div>
-                        <div className="text-4xl">{item.icon}</div>
-                        <div className="text-left">
-                          <div className={`text-2xl font-bold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
-                            {item.label}
+                        <div className="flex items-center space-x-6">
+                          <div className={`text-3xl font-light bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                            {item.percent}
                           </div>
-                          <div className="text-gray-300 text-lg max-w-md">
-                            {item.description}
+                          <div className="text-left">
+                            <div className="text-lg font-light text-white mb-1">
+                              {item.label.toLowerCase()}
+                            </div>
+                            <div className="text-sm text-gray-400 font-light">
+                              {item.description.toLowerCase()}
+                            </div>
                           </div>
                         </div>
                       </motion.div>
@@ -1225,23 +1182,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5, duration: 1.5 }}
                   >
-                    {/* Chainlink logo animation */}
-                    <motion.div
-                      className="text-9xl mb-8"
-                      animate={{
-                        rotate: [0, 360],
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                        scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                      }}
-                      style={{
-                        filter: "drop-shadow(0 0 50px rgba(59,130,246,0.8))",
-                      }}
-                    >
-                      🔗
-                    </motion.div>
+
 
                     <motion.h2
                       className="text-7xl font-black mb-8 bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent"
