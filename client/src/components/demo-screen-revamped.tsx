@@ -267,27 +267,28 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                     <p className="text-xl text-slate-300 font-light">cross-chain liquidity powered by chainlink vrf</p>
                   </motion.div>
 
-                  {/* Sonic Token - From Left */}
+                  {/* Sonic Token - From Far Left */}
                   <motion.div
                     className="absolute w-32 h-32 rounded-full border-2 flex items-center justify-center backdrop-blur-md"
                     style={{
                       background: "linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(59, 130, 246, 0.25))",
                       boxShadow: "0 0 60px rgba(34, 211, 238, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1)",
                       borderColor: "rgba(34, 211, 238, 0.5)",
-                      left: "5%",
+                      left: "0px",
                       top: "50%",
                       transform: "translateY(-50%)"
                     }}
-                    initial={{ x: -400, opacity: 0, scale: 0.3 }}
+                    initial={{ x: -200, opacity: 0, scale: 0.5 }}
                     animate={{
-                      x: [0, 600, 1200],
-                      opacity: [0, 1, 0],
-                      scale: [0.3, 1.5, 0.3],
-                      rotate: [0, 360, 720]
+                      x: [-200, 0, 600, 800, 1400],
+                      opacity: [0, 1, 1, 1, 0],
+                      scale: [0.5, 1, 1.2, 1.2, 0.5],
+                      rotate: [0, 180, 360, 540, 720]
                     }}
                     transition={{
-                      duration: 4,
-                      ease: [0.68, -0.55, 0.265, 1.55],
+                      duration: 5,
+                      times: [0, 0.2, 0.45, 0.55, 1],
+                      ease: [0.25, 0.1, 0.25, 1],
                       delay: 1
                     }}
                   >
@@ -299,27 +300,28 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                     />
                   </motion.div>
 
-                  {/* Dragon Token - From Right */}
+                  {/* Dragon Token - From Far Right */}
                   <motion.div
                     className="absolute w-32 h-32 rounded-full border-2 flex items-center justify-center backdrop-blur-md"
                     style={{
                       background: "linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.25))",
                       boxShadow: "0 0 60px rgba(251, 191, 36, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1)",
                       borderColor: "rgba(251, 191, 36, 0.5)",
-                      right: "5%",
+                      right: "0px",
                       top: "50%",
                       transform: "translateY(-50%)"
                     }}
-                    initial={{ x: 400, opacity: 0, scale: 0.3 }}
+                    initial={{ x: 200, opacity: 0, scale: 0.5 }}
                     animate={{
-                      x: [0, -600, -1200],
-                      opacity: [0, 1, 0],
-                      scale: [0.3, 1.5, 0.3],
-                      rotate: [0, -360, -720]
+                      x: [200, 0, -600, -800, -1400],
+                      opacity: [0, 1, 1, 1, 0],
+                      scale: [0.5, 1, 1.2, 1.2, 0.5],
+                      rotate: [0, -180, -360, -540, -720]
                     }}
                     transition={{
-                      duration: 4,
-                      ease: [0.68, -0.55, 0.265, 1.55],
+                      duration: 5,
+                      times: [0, 0.2, 0.45, 0.55, 1],
+                      ease: [0.25, 0.1, 0.25, 1],
                       delay: 1
                     }}
                   >
@@ -340,8 +342,8 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                       opacity: [0, 1, 0.5, 0]
                     }}
                     transition={{
-                      duration: 2,
-                      delay: 3,
+                      duration: 1.5,
+                      delay: 3.5,
                       ease: [0.25, 0.8, 0.25, 1]
                     }}
                     style={{
@@ -362,8 +364,8 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                       rotate: [0, 180, 360, 540]
                     }}
                     transition={{
-                      duration: 2.5,
-                      delay: 2.5,
+                      duration: 2,
+                      delay: 3.2,
                       ease: [0.4, 0, 0.2, 1]
                     }}
                     style={{
@@ -396,7 +398,7 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                       }}
                       transition={{
                         duration: 2.5,
-                        delay: 3 + i * 0.03,
+                        delay: 3.5 + i * 0.03,
                         ease: "easeOut"
                       }}
                     />
