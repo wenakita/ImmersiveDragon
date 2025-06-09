@@ -118,26 +118,27 @@
 
   .grid-background {
     background-image: 
-      linear-gradient(rgba(23, 212, 170, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(23, 212, 170, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(rgba(23, 212, 170, 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 212, 170, 0.4) 1px, transparent 1px);
+    background-size: 60px 60px;
     animation: grid-move 20s linear infinite;
   }
 
   .grid-background-secondary {
     background-image: 
-      linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
-    background-size: 100px 100px;
+      linear-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px);
+    background-size: 120px 120px;
     animation: grid-move-secondary 30s linear infinite reverse;
+    mix-blend-mode: overlay;
   }
 
   .grid-background-depth {
     background-image: 
-      linear-gradient(rgba(23, 212, 170, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(23, 212, 170, 0.04) 1px, transparent 1px);
-    background-size: 200px 200px;
-    animation: grid-move-depth 45s linear infinite;
+      linear-gradient(rgba(220, 38, 38, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(220, 38, 38, 0.08) 1px, transparent 1px);
+    background-size: 160px 160px;
+    animation: grid-move-depth 35s linear infinite;
   }
 
   .border-golden-amber {
@@ -215,12 +216,12 @@
 
 @keyframes grid-move {
   0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(50px) translateY(50px); }
+  100% { transform: translateX(60px) translateY(60px); }
 }
 
 @keyframes grid-move-secondary {
   0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-100px) translateY(-100px); }
+  100% { transform: translateX(-120px) translateY(-120px); }
 }
 
 @keyframes camera-float {
@@ -237,8 +238,8 @@
 }
 
 @keyframes grid-move-depth {
-  0% { transform: translateX(0) translateY(0) scale(1.1); }
-  100% { transform: translateX(-200px) translateY(-200px) scale(1.1); }
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(160px) translateY(-160px); }
 }
 
 @keyframes glitch {
