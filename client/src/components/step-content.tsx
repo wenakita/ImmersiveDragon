@@ -13,6 +13,15 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
   const [fromAmount, setFromAmount] = useState("100");
   const [toAmount, setToAmount] = useState("75.5");
   
+  // Handle invalid step index
+  if (currentStep < 0 || currentStep >= demoSteps.length) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-soft-gray text-lg">Preparing demo...</div>
+      </div>
+    );
+  }
+  
   const step = demoSteps[currentStep];
 
   const calculateToAmount = (amount: string) => {
