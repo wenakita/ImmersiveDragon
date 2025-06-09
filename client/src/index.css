@@ -30,8 +30,8 @@
   /* #DC2626 - Enhanced red */
   --golden-amber: 45 93% 47%;
   /* #FFC107 */
-  --warm-orange: 263 70% 65%;
-  /* #8B5CF6 - Modern purple */
+  --elegant-teal: 180 84% 50%;
+  /* #17D4AA - Modern elegant teal */
   --electric-blue: 217 91% 60%;
   /* #3B82F6 */
   --charcoal: 0 0% 6%;
@@ -84,8 +84,8 @@
     color: hsl(var(--golden-amber));
   }
 
-  .text-warm-orange {
-    color: hsl(var(--warm-orange));
+  .text-elegant-teal {
+    color: hsl(var(--elegant-teal));
   }
 
   .text-electric-blue {
@@ -104,6 +104,18 @@
     background-color: hsl(var(--dark-surface));
   }
 
+  .bg-elegant-teal {
+    background-color: hsl(var(--elegant-teal));
+  }
+
+  .gradient-button {
+    background: linear-gradient(135deg, hsl(var(--elegant-teal)) 0%, hsl(var(--electric-blue)) 100%);
+  }
+
+  .gradient-button:hover {
+    background: linear-gradient(135deg, hsl(var(--elegant-teal) / 0.9) 0%, hsl(var(--electric-blue) / 0.9) 100%);
+  }
+
   .border-golden-amber {
     border-color: hsl(var(--golden-amber));
   }
@@ -119,9 +131,7 @@
       0 0 60px hsl(var(--golden-amber) / 0.05);
   }
 
-  .gradient-button {
-    background: linear-gradient(135deg, hsl(var(--warm-orange)) 0%, hsl(var(--electric-blue)) 100%);
-  }
+
 
   .glassmorphism {
     background: rgba(26, 26, 26, 0.8);
