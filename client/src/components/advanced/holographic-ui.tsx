@@ -301,7 +301,7 @@ export default function HolographicUI() {
     });
     
     return () => {
-      tl.kill();
+      if (tl) tl.kill();
     };
   }, []);
   
