@@ -26,7 +26,7 @@ export default function Home() {
             onStartDemo={handleStartDemo}
           />
         ) : (
-          <DemoScreenRevamped key="demo" autoStart={startAudio} />
+          <DemoScreenRevampedFixed key="demo" autoStart={startAudio} />
         )}
       </AnimatePresence>
     </div>
