@@ -8,35 +8,40 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use((req, _res, next) => {
-  const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+function log(message: string, source = "express") {
+  const time = new Date().toLocaleTimeString("en-US", { hour12: false });
+  console.log(`${time} [${source}] ${message}`);
+}
 
-  const originalResJson = _res.json;
-  _res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(this, [bodyJson, ...args]);
-  };
-
-  _res.on("finish", () => {
-    const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${_res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
-      log(logLine);
-    }
+// Setup Vite development server
+async function setupVite() {
+  const vite = await (await import("vite")).createServer({
+    server: { middlewareMode: true },
+    appType: "custom",
+    base: "/",
   });
 
-  next();
-});
+  app.use(vite.ssrFixStacktrace);
+  app.use(vite.middlewares);
+
+  app.use("*", async (req, res) => {
+    const url = req.originalUrl;
+
+    try {
+      const clientPath = path.resolve("client");
+      let template = fs.readFileSync(
+        path.resolve(clientPath, "index.html"),
+        "utf-8",
+      );
+      template = await vite.transformIndexHtml(url, template);
+      res.status(200).set({ "Content-Type": "text/html" }).end(template);
+    } catch (e: any) {
+      vite.ssrFixStacktrace(e);
+      console.log(e.stack);
+      res.status(500).end(e.stack);
+    }
+  });
+}
 
 (async () => {
   const server = await registerRoutes(app);
@@ -49,10 +54,9 @@ app.use((req, _res, next) => {
     throw err;
   });
 
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
+  // Setup Vite in development
+  if (process.env.NODE_ENV === "development") {
+    await setupVite();
   }
 
   const PORT = 5000;
