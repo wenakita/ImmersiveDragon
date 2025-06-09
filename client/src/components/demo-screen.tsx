@@ -1185,29 +1185,30 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
 
                     <motion.h2
-                      className="text-7xl font-black mb-8 bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent"
-                      initial={{ opacity: 0, y: -80 }}
+                      className="text-5xl font-light mb-8 text-white"
+                      initial={{ opacity: 0, y: -30 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1, duration: 1.5 }}
+                      transition={{ delay: 0.8, duration: 1.5 }}
                       style={{
-                        filter: "drop-shadow(0 0 80px rgba(59,130,246,0.8))",
-                        textShadow: "0 0 60px rgba(59,130,246,0.6)",
+                        fontWeight: 200,
+                        letterSpacing: "0.04em",
+                        textShadow: "0 0 30px rgba(255,255,255,0.2)",
                       }}
                     >
-                      CHAINLINK VRF 2.5
+                      chainlink vrf 2.5
                     </motion.h2>
 
                     <motion.p
-                      className="text-3xl text-gray-200 mb-16 font-light max-w-5xl mx-auto"
-                      initial={{ opacity: 0, y: 50 }}
+                      className="text-xl text-gray-300 mb-16 font-light max-w-4xl mx-auto"
+                      initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.8, duration: 1.5 }}
+                      transition={{ delay: 1.2, duration: 1.5 }}
+                      style={{
+                        fontWeight: 300,
+                        letterSpacing: "0.01em",
+                      }}
                     >
-                      Cryptographically secure randomness ensuring{" "}
-                      <span className="text-blue-400 font-medium bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
-                        provably fair lottery results
-                      </span>{" "}
-                      that cannot be manipulated or predicted
+                      cryptographically secure randomness for provably fair results
                     </motion.p>
                   </motion.div>
 
