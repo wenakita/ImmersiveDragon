@@ -695,20 +695,20 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                   transition={{ delay: 0.5, duration: 1 }}
                   className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
                 >
+                  <div className="bg-gradient-to-br from-yellow-900/30 to-yellow-800/20 rounded-lg p-8 backdrop-blur-sm border border-yellow-700/30">
+                    <div className="text-5xl font-light text-yellow-400 mb-4">6.9%</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">jackpot vault</div>
+                    <div className="text-sm text-slate-400 font-light">in $S to jackpot vault</div>
+                  </div>
                   <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 rounded-lg p-8 backdrop-blur-sm border border-blue-700/30">
-                    <div className="text-5xl font-light text-blue-400 mb-4">60%</div>
-                    <div className="text-xl font-light text-slate-300 mb-3">lottery pool</div>
-                    <div className="text-sm text-slate-400 font-light">automatically accumulates for larger jackpots</div>
+                    <div className="text-5xl font-light text-blue-400 mb-4">2.41%</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">liquidity providers</div>
+                    <div className="text-sm text-slate-400 font-light">in $S to locked liquidity providers</div>
                   </div>
-                  <div className="bg-gradient-to-br from-green-900/30 to-green-800/20 rounded-lg p-8 backdrop-blur-sm border border-green-700/30">
-                    <div className="text-5xl font-light text-green-400 mb-4">30%</div>
-                    <div className="text-xl font-light text-slate-300 mb-3">staking rewards</div>
-                    <div className="text-sm text-slate-400 font-light">distributed to veDRAGON holders</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/20 rounded-lg p-8 backdrop-blur-sm border border-purple-700/30">
-                    <div className="text-5xl font-light text-purple-400 mb-4">10%</div>
-                    <div className="text-xl font-light text-slate-300 mb-3">development</div>
-                    <div className="text-sm text-slate-400 font-light">protocol maintenance & innovation</div>
+                  <div className="bg-gradient-to-br from-red-900/30 to-red-800/20 rounded-lg p-8 backdrop-blur-sm border border-red-700/30">
+                    <div className="text-5xl font-light text-red-400 mb-4">0.69%</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">token burn</div>
+                    <div className="text-sm text-slate-400 font-light">of $DRAGON burned</div>
                   </div>
                 </motion.div>
                 <motion.p
