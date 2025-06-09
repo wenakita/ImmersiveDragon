@@ -17,10 +17,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative camera-drift">
-      {/* Animated Grid Background Layers */}
+      {/* Multi-layered Animated Grid Background for Depth */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 grid-background opacity-30"></div>
+        <div className="absolute inset-0 grid-background-depth opacity-15"></div>
         <div className="absolute inset-0 grid-background-secondary opacity-20"></div>
+        <div className="absolute inset-0 grid-background opacity-30"></div>
       </div>
       
       {/* Content with camera float animation */}

@@ -132,6 +132,14 @@
     animation: grid-move-secondary 30s linear infinite reverse;
   }
 
+  .grid-background-depth {
+    background-image: 
+      linear-gradient(rgba(23, 212, 170, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 212, 170, 0.04) 1px, transparent 1px);
+    background-size: 200px 200px;
+    animation: grid-move-depth 45s linear infinite;
+  }
+
   .border-golden-amber {
     border-color: hsl(var(--golden-amber));
   }
@@ -226,6 +234,11 @@
   0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
   33% { transform: translateX(10px) translateY(-5px) scale(1.01); }
   66% { transform: translateX(-5px) translateY(10px) scale(0.99); }
+}
+
+@keyframes grid-move-depth {
+  0% { transform: translateX(0) translateY(0) scale(1.1); }
+  100% { transform: translateX(-200px) translateY(-200px) scale(1.1); }
 }
 
 @keyframes glitch {

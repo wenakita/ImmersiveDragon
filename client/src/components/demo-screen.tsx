@@ -91,28 +91,60 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
           }}
         />
 
-        {/* Floating particles */}
-        {[...Array(8)].map((_, i) => (
+        {/* Enhanced floating particles with grid-like movement */}
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full opacity-30"
+            className="absolute rounded-full"
             style={{
-              width: Math.random() * 3 + 1 + "px",
-              height: Math.random() * 3 + 1 + "px",
+              width: Math.random() * 4 + 2 + "px",
+              height: Math.random() * 4 + 2 + "px",
               left: Math.random() * 100 + "%",
               top: Math.random() * 100 + "%",
               background:
-                i % 3 === 0 ? "#FF6B35" : i % 3 === 1 ? "#FFEB3B" : "#3B82F6",
+                i % 3 === 0 ? "rgba(23, 212, 170, 0.8)" : 
+                i % 3 === 1 ? "rgba(59, 130, 246, 0.6)" : 
+                "rgba(220, 38, 38, 0.4)",
+              boxShadow: `0 0 8px ${
+                i % 3 === 0 ? "rgba(23, 212, 170, 0.4)" : 
+                i % 3 === 1 ? "rgba(59, 130, 246, 0.3)" : 
+                "rgba(220, 38, 38, 0.3)"
+              }`,
             }}
             animate={{
-              y: [0, -150, 0],
-              opacity: [0, 0.6, 0],
-              scale: [0, 1.5, 0],
+              y: [0, -200, 0],
+              x: [0, Math.sin(i) * 40, 0],
+              opacity: [0, 0.7, 0],
+              scale: [0, 1.3, 0],
+              rotate: [0, 180, 0],
             }}
             transition={{
-              duration: 8 + Math.random() * 4,
+              duration: 10 + Math.random() * 5,
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: Math.random() * 4,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Grid intersection glow points */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`glow-${i}`}
+            className="absolute w-3 h-3 rounded-full"
+            style={{
+              left: (i % 4) * 25 + 10 + "%",
+              top: Math.floor(i / 4) * 40 + 20 + "%",
+              background: "radial-gradient(circle, rgba(23, 212, 170, 0.5) 0%, transparent 70%)",
+            }}
+            animate={{
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.8, 1],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: i * 0.3,
               ease: "easeInOut",
             }}
           />
