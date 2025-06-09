@@ -183,7 +183,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     className="absolute inset-0 rounded-3xl opacity-20"
                     style={{
                       background:
-                        "radial-gradient(ellipse, rgba(255,107,53,0.3) 0%, transparent 70%)",
+                        "radial-gradient(ellipse, rgba(23,212,170,0.3) 0%, transparent 70%)",
                       filter: "blur(30px)",
                     }}
                     animate={{

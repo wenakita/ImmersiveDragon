@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { demoSteps } from "@/lib/demo-steps";
 import { useState } from "react";
+import ProbabilityTables from "./probability-tables";
 
 interface StepContentProps {
   currentStep: number;
@@ -174,6 +175,9 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
           ))}
         </div>
       </motion.div>
+
+      {/* Probability Tables */}
+      <ProbabilityTables />
 
       {/* Navigation Controls */}
       <div className="flex items-center justify-between">
