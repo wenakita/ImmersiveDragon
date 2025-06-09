@@ -15,10 +15,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
+    "baseUrl": "./client/src",
     "paths": {
-      "@/*": ["./client/src/*"],
-      "@assets/*": ["./attached_assets/*"]
+      "@/*": ["*"],
+      "@assets/*": ["../../attached_assets/*"]
     }
   },
   "include": ["client/src", "server", "shared"],
