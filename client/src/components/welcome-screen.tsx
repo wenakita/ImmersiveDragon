@@ -1,4 +1,8 @@
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
+import { useEasterEggs } from "../hooks/use-easter-eggs";
+import EasterEggHints from "./easter-egg-hints";
+import EasterEggRewards from "./easter-egg-rewards";
 
 interface WelcomeScreenProps {
   termsAccepted: boolean;
@@ -11,69 +15,169 @@ export default function WelcomeScreen({
   onTermsChange,
   onStartDemo,
 }: WelcomeScreenProps) {
+  const { easterEggs, showEasterEggNotification, handleClick, triggeredCount } =
+    useEasterEggs();
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white flex items-center justify-center relative overflow-hidden"
+      className="fixed inset-0 flex items-center justify-center p-6"
+      style={{
+        background:
+          "radial-gradient(ellipse at center, rgba(41, 27, 12, 0.4) 0%, rgba(0, 0, 0, 0.9) 70%)",
+      }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.8 }}
     >
-      <div className="text-center max-w-4xl mx-auto px-8">
-        <motion.h1
-          className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-orange-400 via-yellow-500 to-red-500 bg-clip-text text-transparent"
-          initial={{ scale: 0.5, opacity: 0 }}
+      <motion.div
+        className="subtle-border rounded-3xl p-8 max-w-md w-full text-center"
+        initial={{ scale: 0.9, y: 20 }}
+        animate={{ scale: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        {/* Dragon Logo with Golden Glow */}
+        <motion.div
+          className="relative mb-8 flex justify-center"
+          initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
         >
-          SONIC RED DRAGON
+          <div className="relative">
+            <img
+              src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+              alt="Sonic Red Dragon Logo"
+              className="dragon-logo-glow w-24 h-24 rounded-full object-cover cursor-pointer"
+              onClick={() => handleClick("dragon-logo")}
+            />
+          </div>
+        </motion.div>
+
+        {/* Welcome Text */}
+        <motion.h1
+          className="text-2xl font-semibold mb-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          Welcome to Sonic Red Dragon
         </motion.h1>
-        
+
         <motion.p
-          className="text-xl md:text-2xl text-gray-300 mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
+          className="text-soft-gray text-sm leading-relaxed mb-8"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
         >
-          Experience the future of DeFi trading with VRF-powered jackpots
+          A cutting-edge blockchain protocol designed to revolutionize token
+          swaps with provably fair jackpot mechanics via cross-chain VRF,
+          providing an immersive financial gaming experience.
         </motion.p>
 
+        {/* Terms Checkbox */}
         <motion.div
-          className="flex items-center justify-center mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
+          className="flex items-start gap-3 mb-8 text-left"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <label className="flex items-center cursor-pointer">
+          <div className="relative mt-0.5">
             <input
               type="checkbox"
+              id="termsAccept"
+              className="sr-only"
               checked={termsAccepted}
               onChange={(e) => onTermsChange(e.target.checked)}
-              className="mr-3 w-5 h-5"
             />
-            <span className="text-gray-300">
-              I agree to the terms and conditions
+            <motion.div
+              className={`w-5 h-5 border-2 rounded cursor-pointer flex items-center justify-center transition-all duration-200 ${
+                termsAccepted
+                  ? "bg-electric-blue border-electric-blue"
+                  : "border-electric-blue bg-transparent"
+              }`}
+              onClick={() => onTermsChange(!termsAccepted)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {termsAccepted && (
+                <motion.svg
+                  className="w-3 h-3 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M5 13l4 4L19 7"
+                  />
+                </motion.svg>
+              )}
+            </motion.div>
+          </div>
+          <label htmlFor="termsAccept" className="text-sm cursor-pointer">
+            I accept the terms and conditions for OmniDragon Protocol listed on
+            the{" "}
+            <span
+              className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer"
+              onClick={() => handleClick("terms-link")}
+            >
+              Terms of Service
+            </span>{" "}
+            page and the{" "}
+            <span className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer">
+              Privacy Policy
             </span>
           </label>
         </motion.div>
 
+        {/* See Demo Button */}
         <motion.button
+          className={`w-full py-3 px-6 rounded-lg font-medium text-white transition-all duration-300 flex items-center justify-center gap-2 ${
+            termsAccepted
+              ? "gradient-button hover:scale-105 cursor-pointer"
+              : "opacity-50 cursor-not-allowed bg-gray-600"
+          }`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
           onClick={onStartDemo}
           disabled={!termsAccepted}
-          className={`px-8 py-4 text-xl font-bold rounded-lg transition-all duration-300 ${
-            termsAccepted
-              ? "bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white"
-              : "bg-gray-700 text-gray-400 cursor-not-allowed"
-          }`}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          whileHover={termsAccepted ? { scale: 1.05 } : {}}
-          whileTap={termsAccepted ? { scale: 0.95 } : {}}
+          whileHover={termsAccepted ? { scale: 1.02 } : {}}
+          whileTap={termsAccepted ? { scale: 0.98 } : {}}
         >
-          START DEMO
+          <Play className="w-4 h-4" />
+          Play Demo
         </motion.button>
-      </div>
+
+        {/* Hidden Easter Egg Counter */}
+        {triggeredCount > 0 && (
+          <motion.div
+            className="absolute bottom-4 left-4 text-xs text-yellow-400 opacity-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            🐉 {triggeredCount}/4 dragons awakened
+          </motion.div>
+        )}
+      </motion.div>
+
+      {/* Easter Egg Notification */}
+      {showEasterEggNotification && (
+        <div className="easter-egg-notification">
+          🐉 Easter Egg Unlocked: {showEasterEggNotification}!
+        </div>
+      )}
+
+      {/* Easter Egg Rewards */}
+      <EasterEggRewards
+        triggeredCount={triggeredCount}
+        easterEggs={easterEggs}
+      />
     </motion.div>
   );
 }
