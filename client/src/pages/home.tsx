@@ -16,28 +16,19 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden relative camera-drift">
-      {/* Animated Grid Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 grid-background"></div>
-        <div className="absolute inset-0 grid-background-secondary" style={{ transform: 'rotate(45deg) scale(1.5)' }}></div>
-      </div>
-      
-      {/* Content with camera float animation */}
-      <div className="relative z-10 camera-float">
-        <AnimatePresence mode="wait">
-          {showWelcome ? (
-            <WelcomeScreen
-              key="welcome"
-              termsAccepted={termsAccepted}
-              onTermsChange={setTermsAccepted}
-              onStartDemo={handleStartDemo}
-            />
-          ) : (
-            <DemoScreen key="demo" autoStart={startAudio} />
-          )}
-        </AnimatePresence>
-      </div>
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      <AnimatePresence mode="wait">
+        {showWelcome ? (
+          <WelcomeScreen
+            key="welcome"
+            termsAccepted={termsAccepted}
+            onTermsChange={setTermsAccepted}
+            onStartDemo={handleStartDemo}
+          />
+        ) : (
+          <DemoScreen key="demo" autoStart={startAudio} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

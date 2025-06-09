@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowUpDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { demoSteps } from "@/lib/demo-steps";
 import { useState } from "react";
-import ProbabilityTables from "./probability-tables";
 
 interface StepContentProps {
   currentStep: number;
@@ -13,15 +12,6 @@ interface StepContentProps {
 export default function StepContent({ currentStep, onStepChange, totalSteps }: StepContentProps) {
   const [fromAmount, setFromAmount] = useState("100");
   const [toAmount, setToAmount] = useState("75.5");
-  
-  // Handle invalid step index
-  if (currentStep < 0 || currentStep >= demoSteps.length) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-soft-gray text-lg">Preparing demo...</div>
-      </div>
-    );
-  }
   
   const step = demoSteps[currentStep];
 
@@ -61,8 +51,8 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
         {/* Current Step Display */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-elegant-teal/20 border border-elegant-teal/30 flex items-center justify-center">
-              <span className="text-elegant-teal text-sm font-semibold">
+            <div className="w-8 h-8 rounded-full bg-warm-orange/20 border border-warm-orange/30 flex items-center justify-center">
+              <span className="text-warm-orange text-sm font-semibold">
                 {currentStep + 1}
               </span>
             </div>
@@ -107,11 +97,11 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
           {/* Swap Direction */}
           <div className="flex justify-center">
             <motion.button
-              className="w-10 h-10 rounded-full bg-dark-surface border border-gray-700/50 flex items-center justify-center hover:border-elegant-teal/50 transition-colors"
+              className="w-10 h-10 rounded-full bg-dark-surface border border-gray-700/50 flex items-center justify-center hover:border-warm-orange/50 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <ArrowUpDown className="w-4 h-4 text-elegant-teal" />
+              <ArrowUpDown className="w-4 h-4 text-warm-orange" />
             </motion.button>
           </div>
 
@@ -166,7 +156,7 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <h3 className="text-lg font-semibold mb-4 text-elegant-teal">
+        <h3 className="text-lg font-semibold mb-4 text-warm-orange">
           {step.educationalTitle}
         </h3>
         <div className="space-y-3 text-sm text-soft-gray leading-relaxed">
@@ -175,9 +165,6 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
           ))}
         </div>
       </motion.div>
-
-      {/* Probability Tables */}
-      <ProbabilityTables />
 
       {/* Navigation Controls */}
       <div className="flex items-center justify-between">

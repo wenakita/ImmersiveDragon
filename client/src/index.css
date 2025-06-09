@@ -30,8 +30,8 @@
   /* #DC2626 - Enhanced red */
   --golden-amber: 45 93% 47%;
   /* #FFC107 */
-  --elegant-teal: 180 84% 50%;
-  /* #17D4AA - Modern elegant teal */
+  --warm-orange: 263 70% 65%;
+  /* #8B5CF6 - Modern purple */
   --electric-blue: 217 91% 60%;
   /* #3B82F6 */
   --charcoal: 0 0% 6%;
@@ -84,8 +84,8 @@
     color: hsl(var(--golden-amber));
   }
 
-  .text-elegant-teal {
-    color: hsl(var(--elegant-teal));
+  .text-warm-orange {
+    color: hsl(var(--warm-orange));
   }
 
   .text-electric-blue {
@@ -104,43 +104,6 @@
     background-color: hsl(var(--dark-surface));
   }
 
-  .bg-elegant-teal {
-    background-color: hsl(var(--elegant-teal));
-  }
-
-  .gradient-button {
-    background: linear-gradient(135deg, hsl(var(--elegant-teal)) 0%, hsl(var(--electric-blue)) 100%);
-  }
-
-  .gradient-button:hover {
-    background: linear-gradient(135deg, hsl(var(--elegant-teal) / 0.9) 0%, hsl(var(--electric-blue) / 0.9) 100%);
-  }
-
-  .grid-background {
-    background-image: 
-      linear-gradient(rgba(23, 212, 170, 0.4) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(23, 212, 170, 0.4) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: grid-move 20s linear infinite;
-  }
-
-  .grid-background-secondary {
-    background-image: 
-      linear-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px);
-    background-size: 120px 120px;
-    animation: grid-move-secondary 30s linear infinite reverse;
-    mix-blend-mode: overlay;
-  }
-
-  .grid-background-depth {
-    background-image: 
-      linear-gradient(rgba(220, 38, 38, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(220, 38, 38, 0.08) 1px, transparent 1px);
-    background-size: 160px 160px;
-    animation: grid-move-depth 35s linear infinite;
-  }
-
   .border-golden-amber {
     border-color: hsl(var(--golden-amber));
   }
@@ -156,7 +119,9 @@
       0 0 60px hsl(var(--golden-amber) / 0.05);
   }
 
-
+  .gradient-button {
+    background: linear-gradient(135deg, hsl(var(--warm-orange)) 0%, hsl(var(--electric-blue)) 100%);
+  }
 
   .glassmorphism {
     background: rgba(26, 26, 26, 0.8);
@@ -202,44 +167,8 @@
   animation: fade-in-up 0.8s ease-out;
 }
 
-.camera-float {
-  animation: camera-float 8s ease-in-out infinite;
-}
-
-.camera-drift {
-  animation: camera-drift 12s ease-in-out infinite;
-}
-
 .glitch-effect {
   animation: glitch 0.3s ease-in-out infinite alternate;
-}
-
-@keyframes grid-move {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(60px) translateY(60px); }
-}
-
-@keyframes grid-move-secondary {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-120px) translateY(-120px); }
-}
-
-@keyframes camera-float {
-  0%, 100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px); }
-  25% { transform: perspective(1000px) rotateX(1deg) rotateY(-1deg) translateZ(10px); }
-  50% { transform: perspective(1000px) rotateX(-1deg) rotateY(1deg) translateZ(-5px); }
-  75% { transform: perspective(1000px) rotateX(1deg) rotateY(1deg) translateZ(5px); }
-}
-
-@keyframes camera-drift {
-  0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
-  33% { transform: translateX(10px) translateY(-5px) scale(1.01); }
-  66% { transform: translateX(-5px) translateY(10px) scale(0.99); }
-}
-
-@keyframes grid-move-depth {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(160px) translateY(-160px); }
 }
 
 @keyframes glitch {
