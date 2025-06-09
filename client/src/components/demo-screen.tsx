@@ -107,10 +107,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(ellipse at 30% 70%, rgba(255,107,53,0.15) 0%, transparent 65%),
+              radial-gradient(ellipse at 30% 70%, rgba(59,130,246,0.15) 0%, transparent 65%),
               radial-gradient(ellipse at 70% 30%, rgba(59,130,246,0.12) 0%, transparent 65%),
               radial-gradient(ellipse at 50% 50%, rgba(255,235,59,0.08) 0%, transparent 65%),
-              radial-gradient(ellipse at 20% 30%, rgba(139,69,19,0.05) 0%, transparent 70%),
+              radial-gradient(ellipse at 20% 30%, rgba(147,51,234,0.05) 0%, transparent 70%),
               radial-gradient(ellipse at 80% 70%, rgba(75,0,130,0.06) 0%, transparent 70%)
             `,
           }}
@@ -168,7 +168,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
         {/* Sophisticated ambient light streaks */}
         <motion.div
-          className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-orange-400 to-transparent opacity-25"
+          className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-blue-400 to-transparent opacity-25"
           animate={{
             opacity: [0.15, 0.4, 0.15],
             scaleY: [0.8, 1.3, 0.8],
