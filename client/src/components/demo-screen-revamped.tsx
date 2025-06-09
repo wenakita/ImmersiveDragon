@@ -41,12 +41,12 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
 
   const steps = [
     { id: 0, duration: 6000, name: "intro" },
-    { id: 1, duration: 6000, name: "swap" },
-    { id: 2, duration: 6000, name: "lottery" },
-    { id: 3, duration: 6000, name: "fees" },
-    { id: 4, duration: 6000, name: "odds" },
-    { id: 5, duration: 6000, name: "tech" },
-    { id: 6, duration: 6000, name: "future" },
+    { id: 1, duration: 7000, name: "swap" },
+    { id: 2, duration: 6000, name: "fees" },
+    { id: 3, duration: 6000, name: "lottery" },
+    { id: 4, duration: 6000, name: "vrf" },
+    { id: 5, duration: 6000, name: "layerzero" },
+    { id: 6, duration: 6000, name: "complete" },
   ];
 
   useEffect(() => {
@@ -254,69 +254,80 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                   seamless token exchange
                 </motion.h2>
                 
-                {/* Epic Token Crossing Animation */}
-                <div className="relative h-80 mb-8 overflow-hidden">
+                {/* Epic Token Crossing Animation - Full Screen */}
+                <div className="fixed inset-0 z-10 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+                  {/* Title Overlay */}
+                  <motion.div
+                    className="absolute top-20 left-1/2 transform -translate-x-1/2 z-20 text-center"
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                  >
+                    <h2 className="text-6xl font-light text-white mb-4 tracking-wide">seamless token exchange</h2>
+                    <p className="text-xl text-slate-300 font-light">cross-chain liquidity powered by chainlink vrf</p>
+                  </motion.div>
+
                   {/* Sonic Token - From Left */}
                   <motion.div
-                    className="absolute w-20 h-20 rounded-full border-2 flex items-center justify-center backdrop-blur-md"
+                    className="absolute w-32 h-32 rounded-full border-2 flex items-center justify-center backdrop-blur-md"
                     style={{
                       background: "linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(59, 130, 246, 0.25))",
-                      boxShadow: "0 0 24px rgba(34, 211, 238, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.1)",
+                      boxShadow: "0 0 60px rgba(34, 211, 238, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1)",
                       borderColor: "rgba(34, 211, 238, 0.5)",
-                      left: "10%",
+                      left: "5%",
                       top: "50%",
                       transform: "translateY(-50%)"
                     }}
-                    initial={{ x: -200, opacity: 0, scale: 0.5 }}
+                    initial={{ x: -400, opacity: 0, scale: 0.3 }}
                     animate={{
-                      x: [0, 300, 600],
+                      x: [0, 600, 1200],
                       opacity: [0, 1, 0],
-                      scale: [0.5, 1.2, 0.5],
+                      scale: [0.3, 1.5, 0.3],
                       rotate: [0, 360, 720]
                     }}
                     transition={{
-                      duration: 3.5,
+                      duration: 4,
                       ease: [0.68, -0.55, 0.265, 1.55],
-                      delay: 0.5
+                      delay: 1
                     }}
                   >
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
                       alt="Sonic"
-                      className="w-12 h-12"
-                      style={{ filter: "drop-shadow(0 0 10px rgba(34, 211, 238, 0.6))" }}
+                      className="w-20 h-20"
+                      style={{ filter: "drop-shadow(0 0 20px rgba(34, 211, 238, 0.8))" }}
                     />
                   </motion.div>
 
                   {/* Dragon Token - From Right */}
                   <motion.div
-                    className="absolute w-20 h-20 rounded-full border-2 flex items-center justify-center backdrop-blur-md"
+                    className="absolute w-32 h-32 rounded-full border-2 flex items-center justify-center backdrop-blur-md"
                     style={{
                       background: "linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.25))",
-                      boxShadow: "0 0 24px rgba(251, 191, 36, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.1)",
+                      boxShadow: "0 0 60px rgba(251, 191, 36, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1)",
                       borderColor: "rgba(251, 191, 36, 0.5)",
-                      right: "10%",
+                      right: "5%",
                       top: "50%",
                       transform: "translateY(-50%)"
                     }}
-                    initial={{ x: 200, opacity: 0, scale: 0.5 }}
+                    initial={{ x: 400, opacity: 0, scale: 0.3 }}
                     animate={{
-                      x: [0, -300, -600],
+                      x: [0, -600, -1200],
                       opacity: [0, 1, 0],
-                      scale: [0.5, 1.2, 0.5],
+                      scale: [0.3, 1.5, 0.3],
                       rotate: [0, -360, -720]
                     }}
                     transition={{
-                      duration: 3.5,
+                      duration: 4,
                       ease: [0.68, -0.55, 0.265, 1.55],
-                      delay: 0.5
+                      delay: 1
                     }}
                   >
                     <img
                       src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                       alt="Dragon"
-                      className="w-10 h-10"
-                      style={{ filter: "drop-shadow(0 0 10px rgba(251, 191, 36, 0.6))" }}
+                      className="w-16 h-16"
+                      style={{ filter: "drop-shadow(0 0 20px rgba(251, 191, 36, 0.8))" }}
                     />
                   </motion.div>
 
@@ -325,70 +336,82 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                     className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{
-                      scale: [0, 4, 2, 0],
+                      scale: [0, 15, 8, 0],
                       opacity: [0, 1, 0.5, 0]
                     }}
                     transition={{
-                      duration: 1.5,
-                      delay: 2.2,
+                      duration: 2,
+                      delay: 3,
                       ease: [0.25, 0.8, 0.25, 1]
                     }}
                     style={{
-                      width: "80px",
-                      height: "80px",
-                      background: "radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%)",
+                      width: "200px",
+                      height: "200px",
+                      background: "radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(34,211,238,0.3) 30%, rgba(251,191,36,0.3) 60%, transparent 100%)",
                       borderRadius: "50%"
                     }}
                   />
 
                   {/* Exchange Symbol */}
                   <motion.div
-                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-white"
+                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-8xl text-white z-30"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{
                       opacity: [0, 1, 1, 0],
-                      scale: [0, 1.5, 1, 0],
+                      scale: [0, 2, 1.5, 0],
                       rotate: [0, 180, 360, 540]
                     }}
                     transition={{
-                      duration: 2,
-                      delay: 1.5,
+                      duration: 2.5,
+                      delay: 2.5,
                       ease: [0.4, 0, 0.2, 1]
                     }}
                     style={{
-                      filter: "drop-shadow(0 0 15px rgba(255, 255, 255, 0.6))"
+                      filter: "drop-shadow(0 0 30px rgba(255, 255, 255, 0.8))"
                     }}
                   >
                     ⇄
                   </motion.div>
 
-                  {/* Energy Trails */}
-                  {[...Array(8)].map((_, i) => (
+                  {/* Energy Burst Particles */}
+                  {[...Array(24)].map((_, i) => (
                     <motion.div
                       key={i}
                       className="absolute rounded-full"
                       style={{
-                        width: "4px",
-                        height: "4px",
+                        width: (6 + Math.random() * 8) + "px",
+                        height: (6 + Math.random() * 8) + "px",
                         left: "50%",
                         top: "50%",
-                        background: i % 2 === 0 ? "#22D3EE" : "#FBBF24",
-                        boxShadow: `0 0 10px ${i % 2 === 0 ? "#22D3EE" : "#FBBF24"}`
+                        background: i % 3 === 0 ? "#22D3EE" : i % 3 === 1 ? "#FBBF24" : "#F59E0B",
+                        boxShadow: `0 0 20px ${i % 3 === 0 ? "#22D3EE" : i % 3 === 1 ? "#FBBF24" : "#F59E0B"}`
                       }}
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{
-                        scale: [0, 1, 0],
-                        x: Math.cos((i * 45 * Math.PI) / 180) * (80 + Math.random() * 60),
-                        y: Math.sin((i * 45 * Math.PI) / 180) * (80 + Math.random() * 60),
-                        opacity: [0, 1, 0]
+                        scale: [0, 2, 0],
+                        x: Math.cos((i * 15 * Math.PI) / 180) * (200 + Math.random() * 300),
+                        y: Math.sin((i * 15 * Math.PI) / 180) * (200 + Math.random() * 300),
+                        opacity: [0, 1, 0],
+                        rotate: [0, 360 * (Math.random() > 0.5 ? 1 : -1)]
                       }}
                       transition={{
-                        duration: 1.5,
-                        delay: 2.2 + i * 0.05,
+                        duration: 2.5,
+                        delay: 3 + i * 0.03,
                         ease: "easeOut"
                       }}
                     />
                   ))}
+
+                  {/* Bottom Info Panel */}
+                  <motion.div
+                    className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 text-center"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 4 }}
+                  >
+                    <p className="text-lg text-slate-300 font-light mb-2">every trade automatically enters the lottery system</p>
+                    <p className="text-sm text-slate-400 font-light">powered by chainlink vrf 2.5 • fees distributed to stakers</p>
+                  </motion.div>
                 </div>
 
                 <motion.p
@@ -401,8 +424,48 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
               </motion.div>
             )}
 
-            {/* Lottery System */}
+            {/* Fee Distribution */}
             {currentStep === 2 && (
+              <motion.div key="fees" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
+                <motion.h2
+                  {...slideUp}
+                  className="text-4xl font-light mb-8 tracking-wide"
+                >
+                  transparent fee structure
+                </motion.h2>
+                <motion.div
+                  {...slideUp}
+                  transition={{ delay: 0.5, duration: 1 }}
+                  className="grid grid-cols-3 gap-8 mb-8"
+                >
+                  <div className="bg-slate-800/50 rounded-lg p-6 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl font-light text-blue-400 mb-3">60%</div>
+                    <div className="text-lg font-light text-slate-300 mb-2">lottery pool</div>
+                    <div className="text-sm text-slate-400 font-light">automatic entry for all trades</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-6 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl font-light text-green-400 mb-3">30%</div>
+                    <div className="text-lg font-light text-slate-300 mb-2">staking rewards</div>
+                    <div className="text-sm text-slate-400 font-light">distributed to token holders</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-6 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl font-light text-purple-400 mb-3">10%</div>
+                    <div className="text-lg font-light text-slate-300 mb-2">development</div>
+                    <div className="text-sm text-slate-400 font-light">protocol maintenance & growth</div>
+                  </div>
+                </motion.div>
+                <motion.p
+                  {...slideUp}
+                  transition={{ delay: 1, duration: 1 }}
+                  className="text-lg text-slate-400 font-light"
+                >
+                  every 0.3% trading fee is automatically distributed across the ecosystem
+                </motion.p>
+              </motion.div>
+            )}
+
+            {/* Lottery System */}
+            {currentStep === 3 && (
               <motion.div key="lottery" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
                 <motion.h2
                   {...slideUp}
@@ -432,41 +495,7 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
               </motion.div>
             )}
 
-            {/* Fee Structure */}
-            {currentStep === 3 && (
-              <motion.div key="fees" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
-                <motion.h2
-                  {...slideUp}
-                  className="text-4xl font-light mb-12 tracking-wide"
-                >
-                  transparent fee allocation
-                </motion.h2>
-                <div className="space-y-6">
-                  {FEE_STRUCTURE.map((fee, index) => (
-                    <motion.div
-                      key={fee.name}
-                      {...slideUp}
-                      transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
-                      className="flex justify-between items-center bg-slate-800/30 rounded-lg p-6 backdrop-blur-sm border border-slate-700/30"
-                    >
-                      <div className="text-left">
-                        <div className="text-xl font-light text-white">
-                          {fee.name}
-                        </div>
-                        <div className="text-sm text-slate-400 font-light">
-                          {fee.description}
-                        </div>
-                      </div>
-                      <div className="text-2xl font-light text-blue-400">
-                        {fee.percentage}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-
-            {/* Odds Table */}
+            {/* Chainlink VRF */}
             {currentStep === 4 && (
               <motion.div key="odds" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
                 <motion.h2
