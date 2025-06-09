@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TokenExchangeAnimation from "./token-exchange-animation";
 import AnimatedCounter from "./animated-counter";
+import QuantumParticleSystem from "./advanced/quantum-particle-system";
+import TradingSimulationEngine from "./advanced/trading-simulation-engine";
+import HolographicUI from "./advanced/holographic-ui";
+import { useDemoStore } from "@/stores/demo-store";
+import { useSnapshot } from "valtio";
+import { animationState } from "@/stores/demo-store";
 // Import audio directly from attached_assets - using newer file
 const audioFile = "/attached_assets/hybrid-epic-hollywood-trailer-247114_1749430771436.mp3";
 
@@ -176,6 +182,11 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
+      {/* Advanced Background Systems */}
+      <QuantumParticleSystem />
+      <TradingSimulationEngine />
+      <HolographicUI />
+      
       <audio 
         ref={audioRef} 
         preload="metadata" 
