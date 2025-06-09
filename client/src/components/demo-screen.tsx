@@ -1138,30 +1138,226 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         label: "JACKPOT VAULT",
                         description: "Win massive prizes every trade",
                         color: "amber",
-                        delay: 0.5,
-                        size: 120,
-                      }, // Base size * 6.9
+                        icon: "🎰"
+                      },
                       {
                         percent: "2.41%",
                         label: "LP REWARDS",
-                        description: "Earn passive income",
+                        description: "Earn from liquidity provision",
                         color: "blue",
-                        delay: 1,
-                        size: 84,
-                      }, // Base size * 2.41
+                        icon: "💧"
+                      },
                       {
                         percent: "0.69%",
                         label: "TOKEN BURN",
-                        description: "Increase scarcity & value",
-                        color: "red",
-                        delay: 1.5,
-                        size: 48,
-                      }, // Base size * 0.69
-                    ].map((item, i) => (
+                        description: "Reduce supply, increase scarcity",
+                        color: "orange",
+                        icon: "🔥"
+                      }
+                    ].map((item, index) => (
                       <motion.div
-                        key={i}
-                        className="flex items-center justify-center space-x-16"
-                        initial={{
+                        key={index}
+                        className="flex items-center justify-center space-x-8"
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          duration: 1,
+                          delay: 2 + index * 0.3,
+                          ease: [0.25, 0.46, 0.45, 0.94]
+                        }}
+                      >
+                        <div className={`text-4xl font-bold text-${item.color}-400`}>
+                          {item.percent}
+                        </div>
+                        <div className="text-2xl">{item.icon}</div>
+                        <div className="text-left">
+                          <div className={`text-xl font-medium text-${item.color}-300`}>
+                            {item.label}
+                          </div>
+                          <div className="text-gray-400 text-sm">
+                            {item.description}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 5: How Jackpot Works */}
+            {currentStep === 5 && (
+              <motion.div
+                key="howjackpot"
+                className="flex items-center justify-center min-h-screen relative"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                transition={{ duration: 1.5 }}
+              >
+                {/* Background trading activity */}
+                <div className="absolute inset-0 opacity-30 pointer-events-none">
+                  {[...Array(4)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute flex items-center justify-center"
+                      style={{
+                        left: `${20 + i * 20}%`,
+                        top: `${30 + (i % 2) * 30}%`,
+                      }}
+                      animate={{
+                        opacity: [0, 0.6, 0.6, 0],
+                        scale: [0.5, 0.8, 0.8, 0.5],
+                      }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        delay: i * 1.5,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <TokenExchangeAnimation
+                        index={i}
+                        duration={6}
+                        delay={i * 1.5}
+                        scale={0.6}
+                        showTradeIndicators={false}
+                        showFeeBreakdown={false}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="text-center relative z-10">
+                  {/* Connecting question */}
+                  <motion.h2
+                    className="text-5xl font-light text-gray-300 mb-12 tracking-wide"
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    style={{
+                      filter: "drop-shadow(0 0 25px rgba(255,255,255,0.2))",
+                      fontWeight: 300,
+                    }}
+                  >
+                    BUT HOW DOES THE JACKPOT GROW?
+                  </motion.h2>
+
+                  <motion.p
+                    className="text-3xl text-yellow-400 mb-16 font-light tracking-wide"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 1 }}
+                    style={{
+                      filter: "drop-shadow(0 0 20px rgba(255,235,59,0.4))",
+                    }}
+                  >
+                    BIGGER SWAPS = BIGGER CONTRIBUTIONS
+                  </motion.p>
+
+                  <motion.div
+                    className="text-center"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{
+                      duration: 1,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: 2.5,
+                    }}
+                  >
+                    <motion.div
+                      className="text-5xl font-bold text-green-400 mb-2"
+                      animate={{
+                        textShadow: [
+                          "0 0 10px rgba(251, 191, 36, 0.5)",
+                          "0 0 20px rgba(251, 191, 36, 0.8)",
+                          "0 0 10px rgba(251, 191, 36, 0.5)",
+                        ],
+                      }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <AnimatedCounter showGrowthIndicator={false} />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 6: Final Step */}
+            {currentStep === 6 && (
+              <motion.div
+                key="final"
+                className="flex items-center justify-center min-h-screen"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 2 }}
+              >
+                <div className="text-center">
+                  <motion.h1
+                    className="text-6xl font-bold text-white mb-8"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1.5, delay: 0.5 }}
+                  >
+                    SONIC RED DRAGON
+                  </motion.h1>
+                  <motion.p
+                    className="text-2xl text-gray-300"
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1, delay: 2 }}
+                  >
+                    The Future of DeFi Trading
+                  </motion.p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
+
+      {/* Step Navigation */}
+      {!showAnimations && (
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <StepContent
+            currentStep={currentStep}
+            onStepChange={setCurrentStep}
+            totalSteps={6}
+          />
+        </div>
+      )}
+
+      {/* Animated Counter Component */}
+      {[...Array(1)].map((_, index) => (
+        <motion.div
+          key={index}
+          className="fixed bottom-4 right-4 z-20 bg-black/80 backdrop-blur-sm border border-white/20 rounded-lg p-4"
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 3 + index * 0.5, duration: 1 }}
+        >
+          <motion.div
+            className="text-2xl font-bold text-green-400 mb-1"
+            animate={{
+              textShadow: [
+                "0 0 10px rgba(251, 191, 36, 0.5)",
+                "0 0 20px rgba(251, 191, 36, 0.8)",
+                "0 0 10px rgba(251, 191, 36, 0.5)",
+              ],
+            }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <AnimatedCounter showGrowthIndicator={false} />
+          </motion.div>
+          <div className="text-yellow-400/80 text-xs mt-1 text-center">
+            Growing with every swap
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
                           x: i % 2 === 0 ? -600 : 600,
                           opacity: 0,
                           rotateY: 45,
@@ -2510,6 +2706,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             </motion.div>
           )}
+          </AnimatePresence>
         </div>
       )}
     </div>
