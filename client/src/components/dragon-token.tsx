@@ -13,9 +13,9 @@ interface DragonTokenProps {
 
 export const DragonToken = ({
   size = "w-12 h-12",
-  borderColor = "border-gold-400",
+  borderColor = "border-amber-400",
   gradientFrom = "from-amber-400",
-  gradientTo = "to-gold-500",
+  gradientTo = "to-orange-500",
   imageSize = "w-full h-full",
   animateProps = {},
   transitionProps = {},

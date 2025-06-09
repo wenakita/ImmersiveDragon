@@ -6,7 +6,7 @@ interface AnimatedCounterProps {
 }
 
 export const AnimatedCounter = ({ showGrowthIndicator = true }: AnimatedCounterProps) => {
-  const [count, setCount] = useState(69420);
+  const [count, setCount] = useState(137852);
 
   useEffect(() => {
     const interval = setInterval(() => {
