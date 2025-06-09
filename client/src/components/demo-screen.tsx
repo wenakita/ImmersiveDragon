@@ -4,15 +4,15 @@ import { Typewriter } from "@/components/ui/typewriter";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
 // Sonic Token Component
-const SonicToken = ({ 
-  size = "w-12 h-12", 
-  borderColor = "border-blue-300", 
-  gradientFrom = "from-blue-400", 
+const SonicToken = ({
+  size = "w-12 h-12",
+  borderColor = "border-blue-300",
+  gradientFrom = "from-blue-400",
   gradientTo = "to-cyan-500",
   imageSize = "w-full h-full",
   animateProps = {},
   transitionProps = {},
-  style = {}
+  style = {},
 }: {
   size?: string;
   borderColor?: string;
@@ -29,24 +29,24 @@ const SonicToken = ({
     transition={transitionProps}
     style={style}
   >
-    <img 
-      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy" 
-      alt="Sonic" 
+    <img
+      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+      alt="Sonic"
       className={`${imageSize} object-cover rounded-full`}
     />
   </motion.div>
 );
 
 // Dragon Token Component
-const DragonToken = ({ 
-  size = "w-12 h-12", 
-  borderColor = "border-red-300", 
-  gradientFrom = "from-red-500", 
+const DragonToken = ({
+  size = "w-12 h-12",
+  borderColor = "border-red-300",
+  gradientFrom = "from-red-500",
   gradientTo = "to-orange-600",
   imageSize = "w-full h-full",
   animateProps = {},
   transitionProps = {},
-  style = {}
+  style = {},
 }: {
   size?: string;
   borderColor?: string;
@@ -63,9 +63,9 @@ const DragonToken = ({
     transition={transitionProps}
     style={style}
   >
-    <img 
-      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam" 
-      alt="Dragon" 
+    <img
+      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+      alt="Dragon"
       className={`${imageSize} object-cover rounded-full`}
     />
   </motion.div>
@@ -79,7 +79,11 @@ let globalShowIncrease = false;
 const jackpotListeners: Array<() => void> = [];
 
 // Animated Counter Component with Growth Indicators
-const AnimatedCounter = ({ showGrowthIndicator = true }: { showGrowthIndicator?: boolean }) => {
+const AnimatedCounter = ({
+  showGrowthIndicator = true,
+}: {
+  showGrowthIndicator?: boolean;
+}) => {
   const [count, setCount] = useState(globalJackpotCount);
   const [isIncreasing, setIsIncreasing] = useState(globalIsIncreasing);
   const [lastIncrease, setLastIncrease] = useState(globalLastIncrease);
@@ -93,7 +97,7 @@ const AnimatedCounter = ({ showGrowthIndicator = true }: { showGrowthIndicator?:
       setLastIncrease(globalLastIncrease);
       setShowIncrease(globalShowIncrease);
     };
-    
+
     jackpotListeners.push(updateState);
 
     // Start the interval only if this is the first counter
@@ -107,13 +111,13 @@ const AnimatedCounter = ({ showGrowthIndicator = true }: { showGrowthIndicator?:
         globalJackpotCount += increase;
 
         // Notify all listeners
-        jackpotListeners.forEach(listener => listener());
+        jackpotListeners.forEach((listener) => listener());
 
         // Reset the flash effect
         setTimeout(() => {
           globalIsIncreasing = false;
           globalShowIncrease = false;
-          jackpotListeners.forEach(listener => listener());
+          jackpotListeners.forEach((listener) => listener());
         }, 800);
       }, 1400); // Update every 1.4 seconds
     }
@@ -169,15 +173,15 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
   // Enhanced timing based on waveform analysis - Extended for better comprehension
   const steps = [
-    { delay: 0, duration: 6500 }, // [0:00–0:06.5] Title intro: swell begins
-    { delay: 6500, duration: 7500 }, // [0:06.5–0:14] Swap animation buildup
-    { delay: 14000, duration: 12000 }, // [0:14–0:26] Jackpot reveal at first drop - EXTENDED +3s
-    { delay: 26000, duration: 8000 }, // [0:26–0:34] Fee tension – ambient mood - EXTENDED +2.5s
-    { delay: 34000, duration: 12000 }, // [0:34–0:46] Fee breakdown – cinematic swell - EXTENDED +2s
-    { delay: 46000, duration: 15000 }, // [0:46–1:00] Lottery mechanics - EXTENDED +6s for veDRAGON readability
-    { delay: 61000, duration: 7000 }, // [1:00–1:07] Chainlink VRF
-    { delay: 68000, duration: 8000 }, // [1:07–1:15] LayerZero cross-chain
-    { delay: 76000, duration: 8000 }, // [1:15–1:23] Final CTA + logo out
+    { delay: 0, duration: 6500 }, // [0:00–0:06.5] Step 0: Sophisticated Title Reveal
+    { delay: 6500, duration: 7500 }, // [0:06.5–0:14] Step 1: Elegant Token Interaction
+    { delay: 14000, duration: 12000 }, // [0:14–0:26] Step 2: Epic Jackpot Reveal with Screen Impact
+    { delay: 26000, duration: 8000 }, // [0:26–0:34] Step 3: Bridge to Fee Structure
+    { delay: 34000, duration: 12000 }, // [0:34–0:46] Step 4: Enhanced Fee Breakdown with Transition
+    { delay: 46000, duration: 15000 }, // [0:46–1:00] Step 5: Chainlink VRF Lottery - Immersive Camera Dive
+    { delay: 61000, duration: 7000 }, // [1:00–1:07] Step 6: Refined Odds Table
+    { delay: 68000, duration: 8000 }, // [1:07–1:15] Step 7: LayerZero Cross-Chain Implementation - Immersive Deep Dive
+    { delay: 76000, duration: 8000 }, // [1:15–1:23] Step 8: Epic Finale with CTA
   ];
 
   useEffect(() => {
@@ -1184,8 +1188,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           ease: "easeInOut",
                         }}
                         style={{
-                          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
-                          boxShadow: "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                          background:
+                            "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
+                          boxShadow:
+                            "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)",
                         }}
                       />
 
@@ -1357,8 +1363,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           ease: "easeInOut",
                         }}
                         style={{
-                          background: "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
-                          boxShadow: "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                          background:
+                            "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
+                          boxShadow:
+                            "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)",
                         }}
                       />
                     </motion.div>
@@ -1602,8 +1610,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           ease: "easeInOut",
                         }}
                         style={{
-                          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
-                          boxShadow: "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                          background:
+                            "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))",
+                          boxShadow:
+                            "0 0 20px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)",
                         }}
                       />
 
@@ -1774,8 +1784,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           ease: "easeInOut",
                         }}
                         style={{
-                          background: "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
-                          boxShadow: "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                          background:
+                            "linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3))",
+                          boxShadow:
+                            "0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)",
                         }}
                       />
                     </motion.div>
@@ -2116,7 +2128,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           initial={{ opacity: 0, x: 20, scale: 0.8 }}
                           animate={{ opacity: 1, x: 0, scale: 1 }}
                           transition={{
-                            delay: item.delay + 4.5,
+                            delay: item.delay + 3.5,
                             duration: 1.2,
                             ease: [0.25, 0.46, 0.45, 0.94],
                           }}
@@ -2126,8 +2138,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{
-                              delay: item.delay + 4.8,
-                              duration: 0.8,
+                              delay: item.delay + 3.8,
+                              duration: 1.8,
                             }}
                           >
                             veDRAGON 2.5x
@@ -2145,14 +2157,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                               ],
                             }}
                             transition={{
-                              opacity: { delay: item.delay + 5.2, duration: 1 },
+                              opacity: { delay: item.delay + 4.2, duration: 2 },
                               scale: {
-                                delay: item.delay + 5.2,
-                                duration: 1,
+                                delay: item.delay + 4.2,
+                                duration: 2,
                                 ease: "backOut",
                               },
                               textShadow: {
-                                duration: 2,
+                                duration: 3,
                                 repeat: Infinity,
                                 delay: item.delay + 6,
                               },
@@ -2290,7 +2302,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       }}
                     >
                       <motion.img
-                        src="https://file.notion.so/f/f/c681a46c-dbda-4853-b36e-c19abcbf93e6/9d47bc94-e0dd-46b4-a606-8c9bc16cd7ba/LayerZero_logo.svg?table=block&id=88b1ad69-2659-424a-956a-cab1172961f7&spaceId=c681a46c-dbda-4853-b36e-c19abcbf93e6&expirationTimestamp=1749390483053&signature=M9aJg5OSCQXPdzwZ9LbDFqsv2ZEL4PcD7LWAyBIXZKA&downloadName=LayerZero_logo.svg"
+                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreidp4x62pp27pf6cdtddvas7e3d2cshozgzi3yhmr2whhcefo5anly"
                         alt="LayerZero"
                         className="h-16 filter brightness-110"
                         initial={{ rotateY: 180 }}
@@ -2344,7 +2356,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         }}
                       >
                         <motion.img
-                          src="https://file.notion.so/f/f/c681a46c-dbda-4853-b36e-c19abcbf93e6/afc25f0c-f605-441e-bd9a-c61b4349b3e8/LayerZero_emblem.svg?table=block&id=e20fa247-1779-4bd7-b434-82cad1b4fb68&spaceId=c681a46c-dbda-4853-b36e-c19abcbf93e6&expirationTimestamp=1749445646335&signature=T-toFxw3xXJxA0rJ7tudMlDM0W7LyTD2t9LU5bW1z3o&downloadName=LayerZero_emblem.svg"
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreihml3nahd2duwdjg2ltoeixax2xdj2ldp5unnrjwntyicar74nwra"
                           alt="LayerZero Labs"
                           className="h-12 mb-2"
                           animate={{
