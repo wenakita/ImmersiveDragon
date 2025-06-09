@@ -180,9 +180,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     { delay: 26000, duration: 8000 }, // [0:26–0:34] Step 3: Bridge to Fee Structure
     { delay: 34000, duration: 12000 }, // [0:34–0:46] Step 4: Enhanced Fee Breakdown with Transition
     { delay: 46000, duration: 15000 }, // [0:46–1:00] Step 5: Chainlink VRF Lottery - Immersive Camera Dive
-    { delay: 61000, duration: 7000 }, // [1:00–1:07] Step 6: Refined Odds Table
-    { delay: 68000, duration: 8000 }, // [1:07–1:15] Step 7: LayerZero Cross-Chain Implementation - Immersive Deep Dive
-    { delay: 76000, duration: 8000 }, // [1:15–1:23] Step 8: Epic Finale with CTA
+    { delay: 61000, duration: 9000 }, // [1:00–1:09] Step 6: Refined Odds Table
+    { delay: 70000, duration: 10000 }, // [1:09–1:19] Step 7: LayerZero Cross-Chain Implementation - Immersive Deep Dive
+    { delay: 80000, duration: 8000 }, // [1:19–1:27] Step 8: Epic Finale with CTA
   ];
 
   useEffect(() => {
