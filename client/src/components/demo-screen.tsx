@@ -101,7 +101,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               height: Math.random() * 3 + 1 + "px",
               left: Math.random() * 100 + "%",
               top: Math.random() * 100 + "%",
-              background: i % 3 === 0 ? "#FF6B35" : i % 3 === 1 ? "#FFEB3B" : "#3B82F6",
+              background:
+                i % 3 === 0 ? "#FF6B35" : i % 3 === 1 ? "#FFEB3B" : "#3B82F6",
             }}
             animate={{
               y: [0, -150, 0],
@@ -272,8 +273,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           }}
                         >
                           $S
-                        </span>
-                        {" "}FOR{" "}
+                        </span>{" "}
+                        FOR{" "}
                         <span
                           className="text-amber-400 font-bold"
                           style={{
@@ -373,8 +374,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           i % 3 === 0
                             ? "#FFD700"
                             : i % 3 === 1
-                            ? "#FF6B35"
-                            : "#FFEB3B"
+                              ? "#FF6B35"
+                              : "#FFEB3B"
                         }`,
                       }}
                       initial={{ scale: 0, opacity: 0 }}
@@ -426,7 +427,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     <TokenExchangeAnimation
                       key={i}
                       containerStyle={{
-                        position: 'absolute',
+                        position: "absolute",
                         left: `${15 + i * 20}%`,
                         top: `${20 + (i % 2) * 40}%`,
                       }}
@@ -532,20 +533,20 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           i % 4 === 0
                             ? "#FFD700"
                             : i % 4 === 1
-                            ? "#FFA500"
-                            : i % 4 === 2
-                            ? "#FBBF24"
-                            : "#10B981",
+                              ? "#FFA500"
+                              : i % 4 === 2
+                                ? "#FBBF24"
+                                : "#10B981",
                         left: `${15 + Math.random() * 70}%`,
                         top: `${5 + Math.random() * 40}%`,
                         boxShadow: `0 0 20px ${
                           i % 4 === 0
                             ? "#FFD700"
                             : i % 4 === 1
-                            ? "#FFA500"
-                            : i % 4 === 2
-                            ? "#FBBF24"
-                            : "#10B981"
+                              ? "#FFA500"
+                              : i % 4 === 2
+                                ? "#FBBF24"
+                                : "#10B981"
                         }`,
                       }}
                       initial={{ scale: 0, y: 0, opacity: 0, rotateZ: 0 }}
@@ -656,7 +657,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     <TokenExchangeAnimation
                       key={i}
                       containerStyle={{
-                        position: 'absolute',
+                        position: "absolute",
                         left: `${10 + i * 18}%`,
                         top: `${15 + (i % 3) * 25}%`,
                       }}
@@ -728,22 +729,22 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         label: "JACKPOT VAULT",
                         description: "Win massive prizes every trade",
                         color: "amber",
-                        icon: "🎰"
+                        icon: "🎰",
                       },
                       {
                         percent: "2.41%",
                         label: "LP REWARDS",
                         description: "Earn from liquidity provision",
                         color: "blue",
-                        icon: "💧"
+                        icon: "💧",
                       },
                       {
                         percent: "0.69%",
                         label: "TOKEN BURN",
                         description: "Reduce supply, increase scarcity",
                         color: "orange",
-                        icon: "🔥"
-                      }
+                        icon: "🔥",
+                      },
                     ].map((item, index) => (
                       <motion.div
                         key={index}
@@ -753,15 +754,19 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         transition={{
                           duration: 1,
                           delay: 2 + index * 0.3,
-                          ease: [0.25, 0.46, 0.45, 0.94]
+                          ease: [0.25, 0.46, 0.45, 0.94],
                         }}
                       >
-                        <div className={`text-4xl font-bold text-${item.color}-400`}>
+                        <div
+                          className={`text-4xl font-bold text-${item.color}-400`}
+                        >
                           {item.percent}
                         </div>
                         <div className="text-2xl">{item.icon}</div>
                         <div className="text-left">
-                          <div className={`text-xl font-medium text-${item.color}-300`}>
+                          <div
+                            className={`text-xl font-medium text-${item.color}-300`}
+                          >
                             {item.label}
                           </div>
                           <div className="text-gray-400 text-sm">
@@ -791,7 +796,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     <TokenExchangeAnimation
                       key={i}
                       containerStyle={{
-                        position: 'absolute',
+                        position: "absolute",
                         left: `${20 + i * 20}%`,
                         top: `${30 + (i % 2) * 30}%`,
                       }}
