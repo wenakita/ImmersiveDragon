@@ -8,6 +8,36 @@ import AnimatedCounter from "./animated-counter";
 import StepContent from "./step-content";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
+// Sophisticated lottery odds table
+const LOTTERY_ODDS = [
+  { tier: "GRAND JACKPOT", odds: "1:10,000", multiplier: "1000x", percentage: "69%", color: "from-yellow-400 to-amber-600" },
+  { tier: "MEGA WIN", odds: "1:1,000", multiplier: "100x", percentage: "15%", color: "from-orange-400 to-red-500" },
+  { tier: "BIG WIN", odds: "1:500", multiplier: "50x", percentage: "10%", color: "from-purple-400 to-pink-500" },
+  { tier: "MAJOR WIN", odds: "1:100", multiplier: "25x", percentage: "4%", color: "from-blue-400 to-cyan-500" },
+  { tier: "LUCKY WIN", odds: "1:50", multiplier: "10x", percentage: "2%", color: "from-green-400 to-emerald-500" },
+];
+
+// Advanced Chainlink VRF configuration
+const CHAINLINK_CONFIG = {
+  vrfVersion: "2.5",
+  subscriptionId: "0x4A7B8C9D2E3F1A5B",
+  keyHash: "0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c",
+  requestConfirmations: 3,
+  gasLimit: 2500000,
+  networks: ["Ethereum", "Polygon", "Arbitrum", "Optimism", "Base"]
+};
+
+// LayerZero cross-chain endpoints
+const LAYERZERO_ENDPOINTS = {
+  ethereum: { id: 101, icon: "⟠" },
+  polygon: { id: 109, icon: "🔷" },
+  arbitrum: { id: 110, icon: "🔵" },
+  optimism: { id: 111, icon: "🔴" },
+  base: { id: 184, icon: "🔹" },
+  avalanche: { id: 106, icon: "🏔️" },
+  bsc: { id: 102, icon: "🟡" }
+};
+
 interface DemoScreenProps {
   autoStart?: boolean;
 }
@@ -18,13 +48,15 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const steps = [
-    { step: 0, delay: 0 },
-    { step: 1, delay: 8000 },
-    { step: 2, delay: 16000 },
-    { step: 3, delay: 24000 },
-    { step: 4, delay: 32000 },
-    { step: 5, delay: 40000 },
-    { step: 6, delay: 48000 },
+    { step: 0, delay: 0 },      // Title
+    { step: 1, delay: 8000 },   // Token Swap
+    { step: 2, delay: 16000 },  // Jackpot
+    { step: 3, delay: 24000 },  // Fee Structure
+    { step: 4, delay: 32000 },  // Fee Breakdown
+    { step: 5, delay: 40000 },  // Odds Table
+    { step: 6, delay: 48000 },  // Chainlink VRF
+    { step: 7, delay: 56000 },  // LayerZero
+    { step: 8, delay: 64000 },  // Final
   ];
 
   useEffect(() => {
@@ -900,7 +932,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             )}
 
             {/* Sophisticated Jackpot Growth */}
-            {currentStep === 5 && (
+            {currentStep === 4 && (
               <motion.div
                 key="howjackpot"
                 className="flex items-center justify-center min-h-screen relative"
@@ -990,8 +1022,509 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Epic Final Statement */}
+            {/* Sophisticated Odds Table */}
+            {currentStep === 5 && (
+              <motion.div
+                key="odds"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                initial={{ opacity: 0, y: 120 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
+                transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                {/* Ultra-premium background with floating data streams */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none">
+                  {[...Array(8)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute text-xs font-mono text-green-400/60"
+                      style={{
+                        left: `${10 + i * 12}%`,
+                        top: `${Math.random() * 80 + 10}%`,
+                      }}
+                      animate={{
+                        y: [0, -800],
+                        opacity: [0, 0.8, 0],
+                      }}
+                      transition={{
+                        duration: 15 + Math.random() * 10,
+                        repeat: Infinity,
+                        delay: i * 2,
+                        ease: "linear",
+                      }}
+                    >
+                      {Array.from({ length: 20 }, () => 
+                        Math.random().toString(36).substring(2, 15)
+                      ).map((text, j) => (
+                        <div key={j} className="mb-2">
+                          {`VRF_${text.toUpperCase()}_${Math.floor(Math.random() * 999999)}`}
+                        </div>
+                      ))}
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="text-center relative z-10 max-w-7xl mx-auto">
+                  <motion.h2
+                    className="text-7xl font-black mb-8 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-600 bg-clip-text text-transparent"
+                    initial={{ opacity: 0, y: -80, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.5, duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    style={{
+                      filter: "drop-shadow(0 0 100px rgba(251,191,36,0.8))",
+                      textShadow: "0 0 80px rgba(251,191,36,0.6)",
+                    }}
+                  >
+                    REVOLUTIONARY ODDS SYSTEM
+                  </motion.h2>
+
+                  <motion.p
+                    className="text-3xl text-gray-200 mb-16 font-light max-w-4xl mx-auto"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.5, duration: 1.5 }}
+                  >
+                    Unlike traditional lotteries with fixed odds,{" "}
+                    <span className="text-amber-400 font-medium bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+                      your chances increase with larger swaps
+                    </span>
+                  </motion.p>
+
+                  {/* Premium odds table */}
+                  <motion.div
+                    className="bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 overflow-hidden relative"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 2, duration: 1.5 }}
+                    style={{
+                      boxShadow: "0 0 100px rgba(0,0,0,0.8), inset 0 0 100px rgba(255,255,255,0.05)",
+                    }}
+                  >
+                    {/* Sophisticated header */}
+                    <div className="grid grid-cols-4 gap-8 mb-8 text-center">
+                      {["PRIZE TIER", "ODDS", "MULTIPLIER", "POOL %"].map((header, i) => (
+                        <motion.div
+                          key={header}
+                          className="text-xl font-bold text-yellow-400"
+                          initial={{ opacity: 0, y: -30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 2.5 + i * 0.1, duration: 0.8 }}
+                          style={{
+                            filter: "drop-shadow(0 0 20px rgba(255,235,59,0.5))",
+                          }}
+                        >
+                          {header}
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Dynamic odds rows */}
+                    <div className="space-y-4">
+                      {LOTTERY_ODDS.map((row, i) => (
+                        <motion.div
+                          key={row.tier}
+                          className="grid grid-cols-4 gap-8 items-center bg-white/5 rounded-2xl p-6 border border-white/10"
+                          initial={{ opacity: 0, x: -100, rotateY: 45 }}
+                          animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                          transition={{
+                            delay: 3 + i * 0.2,
+                            duration: 1,
+                            ease: [0.25, 0.46, 0.45, 0.94]
+                          }}
+                          whileHover={{
+                            scale: 1.02,
+                            backgroundColor: "rgba(255,255,255,0.1)",
+                            transition: { duration: 0.2 }
+                          }}
+                          style={{
+                            boxShadow: `0 0 30px rgba(255,255,255,0.1)`,
+                          }}
+                        >
+                          <div className={`text-2xl font-bold bg-gradient-to-r ${row.color} bg-clip-text text-transparent`}>
+                            {row.tier}
+                          </div>
+                          <div className="text-2xl font-mono text-white">
+                            {row.odds}
+                          </div>
+                          <div className="text-2xl font-black text-green-400">
+                            {row.multiplier}
+                          </div>
+                          <div className="text-2xl font-bold text-blue-400">
+                            {row.percentage}
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Advanced probability visualization */}
+                    <motion.div
+                      className="mt-12 p-6 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-2xl border border-blue-400/20"
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 4.5, duration: 1.5 }}
+                    >
+                      <div className="text-center">
+                        <div className="text-2xl text-blue-300 mb-4 font-bold">
+                          🎲 DYNAMIC PROBABILITY ENGINE
+                        </div>
+                        <div className="text-lg text-gray-300 max-w-3xl mx-auto">
+                          Larger swaps = Better odds. Our proprietary algorithm adjusts your winning probability based on transaction size, creating unprecedented fairness in DeFi lottery mechanics.
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Advanced Chainlink VRF Integration */}
             {currentStep === 6 && (
+              <motion.div
+                key="chainlink"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, scale: 0.9, filter: "blur(12px)" }}
+                transition={{ duration: 2 }}
+              >
+                {/* High-tech background with data streams */}
+                <div className="absolute inset-0 opacity-15 pointer-events-none">
+                  {[...Array(12)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute font-mono text-xs text-blue-400/80"
+                      style={{
+                        left: `${5 + i * 8}%`,
+                        top: `${Math.random() * 100}%`,
+                        transform: `rotate(${Math.random() * 20 - 10}deg)`,
+                      }}
+                      animate={{
+                        y: [0, -1200],
+                        opacity: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 20 + Math.random() * 10,
+                        repeat: Infinity,
+                        delay: i * 1.5,
+                        ease: "linear",
+                      }}
+                    >
+                      {Array.from({ length: 30 }, (_, j) => (
+                        <div key={j} className="mb-3">
+                          {`0x${Math.random().toString(16).substring(2, 18)}`}
+                        </div>
+                      ))}
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="text-center relative z-10 max-w-7xl mx-auto">
+                  <motion.div
+                    className="mb-12"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5, duration: 1.5 }}
+                  >
+                    {/* Chainlink logo animation */}
+                    <motion.div
+                      className="text-9xl mb-8"
+                      animate={{
+                        rotate: [0, 360],
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                        scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                      }}
+                      style={{
+                        filter: "drop-shadow(0 0 50px rgba(59,130,246,0.8))",
+                      }}
+                    >
+                      🔗
+                    </motion.div>
+
+                    <motion.h2
+                      className="text-7xl font-black mb-8 bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent"
+                      initial={{ opacity: 0, y: -80 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1, duration: 1.5 }}
+                      style={{
+                        filter: "drop-shadow(0 0 80px rgba(59,130,246,0.8))",
+                        textShadow: "0 0 60px rgba(59,130,246,0.6)",
+                      }}
+                    >
+                      CHAINLINK VRF 2.5
+                    </motion.h2>
+
+                    <motion.p
+                      className="text-3xl text-gray-200 mb-16 font-light max-w-5xl mx-auto"
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.8, duration: 1.5 }}
+                    >
+                      Cryptographically secure randomness ensuring{" "}
+                      <span className="text-blue-400 font-medium bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+                        provably fair lottery results
+                      </span>{" "}
+                      that cannot be manipulated or predicted
+                    </motion.p>
+                  </motion.div>
+
+                  {/* Technical specifications panel */}
+                  <motion.div
+                    className="bg-black/50 backdrop-blur-2xl border border-blue-400/20 rounded-3xl p-8 mb-12"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 2.5, duration: 1.5 }}
+                    style={{
+                      boxShadow: "0 0 100px rgba(59,130,246,0.2), inset 0 0 100px rgba(59,130,246,0.05)",
+                    }}
+                  >
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
+                      {[
+                        { label: "VRF VERSION", value: CHAINLINK_CONFIG.vrfVersion, icon: "🔧" },
+                        { label: "SUBSCRIPTION ID", value: CHAINLINK_CONFIG.subscriptionId.slice(0, 10) + "...", icon: "🆔" },
+                        { label: "KEY HASH", value: CHAINLINK_CONFIG.keyHash.slice(0, 10) + "...", icon: "🔑" },
+                        { label: "CONFIRMATIONS", value: CHAINLINK_CONFIG.requestConfirmations.toString(), icon: "✅" },
+                        { label: "GAS LIMIT", value: CHAINLINK_CONFIG.gasLimit.toLocaleString(), icon: "⛽" },
+                        { label: "NETWORKS", value: `${CHAINLINK_CONFIG.networks.length} Chains`, icon: "🌐" }
+                      ].map((spec, i) => (
+                        <motion.div
+                          key={spec.label}
+                          className="text-center p-4 bg-white/5 rounded-xl border border-white/10"
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 3 + i * 0.1, duration: 0.8 }}
+                          whileHover={{
+                            scale: 1.05,
+                            backgroundColor: "rgba(59,130,246,0.1)",
+                            transition: { duration: 0.2 }
+                          }}
+                        >
+                          <div className="text-3xl mb-2">{spec.icon}</div>
+                          <div className="text-blue-400 font-bold text-sm mb-1">{spec.label}</div>
+                          <div className="text-white font-mono text-lg">{spec.value}</div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* Supported networks showcase */}
+                  <motion.div
+                    className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-2xl p-6 border border-purple-400/20"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 4, duration: 1.5 }}
+                  >
+                    <div className="text-2xl text-purple-300 mb-6 font-bold text-center">
+                      🚀 MULTI-CHAIN DEPLOYMENT
+                    </div>
+                    <div className="flex justify-center items-center space-x-8 flex-wrap">
+                      {CHAINLINK_CONFIG.networks.map((network, i) => (
+                        <motion.div
+                          key={network}
+                          className="bg-white/10 rounded-xl p-4 backdrop-blur-sm border border-white/20"
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 4.5 + i * 0.1, duration: 0.5 }}
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                        >
+                          <div className="text-white font-bold text-lg">{network}</div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* LayerZero Cross-Chain Messaging */}
+            {currentStep === 7 && (
+              <motion.div
+                key="layerzero"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
+                transition={{ duration: 2 }}
+              >
+                {/* Futuristic network visualization background */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none">
+                  {Object.entries(LAYERZERO_ENDPOINTS).map(([chain, config], i) => (
+                    <motion.div
+                      key={chain}
+                      className="absolute"
+                      style={{
+                        left: `${20 + (i % 3) * 30}%`,
+                        top: `${25 + Math.floor(i / 3) * 25}%`,
+                      }}
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.3, 0.8, 0.3],
+                      }}
+                      transition={{
+                        duration: 3 + i * 0.5,
+                        repeat: Infinity,
+                        delay: i * 0.3,
+                      }}
+                    >
+                      <div className="text-4xl">{config.icon}</div>
+                      <div className="text-xs text-white mt-2 font-mono">
+                        ID: {config.id}
+                      </div>
+                    </motion.div>
+                  ))}
+
+                  {/* Animated connection lines */}
+                  {[...Array(15)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+                      style={{
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                        height: `${Math.random() * 200 + 100}px`,
+                        transform: `rotate(${Math.random() * 360}deg)`,
+                      }}
+                      animate={{
+                        opacity: [0, 1, 0],
+                        scaleY: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 4 + Math.random() * 3,
+                        repeat: Infinity,
+                        delay: i * 0.2,
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <div className="text-center relative z-10 max-w-7xl mx-auto">
+                  <motion.div
+                    className="mb-12"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5, duration: 1.5 }}
+                  >
+                    {/* LayerZero logo animation */}
+                    <motion.div
+                      className="text-9xl mb-8"
+                      animate={{
+                        rotateY: [0, 360],
+                        scale: [1, 1.15, 1],
+                      }}
+                      transition={{
+                        rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+                        scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                      }}
+                      style={{
+                        filter: "drop-shadow(0 0 60px rgba(6,182,212,0.8))",
+                      }}
+                    >
+                      🌌
+                    </motion.div>
+
+                    <motion.h2
+                      className="text-7xl font-black mb-8 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+                      initial={{ opacity: 0, y: -80 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1, duration: 1.5 }}
+                      style={{
+                        filter: "drop-shadow(0 0 80px rgba(6,182,212,0.8))",
+                        textShadow: "0 0 60px rgba(6,182,212,0.6)",
+                      }}
+                    >
+                      LAYERZERO PROTOCOL
+                    </motion.h2>
+
+                    <motion.p
+                      className="text-3xl text-gray-200 mb-16 font-light max-w-5xl mx-auto"
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.8, duration: 1.5 }}
+                    >
+                      Seamless cross-chain communication enabling{" "}
+                      <span className="text-cyan-400 font-medium bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                        unified lottery participation across all major blockchains
+                      </span>
+                    </motion.p>
+                  </motion.div>
+
+                  {/* Cross-chain endpoints grid */}
+                  <motion.div
+                    className="bg-black/50 backdrop-blur-2xl border border-cyan-400/20 rounded-3xl p-8 mb-12"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 2.5, duration: 1.5 }}
+                    style={{
+                      boxShadow: "0 0 100px rgba(6,182,212,0.2), inset 0 0 100px rgba(6,182,212,0.05)",
+                    }}
+                  >
+                    <div className="text-2xl text-cyan-300 mb-8 font-bold text-center">
+                      🌐 SUPPORTED BLOCKCHAINS
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                      {Object.entries(LAYERZERO_ENDPOINTS).map(([chain, config], i) => (
+                        <motion.div
+                          key={chain}
+                          className="text-center p-6 bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl border border-cyan-400/30"
+                          initial={{ opacity: 0, rotateY: 90 }}
+                          animate={{ opacity: 1, rotateY: 0 }}
+                          transition={{ delay: 3 + i * 0.1, duration: 0.8 }}
+                          whileHover={{
+                            scale: 1.05,
+                            rotateY: 10,
+                            backgroundColor: "rgba(6,182,212,0.2)",
+                            transition: { duration: 0.3 }
+                          }}
+                          style={{
+                            boxShadow: "0 0 20px rgba(6,182,212,0.3)",
+                          }}
+                        >
+                          <div className="text-4xl mb-3">{config.icon}</div>
+                          <div className="text-cyan-400 font-bold text-lg capitalize mb-2">{chain}</div>
+                          <div className="text-white font-mono text-sm">ID: {config.id}</div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* Technical advantages */}
+                  <motion.div
+                    className="bg-gradient-to-r from-indigo-900/30 to-cyan-900/30 rounded-2xl p-6 border border-indigo-400/20"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 4, duration: 1.5 }}
+                  >
+                    <div className="text-2xl text-indigo-300 mb-6 font-bold text-center">
+                      ⚡ REVOLUTIONARY ADVANTAGES
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {[
+                        { title: "UNIFIED LIQUIDITY", desc: "All chains contribute to one massive jackpot pool", icon: "💰" },
+                        { title: "INSTANT MESSAGING", desc: "Real-time cross-chain lottery result broadcasts", icon: "⚡" },
+                        { title: "GAS OPTIMIZATION", desc: "Minimal fees for cross-chain operations", icon: "🔥" }
+                      ].map((advantage, i) => (
+                        <motion.div
+                          key={advantage.title}
+                          className="text-center p-4 bg-white/5 rounded-xl"
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 4.5 + i * 0.2, duration: 0.8 }}
+                        >
+                          <div className="text-3xl mb-3">{advantage.icon}</div>
+                          <div className="text-indigo-300 font-bold mb-2">{advantage.title}</div>
+                          <div className="text-gray-300 text-sm">{advantage.desc}</div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Epic Final Statement */}
+            {currentStep === 8 && (
               <motion.div
                 key="final"
                 className="flex items-center justify-center min-h-screen"
@@ -1064,7 +1597,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             <StepContent
               currentStep={currentStep}
               onStepChange={setCurrentStep}
-              totalSteps={6}
+              totalSteps={8}
             />
           </motion.div>
         </div>
