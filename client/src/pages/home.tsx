@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import WelcomeScreen from "@/components/welcome-screen";
-import DemoScreen from "@/components/demo-screen";
+import DemoScreenRevamped from "@/components/demo-screen-revamped";
 
 export default function Home() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -26,7 +26,7 @@ export default function Home() {
             onStartDemo={handleStartDemo}
           />
         ) : (
-          <DemoScreen key="demo" autoStart={startAudio} />
+          <DemoScreenRevamped key="demo" autoStart={startAudio} />
         )}
       </AnimatePresence>
     </div>
