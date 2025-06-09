@@ -254,138 +254,142 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
                   seamless token exchange
                 </motion.h2>
                 
-                {/* Enhanced Token Swap Animation */}
-                <motion.div
-                  className="relative flex items-center justify-center h-80"
-                  initial={{ scale: 0.6, rotateX: 75, y: 100, opacity: 0 }}
-                  animate={{ scale: 1, rotateX: 0, y: 0, opacity: 1 }}
-                  transition={{ 
-                    duration: 2, 
-                    delay: 0.5, 
-                    ease: [0.25, 0.8, 0.25, 1], 
-                    type: "spring", 
-                    stiffness: 60 
-                  }}
-                  style={{ perspective: "1000px" }}
-                >
+                {/* Epic Token Crossing Animation */}
+                <div className="relative h-80 mb-8 overflow-hidden">
+                  {/* Sonic Token - From Left */}
                   <motion.div
-                    className="flex items-center justify-center"
-                    animate={{ 
-                      opacity: [0, 1, 1, 0], 
-                      scale: [0.9, 1, 1, 0.9] 
+                    className="absolute w-20 h-20 rounded-full border-2 flex items-center justify-center backdrop-blur-md"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(59, 130, 246, 0.25))",
+                      boxShadow: "0 0 24px rgba(34, 211, 238, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.1)",
+                      borderColor: "rgba(34, 211, 238, 0.5)",
+                      left: "10%",
+                      top: "50%",
+                      transform: "translateY(-50%)"
                     }}
-                    transition={{ 
-                      duration: 4, 
-                      repeat: Infinity, 
-                      delay: 1, 
-                      ease: "easeInOut" 
+                    initial={{ x: -200, opacity: 0, scale: 0.5 }}
+                    animate={{
+                      x: [0, 300, 600],
+                      opacity: [0, 1, 0],
+                      scale: [0.5, 1.2, 0.5],
+                      rotate: [0, 360, 720]
+                    }}
+                    transition={{
+                      duration: 3.5,
+                      ease: [0.68, -0.55, 0.265, 1.55],
+                      delay: 0.5
                     }}
                   >
-                    {/* Sonic Token */}
-                    <motion.div
-                      className="w-14 h-14 rounded-full border-2 flex items-center justify-center backdrop-blur-md shadow-md"
-                      style={{
-                        background: "linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(59, 130, 246, 0.25))",
-                        boxShadow: "0 0 24px rgba(34, 211, 238, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.1)",
-                        borderColor: "rgba(34, 211, 238, 0.5)"
-                      }}
-                      animate={{ 
-                        x: [0, 60, 0], 
-                        rotate: [0, 180, 360] 
-                      }}
-                      transition={{ 
-                        duration: 2, 
-                        repeat: Infinity, 
-                        delay: 1 
-                      }}
-                    >
-                      <img
-                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                        alt="Sonic"
-                        className="w-8 h-8"
-                        style={{ 
-                          filter: "drop-shadow(0 0 10px rgba(34, 211, 238, 0.6))" 
-                        }}
-                      />
-                    </motion.div>
-
-                    {/* Central Exchange Arrow */}
-                    <div className="mx-4 flex flex-col items-center relative">
-                      <motion.div
-                        className="text-white text-2xl"
-                        animate={{ 
-                          opacity: [0.5, 1, 0.5], 
-                          scale: [1, 1.2, 1] 
-                        }}
-                        transition={{ 
-                          duration: 1.5, 
-                          repeat: Infinity, 
-                          delay: 1.4 
-                        }}
-                        style={{ 
-                          filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))" 
-                        }}
-                      >
-                        ⇄
-                      </motion.div>
-                    </div>
-
-                    {/* Dragon Token */}
-                    <motion.div
-                      className="w-14 h-14 rounded-full border-2 flex items-center justify-center backdrop-blur-md shadow-md"
-                      style={{
-                        background: "linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.25))",
-                        boxShadow: "0 0 24px rgba(251, 191, 36, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.1)",
-                        borderColor: "rgba(251, 191, 36, 0.5)"
-                      }}
-                      animate={{ 
-                        x: [0, -60, 0], 
-                        rotate: [0, -180, -360] 
-                      }}
-                      transition={{ 
-                        duration: 2, 
-                        repeat: Infinity, 
-                        delay: 1 
-                      }}
-                    >
-                      <img
-                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                        alt="Dragon"
-                        className="w-8 h-8"
-                        style={{ 
-                          filter: "drop-shadow(0 0 10px rgba(251, 191, 36, 0.6))" 
-                        }}
-                      />
-                    </motion.div>
+                    <img
+                      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                      alt="Sonic"
+                      className="w-12 h-12"
+                      style={{ filter: "drop-shadow(0 0 10px rgba(34, 211, 238, 0.6))" }}
+                    />
                   </motion.div>
 
-                  {/* Background Energy Ripples */}
-                  {[...Array(3)].map((_, i) => (
+                  {/* Dragon Token - From Right */}
+                  <motion.div
+                    className="absolute w-20 h-20 rounded-full border-2 flex items-center justify-center backdrop-blur-md"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.25))",
+                      boxShadow: "0 0 24px rgba(251, 191, 36, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.1)",
+                      borderColor: "rgba(251, 191, 36, 0.5)",
+                      right: "10%",
+                      top: "50%",
+                      transform: "translateY(-50%)"
+                    }}
+                    initial={{ x: 200, opacity: 0, scale: 0.5 }}
+                    animate={{
+                      x: [0, -300, -600],
+                      opacity: [0, 1, 0],
+                      scale: [0.5, 1.2, 0.5],
+                      rotate: [0, -360, -720]
+                    }}
+                    transition={{
+                      duration: 3.5,
+                      ease: [0.68, -0.55, 0.265, 1.55],
+                      delay: 0.5
+                    }}
+                  >
+                    <img
+                      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                      alt="Dragon"
+                      className="w-10 h-10"
+                      style={{ filter: "drop-shadow(0 0 10px rgba(251, 191, 36, 0.6))" }}
+                    />
+                  </motion.div>
+
+                  {/* Central Collision Effect */}
+                  <motion.div
+                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{
+                      scale: [0, 4, 2, 0],
+                      opacity: [0, 1, 0.5, 0]
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      delay: 2.2,
+                      ease: [0.25, 0.8, 0.25, 1]
+                    }}
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      background: "radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%)",
+                      borderRadius: "50%"
+                    }}
+                  />
+
+                  {/* Exchange Symbol */}
+                  <motion.div
+                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-white"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{
+                      opacity: [0, 1, 1, 0],
+                      scale: [0, 1.5, 1, 0],
+                      rotate: [0, 180, 360, 540]
+                    }}
+                    transition={{
+                      duration: 2,
+                      delay: 1.5,
+                      ease: [0.4, 0, 0.2, 1]
+                    }}
+                    style={{
+                      filter: "drop-shadow(0 0 15px rgba(255, 255, 255, 0.6))"
+                    }}
+                  >
+                    ⇄
+                  </motion.div>
+
+                  {/* Energy Trails */}
+                  {[...Array(8)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute border border-white/10 rounded-full"
-                      initial={{ scale: 0, opacity: 0.6 }}
-                      animate={{
-                        scale: [0, 6, 12],
-                        opacity: [0.6, 0.2, 0]
-                      }}
-                      transition={{
-                        duration: 3,
-                        delay: 2 + i * 0.5,
-                        repeat: Infinity,
-                        ease: "easeOut"
-                      }}
+                      className="absolute rounded-full"
                       style={{
-                        width: "60px",
-                        height: "60px",
+                        width: "4px",
+                        height: "4px",
                         left: "50%",
                         top: "50%",
-                        marginLeft: "-30px",
-                        marginTop: "-30px"
+                        background: i % 2 === 0 ? "#22D3EE" : "#FBBF24",
+                        boxShadow: `0 0 10px ${i % 2 === 0 ? "#22D3EE" : "#FBBF24"}`
+                      }}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{
+                        scale: [0, 1, 0],
+                        x: Math.cos((i * 45 * Math.PI) / 180) * (80 + Math.random() * 60),
+                        y: Math.sin((i * 45 * Math.PI) / 180) * (80 + Math.random() * 60),
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        delay: 2.2 + i * 0.05,
+                        ease: "easeOut"
                       }}
                     />
                   ))}
-                </motion.div>
+                </div>
 
                 <motion.p
                   {...slideUp}
