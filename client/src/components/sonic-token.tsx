@@ -13,9 +13,9 @@ interface SonicTokenProps {
 
 export const SonicToken = ({
   size = "w-12 h-12",
-  borderColor = "border-blue-300",
-  gradientFrom = "from-blue-400",
-  gradientTo = "to-cyan-500",
+  borderColor = "border-white-300",
+  gradientFrom = "from-white-400",
+  gradientTo = "to-grey-500",
   imageSize = "w-full h-full",
   animateProps = {},
   transitionProps = {},
