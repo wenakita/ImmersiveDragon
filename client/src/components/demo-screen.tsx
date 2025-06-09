@@ -10,11 +10,11 @@ import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_174936160141
 
 // Sophisticated lottery odds table
 const LOTTERY_ODDS = [
-  { tier: "GRAND JACKPOT", odds: "1:10,000", multiplier: "1000x", percentage: "69%", color: "from-yellow-400 to-amber-600" },
-  { tier: "MEGA WIN", odds: "1:1,000", multiplier: "100x", percentage: "15%", color: "from-orange-400 to-red-500" },
-  { tier: "BIG WIN", odds: "1:500", multiplier: "50x", percentage: "10%", color: "from-purple-400 to-pink-500" },
-  { tier: "MAJOR WIN", odds: "1:100", multiplier: "25x", percentage: "4%", color: "from-blue-400 to-cyan-500" },
-  { tier: "LUCKY WIN", odds: "1:50", multiplier: "10x", percentage: "2%", color: "from-green-400 to-emerald-500" },
+  { tier: "GRAND JACKPOT", odds: "1:10,000", multiplier: "1000x", percentage: "69%", color: "from-yellow-300 to-yellow-500" },
+  { tier: "MEGA WIN", odds: "1:1,000", multiplier: "100x", percentage: "15%", color: "from-blue-400 to-blue-600" },
+  { tier: "BIG WIN", odds: "1:500", multiplier: "50x", percentage: "10%", color: "from-purple-400 to-purple-600" },
+  { tier: "MAJOR WIN", odds: "1:100", multiplier: "25x", percentage: "4%", color: "from-cyan-400 to-cyan-600" },
+  { tier: "LUCKY WIN", odds: "1:50", multiplier: "10x", percentage: "2%", color: "from-emerald-400 to-emerald-600" },
 ];
 
 // Advanced Chainlink VRF configuration
@@ -230,7 +230,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
       {showAnimations && (
         <div className="fixed inset-0 z-10">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {/* Cinematic Pre-Credits */}
             {currentStep === -1 && (
               <motion.div
@@ -316,7 +316,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
 
                   <motion.h1
-                    className="text-9xl font-black mb-12 bg-gradient-to-r from-orange-400 via-yellow-500 to-red-500 bg-clip-text text-transparent relative z-10"
+                    className="text-9xl font-black mb-12 bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent relative z-10"
                     initial={{ scale: 0.1, y: 400, opacity: 0, rotateX: 180 }}
                     animate={{
                       scale: [0.1, 0.7, 1.4, 1],
@@ -332,9 +332,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     }}
                     style={{
                       filter:
-                        "drop-shadow(0 0 120px rgba(255,107,53,1)) drop-shadow(0 0 200px rgba(255,107,53,0.8))",
+                        "drop-shadow(0 0 120px rgba(251,191,36,1)) drop-shadow(0 0 200px rgba(251,191,36,0.8))",
                       fontWeight: 900,
-                      textShadow: "0 0 100px rgba(255,107,53,1)",
+                      textShadow: "0 0 100px rgba(251,191,36,1)",
                       letterSpacing: "-0.02em",
                     }}
                   >
@@ -736,14 +736,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
 
                   <motion.h2
-                    className="text-8xl font-black text-orange-400 mb-16 relative z-10"
+                    className="text-8xl font-black text-blue-400 mb-16 relative z-10"
                     initial={{ opacity: 0, y: -80, scale: 0.8 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ delay: 2, duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                     style={{
-                      filter: "drop-shadow(0 0 100px rgba(255,107,53,1))",
+                      filter: "drop-shadow(0 0 100px rgba(59,130,246,1))",
                       fontWeight: 900,
-                      textShadow: "0 0 80px rgba(255,107,53,0.8)",
+                      textShadow: "0 0 80px rgba(59,130,246,0.8)",
                     }}
                   >
                     10% FEE
@@ -893,9 +893,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         percent: "0.69%",
                         label: "TOKEN BURN",
                         description: "Deflationary mechanism increasing token scarcity",
-                        color: "orange",
+                        color: "purple",
                         icon: "🔥",
-                        gradient: "from-orange-400 to-red-500"
+                        gradient: "from-purple-400 to-violet-500"
                       }
                     ].map((item, index) => (
                       <motion.div
