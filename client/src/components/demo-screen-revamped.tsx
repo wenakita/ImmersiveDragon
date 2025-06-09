@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TokenExchangeAnimation from "./token-exchange-animation";
 import AnimatedCounter from "./animated-counter";
-// Import audio directly from attached_assets
-const audioFile = "/attached_assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
+// Import audio directly from attached_assets - using newer file
+const audioFile = "/attached_assets/hybrid-epic-hollywood-trailer-247114_1749430771436.mp3";
 
 interface DemoScreenProps {
   autoStart?: boolean;
@@ -35,6 +35,8 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
   const [currentStep, setCurrentStep] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
+  const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
+  const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const steps = [
@@ -75,10 +77,10 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
             setAudioPlaying(true);
             console.log("Auto-play successful");
             
-            // Smooth fade in
+            // Smooth fade in to higher volume
             const fadeIn = () => {
-              if (audioRef.current && audioRef.current.volume < 0.6) {
-                audioRef.current.volume = Math.min(audioRef.current.volume + 0.015, 0.6);
+              if (audioRef.current && audioRef.current.volume < 0.8) {
+                audioRef.current.volume = Math.min(audioRef.current.volume + 0.02, 0.8);
                 requestAnimationFrame(fadeIn);
               }
             };
@@ -108,6 +110,10 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
       console.log("Audio element exists:", audioRef.current.src);
       console.log("Audio ready state:", audioRef.current.readyState);
       console.log("Audio can play:", audioRef.current.canPlayType("audio/mpeg"));
+      console.log("Current volume:", audioRef.current.volume);
+      console.log("Is muted:", audioRef.current.muted);
+      console.log("Duration:", audioRef.current.duration);
+      console.log("Current time:", audioRef.current.currentTime);
       
       try {
         if (audioPlaying) {
@@ -115,11 +121,13 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
           setAudioPlaying(false);
           console.log("Audio paused");
         } else {
-          audioRef.current.volume = 0.6;
-          console.log("Attempting to play audio...");
+          // Ensure not muted and set high volume
+          audioRef.current.muted = false;
+          audioRef.current.volume = 1.0; // Maximum volume
+          console.log("Attempting to play audio at full volume...");
           await audioRef.current.play();
           setAudioPlaying(true);
-          console.log("Audio playing successfully");
+          console.log("Audio playing successfully at volume:", audioRef.current.volume);
         }
       } catch (error) {
         console.error("Audio toggle failed:", error);
