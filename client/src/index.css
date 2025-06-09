@@ -116,6 +116,22 @@
     background: linear-gradient(135deg, hsl(var(--elegant-teal) / 0.9) 0%, hsl(var(--electric-blue) / 0.9) 100%);
   }
 
+  .grid-background {
+    background-image: 
+      linear-gradient(rgba(23, 212, 170, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 212, 170, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+  }
+
+  .grid-background-secondary {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: grid-move-secondary 30s linear infinite reverse;
+  }
+
   .border-golden-amber {
     border-color: hsl(var(--golden-amber));
   }
@@ -177,8 +193,39 @@
   animation: fade-in-up 0.8s ease-out;
 }
 
+.camera-float {
+  animation: camera-float 8s ease-in-out infinite;
+}
+
+.camera-drift {
+  animation: camera-drift 12s ease-in-out infinite;
+}
+
 .glitch-effect {
   animation: glitch 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes grid-move {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(50px) translateY(50px); }
+}
+
+@keyframes grid-move-secondary {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-100px) translateY(-100px); }
+}
+
+@keyframes camera-float {
+  0%, 100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px); }
+  25% { transform: perspective(1000px) rotateX(1deg) rotateY(-1deg) translateZ(10px); }
+  50% { transform: perspective(1000px) rotateX(-1deg) rotateY(1deg) translateZ(-5px); }
+  75% { transform: perspective(1000px) rotateX(1deg) rotateY(1deg) translateZ(5px); }
+}
+
+@keyframes camera-drift {
+  0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
+  33% { transform: translateX(10px) translateY(-5px) scale(1.01); }
+  66% { transform: translateX(-5px) translateY(10px) scale(0.99); }
 }
 
 @keyframes glitch {

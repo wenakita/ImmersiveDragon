@@ -20,11 +20,15 @@ export default function ProbabilityTables() {
     <div className="space-y-6">
       {/* Base Probability Table */}
       <motion.div
-        className="bg-dark-surface/30 backdrop-blur-sm border border-gray-800/30 rounded-2xl p-6"
+        className="bg-dark-surface/30 backdrop-blur-sm border border-gray-800/30 rounded-2xl p-6 relative overflow-hidden"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
+        {/* Subtle grid overlay for futuristic feel */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="grid-background h-full w-full"></div>
+        </div>
         <div className="flex items-center gap-3 mb-4">
           <TrendingUp className="w-5 h-5 text-elegant-teal" />
           <h3 className="text-lg font-semibold text-elegant-teal">Base Jackpot Probabilities</h3>
@@ -33,10 +37,11 @@ export default function ProbabilityTables() {
           {baseProbabilities.map((item, index) => (
             <motion.div
               key={index}
-              className="flex items-center justify-between p-3 bg-black/20 rounded-xl border border-gray-700/30"
+              className="flex items-center justify-between p-3 bg-black/20 rounded-xl border border-gray-700/30 hover:border-elegant-teal/30 transition-all duration-300 relative z-10"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
+              whileHover={{ scale: 1.02, backgroundColor: "rgba(23, 212, 170, 0.05)" }}
             >
               <span className="font-medium text-white">{item.amount}</span>
               <span className="text-elegant-teal font-semibold">{item.probability}</span>
@@ -50,11 +55,15 @@ export default function ProbabilityTables() {
 
       {/* veDRAGON Enhanced Probability Table */}
       <motion.div
-        className="bg-dark-surface/30 backdrop-blur-sm border border-gray-800/30 rounded-2xl p-6"
+        className="bg-dark-surface/30 backdrop-blur-sm border border-gray-800/30 rounded-2xl p-6 relative overflow-hidden"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
+        {/* Enhanced grid overlay with subtle glow */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="grid-background-secondary h-full w-full"></div>
+        </div>
         <div className="flex items-center gap-3 mb-4">
           <Zap className="w-5 h-5 text-dragon-red" />
           <h3 className="text-lg font-semibold text-dragon-red">veDRAGON Enhanced Probabilities</h3>
@@ -66,10 +75,11 @@ export default function ProbabilityTables() {
           {veDragonProbabilities.map((item, index) => (
             <motion.div
               key={index}
-              className="flex items-center justify-between p-3 bg-gradient-to-r from-dragon-red/10 to-transparent rounded-xl border border-dragon-red/20"
+              className="flex items-center justify-between p-3 bg-gradient-to-r from-dragon-red/10 to-transparent rounded-xl border border-dragon-red/20 hover:border-dragon-red/40 transition-all duration-300 relative z-10"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 + index * 0.1 }}
+              whileHover={{ scale: 1.02, backgroundImage: "linear-gradient(to right, rgba(220, 38, 38, 0.15), transparent)" }}
             >
               <span className="font-medium text-white">{item.amount}</span>
               <div className="flex items-center gap-2">
