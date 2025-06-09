@@ -14,6 +14,11 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
   const [toAmount, setToAmount] = useState("75.5");
   
   const step = demoSteps[currentStep];
+  
+  // Don't render if step is not available (e.g., during pre-credits)
+  if (!step) {
+    return null;
+  }
 
   const calculateToAmount = (amount: string) => {
     const numAmount = parseFloat(amount) || 0;
