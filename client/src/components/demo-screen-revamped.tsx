@@ -39,14 +39,17 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  // Enhanced timing based on waveform analysis - Extended for better comprehension
   const steps = [
-    { id: 0, duration: 6000, name: "intro" },
-    { id: 1, duration: 7000, name: "swap" },
-    { id: 2, duration: 6000, name: "fees" },
-    { id: 3, duration: 6000, name: "lottery" },
-    { id: 4, duration: 6000, name: "vrf" },
-    { id: 5, duration: 6000, name: "layerzero" },
-    { id: 6, duration: 6000, name: "complete" },
+    { delay: 0, duration: 6500, name: "intro" }, // [0:00–0:06.5] Title intro: swell begins
+    { delay: 6500, duration: 7500, name: "swap" }, // [0:06.5–0:14] Swap animation buildup
+    { delay: 14000, duration: 12000, name: "lottery" }, // [0:14–0:26] Jackpot reveal at first drop - EXTENDED +3s
+    { delay: 26000, duration: 8000, name: "fees" }, // [0:26–0:34] Fee tension – ambient mood - EXTENDED +2.5s
+    { delay: 34000, duration: 12000, name: "breakdown" }, // [0:34–0:46] Fee breakdown – cinematic swell - EXTENDED +2s
+    { delay: 46000, duration: 15000, name: "mechanics" }, // [0:46–1:00] Lottery mechanics - EXTENDED +6s for veDRAGON readability
+    { delay: 61000, duration: 7000, name: "vrf" }, // [1:00–1:07] Chainlink VRF
+    { delay: 68000, duration: 8000, name: "layerzero" }, // [1:07–1:15] LayerZero cross-chain
+    { delay: 76000, duration: 8000, name: "complete" }, // [1:15–1:23] Final CTA + logo out
   ];
 
   useEffect(() => {
@@ -95,12 +98,32 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
       // Small delay before starting audio
       setTimeout(startAudio, 500);
 
-      // Auto-advance steps
-      let totalDelay = 2000;
-      steps.forEach((step, index) => {
-        setTimeout(() => setCurrentStep(index), totalDelay);
-        totalDelay += step.duration;
-      });
+      // Timeline-based step progression
+      const startTime = Date.now();
+      
+      const updateStep = () => {
+        const elapsed = Date.now() - startTime;
+        
+        // Find current step based on elapsed time
+        for (let i = steps.length - 1; i >= 0; i--) {
+          if (elapsed >= steps[i].delay) {
+            setCurrentStep(i);
+            break;
+          }
+        }
+        
+        // Continue checking if we haven't reached the end
+        const totalDuration = steps[steps.length - 1].delay + steps[steps.length - 1].duration;
+        if (elapsed < totalDuration) {
+          requestAnimationFrame(updateStep);
+        }
+      };
+      
+      // Start timeline after initial delay
+      setTimeout(() => {
+        setCurrentStep(0);
+        updateStep();
+      }, 2000);
     }
   }, [autoStart]);
 
@@ -427,7 +450,7 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
             )}
 
             {/* Fee Distribution */}
-            {currentStep === 2 && (
+            {currentStep === 3 && (
               <motion.div key="fees" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
                 <motion.h2
                   {...slideUp}
@@ -467,7 +490,7 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
             )}
 
             {/* Lottery System */}
-            {currentStep === 3 && (
+            {currentStep === 2 && (
               <motion.div key="lottery" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
                 <motion.h2
                   {...slideUp}
@@ -497,8 +520,93 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
               </motion.div>
             )}
 
-            {/* Chainlink VRF */}
+            {/* Fee Breakdown */}
             {currentStep === 4 && (
+              <motion.div key="breakdown" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
+                <motion.h2
+                  {...slideUp}
+                  className="text-4xl font-light mb-8 tracking-wide"
+                >
+                  fee allocation breakdown
+                </motion.h2>
+                <motion.div
+                  {...slideUp}
+                  transition={{ delay: 0.5, duration: 1 }}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
+                >
+                  <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 rounded-lg p-8 backdrop-blur-sm border border-blue-700/30">
+                    <div className="text-5xl font-light text-blue-400 mb-4">60%</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">lottery pool</div>
+                    <div className="text-sm text-slate-400 font-light">automatically accumulates for larger jackpots</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-green-900/30 to-green-800/20 rounded-lg p-8 backdrop-blur-sm border border-green-700/30">
+                    <div className="text-5xl font-light text-green-400 mb-4">30%</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">staking rewards</div>
+                    <div className="text-sm text-slate-400 font-light">distributed to veDRAGON holders</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/20 rounded-lg p-8 backdrop-blur-sm border border-purple-700/30">
+                    <div className="text-5xl font-light text-purple-400 mb-4">10%</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">development</div>
+                    <div className="text-sm text-slate-400 font-light">protocol maintenance & innovation</div>
+                  </div>
+                </motion.div>
+                <motion.p
+                  {...slideUp}
+                  transition={{ delay: 1, duration: 1 }}
+                  className="text-lg text-slate-400 font-light"
+                >
+                  transparent distribution • community-driven • sustainable growth
+                </motion.p>
+              </motion.div>
+            )}
+
+            {/* Lottery Mechanics */}
+            {currentStep === 5 && (
+              <motion.div key="mechanics" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
+                <motion.h2
+                  {...slideUp}
+                  className="text-4xl font-light mb-8 tracking-wide"
+                >
+                  lottery mechanics
+                </motion.h2>
+                <motion.div
+                  {...slideUp}
+                  transition={{ delay: 0.5, duration: 1 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
+                >
+                  <div className="bg-slate-800/50 rounded-lg p-8 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl mb-4">🎯</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">automatic entry</div>
+                    <div className="text-sm text-slate-400 font-light">every trade above $10 automatically enters the lottery system</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-8 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl mb-4">⚡</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">instant draws</div>
+                    <div className="text-sm text-slate-400 font-light">draws triggered every 1000 trades or 24 hours</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-8 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl mb-4">🔒</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">veDRAGON boost</div>
+                    <div className="text-sm text-slate-400 font-light">stakers get up to 10x lottery multiplier</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-8 backdrop-blur-sm border border-slate-700/50">
+                    <div className="text-3xl mb-4">🏆</div>
+                    <div className="text-xl font-light text-slate-300 mb-3">tiered rewards</div>
+                    <div className="text-sm text-slate-400 font-light">multiple prize tiers for better winning odds</div>
+                  </div>
+                </motion.div>
+                <motion.p
+                  {...slideUp}
+                  transition={{ delay: 1, duration: 1 }}
+                  className="text-lg text-slate-400 font-light"
+                >
+                  fair • transparent • community-driven
+                </motion.p>
+              </motion.div>
+            )}
+
+            {/* Chainlink VRF */}
+            {currentStep === 6 && (
               <motion.div key="vrf" {...fadeIn} className="text-center max-w-6xl mx-auto p-8">
                 <motion.h2
                   {...slideUp}
@@ -623,7 +731,7 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
           <div className="flex space-x-4">
             {steps.map((step, index) => (
               <button
-                key={step.id}
+                key={index}
                 onClick={() => setCurrentStep(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentStep === index
