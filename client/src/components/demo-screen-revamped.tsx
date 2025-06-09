@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TokenExchangeAnimation from "./token-exchange-animation";
 import AnimatedCounter from "./animated-counter";
-import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
+// Import audio directly from attached_assets
+const audioFile = "/attached_assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
 interface DemoScreenProps {
   autoStart?: boolean;
@@ -47,19 +48,32 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
   ];
 
   useEffect(() => {
+    // Debug audio file path
+    console.log("Audio file path:", audioFile);
+    
     if (autoStart) {
       setIsPlaying(true);
       
       // Start audio with user gesture handling
       const startAudio = async () => {
         if (audioRef.current) {
+          console.log("Starting audio auto-play...");
           try {
             audioRef.current.volume = 0;
             audioRef.current.currentTime = 0;
             
+            // Load the audio first
+            audioRef.current.load();
+            
+            // Wait for it to be ready
+            await new Promise((resolve) => {
+              audioRef.current!.addEventListener('canplaythrough', resolve, { once: true });
+            });
+            
             // Try to play
             await audioRef.current.play();
             setAudioPlaying(true);
+            console.log("Auto-play successful");
             
             // Smooth fade in
             const fadeIn = () => {
@@ -70,7 +84,7 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
             };
             fadeIn();
           } catch (error) {
-            console.log("Audio play failed:", error);
+            console.error("Audio auto-play failed:", error);
             // Continue without audio if it fails
           }
         }
@@ -89,19 +103,30 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
   }, [autoStart]);
 
   const toggleAudio = async () => {
+    console.log("Toggle audio clicked");
     if (audioRef.current) {
+      console.log("Audio element exists:", audioRef.current.src);
+      console.log("Audio ready state:", audioRef.current.readyState);
+      console.log("Audio can play:", audioRef.current.canPlayType("audio/mpeg"));
+      
       try {
         if (audioPlaying) {
           audioRef.current.pause();
           setAudioPlaying(false);
+          console.log("Audio paused");
         } else {
           audioRef.current.volume = 0.6;
+          console.log("Attempting to play audio...");
           await audioRef.current.play();
           setAudioPlaying(true);
+          console.log("Audio playing successfully");
         }
       } catch (error) {
-        console.log("Audio toggle failed:", error);
+        console.error("Audio toggle failed:", error);
+        console.error("Error details:", error instanceof Error ? error.message : String(error));
       }
+    } else {
+      console.log("No audio element found");
     }
   };
 
@@ -120,8 +145,16 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
-      <audio ref={audioRef} preload="auto" loop>
+      <audio 
+        ref={audioRef} 
+        preload="metadata" 
+        loop 
+        onLoadedData={() => console.log("Audio loaded successfully")}
+        onError={(e) => console.error("Audio error:", e)}
+        onCanPlay={() => console.log("Audio can play")}
+      >
         <source src={audioFile} type="audio/mpeg" />
+        <source src={audioFile} type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
 
@@ -460,13 +493,18 @@ export default function DemoScreenRevamped({ autoStart = false }: DemoScreenProp
       {/* Audio Control */}
       <motion.button
         onClick={toggleAudio}
-        className="fixed top-6 right-6 z-20 bg-slate-900/80 backdrop-blur-lg border border-slate-700/50 rounded-xl p-3 hover:bg-slate-800/80 transition-colors"
+        className="fixed top-6 right-6 z-20 bg-slate-900/90 backdrop-blur-lg border border-slate-700/50 rounded-xl p-4 hover:bg-slate-800/90 transition-all duration-300 hover:scale-105"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 1 }}
       >
-        <div className="text-white text-lg">
-          {audioPlaying ? "🔊" : "🔇"}
+        <div className="flex items-center space-x-2">
+          <div className="text-white text-lg">
+            {audioPlaying ? "🔊" : "🔇"}
+          </div>
+          <div className="text-xs text-slate-300 font-light">
+            {audioPlaying ? "playing" : "click to play"}
+          </div>
         </div>
       </motion.button>
 
