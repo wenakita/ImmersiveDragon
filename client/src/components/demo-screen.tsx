@@ -13,7 +13,7 @@ interface DemoScreenProps {
 }
 
 export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
-  const [currentStep, setCurrentStep] = useState(-1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [showAnimations, setShowAnimations] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
