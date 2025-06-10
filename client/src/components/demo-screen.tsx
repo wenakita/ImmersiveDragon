@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
 import { useIsMobile } from "../hooks/use-mobile";
 import { IPFS_ASSETS } from "@/lib/assets";
+import TokenExchangeAnimation from "./token-exchange-animation";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
 // Modern Sonic Token Component
@@ -344,130 +345,23 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </h2>
                   </motion.div>
 
-                  {/* Enhanced Token Animation Container */}
-                  <div className="relative h-56 flex items-center justify-center overflow-hidden mb-16">
-                    {/* S Token - Enhanced Animation */}
-                    <motion.div
-                      className="absolute"
-                      initial={{ x: -500, opacity: 0, scale: 0.8 }}
-                      animate={{ 
-                        x: [-500, -60, 0, 60, 500],
-                        opacity: [0, 1, 1, 1, 0],
-                        scale: [0.8, 1.2, 1.4, 1.2, 0.8],
-                        rotate: [0, 90, 180, 270, 360]
-                      }}
-                      transition={{ 
-                        duration: 5,
-                        times: [0, 0.25, 0.5, 0.75, 1],
-                        ease: [0.68, -0.55, 0.265, 1.55],
-                        repeat: Infinity,
-                        repeatDelay: 2
-                      }}
-                    >
-                      <SonicToken 
-                        size={isMobile ? "w-20 h-20" : "w-32 h-32"}
-                        borderColor="border-yellow-300"
-                        gradientFrom="from-yellow-400"
-                        gradientTo="to-orange-500"
-                        style={{
-                          filter: "drop-shadow(0 0 30px rgba(251, 191, 36, 0.8))",
-                          boxShadow: "0 0 50px rgba(251, 191, 36, 0.6)"
-                        }}
-                      />
-                    </motion.div>
-
-                    {/* Enhanced Convergence Effects */}
-                    <motion.div
-                      className="absolute w-12 h-12 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500"
-                      animate={{
-                        scale: [1, 3, 1],
-                        opacity: [0.2, 0.9, 0.2],
-                        rotate: [0, 360],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                      style={{
-                        filter: "blur(8px)",
-                      }}
+                  {/* Clean Two-Motion Token Swap Animation */}
+                  <motion.div
+                    className="flex justify-center items-center mb-20"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                  >
+                    <TokenExchangeAnimation
+                      containerClassName="relative"
+                      delay={0.5}
+                      duration={2.8}
+                      repeat={true}
+                      scale={isMobile ? 0.7 : 1.0}
+                      showTradeIndicators={false}
+                      showFeeBreakdown={true}
                     />
-
-                    {/* Modern Swap Icon */}
-                    <motion.div
-                      className={`text-yellow-400 font-black z-10 relative ${isMobile ? "text-4xl" : "text-6xl"}`}
-                      animate={{
-                        opacity: [0.4, 1, 0.4],
-                        scale: [1, 1.4, 1],
-                        rotateY: [0, 180, 360],
-                      }}
-                      transition={{
-                        duration: 2.5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                      style={{
-                        filter: "drop-shadow(0 0 25px rgba(251, 191, 36, 0.9))",
-                        textShadow: "0 0 30px rgba(251, 191, 36, 0.8)"
-                      }}
-                    >
-                      ⇄
-                    </motion.div>
-
-                    {/* Dragon Token - Enhanced Animation */}
-                    <motion.div
-                      className="absolute"
-                      initial={{ x: 500, opacity: 0, scale: 0.8 }}
-                      animate={{ 
-                        x: [500, 60, 0, -60, -500],
-                        opacity: [0, 1, 1, 1, 0],
-                        scale: [0.8, 1.2, 1.4, 1.2, 0.8],
-                        rotate: [0, -90, -180, -270, -360]
-                      }}
-                      transition={{ 
-                        duration: 5,
-                        times: [0, 0.25, 0.5, 0.75, 1],
-                        ease: [0.68, -0.55, 0.265, 1.55],
-                        repeat: Infinity,
-                        repeatDelay: 2
-                      }}
-                    >
-                      <DragonToken 
-                        size={isMobile ? "w-20 h-20" : "w-32 h-32"}
-                        borderColor="border-yellow-300"
-                        gradientFrom="from-yellow-400"
-                        gradientTo="to-red-500"
-                        style={{
-                          filter: "drop-shadow(0 0 30px rgba(251, 191, 36, 0.8))",
-                          boxShadow: "0 0 50px rgba(239, 68, 68, 0.6)"
-                        }}
-                      />
-                    </motion.div>
-
-                    {/* Enhanced Energy Trails */}
-                    {[...Array(8)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute w-3 h-3 bg-yellow-400 rounded-full"
-                        style={{
-                          left: `${45 + (i % 2 === 0 ? -i * 12 : i * 12)}%`,
-                          top: `${48 + Math.sin(i) * 15}%`,
-                        }}
-                        animate={{
-                          opacity: [0, 1, 0],
-                          scale: [0, 2, 0],
-                          x: [0, (i % 2 === 0 ? -150 : 150)],
-                        }}
-                        transition={{
-                          duration: 2.5,
-                          repeat: Infinity,
-                          delay: i * 0.2,
-                          ease: [0.25, 0.46, 0.45, 0.94]
-                        }}
-                      />
-                    ))}
-                  </div>
+                  </motion.div>
 
                   {/* Modern Fee Display Card */}
                   <motion.div
