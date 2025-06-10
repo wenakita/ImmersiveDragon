@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
-import TokenExchangeAnimation from "./token-exchange-animation";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
 // Sonic Token Component
@@ -675,24 +674,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   y: { duration: 0.4, delay: 1 },
                 }}
               >
-                {/* Trading animation */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {[...Array(3)].map((_, i) => (
-                    <TokenExchangeAnimation
-                      key={i}
-                      containerStyle={{
-                        position: 'absolute',
-                        left: `${15 + i * 20}%`,
-                        top: `${20 + (i % 2) * 40}%`,
-                      }}
-                      index={i}
-                      duration={4}
-                      scale={1}
-                      showTradeIndicators={true}
-                      showFeeBreakdown={true}
-                    />
-                  ))}
-                </div>
+
 
                 <div className="text-center relative z-10">
                   {/* Flash effect */}
@@ -1060,25 +1042,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
                 transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                {/* Continuous Background Swap Animation */}
-                <div className="absolute inset-0 opacity-60 pointer-events-none overflow-hidden">
-                  {[...Array(5)].map((_, i) => (
-                    <TokenExchangeAnimation
-                      key={i}
-                      containerStyle={{
-                        position: 'absolute',
-                        left: `${10 + i * 18}%`,
-                        top: `${15 + (i % 3) * 25}%`,
-                      }}
-                      index={i}
-                      duration={8}
-                      delay={i * 1.2}
-                      scale={0.8}
-                      showTradeIndicators={true}
-                      showFeeBreakdown={true}
-                    />
-                  ))}
-                </div>
+
 
                 <div className="text-center relative z-10">
                   <div className="mb-16">
