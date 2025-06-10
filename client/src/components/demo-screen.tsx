@@ -1264,9 +1264,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="text-center relative max-w-4xl z-10">
-                  {/* Connecting question */}
+                  {/* Smooth transition question */}
                   <motion.h2
-                    className="text-5xl font-light text-gray-300 mb-12 tracking-wide"
+                    className="text-4xl font-light text-gray-300 mb-8 tracking-wide"
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.3 }}
@@ -1275,8 +1275,17 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       fontWeight: 300,
                     }}
                   >
-                    BUT HOW DOES THE JACKPOT GROW?
+                    You might be wondering...
                   </motion.h2>
+                  
+                  <motion.p
+                    className="text-2xl text-gray-400 mb-12 font-light italic"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
+                  >
+                    "How do these jackpots get so massive?"
+                  </motion.p>
 
                   {/* Dramatic fee reveal */}
                   <motion.div
@@ -1315,14 +1324,17 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     ON EVERY SINGLE SWAP
                   </motion.div>
 
-                  {/* Subtle hint of what's coming */}
+                  {/* Smooth transition to breakdown */}
                   <motion.p
-                    className="text-xl text-gray-400 mt-8 font-light"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 4, duration: 1 }}
+                    className="text-xl text-amber-300 mt-8 font-light"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3.5, duration: 1.2 }}
+                    style={{
+                      filter: "drop-shadow(0 0 15px rgba(251,191,36,0.3))",
+                    }}
                   >
-                    Every trade feeds the ecosystem...
+                    The answer lies in our revolutionary fee structure...
                   </motion.p>
 
                   {/* Elegant expanding rings */}
@@ -1612,6 +1624,21 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </motion.div>
                     ))}
                   </div>
+
+                  {/* Bridge to next section */}
+                  <motion.div
+                    className="mt-16 text-center"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 5, duration: 1.5 }}
+                  >
+                    <p className="text-xl text-gray-300 font-light">
+                      But there's more to the story...
+                    </p>
+                    <p className="text-lg text-blue-300 mt-2 italic">
+                      How do we ensure fair, tamper-proof lottery draws?
+                    </p>
+                  </motion.div>
                 </div>
               </motion.div>
             )}
