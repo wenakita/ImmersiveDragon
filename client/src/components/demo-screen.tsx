@@ -221,7 +221,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   }, [autoStart]);
 
   return (
-    <motion.div 
+    <motion.div
       className="min-h-screen bg-black text-white relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -481,23 +481,31 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       width: `${2 + Math.random() * 4}px`,
                       height: `${2 + Math.random() * 4}px`,
                       background: `radial-gradient(circle, ${
-                        i % 4 === 0 ? '#FF4500' : 
-                        i % 4 === 1 ? '#FF6347' : 
-                        i % 4 === 2 ? '#DC143C' : '#B22222'
+                        i % 4 === 0
+                          ? "#FF4500"
+                          : i % 4 === 1
+                            ? "#FF6347"
+                            : i % 4 === 2
+                              ? "#DC143C"
+                              : "#B22222"
                       } 0%, transparent 70%)`,
                       boxShadow: `0 0 ${8 + Math.random() * 12}px ${
-                        i % 4 === 0 ? '#FF4500' : 
-                        i % 4 === 1 ? '#FF6347' : 
-                        i % 4 === 2 ? '#DC143C' : '#B22222'
+                        i % 4 === 0
+                          ? "#FF4500"
+                          : i % 4 === 1
+                            ? "#FF6347"
+                            : i % 4 === 2
+                              ? "#DC143C"
+                              : "#B22222"
                       }`,
                       left: `${Math.random() * 100}%`,
                       bottom: `-20px`,
                     }}
-                    initial={{ 
-                      y: 0, 
-                      x: 0, 
+                    initial={{
+                      y: 0,
+                      x: 0,
                       opacity: 0,
-                      scale: 0.2 + Math.random() * 0.8
+                      scale: 0.2 + Math.random() * 0.8,
                     }}
                     animate={{
                       y: [-50, -window.innerHeight - 200],
@@ -505,14 +513,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         0,
                         (Math.random() - 0.5) * 300,
                         (Math.random() - 0.5) * 200,
-                        (Math.random() - 0.5) * 400
+                        (Math.random() - 0.5) * 400,
                       ],
                       opacity: [0, 0.7 + Math.random() * 0.3, 0.4, 0],
                       scale: [
                         0.2 + Math.random() * 0.8,
                         0.6 + Math.random() * 0.6,
                         0.3 + Math.random() * 0.4,
-                        0.05
+                        0.05,
                       ],
                       rotate: [0, 360 * (Math.random() > 0.5 ? 1 : -1)],
                     }}
@@ -534,24 +542,33 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       width: `${4 + Math.random() * 6}px`,
                       height: `${4 + Math.random() * 6}px`,
                       background: `radial-gradient(circle, ${
-                        i % 3 === 0 ? '#FF4500' : 
-                        i % 3 === 1 ? '#DC143C' : '#B22222'
+                        i % 3 === 0
+                          ? "#FF4500"
+                          : i % 3 === 1
+                            ? "#DC143C"
+                            : "#B22222"
                       } 0%, ${
-                        i % 3 === 0 ? '#FF4500' : 
-                        i % 3 === 1 ? '#DC143C' : '#B22222'
+                        i % 3 === 0
+                          ? "#FF4500"
+                          : i % 3 === 1
+                            ? "#DC143C"
+                            : "#B22222"
                       }40 50%, transparent 80%)`,
                       boxShadow: `0 0 ${15 + Math.random() * 20}px ${
-                        i % 3 === 0 ? '#FF4500' : 
-                        i % 3 === 1 ? '#DC143C' : '#B22222'
+                        i % 3 === 0
+                          ? "#FF4500"
+                          : i % 3 === 1
+                            ? "#DC143C"
+                            : "#B22222"
                       }`,
                       left: `${Math.random() * 100}%`,
                       bottom: `-30px`,
                     }}
-                    initial={{ 
-                      y: 0, 
-                      x: 0, 
+                    initial={{
+                      y: 0,
+                      x: 0,
                       opacity: 0,
-                      rotate: 0
+                      rotate: 0,
                     }}
                     animate={{
                       y: [-80, -window.innerHeight - 250],
@@ -559,7 +576,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         0,
                         (Math.random() - 0.5) * 250,
                         (Math.random() - 0.5) * 150,
-                        (Math.random() - 0.5) * 350
+                        (Math.random() - 0.5) * 350,
                       ],
                       opacity: [0, 0.9, 0.6, 0],
                       rotate: [0, 720 * (Math.random() > 0.5 ? 1 : -1)],
@@ -578,7 +595,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 <motion.div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'linear-gradient(0deg, rgba(255,69,0,0.03) 0%, transparent 40%)',
+                    background:
+                      "linear-gradient(0deg, rgba(255,69,0,0.03) 0%, transparent 40%)",
                   }}
                   animate={{
                     opacity: [0.2, 0.5, 0.2],
@@ -658,121 +676,122 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </motion.p>
                   </div>
 
-                  {/* Simultaneous token convergence and exchange */}
-                  <motion.div
-                    className="absolute left-16 top-1/2 w-40 h-40 rounded-full border-3 border-yellow-400/80 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-md"
-                    initial={{ x: -1200, scale: 0, opacity: 0, rotateZ: -90 }}
-                    animate={{
-                      x: [-1200, -200, 200, 1600],
-                      scale: [0, 1, 1.2, 1.2],
-                      opacity: [0, 1, 1, 1],
-                      rotateZ: [-90, 0, 360, 720],
-                    }}
-                    transition={{
-                      duration: 5,
-                      times: [0, 0.35, 0.65, 1],
-                      ease: [0.12, 0.6, 0.8, 0.1],
-                      delay: 2,
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 0 40px rgba(234,179,8,0.8))",
-                      boxShadow:
-                        "0 0 50px rgba(234,179,8,0.4), inset 0 0 30px rgba(234,179,8,0.2)",
-                    }}
-                  >
-                    <img
-                      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                      alt="S Token"
-                      className="w-28 h-28"
-                    />
-                  </motion.div>
+                  {/* Continuous Token Interaction Loop - Multiple Angles */}
+                  {[...Array(3)].map((_, loopIndex) => (
+                    <div key={`token-loop-${loopIndex}`}>
+                      {/* S Token from different angles */}
+                      <motion.div
+                        className="absolute w-32 h-32 rounded-full border-2 border-yellow-400/60 flex items-center justify-center backdrop-blur-sm"
+                        style={{
+                          filter: "drop-shadow(0 0 30px rgba(234,179,8,0.6))",
+                          boxShadow: "0 0 40px rgba(234,179,8,0.3), inset 0 0 20px rgba(234,179,8,0.1)",
+                        }}
+                        animate={{
+                          x: loopIndex === 0 ? [-800, -100, 100, 800] :
+                             loopIndex === 1 ? [-600, 300, -300, 600] :
+                             [-1000, 0, 0, 1000],
+                          y: loopIndex === 0 ? [0, 0, 0, 0] :
+                             loopIndex === 1 ? [-200, 50, -50, 200] :
+                             [300, -100, 100, -300],
+                          scale: [0.3, 1, 1.1, 0.8],
+                          opacity: [0, 0.9, 0.9, 0],
+                          rotateZ: loopIndex === 0 ? [-180, 0, 180, 360] :
+                                   loopIndex === 1 ? [90, 270, 450, 630] :
+                                   [-90, 90, 270, 450],
+                        }}
+                        transition={{
+                          duration: 8 + loopIndex * 2,
+                          times: [0, 0.3, 0.7, 1],
+                          ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
+                                loopIndex === 1 ? [0.42, 0, 0.58, 1] :
+                                [0.68, -0.55, 0.265, 1.55],
+                          delay: loopIndex * 3,
+                          repeat: Infinity,
+                        }}
+                        initial={{
+                          x: loopIndex === 0 ? -800 : loopIndex === 1 ? -600 : -1000,
+                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? -200 : 300,
+                          scale: 0.3,
+                          opacity: 0,
+                        }}
+                      >
+                        <img
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                          alt="S Token"
+                          className="w-24 h-24"
+                        />
+                      </motion.div>
 
-                  <motion.div
-                    className="absolute right-16 top-1/2 w-40 h-40 rounded-full border-3 border-amber-400/80 flex items-center justify-center transform -translate-y-1/2 backdrop-blur-md"
-                    initial={{ x: 1200, scale: 0, opacity: 0, rotateZ: 90 }}
-                    animate={{
-                      x: [1200, 200, -200, -1600],
-                      scale: [0, 1, 1.2, 1.2],
-                      opacity: [0, 1, 1, 1],
-                      rotateZ: [90, 0, -360, -720],
-                    }}
-                    transition={{
-                      duration: 5,
-                      times: [0, 0.38, 0.62, 1],
-                      ease: [0.08, 0.72, 0.9, 0.15],
-                      delay: 2,
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 0 40px rgba(251,191,36,0.8))",
-                      boxShadow:
-                        "0 0 50px rgba(251,191,36,0.4), inset 0 0 30px rgba(251,191,36,0.2)",
-                    }}
-                  >
-                    <img
-                      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                      alt="DRAGON Token"
-                      className="w-24 h-24"
-                    />
-                  </motion.div>
+                      {/* DRAGON Token from different angles */}
+                      <motion.div
+                        className="absolute w-32 h-32 rounded-full border-2 border-amber-400/60 flex items-center justify-center backdrop-blur-sm"
+                        style={{
+                          filter: "drop-shadow(0 0 30px rgba(251,191,36,0.6))",
+                          boxShadow: "0 0 40px rgba(251,191,36,0.3), inset 0 0 20px rgba(251,191,36,0.1)",
+                        }}
+                        animate={{
+                          x: loopIndex === 0 ? [800, 100, -100, -800] :
+                             loopIndex === 1 ? [600, -300, 300, -600] :
+                             [1000, 0, 0, -1000],
+                          y: loopIndex === 0 ? [0, 0, 0, 0] :
+                             loopIndex === 1 ? [200, -50, 50, -200] :
+                             [-300, 100, -100, 300],
+                          scale: [0.3, 1, 1.1, 0.8],
+                          opacity: [0, 0.9, 0.9, 0],
+                          rotateZ: loopIndex === 0 ? [180, 0, -180, -360] :
+                                   loopIndex === 1 ? [-90, -270, -450, -630] :
+                                   [90, -90, -270, -450],
+                        }}
+                        transition={{
+                          duration: 8 + loopIndex * 2,
+                          times: [0, 0.3, 0.7, 1],
+                          ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
+                                loopIndex === 1 ? [0.42, 0, 0.58, 1] :
+                                [0.68, -0.55, 0.265, 1.55],
+                          delay: loopIndex * 3,
+                          repeat: Infinity,
+                        }}
+                        initial={{
+                          x: loopIndex === 0 ? 800 : loopIndex === 1 ? 600 : 1000,
+                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? 200 : -300,
+                          scale: 0.3,
+                          opacity: 0,
+                        }}
+                      >
+                        <img
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                          alt="DRAGON Token"
+                          className="w-20 h-20"
+                        />
+                      </motion.div>
 
-                  {/* Epic collision effect when tokens meet */}
-                  <motion.div
-                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{
-                      scale: [0, 6, 3, 0],
-                      opacity: [0, 1, 0.7, 0],
-                      rotateZ: [0, 360, 720],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      delay: 4,
-                      ease: [0.95, 0.05, 0.8, 0.04],
-                    }}
-                  ></motion.div>
-
-                  {/* Screen shake effect for collision */}
-                  <motion.div
-                    className="absolute inset-0"
-                    animate={{
-                      x: [0, -8, 8, -5, 5, 0],
-                      y: [0, 5, -5, 3, -3, 0],
-                    }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 4,
-                      ease: [0.68, -0.55, 0.265, 1.55],
-                    }}
-                  />
-
-                  {/* Energy burst particles */}
-                  {[...Array(30)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-3 h-3 rounded-full bg-white"
-                      style={{
-                        left: "50%",
-                        top: "50%",
-                        boxShadow: `0 0 15px ${i % 3 === 0 ? "#FFD700" : i % 3 === 1 ? "#FF6B35" : "#FFEB3B"}`,
-                      }}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{
-                        scale: [0, 2, 0],
-                        x:
-                          Math.cos((i * 12 * Math.PI) / 180) *
-                          (120 + Math.random() * 150),
-                        y:
-                          Math.sin((i * 12 * Math.PI) / 180) *
-                          (120 + Math.random() * 150),
-                        opacity: [0, 1, 0],
-                        rotateZ: [0, 360 * (Math.random() > 0.5 ? 1 : -1)],
-                      }}
-                      transition={{
-                        duration: 2,
-                        delay: 4 + i * 0.03,
-                        ease: [0.87, 0, 0.13, 1],
-                      }}
-                    />
+                      {/* Collision Effect at Center */}
+                      <motion.div
+                        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full"
+                        style={{
+                          background: `radial-gradient(circle, ${
+                            loopIndex === 0 ? '#FFD700' :
+                            loopIndex === 1 ? '#FF6B35' : '#FF4500'
+                          } 0%, transparent 70%)`,
+                          boxShadow: `0 0 30px ${
+                            loopIndex === 0 ? '#FFD700' :
+                            loopIndex === 1 ? '#FF6B35' : '#FF4500'
+                          }`,
+                        }}
+                        animate={{
+                          scale: [0, 4, 2, 0],
+                          opacity: [0, 1, 0.5, 0],
+                          rotateZ: [0, 180, 360],
+                        }}
+                        transition={{
+                          duration: 1.2,
+                          delay: (loopIndex * 3) + 2.4,
+                          ease: [0.87, 0, 0.13, 1],
+                          repeat: Infinity,
+                          repeatDelay: 5.8 + loopIndex * 2,
+                        }}
+                      />
+                    </div>
                   ))}
                 </div>
               </motion.div>
@@ -798,8 +817,113 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   y: { duration: 0.4, delay: 1 },
                 }}
               >
+                {/* Continuous Token Interaction Loop - Background Layer */}
+                {[...Array(2)].map((_, loopIndex) => (
+                  <div key={`token-loop-step2-${loopIndex}`} className="absolute inset-0 opacity-30">
+                    {/* S Token from different angles */}
+                    <motion.div
+                      className="absolute w-24 h-24 rounded-full border border-yellow-400/40 flex items-center justify-center backdrop-blur-sm"
+                      style={{
+                        filter: "drop-shadow(0 0 20px rgba(234,179,8,0.4))",
+                        boxShadow: "0 0 30px rgba(234,179,8,0.2)",
+                      }}
+                      animate={{
+                        x: loopIndex === 0 ? [-600, -150, 150, 600] :
+                           [-800, 200, -200, 800],
+                        y: loopIndex === 0 ? [100, -50, 50, -100] :
+                           [-150, 75, -75, 150],
+                        scale: [0.2, 0.8, 0.9, 0.6],
+                        opacity: [0, 0.6, 0.6, 0],
+                        rotateZ: loopIndex === 0 ? [-120, 60, 240, 420] :
+                                 [60, 180, 360, 540],
+                      }}
+                      transition={{
+                        duration: 10 + loopIndex * 3,
+                        times: [0, 0.35, 0.65, 1],
+                        ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
+                              [0.42, 0, 0.58, 1],
+                        delay: loopIndex * 2.5,
+                        repeat: Infinity,
+                      }}
+                      initial={{
+                        x: loopIndex === 0 ? -600 : -800,
+                        y: loopIndex === 0 ? 100 : -150,
+                        scale: 0.2,
+                        opacity: 0,
+                      }}
+                    >
+                      <img
+                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+                        alt="S Token"
+                        className="w-16 h-16"
+                      />
+                    </motion.div>
 
+                    {/* DRAGON Token from different angles */}
+                    <motion.div
+                      className="absolute w-24 h-24 rounded-full border border-amber-400/40 flex items-center justify-center backdrop-blur-sm"
+                      style={{
+                        filter: "drop-shadow(0 0 20px rgba(251,191,36,0.4))",
+                        boxShadow: "0 0 30px rgba(251,191,36,0.2)",
+                      }}
+                      animate={{
+                        x: loopIndex === 0 ? [600, 150, -150, -600] :
+                           [800, -200, 200, -800],
+                        y: loopIndex === 0 ? [-100, 50, -50, 100] :
+                           [150, -75, 75, -150],
+                        scale: [0.2, 0.8, 0.9, 0.6],
+                        opacity: [0, 0.6, 0.6, 0],
+                        rotateZ: loopIndex === 0 ? [120, -60, -240, -420] :
+                                 [-60, -180, -360, -540],
+                      }}
+                      transition={{
+                        duration: 10 + loopIndex * 3,
+                        times: [0, 0.35, 0.65, 1],
+                        ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
+                              [0.42, 0, 0.58, 1],
+                        delay: loopIndex * 2.5,
+                        repeat: Infinity,
+                      }}
+                      initial={{
+                        x: loopIndex === 0 ? 600 : 800,
+                        y: loopIndex === 0 ? -100 : 150,
+                        scale: 0.2,
+                        opacity: 0,
+                      }}
+                    >
+                      <img
+                        src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
+                        alt="DRAGON Token"
+                        className="w-14 h-14"
+                      />
+                    </motion.div>
 
+                    {/* Subtle Collision Effect */}
+                    <motion.div
+                      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
+                      style={{
+                        background: `radial-gradient(circle, ${
+                          loopIndex === 0 ? '#FFD700' : '#FF6B35'
+                        } 0%, transparent 70%)`,
+                        boxShadow: `0 0 20px ${
+                          loopIndex === 0 ? '#FFD700' : '#FF6B35'
+                        }`,
+                      }}
+                      animate={{
+                        scale: [0, 2, 1, 0],
+                        opacity: [0, 0.4, 0.2, 0],
+                        rotateZ: [0, 90, 180],
+                      }}
+                      transition={{
+                        duration: 1,
+                        delay: (loopIndex * 2.5) + 3.5,
+                        ease: [0.87, 0, 0.13, 1],
+                        repeat: Infinity,
+                        repeatDelay: 9.5 + loopIndex * 3,
+                      }}
+                    />
+                  </div>
+                ))}
                 <div className="text-center relative z-10">
                   {/* Flash effect */}
                   <motion.div
@@ -1053,8 +1177,6 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
                 transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-
-
                 <div className="text-center relative z-10">
                   <div className="mb-16">
                     {/* Transition from previous slide */}
@@ -1255,7 +1377,6 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-
                 {/* Main Content with Camera Zoom Effect */}
                 <motion.div
                   className="text-center relative z-10"
@@ -1840,7 +1961,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         </motion.div>
                       </motion.div>
 
-                      {/* Google Cloud DVN with Mirror Effect */}
+                      {/* Nethermind DVN with Mirror Effect */}
                       <motion.div
                         className="flex flex-col items-center"
                         initial={{ scale: 0, rotateZ: 45, opacity: 0 }}
@@ -1852,7 +1973,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         }}
                       >
                         <motion.img
-                          src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg"
+                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreiax6jur4gjsevwncuu2tgqlotnc33y5nwxwrv2ggxq3al76xegcqi"
                           alt="Google Cloud"
                           className="h-12 mb-2"
                           animate={{
