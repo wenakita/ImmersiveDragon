@@ -209,8 +209,7 @@ export default function WelcomeScreen({
           <label htmlFor="termsAccept" className={`cursor-pointer opacity-75 ${
             isMobile ? "text-[9px]" : "text-[10px]"
           }`}>
-            I accept the terms and conditions for OmniDragon Protocol listed on
-            the <span
+            I accept the terms and conditions for OmniDragon Protocol listed on the <span
               className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer touch-target"
               onClick={() => handleClick("terms-link")}
             >Terms of Service</span> page and the <span className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer touch-target">Privacy Policy</span>
