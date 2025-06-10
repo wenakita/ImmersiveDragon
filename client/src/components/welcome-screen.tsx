@@ -55,18 +55,16 @@ export default function WelcomeScreen({
             ease: [0.25, 0.46, 0.45, 0.94]
           }}
         >
-          <div className="relative">
-            {/* Background Glow - Behind Token */}
+          <div className="relative flex items-center justify-center">
+            {/* Background Glow - Centered Behind Token */}
             <motion.div
-              className={`absolute rounded-full z-0 ${
+              className={`absolute rounded-full ${
                 isMobile ? "w-32 h-32" : "w-40 h-40"
               }`}
               style={{
                 background: "radial-gradient(circle, rgba(251, 146, 60, 0.4) 0%, rgba(59, 130, 246, 0.3) 50%, transparent 70%)",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-                filter: "blur(12px)"
+                filter: "blur(12px)",
+                zIndex: 0
               }}
               animate={{
                 scale: [1, 1.15, 1],
@@ -79,13 +77,14 @@ export default function WelcomeScreen({
               }}
             />
             
-            {/* Dragon Token - On Top */}
+            {/* Dragon Token - Centered On Top */}
             <motion.img
               src={getAssetUrl('DRAGON')}
               alt="Dragon Token"
-              className={`relative z-20 rounded-full object-cover cursor-pointer ${
+              className={`rounded-full object-cover cursor-pointer ${
                 isMobile ? "w-24 h-24" : "w-32 h-32"
               }`}
+              style={{ zIndex: 10 }}
               onClick={() => handleClick("dragon-logo")}
               whileHover={{ 
                 scale: 1.05,
