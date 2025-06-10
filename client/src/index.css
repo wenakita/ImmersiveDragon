@@ -120,7 +120,15 @@
   }
 
   .gradient-button {
-    background: linear-gradient(135deg, hsl(var(--warm-orange)) 0%, hsl(var(--electric-blue)) 100%);
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8E53 25%, #4F46E5 75%, #3B82F6 100%);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .gradient-button:hover {
+    background: linear-gradient(135deg, #FF8E53 0%, #FFA726 25%, #5B21B6 75%, #2563EB 100%);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    transform: translateY(-1px);
   }
 
   .glassmorphism {
