@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useIsMobile } from "../hooks/use-mobile";
 
 interface TokenExchangeAnimationProps {
   /** Position styling for the container */
@@ -88,14 +89,19 @@ export default function TokenExchangeAnimation({
   repeat = true,
   index = 0
 }: TokenExchangeAnimationProps) {
+  const isMobile = useIsMobile();
   const baseDelay = delay + (index * 1);
   const isEven = index % 2 === 0;
+  
+  // Adjust animation parameters for mobile
+  const mobileScale = isMobile ? scale * 0.75 : scale;
+  const animationDistance = isMobile ? 50 : 80;
 
   return (
     <motion.div
       className={`flex items-center justify-center ${containerClassName}`}
       style={{
-        transform: `scale(${scale})`,
+        transform: `scale(${mobileScale})`,
         ...containerStyle
       }}
       animate={{
@@ -112,7 +118,7 @@ export default function TokenExchangeAnimation({
       {/* Sonic Token */}
       <SonicToken
         animateProps={{
-          x: [0, 80 * scale, 0],
+          x: [0, animationDistance * mobileScale, 0],
           rotate: [0, 180, 360],
         }}
         transitionProps={{
@@ -120,7 +126,7 @@ export default function TokenExchangeAnimation({
           repeat: repeat ? Infinity : 0,
           delay: baseDelay,
         }}
-        size={scale >= 1 ? "w-12 h-12" : "w-10 h-10"}
+        size={isMobile ? "w-8 h-8" : (scale >= 1 ? "w-12 h-12" : "w-10 h-10")}
       />
 
       {/* Swap Action */}
@@ -190,7 +196,7 @@ export default function TokenExchangeAnimation({
       {/* Dragon Token */}
       <DragonToken
         animateProps={{
-          x: [0, -80 * scale, 0],
+          x: [0, -animationDistance * mobileScale, 0],
           rotate: [0, -180, -360],
         }}
         transitionProps={{
@@ -198,7 +204,7 @@ export default function TokenExchangeAnimation({
           repeat: repeat ? Infinity : 0,
           delay: baseDelay,
         }}
-        size={scale >= 1 ? "w-12 h-12" : "w-10 h-10"}
+        size={isMobile ? "w-8 h-8" : (scale >= 1 ? "w-12 h-12" : "w-10 h-10")}
       />
     </motion.div>
   );
