@@ -160,10 +160,10 @@ export default function TokenExchangeAnimation({
         ...containerStyle
       }}
     >
-      <AnimatePresence>
+      <AnimatePresence mode="popLayout">
         {/* Sonic Token */}
         <motion.div
-          key={`sonic-${animationKey}`}
+          key={`sonic-${animationKey}-${index}`}
           className="absolute flex items-center justify-center"
           animate={sonicControls}
         >
@@ -198,7 +198,7 @@ export default function TokenExchangeAnimation({
 
         {/* Dragon Token */}
         <motion.div
-          key={`dragon-${animationKey}`}
+          key={`dragon-${animationKey}-${index}`}
           className="absolute flex items-center justify-center"
           animate={dragonControls}
         >
@@ -233,7 +233,7 @@ export default function TokenExchangeAnimation({
 
         {/* Enhanced Energy Burst at Center */}
         <motion.div
-          key={`burst-${animationKey}`}
+          key={`burst-${animationKey}-${index}`}
           className="absolute flex items-center justify-center"
           animate={burstControls}
         >
