@@ -358,8 +358,8 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       duration={4.2}
                       repeat={true}
                       scale={isMobile ? 0.8 : 1.3}
-                      showTradeIndicators={true}
-                      showFeeBreakdown={true}
+                      showTradeIndicators={false}
+                      showFeeBreakdown={false}
                     />
                   </motion.div>
 
