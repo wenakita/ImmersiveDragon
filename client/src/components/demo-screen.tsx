@@ -466,13 +466,133 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {currentStep === 1 && (
               <motion.div
                 key="tokens"
-                className="flex items-center justify-center min-h-screen"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1.5 }}
               >
-                <div className="relative w-full h-96">
+                {/* Fire Ember Background Animation */}
+                {[...Array(35)].map((_, i) => (
+                  <motion.div
+                    key={`ember-${i}`}
+                    className="absolute rounded-full pointer-events-none"
+                    style={{
+                      width: `${2 + Math.random() * 4}px`,
+                      height: `${2 + Math.random() * 4}px`,
+                      background: `radial-gradient(circle, ${
+                        i % 5 === 0 ? '#FF6B35' : 
+                        i % 5 === 1 ? '#FFD700' : 
+                        i % 5 === 2 ? '#FF8C42' : 
+                        i % 5 === 3 ? '#FFA500' : '#FF4500'
+                      } 0%, transparent 70%)`,
+                      boxShadow: `0 0 ${8 + Math.random() * 12}px ${
+                        i % 5 === 0 ? '#FF6B35' : 
+                        i % 5 === 1 ? '#FFD700' : 
+                        i % 5 === 2 ? '#FF8C42' : 
+                        i % 5 === 3 ? '#FFA500' : '#FF4500'
+                      }`,
+                      left: `${Math.random() * 100}%`,
+                      bottom: `-20px`,
+                    }}
+                    initial={{ 
+                      y: 0, 
+                      x: 0, 
+                      opacity: 0,
+                      scale: 0.2 + Math.random() * 0.8
+                    }}
+                    animate={{
+                      y: [-50, -window.innerHeight - 200],
+                      x: [
+                        0,
+                        (Math.random() - 0.5) * 300,
+                        (Math.random() - 0.5) * 200,
+                        (Math.random() - 0.5) * 400
+                      ],
+                      opacity: [0, 0.7 + Math.random() * 0.3, 0.4, 0],
+                      scale: [
+                        0.2 + Math.random() * 0.8,
+                        0.6 + Math.random() * 0.6,
+                        0.3 + Math.random() * 0.4,
+                        0.05
+                      ],
+                      rotate: [0, 360 * (Math.random() > 0.5 ? 1 : -1)],
+                    }}
+                    transition={{
+                      duration: 12 + Math.random() * 18,
+                      delay: Math.random() * 15,
+                      repeat: Infinity,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    }}
+                  />
+                ))}
+
+                {/* Larger Glowing Embers */}
+                {[...Array(12)].map((_, i) => (
+                  <motion.div
+                    key={`large-ember-${i}`}
+                    className="absolute rounded-full pointer-events-none"
+                    style={{
+                      width: `${4 + Math.random() * 6}px`,
+                      height: `${4 + Math.random() * 6}px`,
+                      background: `radial-gradient(circle, ${
+                        i % 3 === 0 ? '#FF4500' : 
+                        i % 3 === 1 ? '#FF6347' : '#FF7F50'
+                      } 0%, ${
+                        i % 3 === 0 ? '#FF4500' : 
+                        i % 3 === 1 ? '#FF6347' : '#FF7F50'
+                      }40 50%, transparent 80%)`,
+                      boxShadow: `0 0 ${15 + Math.random() * 20}px ${
+                        i % 3 === 0 ? '#FF4500' : 
+                        i % 3 === 1 ? '#FF6347' : '#FF7F50'
+                      }`,
+                      left: `${Math.random() * 100}%`,
+                      bottom: `-30px`,
+                    }}
+                    initial={{ 
+                      y: 0, 
+                      x: 0, 
+                      opacity: 0,
+                      rotate: 0
+                    }}
+                    animate={{
+                      y: [-80, -window.innerHeight - 250],
+                      x: [
+                        0,
+                        (Math.random() - 0.5) * 250,
+                        (Math.random() - 0.5) * 150,
+                        (Math.random() - 0.5) * 350
+                      ],
+                      opacity: [0, 0.9, 0.6, 0],
+                      rotate: [0, 720 * (Math.random() > 0.5 ? 1 : -1)],
+                      scale: [0.5, 1.2, 0.8, 0.1],
+                    }}
+                    transition={{
+                      duration: 20 + Math.random() * 15,
+                      delay: Math.random() * 12,
+                      repeat: Infinity,
+                      ease: [0.12, 0.6, 0.8, 0.1],
+                    }}
+                  />
+                ))}
+
+                {/* Heat Shimmer Effect */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(0deg, rgba(255,69,0,0.03) 0%, transparent 40%)',
+                  }}
+                  animate={{
+                    opacity: [0.2, 0.5, 0.2],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+
+                <div className="relative w-full h-96 z-10">
                   <div className="text-center mb-8 sm:mb-16 px-4">
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-4 sm:mb-6 tracking-wide">
                       <motion.span
