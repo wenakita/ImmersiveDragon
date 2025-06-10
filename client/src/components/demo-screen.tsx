@@ -985,17 +985,24 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           whileHover={{ scale: 1.05, y: -5 }}
                         >
                           <motion.div 
-                            className={`font-black text-blue-200 mb-6 ${
-                              isMobile ? "text-xl" : "text-3xl"
+                            className={`font-black text-blue-100 mb-6 tracking-[0.1em] uppercase ${
+                              isMobile ? "text-xl" : "text-2xl"
                             }`}
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                            style={{
+                              fontFamily: 'Inter, system-ui, sans-serif',
+                              fontWeight: '800'
+                            }}
+                            animate={{ scale: [1, 1.03, 1] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
                           >
-                            UNIVERSAL LIQUIDITY
+                            Universal Liquidity
                           </motion.div>
-                          <p className={`text-blue-100/90 leading-relaxed font-medium ${
-                            isMobile ? "text-sm" : "text-lg"
-                          }`}>
+                          <p className={`text-blue-200/90 leading-relaxed font-light tracking-[0.01em] ${
+                            isMobile ? "text-base" : "text-xl"
+                          }`} style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '300'
+                          }}>
                             Access liquidity across all chains
                           </p>
                         </motion.div>
@@ -1051,17 +1058,22 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </motion.div>
                       
                       <motion.h2 
-                        className={`font-black bg-gradient-to-r from-blue-200 via-purple-300 to-pink-300 bg-clip-text text-transparent tracking-wider ${
-                          isMobile ? "text-3xl" : "text-7xl"
+                        className={`font-black bg-gradient-to-r from-blue-100 via-purple-200 to-pink-200 bg-clip-text text-transparent tracking-[-0.02em] ${
+                          isMobile ? "text-4xl" : "text-8xl"
                         }`}
+                        style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '900',
+                          letterSpacing: '-0.025em'
+                        }}
                         animate={{
                           textShadow: [
-                            "0 0 30px rgba(147, 51, 234, 0.6)",
-                            "0 0 60px rgba(147, 51, 234, 0.4)",
-                            "0 0 30px rgba(147, 51, 234, 0.6)"
+                            "0 0 50px rgba(147, 51, 234, 0.5)",
+                            "0 0 100px rgba(147, 51, 234, 0.3)",
+                            "0 0 50px rgba(147, 51, 234, 0.5)"
                           ]
                         }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                       >
                         CHAINLINK VRF 2.5
                       </motion.h2>
@@ -1076,11 +1088,14 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{ duration: 1.8, delay: 1 }}
                     />
                     
-                    <p className={`text-gray-200/90 font-medium max-w-4xl mx-auto leading-relaxed ${
-                      isMobile ? "text-lg" : "text-3xl"
-                    }`}>
-                      Truly <span className="text-purple-400 font-bold">random</span> and{" "}
-                      <span className="text-pink-400 font-bold">verifiable</span> lottery system
+                    <p className={`text-gray-200/95 font-light max-w-5xl mx-auto leading-relaxed tracking-[0.01em] ${
+                      isMobile ? "text-xl" : "text-4xl"
+                    }`} style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontWeight: '300'
+                    }}>
+                      Truly <span className="bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent font-medium italic">random</span> and{" "}
+                      <span className="bg-gradient-to-r from-pink-300 to-purple-300 bg-clip-text text-transparent font-medium italic">verifiable</span> lottery system
                     </p>
                   </motion.div>
 
@@ -1108,13 +1123,17 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     
                     <div className="relative z-10">
                       <motion.div
-                        className={`font-black text-purple-200 mb-8 ${
-                          isMobile ? "text-2xl" : "text-4xl"
+                        className={`font-black text-purple-100 mb-12 tracking-[0.1em] uppercase ${
+                          isMobile ? "text-2xl" : "text-3xl"
                         }`}
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                        style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '800'
+                        }}
+                        animate={{ scale: [1, 1.03, 1] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        DECENTRALIZED LOTTERY
+                        Decentralized Lottery
                       </motion.div>
                       
                       <div className={`grid gap-8 ${isMobile ? "grid-cols-1 space-y-6" : "md:grid-cols-2"}`}>
@@ -1125,14 +1144,20 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           transition={{ duration: 1.2, delay: 1.2 }}
                           whileHover={{ scale: 1.05, rotate: 2 }}
                         >
-                          <p className={`text-purple-200 font-bold mb-3 ${
+                          <p className={`text-purple-100 font-black mb-4 tracking-[0.1em] uppercase ${
                             isMobile ? "text-lg" : "text-xl"
-                          }`}>
-                            PROVABLY FAIR
+                          }`} style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '800'
+                          }}>
+                            Provably Fair
                           </p>
-                          <p className={`text-purple-100/90 ${
+                          <p className={`text-purple-200/90 font-light tracking-[0.01em] ${
                             isMobile ? "text-sm" : "text-base"
-                          }`}>
+                          }`} style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '300'
+                          }}>
                             Cryptographically secure randomness
                           </p>
                         </motion.div>
@@ -1144,14 +1169,20 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           transition={{ duration: 1.2, delay: 1.4 }}
                           whileHover={{ scale: 1.05, rotate: -2 }}
                         >
-                          <p className={`text-pink-200 font-bold mb-3 ${
+                          <p className={`text-pink-100 font-black mb-4 tracking-[0.1em] uppercase ${
                             isMobile ? "text-lg" : "text-xl"
-                          }`}>
-                            INSTANT PAYOUTS
+                          }`} style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '800'
+                          }}>
+                            Instant Payouts
                           </p>
-                          <p className={`text-pink-100/90 ${
+                          <p className={`text-pink-200/90 font-light tracking-[0.01em] ${
                             isMobile ? "text-sm" : "text-base"
-                          }`}>
+                          }`} style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '300'
+                          }}>
                             Automated smart contract execution
                           </p>
                         </motion.div>
