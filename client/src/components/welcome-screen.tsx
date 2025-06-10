@@ -156,7 +156,9 @@ export default function WelcomeScreen({
 
         {/* See Demo Button */}
         <motion.button
-          className={`w-full py-3 px-6 rounded-lg font-medium text-white transition-all duration-300 flex items-center justify-center gap-2 ${
+          className={`w-full font-medium text-white transition-all duration-300 flex items-center justify-center gap-2 rounded-lg touch-target ${
+            isMobile ? "py-4 px-6 text-base" : "py-3 px-6"
+          } ${
             termsAccepted
               ? "gradient-button hover:scale-105 cursor-pointer"
               : "opacity-50 cursor-not-allowed bg-gray-600"
@@ -169,7 +171,7 @@ export default function WelcomeScreen({
           whileHover={termsAccepted ? { scale: 1.02 } : {}}
           whileTap={termsAccepted ? { scale: 0.98 } : {}}
         >
-          <Play className="w-4 h-4" />
+          <Play className={isMobile ? "w-5 h-5" : "w-4 h-4"} />
           Play Demo
         </motion.button>
 

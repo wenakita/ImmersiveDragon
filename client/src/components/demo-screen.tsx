@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
+import { useIsMobile } from "../hooks/use-mobile";
 import TokenExchangeAnimation from "./token-exchange-animation";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
@@ -171,6 +172,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const [currentStep, setCurrentStep] = useState(-1); // Start with pre-credits
   const [showAnimations, setShowAnimations] = useState(autoStart);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const isMobile = useIsMobile();
 
   // Enhanced timing based on waveform analysis - Extended for better comprehension
   const steps = [
@@ -222,7 +224,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   }, [autoStart]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden mobile-container">
       <audio ref={audioRef} preload="auto" className="hidden">
         <source src={audioFile} type="audio/mpeg" />
       </audio>

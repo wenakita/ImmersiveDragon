@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { demoSteps } from "@/lib/demo-steps";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 
 interface StepContentProps {
@@ -12,6 +13,7 @@ interface StepContentProps {
 export default function StepContent({ currentStep, onStepChange, totalSteps }: StepContentProps) {
   const [fromAmount, setFromAmount] = useState("100");
   const [toAmount, setToAmount] = useState("75.5");
+  const isMobile = useIsMobile();
   
   const step = demoSteps[currentStep];
 
@@ -39,56 +41,84 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
   };
 
   return (
-    <div className="space-y-8">
+    <div className={`space-y-8 ${isMobile ? "mobile-container" : ""}`}>
       {/* Main Swap Card */}
       <motion.div
-        className="bg-dark-surface/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8"
+        className={`bg-dark-surface/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl ${
+          isMobile ? "p-4 mx-2" : "p-8"
+        }`}
         key={currentStep}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         {/* Current Step Display */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-warm-orange/20 border border-warm-orange/30 flex items-center justify-center">
-              <span className="text-warm-orange text-sm font-semibold">
+        <div className={isMobile ? "mb-6" : "mb-8"}>
+          <div className={`flex items-center gap-3 ${isMobile ? "mb-4" : "mb-6"}`}>
+            <div className={`rounded-full bg-warm-orange/20 border border-warm-orange/30 flex items-center justify-center ${
+              isMobile ? "w-7 h-7" : "w-8 h-8"
+            }`}>
+              <span className={`text-warm-orange font-semibold ${
+                isMobile ? "text-xs" : "text-sm"
+              }`}>
                 {currentStep + 1}
               </span>
             </div>
-            <h2 className="text-xl font-semibold">{step.title}</h2>
+            <h2 className={`font-semibold ${
+              isMobile ? "text-lg mobile-text-lg" : "text-xl"
+            }`}>{step.title}</h2>
           </div>
           
-          <p className="text-soft-gray mb-6">{step.description}</p>
+          <p className={`text-soft-gray ${
+            isMobile ? "mb-4 mobile-text-sm" : "mb-6"
+          }`}>{step.description}</p>
         </div>
 
         {/* Token Selection Interface */}
-        <div className="space-y-6">
+        <div className={isMobile ? "space-y-4" : "space-y-6"}>
           {/* From Token */}
           <div className="space-y-3">
-            <label className="text-sm font-medium text-soft-gray">From</label>
-            <div className="bg-black/30 border border-gray-700/50 rounded-xl p-4 hover:border-gray-600/50 transition-colors">
-              <div className="flex items-center justify-between">
+            <label className={`font-medium text-soft-gray ${
+              isMobile ? "text-sm mobile-text-sm" : "text-sm"
+            }`}>From</label>
+            <div className={`bg-black/30 border border-gray-700/50 rounded-xl hover:border-gray-600/50 transition-colors touch-target ${
+              isMobile ? "p-3" : "p-4"
+            }`}>
+              <div className={`flex items-center ${
+                isMobile ? "flex-col space-y-3" : "justify-between"
+              }`}>
                 <div className="flex items-center gap-3">
                   <img
                     src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                     alt="SONIC Token"
-                    className="w-8 h-8"
+                    className={isMobile ? "w-10 h-10 token-mobile-size" : "w-8 h-8"}
                   />
                   <div>
-                    <div className="font-medium">SONIC</div>
-                    <div className="text-xs text-soft-gray">Sonic Token</div>
+                    <div className={`font-medium ${
+                      isMobile ? "text-base" : ""
+                    }`}>SONIC</div>
+                    <div className={`text-soft-gray ${
+                      isMobile ? "text-xs mobile-text-sm" : "text-xs"
+                    }`}>Sonic Token</div>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className={`text-right ${isMobile ? "w-full" : ""}`}>
                   <input
                     type="text"
                     placeholder="0.0"
                     value={fromAmount}
                     onChange={(e) => handleFromAmountChange(e.target.value)}
-                    className="bg-transparent text-right text-xl font-semibold border-none outline-none w-32"
+                    className={`bg-transparent text-right font-semibold border-none outline-none touch-target ${
+                      isMobile 
+                        ? "text-lg w-full text-center" 
+                        : "text-xl w-32"
+                    }`}
                   />
-                  <div className="text-xs text-soft-gray">≈ $250.00</div>
+                  <div className={`text-soft-gray ${
+                    isMobile 
+                      ? "text-xs mobile-text-sm text-center" 
+                      : "text-xs"
+                  }`}>≈ $250.00</div>
                 </div>
               </div>
             </div>
