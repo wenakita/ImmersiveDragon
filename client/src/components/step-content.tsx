@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { demoSteps } from "@/lib/demo-steps";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { getAssetUrl } from "@/lib/assets";
 import { useState } from "react";
 
 interface StepContentProps {
@@ -88,18 +89,58 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
                 isMobile ? "flex-col space-y-3" : "justify-between"
               }`}>
                 <div className="flex items-center gap-3">
-                  <img
-                    src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
-                    alt="SONIC Token"
-                    className={isMobile ? "w-10 h-10 token-mobile-size" : "w-8 h-8"}
-                  />
+                  <motion.div
+                    className="relative"
+                    whileHover={{ 
+                      scale: 1.1,
+                      transition: { duration: 0.3, ease: [0.68, -0.55, 0.265, 1.55] }
+                    }}
+                  >
+                    <motion.img
+                      src={getAssetUrl('S')}
+                      alt="SONIC Token"
+                      className={`rounded-full border-2 border-blue-400/60 ${
+                        isMobile ? "w-12 h-12" : "w-10 h-10"
+                      }`}
+                      style={{
+                        filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.6))',
+                        boxShadow: "0 0 30px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                      }}
+                      animate={{
+                        boxShadow: [
+                          "0 0 30px rgba(59, 130, 246, 0.4)",
+                          "0 0 40px rgba(59, 130, 246, 0.6)",
+                          "0 0 30px rgba(59, 130, 246, 0.4)"
+                        ]
+                      }}
+                      transition={{
+                        boxShadow: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                    />
+                  </motion.div>
                   <div>
-                    <div className={`font-medium ${
-                      isMobile ? "text-base" : ""
-                    }`}>SONIC</div>
-                    <div className={`text-soft-gray ${
-                      isMobile ? "text-xs mobile-text-sm" : "text-xs"
-                    }`}>Sonic Token</div>
+                    <motion.div 
+                      className={`font-semibold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent ${
+                        isMobile ? "text-base" : ""
+                      }`}
+                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      SONIC
+                    </motion.div>
+                    <motion.div 
+                      className={`text-blue-200/80 font-light ${
+                        isMobile ? "text-xs" : "text-xs"
+                      }`}
+                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      Speed Token
+                    </motion.div>
                   </div>
                 </div>
                 <div className={`text-right ${isMobile ? "w-full" : ""}`}>
@@ -124,36 +165,144 @@ export default function StepContent({ currentStep, onStepChange, totalSteps }: S
             </div>
           </div>
 
-          {/* Swap Direction */}
-          <div className="flex justify-center">
+          {/* Enhanced Swap Direction with Token Animation */}
+          <div className="flex justify-center relative">
             <motion.button
-              className="w-10 h-10 rounded-full bg-dark-surface border border-gray-700/50 flex items-center justify-center hover:border-warm-orange/50 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500/20 to-orange-500/20 border-2 border-amber-400/40 flex items-center justify-center backdrop-blur-md"
+              whileHover={{ 
+                scale: 1.15,
+                rotate: 180,
+                transition: { duration: 0.4, ease: [0.68, -0.55, 0.265, 1.55] }
+              }}
+              whileTap={{ scale: 0.9 }}
+              animate={{
+                boxShadow: [
+                  "0 0 20px rgba(251, 191, 36, 0.3)",
+                  "0 0 30px rgba(251, 191, 36, 0.5)",
+                  "0 0 20px rgba(251, 191, 36, 0.3)"
+                ]
+              }}
+              transition={{
+                boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+              }}
             >
-              <ArrowUpDown className="w-4 h-4 text-warm-orange" />
+              <ArrowUpDown className="w-5 h-5 text-amber-300" />
             </motion.button>
+            
+            {/* Floating particles around swap button */}
+            {[...Array(4)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-amber-400 rounded-full"
+                style={{
+                  left: `${50 + Math.cos(i * 90 * Math.PI / 180) * 30}%`,
+                  top: `${50 + Math.sin(i * 90 * Math.PI / 180) * 30}%`
+                }}
+                animate={{
+                  opacity: [0, 1, 0],
+                  scale: [0, 1.2, 0],
+                  rotate: [0, 360]
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+              />
+            ))}
           </div>
 
-          {/* To Token */}
+          {/* To Token - Enhanced with Dragon Asset */}
           <div className="space-y-3">
-            <label className="text-sm font-medium text-soft-gray">To</label>
-            <div className="bg-black/30 border border-gray-700/50 rounded-xl p-4 hover:border-gray-600/50 transition-colors">
-              <div className="flex items-center justify-between">
+            <label className={`font-medium text-soft-gray ${
+              isMobile ? "text-sm" : "text-sm"
+            }`}>To</label>
+            <div className={`bg-black/30 border border-gray-700/50 rounded-xl hover:border-amber-600/50 transition-all duration-300 ${
+              isMobile ? "p-3" : "p-4"
+            }`}>
+              <div className={`flex items-center ${
+                isMobile ? "flex-col space-y-3" : "justify-between"
+              }`}>
                 <div className="flex items-center gap-3">
-                  <img
-                    src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
-                    alt="DRAGON Token"
-                    className="w-8 h-8"
-                  />
+                  <motion.div
+                    className="relative"
+                    whileHover={{ 
+                      scale: 1.1,
+                      transition: { duration: 0.3, ease: [0.68, -0.55, 0.265, 1.55] }
+                    }}
+                  >
+                    <motion.img
+                      src={getAssetUrl('DRAGON')}
+                      alt="DRAGON Token"
+                      className={`rounded-full border-2 border-amber-400/60 ${
+                        isMobile ? "w-12 h-12" : "w-10 h-10"
+                      }`}
+                      style={{
+                        filter: 'drop-shadow(0 0 20px rgba(251, 191, 36, 0.6))',
+                        boxShadow: "0 0 30px rgba(251, 191, 36, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1)"
+                      }}
+                      animate={{
+                        boxShadow: [
+                          "0 0 30px rgba(251, 191, 36, 0.4)",
+                          "0 0 40px rgba(251, 191, 36, 0.6)",
+                          "0 0 30px rgba(251, 191, 36, 0.4)"
+                        ]
+                      }}
+                      transition={{
+                        boxShadow: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                    />
+                  </motion.div>
                   <div>
-                    <div className="font-medium">DRAGON</div>
-                    <div className="text-xs text-soft-gray">Red Dragon Token</div>
+                    <motion.div 
+                      className={`font-semibold bg-gradient-to-r from-amber-300 to-orange-300 bg-clip-text text-transparent ${
+                        isMobile ? "text-base" : ""
+                      }`}
+                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      DRAGON
+                    </motion.div>
+                    <motion.div 
+                      className={`text-amber-200/80 font-light ${
+                        isMobile ? "text-xs" : "text-xs"
+                      }`}
+                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      Power Token
+                    </motion.div>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-xl font-semibold">{toAmount}</div>
-                  <div className="text-xs text-soft-gray">≈ $249.82</div>
+                <div className={`text-right ${isMobile ? "w-full" : ""}`}>
+                  <motion.div 
+                    className={`font-semibold text-amber-200 ${
+                      isMobile ? "text-lg text-center" : "text-xl"
+                    }`}
+                    style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                    animate={{
+                      color: [
+                        "rgb(253 230 138)", // amber-200
+                        "rgb(251 191 36)",  // amber-400
+                        "rgb(253 230 138)"
+                      ]
+                    }}
+                    transition={{
+                      color: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                  >
+                    {toAmount}
+                  </motion.div>
+                  <div className={`text-amber-300/60 font-light ${
+                    isMobile ? "text-xs text-center" : "text-xs"
+                  }`} style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                    ≈ $249.82
+                  </div>
                 </div>
               </div>
             </div>
