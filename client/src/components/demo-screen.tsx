@@ -1561,204 +1561,169 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 6: Refined Odds Table */}
+            {/* Step 6: Modern Minimalist Odds Table */}
             {currentStep === 6 && (
               <motion.div
                 key="odds"
-                className="flex items-center justify-center min-h-screen"
-                initial={{ opacity: 0, z: -500 }}
-                animate={{ opacity: 1, z: 0 }}
-                exit={{ opacity: 0, scale: 0.5, rotateX: 45 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="flex items-center justify-center min-h-screen px-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <div className="text-center">
-                  <motion.h2
-                    className="text-5xl font-light mb-20 text-yellow-400 tracking-wide"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    style={{
-                      filter: "drop-shadow(0 0 30px rgba(255,235,59,0.5))",
-                      fontWeight: 300,
-                    }}
+                <div className="w-full max-w-4xl">
+                  {/* Minimalist Header */}
+                  <motion.div
+                    className="text-center mb-16"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    ODDS TABLE
-                  </motion.h2>
+                    <motion.h2
+                      className="text-4xl font-extralight mb-4 text-white tracking-wider"
+                      animate={{ 
+                        textShadow: [
+                          "0 0 20px rgba(255,255,255,0.1)",
+                          "0 0 30px rgba(255,255,255,0.2)",
+                          "0 0 20px rgba(255,255,255,0.1)"
+                        ]
+                      }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                    >
+                      WINNING PROBABILITIES
+                    </motion.h2>
+                    <div className="w-24 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto" />
+                  </motion.div>
 
-                  <div className="space-y-8">
+                  {/* Interactive Cards Grid */}
+                  <motion.div
+                    className="grid gap-4 md:gap-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 1 }}
+                  >
                     {[
-                      {
-                        amount: "$10",
-                        odds: "0.004%",
-                        boostedOdds: "0.01%",
-                        color: "red",
-                        delay: 0.5,
-                      },
-                      {
-                        amount: "$100",
-                        odds: "0.04%",
-                        boostedOdds: "0.1%",
-                        color: "orange",
-                        delay: 0.8,
-                      },
-                      {
-                        amount: "$1,000",
-                        odds: "0.4%",
-                        boostedOdds: "1%",
-                        color: "yellow",
-                        delay: 1.1,
-                      },
-                      {
-                        amount: "$10,000",
-                        odds: "4%",
-                        boostedOdds: "10%",
-                        color: "green",
-                        delay: 1.4,
-                      },
+                      { amount: "$10", odds: "0.004%", boosted: "0.01%", gradient: "from-red-500/20 to-red-600/20", border: "border-red-500/30", text: "text-red-300" },
+                      { amount: "$100", odds: "0.04%", boosted: "0.1%", gradient: "from-orange-500/20 to-orange-600/20", border: "border-orange-500/30", text: "text-orange-300" },
+                      { amount: "$1,000", odds: "0.4%", boosted: "1%", gradient: "from-yellow-500/20 to-yellow-600/20", border: "border-yellow-500/30", text: "text-yellow-300" },
+                      { amount: "$10,000", odds: "4%", boosted: "10%", gradient: "from-green-500/20 to-green-600/20", border: "border-green-500/30", text: "text-green-300" }
                     ].map((item, i) => (
                       <motion.div
                         key={i}
-                        className="flex items-center justify-center space-x-8"
-                        initial={{
-                          x: i % 2 === 0 ? -800 : 800,
-                          opacity: 0,
-                          rotateY: 90,
-                          scale: 0.8,
+                        className={`group relative overflow-hidden rounded-2xl border ${item.border} bg-gradient-to-br ${item.gradient} backdrop-blur-sm cursor-pointer`}
+                        initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ 
+                          duration: 0.6, 
+                          delay: 0.8 + (i * 0.1),
+                          ease: [0.25, 0.46, 0.45, 0.94]
                         }}
-                        animate={{
-                          x: 0,
-                          opacity: 1,
-                          rotateY: 0,
-                          scale: 1,
+                        whileHover={{ 
+                          scale: 1.02, 
+                          y: -4,
+                          boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
                         }}
-                        transition={{
-                          duration: 1.6,
-                          delay: item.delay,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                        }}
+                        whileTap={{ scale: 0.98 }}
                       >
-                        <motion.span
-                          className={`text-4xl font-light w-32 text-center tracking-wide ${
-                            item.color === "red"
-                              ? "text-red-400"
-                              : item.color === "orange"
-                                ? "text-orange-400"
-                                : item.color === "yellow"
-                                  ? "text-yellow-400"
-                                  : "text-green-400"
-                          }`}
-                          animate={{ scale: [1, 1.05, 1] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: item.delay + 1.5,
-                          }}
-                          style={{
-                            filter: `drop-shadow(0 0 20px ${
-                              item.color === "red"
-                                ? "rgba(239,68,68,0.4)"
-                                : item.color === "orange"
-                                  ? "rgba(249,115,22,0.4)"
-                                  : item.color === "yellow"
-                                    ? "rgba(234,179,8,0.4)"
-                                    : "rgba(34,197,94,0.4)"
-                            })`,
-                          }}
-                        >
-                          {item.amount}
-                        </motion.span>
-
-                        <motion.span
-                          className="text-3xl text-white/60 font-light"
-                          animate={{ opacity: [0.6, 1, 0.6] }}
-                          transition={{ duration: 3, repeat: Infinity }}
-                        >
-                          =
-                        </motion.span>
-
-                        <motion.span
-                          className={`text-3xl font-light w-24 text-center tracking-wide ${
-                            item.color === "red"
-                              ? "text-red-400"
-                              : item.color === "orange"
-                                ? "text-orange-400"
-                                : item.color === "yellow"
-                                  ? "text-yellow-400"
-                                  : "text-green-400"
-                          }`}
-                          animate={{ scale: [1, 1.05, 1] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: item.delay + 2,
-                          }}
-                        >
-                          {item.odds}
-                        </motion.span>
-
-                        <motion.span
-                          className="text-2xl text-white/40 font-light"
-                          animate={{ opacity: [0.4, 0.7, 0.4] }}
-                          transition={{ duration: 3, repeat: Infinity }}
-                        >
-                          →
-                        </motion.span>
-
+                        {/* Subtle animated background */}
                         <motion.div
-                          className="text-center"
-                          initial={{ opacity: 0, x: 20, scale: 0.8 }}
-                          animate={{ opacity: 1, x: 0, scale: 1 }}
-                          transition={{
-                            delay: item.delay + 3.5,
-                            duration: 1.2,
-                            ease: [0.25, 0.46, 0.45, 0.94],
-                          }}
-                        >
-                          <motion.div
-                            className="text-sm text-gray-400 mb-1"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: item.delay + 3.8,
-                              duration: 1.8,
-                            }}
-                          >
-                            veDRAGON 2.5x
-                          </motion.div>
-                          <motion.div
-                            className="text-3xl font-medium text-blue-300 w-24 text-center"
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{
-                              opacity: 1,
-                              scale: 1,
-                              textShadow: [
-                                "0 0 10px rgba(147,197,253,0.3)",
-                                "0 0 20px rgba(147,197,253,0.6)",
-                                "0 0 10px rgba(147,197,253,0.3)",
-                              ],
-                            }}
-                            transition={{
-                              opacity: { delay: item.delay + 4.2, duration: 2 },
-                              scale: {
-                                delay: item.delay + 4.2,
-                                duration: 2,
-                                ease: "backOut",
-                              },
-                              textShadow: {
-                                duration: 3,
-                                repeat: Infinity,
-                                delay: item.delay + 6,
-                              },
-                            }}
-                          >
-                            {item.boostedOdds}
-                          </motion.div>
-                        </motion.div>
+                          className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent"
+                          animate={{ x: ["-100%", "100%"] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        />
+                        
+                        <div className="relative p-6 md:p-8">
+                          <div className="flex items-center justify-between">
+                            {/* Swap Amount */}
+                            <div className="flex-1">
+                              <div className="text-sm text-white/60 font-light mb-1">Swap Amount</div>
+                              <motion.div 
+                                className={`text-2xl md:text-3xl font-light ${item.text}`}
+                                animate={{ scale: [1, 1.02, 1] }}
+                                transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+                              >
+                                {item.amount}
+                              </motion.div>
+                            </div>
+
+                            {/* Arrow */}
+                            <motion.div 
+                              className="text-white/40 mx-4 md:mx-6"
+                              animate={{ x: [0, 4, 0] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            >
+                              →
+                            </motion.div>
+
+                            {/* Base Odds */}
+                            <div className="flex-1 text-center">
+                              <div className="text-sm text-white/60 font-light mb-1">Base Odds</div>
+                              <motion.div 
+                                className={`text-xl md:text-2xl font-light ${item.text}`}
+                                animate={{ opacity: [0.8, 1, 0.8] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                              >
+                                {item.odds}
+                              </motion.div>
+                            </div>
+
+                            {/* Boost Arrow */}
+                            <motion.div 
+                              className="text-blue-400/60 mx-4 md:mx-6"
+                              animate={{ scale: [1, 1.1, 1] }}
+                              transition={{ duration: 1.5, repeat: Infinity }}
+                            >
+                              ⚡
+                            </motion.div>
+
+                            {/* veDRAGON Boosted */}
+                            <div className="flex-1 text-right">
+                              <motion.div 
+                                className="text-xs text-blue-300/80 font-light mb-1"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 1 + (i * 0.1), duration: 0.6 }}
+                              >
+                                veDRAGON 2.5x
+                              </motion.div>
+                              <motion.div 
+                                className="text-xl md:text-2xl font-medium text-blue-300"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ 
+                                  opacity: 1, 
+                                  scale: 1,
+                                  textShadow: [
+                                    "0 0 10px rgba(147,197,253,0.3)",
+                                    "0 0 20px rgba(147,197,253,0.5)",
+                                    "0 0 10px rgba(147,197,253,0.3)"
+                                  ]
+                                }}
+                                transition={{ 
+                                  opacity: { delay: 1.2 + (i * 0.1), duration: 0.8 },
+                                  scale: { delay: 1.2 + (i * 0.1), duration: 0.8, ease: "backOut" },
+                                  textShadow: { duration: 3, repeat: Infinity, delay: 2 }
+                                }}
+                              >
+                                {item.boosted}
+                              </motion.div>
+                            </div>
+                          </div>
+                        </div>
                       </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
+
+                  {/* Bottom Caption */}
+                  <motion.div
+                    className="text-center mt-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2, duration: 1 }}
+                  >
+                    <div className="text-white/60 text-sm font-light tracking-wide">
+                      Higher swaps unlock exponentially better winning chances
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             )}
