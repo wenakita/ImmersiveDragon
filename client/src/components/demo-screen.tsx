@@ -604,76 +604,202 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
             {/* Step 4: Fee Tension – Ambient Mood */}
             {currentStep === 3 && (
               <motion.div
-                key="fee-breakdown-2"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                key="fee-tension"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-slate-900 to-gray-900"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
+                {/* Ambient Background Effects */}
+                <div className="absolute inset-0 pointer-events-none">
                   <motion.div
-                    className={`mb-16 ${isMobile ? "mb-12" : ""}`}
-                    initial={{ opacity: 0, y: 50 }}
+                    className="absolute inset-0 bg-gradient-radial from-orange-500/5 via-transparent to-transparent"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.3, 0.1, 0.3],
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Floating ambient particles */}
+                  {[...Array(15)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 bg-orange-400/40 rounded-full"
+                      style={{
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                      }}
+                      animate={{
+                        opacity: [0, 0.6, 0],
+                        scale: [0, 1, 0],
+                        y: [-50, -200],
+                      }}
+                      transition={{
+                        duration: 6 + Math.random() * 4,
+                        repeat: Infinity,
+                        delay: Math.random() * 3,
+                        ease: "easeOut"
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-4xl"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: 0.3 }}
+                    transition={{ duration: 1.5, delay: 0.5 }}
                   >
                     <motion.h2 
-                      className={`font-black mb-12 bg-gradient-to-r from-emerald-200 via-green-200 to-emerald-100 bg-clip-text text-transparent tracking-[-0.02em] ${
-                        isMobile ? "text-4xl" : "text-8xl"
+                      className={`font-light mb-8 text-gray-200 tracking-wide ${
+                        isMobile ? "text-2xl" : "text-4xl"
+                      }`}
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: '300'
+                      }}
+                      animate={{
+                        opacity: [0.7, 1, 0.7],
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      But what happens to the fees?
+                    </motion.h2>
+                    
+                    <motion.p
+                      className={`text-gray-400 font-light leading-relaxed max-w-2xl mx-auto ${
+                        isMobile ? "text-lg" : "text-xl"
+                      }`}
+                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.2, delay: 1.5 }}
+                    >
+                      Unlike traditional DEX platforms that simply distribute fees to liquidity providers,{" "}
+                      <span className="text-orange-300 font-medium">Sonic Red Dragon</span>{" "}
+                      transforms them into something extraordinary...
+                    </motion.p>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 5: Fee Breakdown – Cinematic Swell */}
+            {currentStep === 4 && (
+              <motion.div
+                key="fee-breakdown-cinematic"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-slate-900"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                {/* Cinematic Background Effects */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <motion.div
+                    className="absolute inset-0"
+                    style={{
+                      background: `
+                        radial-gradient(ellipse at 20% 80%, rgba(59,130,246,0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 40% 40%, rgba(34,197,94,0.04) 0%, transparent 50%)
+                      `,
+                    }}
+                    animate={{
+                      opacity: [0.3, 0.7, 0.3],
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </div>
+
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-7xl"}`}>
+                  <motion.div
+                    className={`mb-20 ${isMobile ? "mb-16" : ""}`}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.5, delay: 0.3 }}
+                  >
+                    <motion.h2 
+                      className={`font-black mb-16 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent tracking-tight ${
+                        isMobile ? "text-5xl" : "text-8xl"
                       }`}
                       style={{
                         fontFamily: 'Inter, system-ui, sans-serif',
                         fontWeight: '900',
-                        letterSpacing: '-0.03em'
+                        letterSpacing: '-0.04em'
                       }}
                       animate={{
                         textShadow: [
-                          "0 0 50px rgba(34, 197, 94, 0.4)",
-                          "0 0 100px rgba(34, 197, 94, 0.2)",
-                          "0 0 50px rgba(34, 197, 94, 0.4)"
+                          "0 0 60px rgba(255, 255, 255, 0.1)",
+                          "0 0 120px rgba(255, 255, 255, 0.05)",
+                          "0 0 60px rgba(255, 255, 255, 0.1)"
                         ]
                       }}
-                      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      FEE DISTRIBUTION
+                      FEE ARCHITECTURE
                     </motion.h2>
                   </motion.div>
 
-                  {/* Premium Fee Breakdown Cards */}
-                  <div className={`grid gap-10 ${isMobile ? "grid-cols-1 space-y-8" : "md:grid-cols-3"}`}>
-                    {/* Jackpot - Premium Glass Card */}
+                  {/* Modern Glass Morphism Cards */}
+                  <div className={`grid gap-8 ${isMobile ? "grid-cols-1" : "md:grid-cols-3"}`}>
+                    {/* Jackpot - Modern Glassmorphism */}
                     <motion.div
-                      className={`group relative overflow-hidden bg-gradient-to-br from-yellow-900/60 via-yellow-800/50 to-amber-900/60 backdrop-blur-xl border border-yellow-400/50 rounded-3xl shadow-2xl ${
-                        isMobile ? "p-8" : "p-10"
+                      className={`group relative overflow-hidden backdrop-blur-2xl bg-gradient-to-br from-amber-500/10 via-yellow-500/5 to-orange-500/10 border border-amber-400/20 rounded-2xl ${
+                        isMobile ? "p-6" : "p-8"
                       }`}
-                      initial={{ opacity: 0, y: 80, rotateY: -15 }}
-                      animate={{ opacity: 1, y: 0, rotateY: 0 }}
-                      transition={{ duration: 1.4, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      whileHover={{ scale: 1.03, y: -10, rotateY: 5 }}
+                      initial={{ opacity: 0, y: 60, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ y: -8, scale: 1.02 }}
                       style={{
-                        boxShadow: "0 30px 60px -12px rgba(251, 191, 36, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
                       }}
                     >
-                      {/* Enhanced background glow */}
+                      {/* Subtle animated background */}
                       <motion.div 
-                        className="absolute inset-0 bg-gradient-to-br from-yellow-400/25 via-transparent to-amber-400/25 rounded-3xl"
+                        className="absolute inset-0 bg-gradient-to-br from-amber-400/5 via-transparent to-yellow-400/5 rounded-2xl"
                         animate={{ 
-                          opacity: [0.3, 0.5, 0.3],
-                          scale: [1, 1.03, 1]
+                          opacity: [0.5, 0.8, 0.5],
                         }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                       />
                       
-                      <div className="relative z-10">
+                      {/* Interactive highlight on hover */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-yellow-400/10 rounded-2xl opacity-0 group-hover:opacity-100"
+                        transition={{ duration: 0.3 }}
+                      />
+                      
+                      <div className="relative z-10 text-center">
+                        {/* Icon */}
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-yellow-100 via-yellow-200 to-amber-100 bg-clip-text text-transparent ${
-                            isMobile ? "text-6xl" : "text-8xl"
+                          className={`w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full flex items-center justify-center ${
+                            isMobile ? "w-12 h-12 mb-4" : ""
+                          }`}
+                          animate={{ 
+                            rotate: [0, 360],
+                            scale: [1, 1.1, 1]
+                          }}
+                          transition={{ 
+                            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                          }}
+                        >
+                          <span className="text-2xl">🎰</span>
+                        </motion.div>
+
+                        {/* Percentage */}
+                        <motion.div 
+                          className={`font-bold text-amber-200 mb-3 ${
+                            isMobile ? "text-4xl" : "text-5xl"
                           }`}
                           style={{
                             fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '900',
-                            letterSpacing: '-0.03em'
+                            fontWeight: '700',
                           }}
                           animate={{ 
                             scale: [1, 1.05, 1]
@@ -683,61 +809,81 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           6.9%
                         </motion.div>
                         
-                        <div className={`w-20 h-[2px] bg-gradient-to-r from-yellow-300 to-amber-300 rounded-full my-8 ${
-                          isMobile ? "w-16" : ""
-                        }`} />
-                        
-                        <p className={`text-yellow-50 font-black tracking-[0.1em] uppercase ${
-                          isMobile ? "text-xl" : "text-2xl"
+                        {/* Title */}
+                        <h3 className={`text-amber-100 font-semibold mb-3 tracking-wide ${
+                          isMobile ? "text-lg" : "text-xl"
                         }`} style={{
                           fontFamily: 'Inter, system-ui, sans-serif',
-                          fontWeight: '800'
                         }}>
                           Jackpot Pool
-                        </p>
-                        <p className={`text-yellow-100/90 mt-6 leading-relaxed font-light tracking-[0.01em] ${
-                          isMobile ? "text-base" : "text-xl"
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className={`text-amber-200/80 leading-relaxed ${
+                          isMobile ? "text-sm" : "text-base"
                         }`} style={{
                           fontFamily: 'Inter, system-ui, sans-serif',
                           fontWeight: '300'
                         }}>
-                          Every swap becomes a lottery ticket
+                          Every swap becomes a lottery ticket with instant win potential
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* Liquidity - Premium Glass Card */}
+                    {/* Liquidity - Modern Glassmorphism */}
                     <motion.div
-                      className={`group relative overflow-hidden bg-gradient-to-br from-blue-900/60 via-blue-800/50 to-cyan-900/60 backdrop-blur-xl border border-blue-400/50 rounded-3xl shadow-2xl ${
-                        isMobile ? "p-8" : "p-10"
+                      className={`group relative overflow-hidden backdrop-blur-2xl bg-gradient-to-br from-blue-500/10 via-cyan-500/5 to-blue-500/10 border border-blue-400/20 rounded-2xl ${
+                        isMobile ? "p-6" : "p-8"
                       }`}
-                      initial={{ opacity: 0, y: 80 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1.4, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                      whileHover={{ scale: 1.03, y: -10 }}
+                      initial={{ opacity: 0, y: 60, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ y: -8, scale: 1.02 }}
                       style={{
-                        boxShadow: "0 30px 60px -12px rgba(59, 130, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
                       }}
                     >
-                      {/* Enhanced background glow */}
+                      {/* Subtle animated background */}
                       <motion.div 
-                        className="absolute inset-0 bg-gradient-to-br from-blue-400/25 via-transparent to-cyan-400/25 rounded-3xl"
+                        className="absolute inset-0 bg-gradient-to-br from-blue-400/5 via-transparent to-cyan-400/5 rounded-2xl"
                         animate={{ 
-                          opacity: [0.3, 0.5, 0.3],
-                          scale: [1, 1.03, 1]
+                          opacity: [0.5, 0.8, 0.5],
                         }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                       />
                       
-                      <div className="relative z-10">
+                      {/* Interactive highlight on hover */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-cyan-400/10 rounded-2xl opacity-0 group-hover:opacity-100"
+                        transition={{ duration: 0.3 }}
+                      />
+                      
+                      <div className="relative z-10 text-center">
+                        {/* Icon */}
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-blue-100 via-blue-200 to-cyan-100 bg-clip-text text-transparent ${
-                            isMobile ? "text-6xl" : "text-8xl"
+                          className={`w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex items-center justify-center ${
+                            isMobile ? "w-12 h-12 mb-4" : ""
+                          }`}
+                          animate={{ 
+                            rotate: [0, 360],
+                            scale: [1, 1.1, 1]
+                          }}
+                          transition={{ 
+                            rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 4.5, repeat: Infinity, ease: "easeInOut" }
+                          }}
+                        >
+                          <span className="text-2xl">💧</span>
+                        </motion.div>
+
+                        {/* Percentage */}
+                        <motion.div 
+                          className={`font-bold text-blue-200 mb-3 ${
+                            isMobile ? "text-4xl" : "text-5xl"
                           }`}
                           style={{
                             fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '900',
-                            letterSpacing: '-0.03em'
+                            fontWeight: '700',
                           }}
                           animate={{ 
                             scale: [1, 1.05, 1]
@@ -747,61 +893,81 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           2.41%
                         </motion.div>
                         
-                        <div className={`w-20 h-[2px] bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full my-8 ${
-                          isMobile ? "w-16" : ""
-                        }`} />
-                        
-                        <p className={`text-blue-50 font-black tracking-[0.1em] uppercase ${
-                          isMobile ? "text-xl" : "text-2xl"
+                        {/* Title */}
+                        <h3 className={`text-blue-100 font-semibold mb-3 tracking-wide ${
+                          isMobile ? "text-lg" : "text-xl"
                         }`} style={{
                           fontFamily: 'Inter, system-ui, sans-serif',
-                          fontWeight: '800'
                         }}>
                           Liquidity Pool
-                        </p>
-                        <p className={`text-blue-100/90 mt-6 leading-relaxed font-light tracking-[0.01em] ${
-                          isMobile ? "text-base" : "text-xl"
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className={`text-blue-200/80 leading-relaxed ${
+                          isMobile ? "text-sm" : "text-base"
                         }`} style={{
                           fontFamily: 'Inter, system-ui, sans-serif',
                           fontWeight: '300'
                         }}>
-                          Maintains stable trading pairs
+                          Maintains stable trading pairs and deep market liquidity
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* Burn - Premium Glass Card */}
+                    {/* Burn - Modern Glassmorphism */}
                     <motion.div
-                      className={`group relative overflow-hidden bg-gradient-to-br from-orange-900/60 via-red-900/50 to-orange-900/60 backdrop-blur-xl border border-orange-400/50 rounded-3xl shadow-2xl ${
-                        isMobile ? "p-8" : "p-10"
+                      className={`group relative overflow-hidden backdrop-blur-2xl bg-gradient-to-br from-orange-500/10 via-red-500/5 to-orange-500/10 border border-orange-400/20 rounded-2xl ${
+                        isMobile ? "p-6" : "p-8"
                       }`}
-                      initial={{ opacity: 0, y: 80, rotateY: 15 }}
-                      animate={{ opacity: 1, y: 0, rotateY: 0 }}
-                      transition={{ duration: 1.4, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                      whileHover={{ scale: 1.03, y: -10, rotateY: -5 }}
+                      initial={{ opacity: 0, y: 60, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ y: -8, scale: 1.02 }}
                       style={{
-                        boxShadow: "0 30px 60px -12px rgba(251, 146, 60, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
                       }}
                     >
-                      {/* Enhanced background glow */}
+                      {/* Subtle animated background */}
                       <motion.div 
-                        className="absolute inset-0 bg-gradient-to-br from-orange-400/25 via-transparent to-red-400/25 rounded-3xl"
+                        className="absolute inset-0 bg-gradient-to-br from-orange-400/5 via-transparent to-red-400/5 rounded-2xl"
                         animate={{ 
-                          opacity: [0.3, 0.5, 0.3],
-                          scale: [1, 1.03, 1]
+                          opacity: [0.5, 0.8, 0.5],
                         }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
                       />
                       
-                      <div className="relative z-10">
+                      {/* Interactive highlight on hover */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-red-400/10 rounded-2xl opacity-0 group-hover:opacity-100"
+                        transition={{ duration: 0.3 }}
+                      />
+                      
+                      <div className="relative z-10 text-center">
+                        {/* Icon */}
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-orange-100 via-orange-200 to-red-100 bg-clip-text text-transparent ${
-                            isMobile ? "text-6xl" : "text-8xl"
+                          className={`w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center ${
+                            isMobile ? "w-12 h-12 mb-4" : ""
+                          }`}
+                          animate={{ 
+                            rotate: [0, 360],
+                            scale: [1, 1.1, 1]
+                          }}
+                          transition={{ 
+                            rotate: { duration: 30, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+                          }}
+                        >
+                          <span className="text-2xl">🔥</span>
+                        </motion.div>
+
+                        {/* Percentage */}
+                        <motion.div 
+                          className={`font-bold text-orange-200 mb-3 ${
+                            isMobile ? "text-4xl" : "text-5xl"
                           }`}
                           style={{
                             fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '900',
-                            letterSpacing: '-0.03em'
+                            fontWeight: '700',
                           }}
                           animate={{ 
                             scale: [1, 1.05, 1]
@@ -811,29 +977,83 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           0.69%
                         </motion.div>
                         
-                        <div className={`w-20 h-[2px] bg-gradient-to-r from-orange-300 to-red-300 rounded-full my-8 ${
-                          isMobile ? "w-16" : ""
-                        }`} />
-                        
-                        <p className={`text-orange-50 font-black tracking-[0.1em] uppercase ${
-                          isMobile ? "text-xl" : "text-2xl"
+                        {/* Title */}
+                        <h3 className={`text-orange-100 font-semibold mb-3 tracking-wide ${
+                          isMobile ? "text-lg" : "text-xl"
                         }`} style={{
                           fontFamily: 'Inter, system-ui, sans-serif',
-                          fontWeight: '800'
                         }}>
                           Token Burn
-                        </p>
-                        <p className={`text-orange-100/90 mt-6 leading-relaxed font-light tracking-[0.01em] ${
-                          isMobile ? "text-base" : "text-xl"
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className={`text-orange-200/80 leading-relaxed ${
+                          isMobile ? "text-sm" : "text-base"
                         }`} style={{
                           fontFamily: 'Inter, system-ui, sans-serif',
                           fontWeight: '300'
                         }}>
-                          Deflationary mechanism
+                          Deflationary mechanism reducing total supply permanently
                         </p>
                       </div>
                     </motion.div>
                   </div>
+
+                  {/* Interactive Flow Visualization */}
+                  <motion.div
+                    className={`mt-20 ${isMobile ? "mt-16" : ""}`}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.5, delay: 1 }}
+                  >
+                    <motion.div
+                      className="relative h-32 w-full max-w-4xl mx-auto"
+                      style={{ perspective: "1000px" }}
+                    >
+                      {/* Animated flow lines */}
+                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 128">
+                        <motion.path
+                          d="M100,64 Q200,20 300,64 T500,64 T700,64"
+                          stroke="url(#flow-gradient)"
+                          strokeWidth="2"
+                          fill="none"
+                          strokeDasharray="8,12"
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          animate={{ 
+                            pathLength: 1, 
+                            opacity: [0, 1, 0.7],
+                            strokeDashoffset: [0, -40]
+                          }}
+                          transition={{ 
+                            pathLength: { duration: 3, delay: 1.5, ease: "easeInOut" },
+                            opacity: { duration: 2, delay: 1.5 },
+                            strokeDashoffset: { duration: 4, repeat: Infinity, ease: "linear" }
+                          }}
+                        />
+                        <defs>
+                          <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.6)" />
+                            <stop offset="33%" stopColor="rgba(251, 191, 36, 0.8)" />
+                            <stop offset="66%" stopColor="rgba(34, 197, 94, 0.6)" />
+                            <stop offset="100%" stopColor="rgba(239, 68, 68, 0.6)" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                      
+                      <motion.div
+                        className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2.5 }}
+                      >
+                        <p className={`text-gray-400 text-center font-light ${
+                          isMobile ? "text-sm" : "text-base"
+                        }`} style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                          Automated fee distribution creates sustainable tokenomics
+                        </p>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </motion.div>
             )}
