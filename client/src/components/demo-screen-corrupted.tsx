@@ -1334,61 +1334,58 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </div>
                     </motion.div>
                   </div>
+                </div>
+              </motion.div>
+            )}
 
-                  {/* Interactive Flow Visualization */}
+            {/* Step 5: Fee Breakdown */}
+            {currentStep === 4 && (
+              <motion.div
+                key="fee-breakdown"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-5xl"}`}>
                   <motion.div
-                    className={`mt-20 ${isMobile ? "mt-16" : ""}`}
-                    initial={{ opacity: 0, y: 40 }}
+                    className={`mb-16 ${isMobile ? "mb-12" : ""}`}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
                   >
-                    <motion.div
-                      className="relative h-32 w-full max-w-4xl mx-auto"
-                      style={{ perspective: "1000px" }}
-                    >
-                      {/* Animated flow lines */}
-                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 128">
-                        <motion.path
-                          d="M100,64 Q200,20 300,64 T500,64 T700,64"
-                          stroke="url(#flow-gradient)"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeDasharray="8,12"
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          animate={{ 
-                            pathLength: 1, 
-                            opacity: [0, 1, 0.7],
-                            strokeDashoffset: [0, -40]
-                          }}
-                          transition={{ 
-                            pathLength: { duration: 3, delay: 1.5, ease: "easeInOut" },
-                            opacity: { duration: 2, delay: 1.5 },
-                            strokeDashoffset: { duration: 4, repeat: Infinity, ease: "linear" }
-                          }}
-                        />
-                        <defs>
-                          <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.6)" />
-                            <stop offset="33%" stopColor="rgba(251, 191, 36, 0.8)" />
-                            <stop offset="66%" stopColor="rgba(34, 197, 94, 0.6)" />
-                            <stop offset="100%" stopColor="rgba(239, 68, 68, 0.6)" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                    <h2 className={`font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-8 ${
+                      isMobile ? "text-3xl" : "text-5xl"
+                    }`} style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                      Fee Breakdown
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                      <motion.div
+                        className="bg-gradient-to-br from-yellow-400/10 to-orange-500/10 border border-yellow-400/20 rounded-2xl p-6"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <div className="text-yellow-400 text-4xl font-bold">6.9%</div>
+                        <div className="text-yellow-300 text-lg font-semibold mt-2">Jackpot</div>
+                      </motion.div>
                       
                       <motion.div
-                        className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 2.5 }}
+                        className="bg-gradient-to-br from-blue-400/10 to-cyan-500/10 border border-blue-400/20 rounded-2xl p-6"
+                        whileHover={{ scale: 1.05 }}
                       >
-                        <p className={`text-gray-400 text-center font-light ${
-                          isMobile ? "text-sm" : "text-base"
-                        }`} style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
-                          Automated fee distribution creates sustainable tokenomics
-                        </p>
+                        <div className="text-blue-400 text-4xl font-bold">2.41%</div>
+                        <div className="text-blue-300 text-lg font-semibold mt-2">Liquidity</div>
                       </motion.div>
-                    </motion.div>
+                      
+                      <motion.div
+                        className="bg-gradient-to-br from-red-400/10 to-pink-500/10 border border-red-400/20 rounded-2xl p-6"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <div className="text-red-400 text-4xl font-bold">0.69%</div>
+                        <div className="text-red-300 text-lg font-semibold mt-2">Burn</div>
+                      </motion.div>
+                    </div>
                   </motion.div>
                 </div>
               </motion.div>
