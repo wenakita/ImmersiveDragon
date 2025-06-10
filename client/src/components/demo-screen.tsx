@@ -978,9 +978,9 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 rounded-full p-1">
                           <img
-                            src={IPFS_ASSETS.CHAINLINK.BLUE_LOGO}
+                            src={getAssetUrl('CHAINLINK.WHITE_LOGO')}
                             alt="Chainlink"
-                            className="w-full h-full rounded-full object-cover"
+                            className="w-full h-full rounded-full object-cover bg-blue-900"
                           />
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-400/30 to-purple-500/30 rounded-full animate-pulse" />
