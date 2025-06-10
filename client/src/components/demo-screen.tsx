@@ -704,8 +704,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                                    [-90, -45, 0, 180],
                         }}
                         transition={{
-                          duration: loopIndex === 0 ? 6 : 7 + loopIndex,
-                          times: loopIndex === 0 ? [0, 0.4, 0.6, 1] : [0, 0.35, 0.65, 1],
+                          duration: 7.5,
+                          times: [0, 0.35, 0.6, 1],
                           ease: loopIndex === 0 ? 
                             // First loop: musical cubic bezier for dramatic effect
                             [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.95, 0.05, 0.795, 0.035]] :
@@ -714,12 +714,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.9, 0.03, 0.69, 0.22]] :
                             // Third loop: sharp accent timing
                             [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.87, 0, 0.13, 1]],
-                          delay: loopIndex * 4,
+                          delay: loopIndex * 2.5,
                           repeat: Infinity,
                         }}
                         initial={{
-                          x: loopIndex === 0 ? -600 : loopIndex === 1 ? -500 : -700,
-                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? -150 : 200,
+                          x: -600,
+                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? -120 : 150,
                           scale: loopIndex === 0 ? 0.4 : loopIndex === 1 ? 0.3 : 0.5,
                           opacity: 0,
                         }}
@@ -755,8 +755,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                                    [90, 45, 0, -180],
                         }}
                         transition={{
-                          duration: loopIndex === 0 ? 6 : 7 + loopIndex,
-                          times: loopIndex === 0 ? [0, 0.4, 0.6, 1] : [0, 0.35, 0.65, 1],
+                          duration: 7.5,
+                          times: [0, 0.35, 0.6, 1],
                           ease: loopIndex === 0 ? 
                             // First loop: musical cubic bezier for dramatic effect
                             [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.95, 0.05, 0.795, 0.035]] :
@@ -765,12 +765,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.9, 0.03, 0.69, 0.22]] :
                             // Third loop: sharp accent timing
                             [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.87, 0, 0.13, 1]],
-                          delay: loopIndex * 4,
+                          delay: loopIndex * 2.5,
                           repeat: Infinity,
                         }}
                         initial={{
-                          x: loopIndex === 0 ? 600 : loopIndex === 1 ? 500 : 700,
-                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? 150 : -200,
+                          x: 600,
+                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? 120 : -150,
                           scale: loopIndex === 0 ? 0.4 : loopIndex === 1 ? 0.3 : 0.5,
                           opacity: 0,
                         }}
@@ -878,10 +878,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         boxShadow: "0 0 30px rgba(234,179,8,0.2)",
                       }}
                       animate={{
-                        x: loopIndex === 0 ? [-600, -150, 150, 600] :
-                           [-800, 200, -200, 800],
-                        y: loopIndex === 0 ? [100, -50, 50, -100] :
-                           [-150, 75, -75, 150],
+                        x: [-600, -50, 0, 600],
+                        y: loopIndex === 0 ? [0, -10, 0, -100] :
+                           [-120, -15, 0, 150],
                         scale: [0.2, 0.8, 0.9, 0.6],
                         opacity: [0, 0.6, 0.6, 0],
                         rotateZ: loopIndex === 0 ? [-120, 60, 240, 420] :
@@ -917,10 +916,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         boxShadow: "0 0 30px rgba(251,191,36,0.2)",
                       }}
                       animate={{
-                        x: loopIndex === 0 ? [600, 150, -150, -600] :
-                           [800, -200, 200, -800],
-                        y: loopIndex === 0 ? [-100, 50, -50, 100] :
-                           [150, -75, 75, -150],
+                        x: [600, 50, 0, -600],
+                        y: loopIndex === 0 ? [0, 10, 0, 100] :
+                           [120, 15, 0, -150],
                         scale: [0.2, 0.8, 0.9, 0.6],
                         opacity: [0, 0.6, 0.6, 0],
                         rotateZ: loopIndex === 0 ? [120, -60, -240, -420] :
