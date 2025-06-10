@@ -982,7 +982,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
 
                   <motion.h2
-                    className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-amber-400 relative z-10 tracking-wide mb-6 sm:mb-8 px-4"
+                    className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold relative z-10 tracking-wide mb-6 sm:mb-8 px-4"
                     initial={{ scale: 0.1, y: 300, opacity: 0, rotateX: 180 }}
                     animate={{
                       scale: [0.1, 0.6, 1.3, 1],
@@ -997,13 +997,27 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       delay: 0.3,
                     }}
                     style={{
-                      filter:
-                        "drop-shadow(0 0 100px rgba(251,191,36,1)) drop-shadow(0 0 150px rgba(251,191,36,0.8))",
                       fontWeight: 900,
-                      textShadow: "0 0 80px rgba(251,191,36,1)",
                     }}
                   >
-                    WIN THE JACKPOT!
+                    <span 
+                      className="text-white"
+                      style={{
+                        filter: "drop-shadow(0 0 60px rgba(255,255,255,0.8))",
+                        textShadow: "0 0 40px rgba(255,255,255,0.6)",
+                      }}
+                    >
+                      WIN THE{" "}
+                    </span>
+                    <span 
+                      className="text-amber-400"
+                      style={{
+                        filter: "drop-shadow(0 0 100px rgba(251,191,36,1)) drop-shadow(0 0 150px rgba(251,191,36,0.8))",
+                        textShadow: "0 0 80px rgba(251,191,36,1)",
+                      }}
+                    >
+                      JACKPOT!
+                    </span>
                   </motion.h2>
 
                   <motion.div
