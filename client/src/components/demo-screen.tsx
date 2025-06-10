@@ -1391,22 +1391,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       YOUR 10% FEE BECOMES
                     </motion.h2>
 
-                    <motion.p
-                      className="text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 1,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 0.8,
-                      }}
-                    >
-                      Unlike traditional DEXs that route fees to farmers,
-                      <span className="text-amber-400 font-medium">
-                        {" "}
-                        Sonic Red Dragon transforms them into opportunities
-                      </span>
-                    </motion.p>
+
                   </div>
 
                   <div className="space-y-12">
