@@ -752,94 +752,150 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </p>
                   </motion.div>
 
-                  {/* Premium LayerZero Features Card */}
-                  <motion.div
-                    className={`relative overflow-hidden bg-gradient-to-br from-cyan-900/60 via-blue-900/50 to-purple-900/60 backdrop-blur-xl border border-cyan-400/50 rounded-3xl shadow-2xl ${
-                      isMobile ? "p-8 mx-2" : "p-12"
-                    }`}
-                    initial={{ opacity: 0, scale: 0.9, y: 60 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    style={{
-                      boxShadow: "0 30px 60px -12px rgba(34, 211, 238, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
-                    }}
-                  >
-                    {/* Enhanced background glow */}
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-br from-cyan-400/25 via-blue-500/15 to-purple-500/25 rounded-3xl"
-                      animate={{ 
-                        opacity: [0.4, 0.7, 0.4],
-                        scale: [1, 1.02, 1]
+                  {/* Elegant Floating Cards Design */}
+                  <div className="relative h-96 w-full max-w-6xl mx-auto">
+                    {/* Floating Cross-Chain Card */}
+                    <motion.div
+                      className={`absolute ${isMobile ? "top-4 left-4 right-1/2" : "top-8 left-16 w-80"} z-20`}
+                      initial={{ opacity: 0, y: -100, rotateX: 45, scale: 0.8 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                      transition={{ duration: 2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ 
+                        y: -25, 
+                        rotateY: 12,
+                        scale: 1.08,
+                        transition: { duration: 0.5, ease: "easeOut" }
                       }}
-                      transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    
-                    <div className="relative z-10">
-                      <div className={`grid gap-10 ${isMobile ? "grid-cols-1 space-y-8" : "md:grid-cols-2"}`}>
-                        {/* Cross-Chain Messaging Feature */}
+                    >
+                      <div className="relative overflow-hidden bg-gradient-to-br from-cyan-900/90 via-blue-900/80 to-cyan-800/90 backdrop-blur-3xl border border-cyan-300/40 rounded-3xl shadow-2xl p-8" style={{
+                        boxShadow: "0 30px 60px -12px rgba(34, 211, 238, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+                      }}>
                         <motion.div 
-                          className="text-center p-8 rounded-2xl bg-gradient-to-br from-cyan-800/40 to-blue-800/40 border border-cyan-400/30"
-                          initial={{ opacity: 0, x: -60 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 1.2, delay: 1.2 }}
-                          whileHover={{ scale: 1.05, y: -5 }}
-                        >
+                          className="absolute inset-0 bg-gradient-conic from-cyan-400/30 via-blue-500/20 to-cyan-400/30 rounded-3xl"
+                          animate={{ 
+                            rotate: [0, 360],
+                            opacity: [0.2, 0.5, 0.2]
+                          }}
+                          transition={{ 
+                            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                            opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                          }}
+                        />
+                        <div className="relative z-10">
                           <motion.div 
-                            className={`font-black text-cyan-100 mb-6 tracking-[0.1em] uppercase ${
-                              isMobile ? "text-xl" : "text-2xl"
+                            className={`font-bold text-cyan-100 mb-4 tracking-wide ${
+                              isMobile ? "text-lg" : "text-2xl"
                             }`}
-                            style={{
-                              fontFamily: 'Inter, system-ui, sans-serif',
-                              fontWeight: '800'
+                            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                            animate={{ 
+                              textShadow: [
+                                "0 0 20px rgba(34, 211, 238, 0.5)",
+                                "0 0 40px rgba(34, 211, 238, 0.8)",
+                                "0 0 20px rgba(34, 211, 238, 0.5)"
+                              ]
                             }}
-                            animate={{ scale: [1, 1.03, 1] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            transition={{ duration: 3, repeat: Infinity }}
                           >
                             Cross-Chain Messaging
                           </motion.div>
-                          <p className={`text-cyan-200/90 leading-relaxed font-light tracking-[0.01em] ${
-                            isMobile ? "text-base" : "text-xl"
-                          }`} style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '300'
-                          }}>
-                            Connect multiple blockchains seamlessly
+                          <p className={`text-cyan-200/90 leading-relaxed font-light ${
+                            isMobile ? "text-sm" : "text-base"
+                          }`} style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                            Secure protocols enabling seamless multi-chain communication
                           </p>
-                        </motion.div>
-
-                        {/* Universal Liquidity Feature */}
-                        <motion.div 
-                          className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-800/40 to-purple-800/40 border border-blue-400/30"
-                          initial={{ opacity: 0, x: 60 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 1.2, delay: 1.4 }}
-                          whileHover={{ scale: 1.05, y: -5 }}
-                        >
-                          <motion.div 
-                            className={`font-black text-blue-100 mb-6 tracking-[0.1em] uppercase ${
-                              isMobile ? "text-xl" : "text-2xl"
-                            }`}
-                            style={{
-                              fontFamily: 'Inter, system-ui, sans-serif',
-                              fontWeight: '800'
-                            }}
-                            animate={{ scale: [1, 1.03, 1] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                          >
-                            Universal Liquidity
-                          </motion.div>
-                          <p className={`text-blue-200/90 leading-relaxed font-light tracking-[0.01em] ${
-                            isMobile ? "text-base" : "text-xl"
-                          }`} style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '300'
-                          }}>
-                            Access liquidity across all chains
-                          </p>
-                        </motion.div>
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+
+                    {/* Floating Universal Liquidity Card */}
+                    <motion.div
+                      className={`absolute ${isMobile ? "bottom-4 right-4 left-1/2" : "bottom-8 right-16 w-80"} z-20`}
+                      initial={{ opacity: 0, y: 100, rotateX: -45, scale: 0.8 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                      transition={{ duration: 2, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ 
+                        y: -25, 
+                        rotateY: -12,
+                        scale: 1.08,
+                        transition: { duration: 0.5, ease: "easeOut" }
+                      }}
+                    >
+                      <div className="relative overflow-hidden bg-gradient-to-br from-purple-900/90 via-blue-900/80 to-purple-800/90 backdrop-blur-3xl border border-purple-300/40 rounded-3xl shadow-2xl p-8" style={{
+                        boxShadow: "0 30px 60px -12px rgba(147, 51, 234, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+                      }}>
+                        <motion.div 
+                          className="absolute inset-0 bg-gradient-conic from-purple-400/30 via-blue-500/20 to-purple-400/30 rounded-3xl"
+                          animate={{ 
+                            rotate: [360, 0],
+                            opacity: [0.2, 0.5, 0.2]
+                          }}
+                          transition={{ 
+                            rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                            opacity: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }
+                          }}
+                        />
+                        <div className="relative z-10">
+                          <motion.div 
+                            className={`font-bold text-purple-100 mb-4 tracking-wide ${
+                              isMobile ? "text-lg" : "text-2xl"
+                            }`}
+                            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                            animate={{ 
+                              textShadow: [
+                                "0 0 20px rgba(147, 51, 234, 0.5)",
+                                "0 0 40px rgba(147, 51, 234, 0.8)",
+                                "0 0 20px rgba(147, 51, 234, 0.5)"
+                              ]
+                            }}
+                            transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                          >
+                            Universal Interoperability
+                          </motion.div>
+                          <p className={`text-purple-200/90 leading-relaxed font-light ${
+                            isMobile ? "text-sm" : "text-base"
+                          }`} style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                            Universal protocol compatibility across all blockchain networks
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Dynamic Connection Lines */}
+                    <motion.div 
+                      className="absolute inset-0 pointer-events-none"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2.5, duration: 1.5 }}
+                    >
+                      <svg className="w-full h-full" viewBox="0 0 800 400">
+                        <motion.path
+                          d="M160,120 Q400,200 640,280"
+                          stroke="url(#layerzero-gradient)"
+                          strokeWidth="3"
+                          fill="none"
+                          strokeDasharray="8,12"
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          animate={{ 
+                            pathLength: 1, 
+                            opacity: [0, 1, 0.7],
+                            strokeDashoffset: [0, -20]
+                          }}
+                          transition={{ 
+                            pathLength: { duration: 2.5, delay: 3, ease: "easeInOut" },
+                            opacity: { duration: 2, delay: 3 },
+                            strokeDashoffset: { duration: 3, repeat: Infinity, ease: "linear" }
+                          }}
+                        />
+                        <defs>
+                          <linearGradient id="layerzero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="rgba(34, 211, 238, 0.8)" />
+                            <stop offset="50%" stopColor="rgba(59, 130, 246, 0.6)" />
+                            <stop offset="100%" stopColor="rgba(147, 51, 234, 0.8)" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -952,95 +1008,205 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
                     />
                     
-                    <div className="relative z-10">
+                    {/* Elegant Chainlink VRF Floating Cards */}
+                    <div className="relative h-96 w-full max-w-6xl mx-auto">
+                      {/* Floating Verifiable Randomness Card */}
                       <motion.div
-                        className={`font-black text-purple-100 mb-12 tracking-[0.1em] uppercase ${
-                          isMobile ? "text-2xl" : "text-3xl"
-                        }`}
-                        style={{
-                          fontFamily: 'Inter, system-ui, sans-serif',
-                          fontWeight: '800'
+                        className={`absolute ${isMobile ? "top-4 left-4 right-1/2" : "top-8 left-16 w-80"} z-20`}
+                        initial={{ opacity: 0, y: -120, rotateX: 60, scale: 0.7 }}
+                        animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                        transition={{ duration: 2.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        whileHover={{ 
+                          y: -30, 
+                          rotateY: 15,
+                          scale: 1.1,
+                          transition: { duration: 0.6, ease: "easeOut" }
                         }}
-                        animate={{ scale: [1, 1.03, 1] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        Decentralized Lottery
+                        <div className="relative overflow-hidden bg-gradient-to-br from-purple-900/95 via-purple-800/85 to-purple-900/95 backdrop-blur-3xl border border-purple-300/50 rounded-3xl shadow-2xl p-8" style={{
+                          boxShadow: "0 35px 70px -12px rgba(147, 51, 234, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25)"
+                        }}>
+                          <motion.div 
+                            className="absolute inset-0 bg-gradient-conic from-purple-400/40 via-pink-500/25 to-purple-400/40 rounded-3xl"
+                            animate={{ 
+                              rotate: [0, 360],
+                              opacity: [0.3, 0.7, 0.3],
+                              scale: [1, 1.05, 1]
+                            }}
+                            transition={{ 
+                              rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                              opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+                            }}
+                          />
+                          <div className="relative z-10">
+                            <motion.div 
+                              className={`font-bold text-purple-100 mb-4 tracking-wide ${
+                                isMobile ? "text-lg" : "text-2xl"
+                              }`}
+                              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                              animate={{ 
+                                textShadow: [
+                                  "0 0 25px rgba(147, 51, 234, 0.6)",
+                                  "0 0 50px rgba(147, 51, 234, 0.9)",
+                                  "0 0 25px rgba(147, 51, 234, 0.6)"
+                                ]
+                              }}
+                              transition={{ duration: 3.5, repeat: Infinity }}
+                            >
+                              Verifiable Randomness
+                            </motion.div>
+                            <p className={`text-purple-200/95 leading-relaxed font-light ${
+                              isMobile ? "text-sm" : "text-base"
+                            }`} style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                              Cryptographically secure random number generation with mathematical proof
+                            </p>
+                          </div>
+                        </div>
                       </motion.div>
-                      
-                      <div className={`grid gap-8 ${isMobile ? "grid-cols-1 space-y-6" : "md:grid-cols-2"}`}>
-                        <motion.div 
-                          className="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-800/40 to-blue-800/40 border border-purple-400/30"
-                          initial={{ opacity: 0, rotate: -5 }}
-                          animate={{ opacity: 1, rotate: 0 }}
-                          transition={{ duration: 1.2, delay: 1.2 }}
-                          whileHover={{ scale: 1.05, rotate: 2 }}
-                        >
-                          <p className={`text-purple-100 font-black mb-4 tracking-[0.1em] uppercase ${
-                            isMobile ? "text-lg" : "text-xl"
-                          }`} style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '800'
-                          }}>
-                            Provably Fair
-                          </p>
-                          <p className={`text-purple-200/90 font-light tracking-[0.01em] ${
-                            isMobile ? "text-sm" : "text-base"
-                          }`} style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '300'
-                          }}>
-                            Cryptographically secure randomness
-                          </p>
-                        </motion.div>
 
-                        <motion.div 
-                          className="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-800/40 to-pink-800/40 border border-pink-400/30"
-                          initial={{ opacity: 0, rotate: 5 }}
-                          animate={{ opacity: 1, rotate: 0 }}
-                          transition={{ duration: 1.2, delay: 1.4 }}
-                          whileHover={{ scale: 1.05, rotate: -2 }}
-                        >
-                          <p className={`text-pink-100 font-black mb-4 tracking-[0.1em] uppercase ${
-                            isMobile ? "text-lg" : "text-xl"
-                          }`} style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '800'
-                          }}>
-                            Instant Payouts
-                          </p>
-                          <p className={`text-pink-200/90 font-light tracking-[0.01em] ${
-                            isMobile ? "text-sm" : "text-base"
-                          }`} style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontWeight: '300'
-                          }}>
-                            Automated smart contract execution
-                          </p>
-                        </motion.div>
-                      </div>
-
-                      {/* Lottery Animation */}
+                      {/* Floating Instant Payouts Card */}
                       <motion.div
-                        className="mt-12 flex justify-center"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 1.6 }}
+                        className={`absolute ${isMobile ? "bottom-4 right-4 left-1/2" : "bottom-8 right-16 w-80"} z-20`}
+                        initial={{ opacity: 0, y: 120, rotateX: -60, scale: 0.7 }}
+                        animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                        transition={{ duration: 2.2, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
+                        whileHover={{ 
+                          y: -30, 
+                          rotateY: -15,
+                          scale: 1.1,
+                          transition: { duration: 0.6, ease: "easeOut" }
+                        }}
+                      >
+                        <div className="relative overflow-hidden bg-gradient-to-br from-pink-900/95 via-purple-900/85 to-pink-800/95 backdrop-blur-3xl border border-pink-300/50 rounded-3xl shadow-2xl p-8" style={{
+                          boxShadow: "0 35px 70px -12px rgba(236, 72, 153, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25)"
+                        }}>
+                          <motion.div 
+                            className="absolute inset-0 bg-gradient-conic from-pink-400/40 via-purple-500/25 to-pink-400/40 rounded-3xl"
+                            animate={{ 
+                              rotate: [360, 0],
+                              opacity: [0.3, 0.7, 0.3],
+                              scale: [1, 1.05, 1]
+                            }}
+                            transition={{ 
+                              rotate: { duration: 18, repeat: Infinity, ease: "linear" },
+                              opacity: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 },
+                              scale: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+                            }}
+                          />
+                          <div className="relative z-10">
+                            <motion.div 
+                              className={`font-bold text-pink-100 mb-4 tracking-wide ${
+                                isMobile ? "text-lg" : "text-2xl"
+                              }`}
+                              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                              animate={{ 
+                                textShadow: [
+                                  "0 0 25px rgba(236, 72, 153, 0.6)",
+                                  "0 0 50px rgba(236, 72, 153, 0.9)",
+                                  "0 0 25px rgba(236, 72, 153, 0.6)"
+                                ]
+                              }}
+                              transition={{ duration: 3.5, repeat: Infinity, delay: 0.7 }}
+                            >
+                              Instant Payouts
+                            </motion.div>
+                            <p className={`text-pink-200/95 leading-relaxed font-light ${
+                              isMobile ? "text-sm" : "text-base"
+                            }`} style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                              Automated smart contract execution with immediate reward distribution
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Central Lottery Animation */}
+                      <motion.div
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.5, delay: 2.2, ease: "easeOut" }}
                       >
                         <motion.div
-                          className={`bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-black ${
-                            isMobile ? "w-24 h-24 text-lg" : "w-32 h-32 text-2xl"
+                          className={`bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white font-black shadow-2xl ${
+                            isMobile ? "w-20 h-20 text-sm" : "w-28 h-28 text-lg"
                           }`}
                           animate={{
                             rotate: [0, 360],
-                            scale: [1, 1.1, 1],
+                            scale: [1, 1.15, 1],
+                            boxShadow: [
+                              "0 0 40px rgba(147, 51, 234, 0.6)",
+                              "0 0 80px rgba(236, 72, 153, 0.8)",
+                              "0 0 40px rgba(147, 51, 234, 0.6)"
+                            ]
                           }}
                           transition={{
-                            rotate: { duration: 3, repeat: Infinity, ease: "linear" },
-                            scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                            rotate: { duration: 4, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 2.5, repeat: Infinity, ease: "easeInOut" },
+                            boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                           }}
                         >
                           <AnimatedCounter showGrowthIndicator={false} />
                         </motion.div>
+                      </motion.div>
+
+                      {/* Dynamic VRF Connection Lines */}
+                      <motion.div 
+                        className="absolute inset-0 pointer-events-none"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2.8, duration: 1.5 }}
+                      >
+                        <svg className="w-full h-full" viewBox="0 0 800 400">
+                          <motion.path
+                            d="M160,120 Q400,50 640,280"
+                            stroke="url(#chainlink-gradient)"
+                            strokeWidth="3"
+                            fill="none"
+                            strokeDasharray="10,15"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            animate={{ 
+                              pathLength: 1, 
+                              opacity: [0, 1, 0.8],
+                              strokeDashoffset: [0, -25]
+                            }}
+                            transition={{ 
+                              pathLength: { duration: 3, delay: 3.2, ease: "easeInOut" },
+                              opacity: { duration: 2, delay: 3.2 },
+                              strokeDashoffset: { duration: 4, repeat: Infinity, ease: "linear" }
+                            }}
+                          />
+                          <motion.path
+                            d="M640,120 Q400,350 160,280"
+                            stroke="url(#chainlink-gradient2)"
+                            strokeWidth="3"
+                            fill="none"
+                            strokeDasharray="10,15"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            animate={{ 
+                              pathLength: 1, 
+                              opacity: [0, 1, 0.8],
+                              strokeDashoffset: [0, 25]
+                            }}
+                            transition={{ 
+                              pathLength: { duration: 3, delay: 3.8, ease: "easeInOut" },
+                              opacity: { duration: 2, delay: 3.8 },
+                              strokeDashoffset: { duration: 4, repeat: Infinity, ease: "linear", delay: 1 }
+                            }}
+                          />
+                          <defs>
+                            <linearGradient id="chainlink-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="rgba(147, 51, 234, 0.9)" />
+                              <stop offset="50%" stopColor="rgba(236, 72, 153, 0.7)" />
+                              <stop offset="100%" stopColor="rgba(147, 51, 234, 0.9)" />
+                            </linearGradient>
+                            <linearGradient id="chainlink-gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="rgba(236, 72, 153, 0.9)" />
+                              <stop offset="50%" stopColor="rgba(147, 51, 234, 0.7)" />
+                              <stop offset="100%" stopColor="rgba(236, 72, 153, 0.9)" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
                       </motion.div>
                     </div>
                   </motion.div>
