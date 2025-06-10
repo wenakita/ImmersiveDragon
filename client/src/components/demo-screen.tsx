@@ -691,29 +691,29 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           transform: "translate(-50%, -50%)",
                         }}
                         animate={{
-                          x: [-600, -50, 0, 800],
-                          y: loopIndex === 0 ? [0, -10, 0, -100] :
-                             loopIndex === 1 ? [-120, -15, 0, 150] :
-                             [150, 20, 0, -250],
-                          scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.3] :
-                                 loopIndex === 1 ? [0.3, 0.9, 1.1, 0.4] :
-                                 [0.5, 1.1, 1.3, 0.2],
+                          x: [-600, -50, 0, 1000],
+                          y: loopIndex === 0 ? [0, -10, 0, -120] :
+                             loopIndex === 1 ? [-120, -15, 0, 180] :
+                             [150, 20, 0, -300],
+                          scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.2] :
+                                 loopIndex === 1 ? [0.3, 0.9, 1.1, 0.3] :
+                                 [0.5, 1.1, 1.3, 0.1],
                           opacity: [0, 0.8, 1, 0],
-                          rotateZ: loopIndex === 0 ? [-180, -90, 0, 270] :
-                                   loopIndex === 1 ? [90, 45, 0, -180] :
-                                   [-90, -45, 0, 180],
+                          rotateZ: loopIndex === 0 ? [-180, -90, 0, 360] :
+                                   loopIndex === 1 ? [90, 45, 0, -270] :
+                                   [-90, -45, 0, 270],
                         }}
                         transition={{
-                          duration: 7.5,
-                          times: [0, 0.35, 0.6, 1],
+                          duration: 5.5,
+                          times: [0, 0.4, 0.55, 1],
                           ease: loopIndex === 0 ? 
-                            // First loop: musical cubic bezier for dramatic effect
-                            [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.95, 0.05, 0.795, 0.035]] :
+                            // First loop: explosive exit after convergence
+                            [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.99, 0.01, 0.99, 0.01]] :
                             loopIndex === 1 ?
-                            // Second loop: flowing melody curve
-                            [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.9, 0.03, 0.69, 0.22]] :
-                            // Third loop: sharp accent timing
-                            [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.87, 0, 0.13, 1]],
+                            // Second loop: rapid acceleration exit
+                            [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.97, 0.03, 0.97, 0.03]] :
+                            // Third loop: instant launch exit
+                            [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.99, 0.01, 0.99, 0.01]],
                           delay: loopIndex * 2.5,
                           repeat: Infinity,
                         }}
@@ -742,29 +742,29 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           transform: "translate(-50%, -50%)",
                         }}
                         animate={{
-                          x: [600, 50, 0, -800],
-                          y: loopIndex === 0 ? [0, 10, 0, 100] :
-                             loopIndex === 1 ? [120, 15, 0, -150] :
-                             [-150, -20, 0, 250],
-                          scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.3] :
-                                 loopIndex === 1 ? [0.3, 0.9, 1.1, 0.4] :
-                                 [0.5, 1.1, 1.3, 0.2],
+                          x: [600, 50, 0, -1000],
+                          y: loopIndex === 0 ? [0, 10, 0, 120] :
+                             loopIndex === 1 ? [120, 15, 0, -180] :
+                             [-150, -20, 0, 300],
+                          scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.2] :
+                                 loopIndex === 1 ? [0.3, 0.9, 1.1, 0.3] :
+                                 [0.5, 1.1, 1.3, 0.1],
                           opacity: [0, 0.8, 1, 0],
-                          rotateZ: loopIndex === 0 ? [180, 90, 0, -270] :
-                                   loopIndex === 1 ? [-90, -45, 0, 180] :
-                                   [90, 45, 0, -180],
+                          rotateZ: loopIndex === 0 ? [180, 90, 0, -360] :
+                                   loopIndex === 1 ? [-90, -45, 0, 270] :
+                                   [90, 45, 0, -270],
                         }}
                         transition={{
-                          duration: 7.5,
-                          times: [0, 0.35, 0.6, 1],
+                          duration: 5.5,
+                          times: [0, 0.4, 0.55, 1],
                           ease: loopIndex === 0 ? 
-                            // First loop: musical cubic bezier for dramatic effect
-                            [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.95, 0.05, 0.795, 0.035]] :
+                            // First loop: explosive exit after convergence
+                            [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.99, 0.01, 0.99, 0.01]] :
                             loopIndex === 1 ?
-                            // Second loop: flowing melody curve
-                            [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.9, 0.03, 0.69, 0.22]] :
-                            // Third loop: sharp accent timing
-                            [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.87, 0, 0.13, 1]],
+                            // Second loop: rapid acceleration exit
+                            [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.97, 0.03, 0.97, 0.03]] :
+                            // Third loop: instant launch exit
+                            [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.99, 0.01, 0.99, 0.01]],
                           delay: loopIndex * 2.5,
                           repeat: Infinity,
                         }}
