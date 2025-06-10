@@ -691,12 +691,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           transform: "translate(-50%, -50%)",
                         }}
                         animate={{
-                          x: loopIndex === 0 ? [-600, 0, 0, 800] :
-                             loopIndex === 1 ? [-500, 0, 0, 700] :
-                             [-700, 0, 0, 900],
-                          y: loopIndex === 0 ? [0, 0, 0, -100] :
-                             loopIndex === 1 ? [-150, 0, 0, 200] :
-                             [200, 0, 0, -300],
+                          x: [-600, -50, 0, 800],
+                          y: loopIndex === 0 ? [0, -10, 0, -100] :
+                             loopIndex === 1 ? [-120, -15, 0, 150] :
+                             [150, 20, 0, -250],
                           scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.3] :
                                  loopIndex === 1 ? [0.3, 0.9, 1.1, 0.4] :
                                  [0.5, 1.1, 1.3, 0.2],
@@ -744,12 +742,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           transform: "translate(-50%, -50%)",
                         }}
                         animate={{
-                          x: loopIndex === 0 ? [600, 0, 0, -800] :
-                             loopIndex === 1 ? [500, 0, 0, -700] :
-                             [700, 0, 0, -900],
-                          y: loopIndex === 0 ? [0, 0, 0, 100] :
-                             loopIndex === 1 ? [150, 0, 0, -200] :
-                             [-200, 0, 0, 300],
+                          x: [600, 50, 0, -800],
+                          y: loopIndex === 0 ? [0, 10, 0, 100] :
+                             loopIndex === 1 ? [120, 15, 0, -150] :
+                             [-150, -20, 0, 250],
                           scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.3] :
                                  loopIndex === 1 ? [0.3, 0.9, 1.1, 0.4] :
                                  [0.5, 1.1, 1.3, 0.2],
