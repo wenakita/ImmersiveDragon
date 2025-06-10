@@ -221,7 +221,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
   }, [autoStart]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
+    <motion.div 
+      className="min-h-screen bg-black text-white relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+    >
       <audio ref={audioRef} preload="auto" className="hidden">
         <source src={audioFile} type="audio/mpeg" />
       </audio>
@@ -2143,6 +2149,6 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
           )}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

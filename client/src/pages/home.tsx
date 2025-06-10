@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         {showWelcome ? (
           <WelcomeScreen
             key="welcome"
