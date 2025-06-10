@@ -299,70 +299,191 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 2: Fee Structure Introduction */}
+            {/* Step 2: Token Swap Animation */}
             {currentStep === 1 && (
               <motion.div
-                key="fee-intro"
+                key="swap-animation"
                 className="flex items-center justify-center min-h-screen relative overflow-hidden"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {/* Simplified background effects */}
-                <div className="absolute inset-0 opacity-40 pointer-events-none overflow-hidden">
-                  {[...Array(8)].map((_, i) => (
+                {/* Background effects */}
+                <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
+                  {[...Array(12)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"
+                      className="absolute w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"
                       style={{
-                        left: `${10 + i * 10}%`,
-                        top: `${20 + (i % 3) * 20}%`,
+                        left: `${5 + i * 8}%`,
+                        top: `${10 + (i % 5) * 15}%`,
                       }}
                       animate={{
-                        scale: [0, 1.2, 0],
-                        opacity: [0, 0.7, 0],
-                        rotate: [0, 360],
+                        scale: [0, 1.5, 0],
+                        opacity: [0, 0.8, 0],
+                        rotate: [0, 180],
                       }}
                       transition={{
-                        duration: 4,
+                        duration: 3,
                         repeat: Infinity,
-                        delay: i * 0.5,
+                        delay: i * 0.3,
                       }}
                     />
                   ))}
                 </div>
 
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-4xl"}`}>
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
+                  {/* Swap Title */}
                   <motion.div
-                    className={`mb-12 ${isMobile ? "mb-8" : ""}`}
+                    className={`mb-16 ${isMobile ? "mb-12" : ""}`}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <h2 className={`font-light mb-6 text-blue-400 tracking-wide ${
-                      isMobile ? "text-2xl mobile-text-lg" : "text-6xl"
+                    <h2 className={`font-light mb-6 tracking-wide ${
+                      isMobile ? "text-2xl mobile-text-lg" : "text-5xl"
                     }`}>
-                      ADVANCED FEE STRUCTURE
+                      Swap <span className="font-bold text-yellow-400">$S</span> for <span className="font-bold text-yellow-400">$DRAGON</span>
                     </h2>
-                    <p className={`text-gray-300 font-light max-w-3xl mx-auto leading-relaxed ${
-                      isMobile ? "text-sm mobile-text-sm" : "text-xl"
-                    }`}>
-                      Other DEXs charge 10% fees and give nothing back
-                    </p>
                   </motion.div>
+
+                  {/* Token Animation Container */}
+                  <div className="relative h-48 flex items-center justify-center overflow-hidden">
+                    {/* S Token - Converging Animation */}
+                    <motion.div
+                      className="absolute"
+                      initial={{ x: -400, opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        x: [-400, -50, 0, 50, 400],
+                        opacity: [0, 1, 1, 1, 0],
+                        scale: [0.8, 1.1, 1.2, 1.1, 0.8],
+                        rotate: [0, 45, 90, 135, 180]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        times: [0, 0.3, 0.5, 0.7, 1],
+                        ease: [0.68, -0.55, 0.265, 1.55], // Custom cubic bezier for dramatic effect
+                        repeat: Infinity,
+                        repeatDelay: 2
+                      }}
+                    >
+                      <SonicToken 
+                        size={isMobile ? "w-16 h-16" : "w-24 h-24"}
+                        borderColor="border-yellow-300"
+                        gradientFrom="from-yellow-400"
+                        gradientTo="to-orange-500"
+                        style={{
+                          filter: "drop-shadow(0 0 20px rgba(251, 191, 36, 0.6))",
+                          boxShadow: "0 0 30px rgba(251, 191, 36, 0.4)"
+                        }}
+                      />
+                    </motion.div>
+
+                    {/* Convergence Point Effects */}
+                    <motion.div
+                      className="absolute w-8 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500"
+                      animate={{
+                        scale: [1, 2, 1],
+                        opacity: [0.3, 0.8, 0.3],
+                        rotate: [0, 180, 360],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      style={{
+                        filter: "blur(4px)",
+                      }}
+                    />
+
+                    {/* Swap Arrow with Enhanced Animation */}
+                    <motion.div
+                      className={`text-yellow-400 font-bold ${isMobile ? "text-3xl" : "text-5xl"} z-10 relative`}
+                      animate={{
+                        opacity: [0.4, 1, 0.4],
+                        scale: [1, 1.3, 1],
+                        rotateY: [0, 180, 360],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      style={{
+                        filter: "drop-shadow(0 0 15px rgba(251, 191, 36, 0.8))",
+                        textShadow: "0 0 20px rgba(251, 191, 36, 0.6)"
+                      }}
+                    >
+                      ⇄
+                    </motion.div>
+
+                    {/* Dragon Token - Converging Animation */}
+                    <motion.div
+                      className="absolute"
+                      initial={{ x: 400, opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        x: [400, 50, 0, -50, -400],
+                        opacity: [0, 1, 1, 1, 0],
+                        scale: [0.8, 1.1, 1.2, 1.1, 0.8],
+                        rotate: [0, -45, -90, -135, -180]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        times: [0, 0.3, 0.5, 0.7, 1],
+                        ease: [0.68, -0.55, 0.265, 1.55], // Matching cubic bezier
+                        repeat: Infinity,
+                        repeatDelay: 2
+                      }}
+                    >
+                      <DragonToken 
+                        size={isMobile ? "w-16 h-16" : "w-24 h-24"}
+                        borderColor="border-yellow-300"
+                        gradientFrom="from-yellow-400"
+                        gradientTo="to-red-500"
+                        style={{
+                          filter: "drop-shadow(0 0 20px rgba(251, 191, 36, 0.6))",
+                          boxShadow: "0 0 30px rgba(239, 68, 68, 0.4)"
+                        }}
+                      />
+                    </motion.div>
+
+                    {/* Energy Trails */}
+                    {[...Array(6)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-2 h-2 bg-yellow-400 rounded-full"
+                        style={{
+                          left: `${45 + (i % 2 === 0 ? -i * 8 : i * 8)}%`,
+                          top: `${48 + Math.sin(i) * 10}%`,
+                        }}
+                        animate={{
+                          opacity: [0, 1, 0],
+                          scale: [0, 1.5, 0],
+                          x: [0, (i % 2 === 0 ? -100 : 100)],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: i * 0.2,
+                          ease: [0.25, 0.46, 0.45, 0.94]
+                        }}
+                      />
+                    ))}
+                  </div>
 
                   {/* Fee Display */}
                   <motion.div
-                    className={`bg-red-900/30 backdrop-blur-sm border border-red-800/50 rounded-2xl ${
+                    className={`bg-red-900/30 backdrop-blur-sm border border-red-800/50 rounded-2xl mt-12 ${
                       isMobile ? "p-4 mx-2" : "p-8"
                     }`}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
+                    transition={{ duration: 1, delay: 1.5 }}
                   >
                     <div className={`font-bold text-red-400 ${
-                      isMobile ? "text-3xl" : "text-6xl"
+                      isMobile ? "text-2xl" : "text-4xl"
                     }`}>
                       10% TRADING FEE
                     </div>
@@ -600,18 +721,25 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 </div>
 
                 <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-4xl"}`}>
-                  {/* Title */}
+                  {/* LayerZero Logo and Title */}
                   <motion.div
                     className={`mb-12 ${isMobile ? "mb-8" : ""}`}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <h2 className={`font-light mb-6 text-cyan-400 tracking-wide ${
-                      isMobile ? "text-2xl mobile-text-lg" : "text-6xl"
-                    }`}>
-                      LAYERZERO INTEGRATION
-                    </h2>
+                    <div className="flex items-center justify-center mb-6">
+                      <img
+                        src="https://pbs.twimg.com/profile_images/1671947962681049088/3Ld32mOx_400x400.jpg"
+                        alt="LayerZero"
+                        className={`${isMobile ? "w-16 h-16" : "w-20 h-20"} rounded-full mr-4`}
+                      />
+                      <h2 className={`font-light text-cyan-400 tracking-wide ${
+                        isMobile ? "text-xl mobile-text-lg" : "text-5xl"
+                      }`}>
+                        LAYERZERO
+                      </h2>
+                    </div>
                     <p className={`text-gray-300 font-light max-w-3xl mx-auto leading-relaxed ${
                       isMobile ? "text-sm mobile-text-sm" : "text-xl"
                     }`}>
@@ -638,7 +766,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         <p className={`text-gray-400 mt-2 ${
                           isMobile ? "text-xs mobile-text-sm" : "text-sm"
                         }`}>
-                          Connect multiple blockchains
+                          Connect multiple blockchains seamlessly
                         </p>
                       </div>
                       <div className="text-center">
@@ -650,9 +778,32 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         <p className={`text-gray-400 mt-2 ${
                           isMobile ? "text-xs mobile-text-sm" : "text-sm"
                         }`}>
-                          Access liquidity across chains
+                          Access liquidity across all chains
                         </p>
                       </div>
+                    </div>
+
+                    {/* Chain Connection Animation */}
+                    <div className="mt-8 flex items-center justify-center space-x-4">
+                      {['Ethereum', 'Polygon', 'Arbitrum', 'Optimism'].map((chain, i) => (
+                        <motion.div
+                          key={chain}
+                          className={`bg-cyan-500/20 border border-cyan-400/30 rounded-lg px-3 py-2 ${
+                            isMobile ? "text-xs" : "text-sm"
+                          }`}
+                          animate={{
+                            opacity: [0.5, 1, 0.5],
+                            scale: [0.95, 1.05, 0.95],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i * 0.3,
+                          }}
+                        >
+                          {chain}
+                        </motion.div>
+                      ))}
                     </div>
                   </motion.div>
                 </div>
@@ -694,22 +845,34 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 </div>
 
                 <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-4xl"}`}>
-                  {/* Title */}
+                  {/* Chainlink Logo and Title */}
                   <motion.div
                     className={`mb-12 ${isMobile ? "mb-8" : ""}`}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <h2 className={`font-light mb-6 text-yellow-400 tracking-wide ${
-                      isMobile ? "text-2xl mobile-text-lg" : "text-6xl"
+                    <div className="flex items-center justify-center mb-6">
+                      <img
+                        src="https://cryptologos.cc/logos/chainlink-link-logo.png"
+                        alt="Chainlink"
+                        className={`${isMobile ? "w-16 h-16" : "w-20 h-20"} mr-4`}
+                      />
+                      <h2 className={`font-light text-blue-400 tracking-wide ${
+                        isMobile ? "text-xl mobile-text-lg" : "text-4xl"
+                      }`}>
+                        CHAINLINK VRF 2.5
+                      </h2>
+                    </div>
+                    <h3 className={`font-bold mb-4 text-yellow-400 tracking-wide ${
+                      isMobile ? "text-xl mobile-text-lg" : "text-3xl"
                     }`}>
-                      CHAINLINK VRF LOTTERY
-                    </h2>
+                      PROVABLY FAIR LOTTERY
+                    </h3>
                     <p className={`text-gray-300 font-light max-w-3xl mx-auto leading-relaxed ${
                       isMobile ? "text-sm mobile-text-sm" : "text-xl"
                     }`}>
-                      Every swap enters you into our provably fair jackpot powered by Chainlink VRF 2.5
+                      Every swap enters you into our jackpot with verifiable randomness
                     </p>
                   </motion.div>
 
