@@ -686,7 +686,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
 
                   <motion.h2
-                    className="text-9xl font-bold text-amber-400 relative z-10 tracking-wide mb-8"
+                    className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-amber-400 relative z-10 tracking-wide mb-6 sm:mb-8 px-4"
                     initial={{ scale: 0.1, y: 300, opacity: 0, rotateX: 180 }}
                     animate={{
                       scale: [0.1, 0.6, 1.3, 1],
@@ -711,7 +711,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   </motion.h2>
 
                   <motion.div
-                    className="mt-12 max-w-3xl mx-auto"
+                    className="mt-8 sm:mt-12 max-w-3xl mx-auto px-4"
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{
@@ -720,7 +720,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       delay: 0.8,
                     }}
                   >
-                    <p className="text-2xl text-gray-300 font-light leading-relaxed text-center mb-8">
+                    <p className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light leading-relaxed text-center mb-6 sm:mb-8">
                       Every swap automatically enters you into our{" "}
                       <span className="text-yellow-400 font-medium">
                         VRF-powered lottery

@@ -461,3 +461,61 @@
   border: 2px solid;
   border-image: linear-gradient(135deg, #FF6B35, #F7931E, #FFB800, #4A90E2) 1;
 }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Improve touch target sizes */
+  button, .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent text from being too small on mobile */
+  .text-xs {
+    font-size: 0.8rem;
+  }
+  
+  /* Improve readability on small screens */
+  .leading-relaxed {
+    line-height: 1.7;
+  }
+  
+  /* Optimize animations for mobile performance */
+  * {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000;
+  }
+  
+  /* Reduce motion for better performance on mobile */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+  
+  /* Improve touch feedback */
+  button:active, .cursor-pointer:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize for retina displays */
+  .dragon-logo-glow {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
