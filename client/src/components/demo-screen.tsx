@@ -363,21 +363,21 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     />
                   </motion.div>
 
-                  {/* Modern Fee Display Card */}
+                  {/* Enhanced Fee Structure Showcase */}
                   <motion.div
-                    className={`relative overflow-hidden bg-gradient-to-br from-red-900/50 via-red-800/40 to-orange-900/50 backdrop-blur-xl border border-red-500/40 rounded-3xl shadow-2xl ${
-                      isMobile ? "p-8 mx-2" : "p-12"
+                    className={`relative overflow-hidden bg-gradient-to-br from-amber-900/60 via-orange-900/50 to-red-900/60 backdrop-blur-xl border border-amber-400/30 rounded-3xl shadow-2xl ${
+                      isMobile ? "p-6 mx-2" : "p-10"
                     }`}
                     initial={{ opacity: 0, scale: 0.9, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
                     style={{
-                      boxShadow: "0 25px 50px -12px rgba(239, 68, 68, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                      boxShadow: "0 25px 50px -12px rgba(251, 191, 36, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
                     }}
                   >
                     {/* Animated background glow */}
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-red-500/15 via-orange-500/10 to-red-500/15 rounded-3xl"
+                      className="absolute inset-0 bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-amber-500/15 rounded-3xl"
                       animate={{ 
                         opacity: [0.3, 0.6, 0.3],
                         scale: [1, 1.02, 1]
@@ -387,44 +387,79 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     
                     <div className="relative z-10">
                       <motion.div 
-                        className={`font-black bg-gradient-to-r from-red-200 via-orange-200 to-red-100 bg-clip-text text-transparent ${
-                          isMobile ? "text-5xl" : "text-8xl"
+                        className={`font-bold bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent text-center ${
+                          isMobile ? "text-3xl mb-6" : "text-5xl mb-8"
                         }`}
                         style={{
                           fontFamily: 'Inter, system-ui, sans-serif',
-                          fontWeight: '900',
-                          letterSpacing: '-0.02em'
+                          fontWeight: '700',
+                          letterSpacing: '-0.01em'
                         }}
-                        animate={{ 
-                          textShadow: [
-                            "0 0 40px rgba(239, 68, 68, 0.5)",
-                            "0 0 80px rgba(239, 68, 68, 0.3)",
-                            "0 0 40px rgba(239, 68, 68, 0.5)"
-                          ]
-                        }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        10% TRADING FEE
+                        Smart Fee Distribution
                       </motion.div>
                       
-                      <motion.div
-                        className={`w-20 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full mx-auto my-8 ${
-                          isMobile ? "w-16" : ""
-                        }`}
-                        initial={{ width: 0 }}
-                        animate={{ width: isMobile ? "4rem" : "5rem" }}
-                        transition={{ duration: 1.5, delay: 2 }}
-                      />
+                      {/* Fee Breakdown Grid */}
+                      <div className={`grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
+                        <motion.div 
+                          className="text-center p-4 bg-yellow-500/20 border border-yellow-400/30 rounded-xl backdrop-blur-sm"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 2.0 }}
+                        >
+                          <div className="text-yellow-300 text-3xl font-bold mb-2" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                            6.9%
+                          </div>
+                          <div className="text-yellow-200/90 text-sm font-medium" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                            VRF Jackpot Pool
+                          </div>
+                        </motion.div>
+                        
+                        <motion.div 
+                          className="text-center p-4 bg-blue-500/20 border border-blue-400/30 rounded-xl backdrop-blur-sm"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 2.2 }}
+                        >
+                          <div className="text-blue-300 text-3xl font-bold mb-2" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                            2.41%
+                          </div>
+                          <div className="text-blue-200/90 text-sm font-medium" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                            Liquidity Rewards
+                          </div>
+                        </motion.div>
+                        
+                        <motion.div 
+                          className="text-center p-4 bg-red-500/20 border border-red-400/30 rounded-xl backdrop-blur-sm"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 2.4 }}
+                        >
+                          <div className="text-red-300 text-3xl font-bold mb-2" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                            0.69%
+                          </div>
+                          <div className="text-red-200/90 text-sm font-medium" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                            Token Burn
+                          </div>
+                        </motion.div>
+                      </div>
                       
-                      <p className={`text-gray-100/90 font-light leading-relaxed tracking-[0.02em] ${
-                        isMobile ? "text-xl" : "text-3xl"
-                      }`} style={{
-                        fontFamily: 'Inter, system-ui, sans-serif',
-                        fontWeight: '300'
-                      }}>
-                        But here's where it gets{" "}
-                        <span className="text-yellow-300 font-medium italic">interesting...</span>
-                      </p>
+                      <motion.div
+                        className="text-center mt-6"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2.6 }}
+                      >
+                        <p className={`text-amber-100/80 font-light ${
+                          isMobile ? "text-sm" : "text-lg"
+                        }`} style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '300'
+                        }}>
+                          Self-sustaining ecosystem with{" "}
+                          <span className="text-yellow-300 font-medium italic">provably fair</span> mechanics
+                        </p>
+                      </motion.div>
                     </div>
                   </motion.div>
                 </div>
@@ -484,7 +519,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       fontWeight: '300'
                     }}>
                       On other DEX they just take your fees or give it to farmers, but on{" "}
-                      <span className="bg-gradient-to-r from-red-300 to-orange-300 bg-clip-text text-transparent font-medium">Sonic Red Dragon</span>, 
+                      <span className="bg-gradient-to-r from-red-300 to-orange-300 bg-clip-text text-transparent font-medium">Sonic Red Dragon</span>,{" "}
                       we turn them into <span className="bg-gradient-to-r from-yellow-300 to-amber-300 bg-clip-text text-transparent font-medium italic">opportunities</span>
                     </p>
                   </motion.div>
@@ -765,9 +800,9 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full p-1">
                           <img
-                            src={IPFS_ASSETS.LAYER_ZERO.WHITE_LOGO}
+                            src={getAssetUrl('LAYER_ZERO.WHITE_LOGO')}
                             alt="LayerZero"
-                            className="w-full h-full rounded-full object-cover"
+                            className="w-full h-full rounded-full object-cover bg-black"
                           />
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-blue-500/30 rounded-full animate-pulse" />
