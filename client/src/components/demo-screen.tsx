@@ -1346,8 +1346,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 4: Enhanced Fee Breakdown with Transition */}
-            {currentStep === 4 && (
+            {/* Step 5: Enhanced Fee Breakdown with Transition */}
+            {currentStep === 5 && (
               <motion.div
                 key="breakdown"
                 className="flex items-center justify-center min-h-screen relative overflow-hidden"
@@ -1546,8 +1546,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 5: Chainlink VRF Lottery - Immersive Camera Dive */}
-            {currentStep === 5 && (
+            {/* Step 6: Chainlink VRF Lottery - Immersive Camera Dive */}
+            {currentStep === 6 && (
               <motion.div
                 key="lottery"
                 className="flex items-center justify-center min-h-screen relative overflow-hidden"
@@ -1740,8 +1740,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 6: Modern Minimalist Odds Table */}
-            {currentStep === 6 && (
+            {/* Step 7: Modern Minimalist Odds Table */}
+            {currentStep === 7 && (
               <motion.div
                 key="odds"
                 className="flex items-center justify-center min-h-screen px-8"
