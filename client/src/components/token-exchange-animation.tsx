@@ -169,7 +169,7 @@ export default function TokenExchangeAnimation({
         >
           <div className="relative">
             <motion.img 
-              src={getAssetUrl('SONIC')} 
+              src={getAssetUrl('S')} 
               alt="Sonic Token" 
               className="w-24 h-24 rounded-full border-3 border-blue-300/60"
               style={{
