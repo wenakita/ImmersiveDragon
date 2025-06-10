@@ -231,18 +231,21 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5, duration: 1.5 }}
                 >
-                  <p className={`text-gray-400 tracking-widest ${
-                    isMobile ? "text-sm mobile-text-sm" : "text-lg"
-                  }`}>FROM THE CREATORS OF</p>
+                  <p className={`text-gray-400/80 font-light tracking-[0.3em] uppercase ${
+                    isMobile ? "text-xs" : "text-sm"
+                  }`} style={{ letterSpacing: '0.25em' }}>From the creators of</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2, duration: 1.5 }}
                 >
-                  <h1 className={`font-bold text-yellow-400 tracking-wider ${
-                    isMobile ? "text-3xl mobile-text-xl" : "text-6xl"
-                  }`}>OMNIDRAGON</h1>
+                  <h1 className={`font-black bg-gradient-to-r from-yellow-200 via-yellow-300 to-amber-200 bg-clip-text text-transparent tracking-[0.15em] ${
+                    isMobile ? "text-4xl" : "text-7xl"
+                  }`} style={{ 
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    textShadow: '0 0 40px rgba(251, 191, 36, 0.3)'
+                  }}>OMNIDRAGON</h1>
                 </motion.div>
               </motion.div>
             )}
@@ -264,17 +267,22 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ duration: 1.5, delay: 0.5 }}
                   >
                     <motion.h1 
-                      className={`font-black mb-8 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent ${
-                        isMobile ? "text-5xl mobile-text-3xl leading-tight" : "text-9xl leading-tight"
+                      className={`font-black mb-12 bg-gradient-to-r from-red-300 via-orange-300 to-yellow-300 bg-clip-text text-transparent tracking-tight ${
+                        isMobile ? "text-6xl leading-[1.1]" : "text-[10rem] leading-[0.9]"
                       }`}
+                      style={{
+                        fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                        fontWeight: '900',
+                        letterSpacing: '-0.02em'
+                      }}
                       animate={{
                         textShadow: [
-                          "0 0 30px rgba(251, 191, 36, 0.5)",
-                          "0 0 60px rgba(251, 191, 36, 0.3)",
-                          "0 0 30px rgba(251, 191, 36, 0.5)"
+                          "0 0 60px rgba(251, 191, 36, 0.4)",
+                          "0 0 120px rgba(251, 191, 36, 0.2)",
+                          "0 0 60px rgba(251, 191, 36, 0.4)"
                         ]
                       }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     >
                       SONIC RED DRAGON
                     </motion.h1>
@@ -294,10 +302,13 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{ duration: 1.5, delay: 2 }}
                     />
                     
-                    <p className={`text-gray-200/90 font-medium tracking-wide ${
-                      isMobile ? "text-lg mobile-text-base" : "text-3xl"
-                    }`}>
-                      The Future of <span className="text-orange-400 font-bold">DeFi Gaming</span>
+                    <p className={`text-gray-300/90 font-light tracking-[0.05em] ${
+                      isMobile ? "text-xl" : "text-4xl"
+                    }`} style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontWeight: '300'
+                    }}>
+                      The Future of <span className="text-orange-300 font-medium italic">DeFi Gaming</span>
                     </p>
                   </motion.div>
                 </div>
@@ -322,10 +333,14 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <h2 className={`font-light mb-6 tracking-wide ${
-                      isMobile ? "text-2xl mobile-text-lg" : "text-6xl"
-                    }`}>
-                      Swap <span className="font-black text-yellow-400">$S</span> for <span className="font-black text-yellow-400">$DRAGON</span>
+                    <h2 className={`font-light mb-8 tracking-[0.02em] ${
+                      isMobile ? "text-3xl" : "text-7xl"
+                    }`} style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontWeight: '200',
+                      letterSpacing: '-0.01em'
+                    }}>
+                      Swap <span className="font-black bg-gradient-to-r from-yellow-300 to-amber-300 bg-clip-text text-transparent">$S</span> for <span className="font-black bg-gradient-to-r from-orange-300 to-red-300 bg-clip-text text-transparent">$DRAGON</span>
                     </h2>
                   </motion.div>
 
@@ -478,17 +493,22 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     
                     <div className="relative z-10">
                       <motion.div 
-                        className={`font-black bg-gradient-to-r from-red-300 via-orange-300 to-red-200 bg-clip-text text-transparent ${
-                          isMobile ? "text-4xl" : "text-7xl"
+                        className={`font-black bg-gradient-to-r from-red-200 via-orange-200 to-red-100 bg-clip-text text-transparent ${
+                          isMobile ? "text-5xl" : "text-8xl"
                         }`}
+                        style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '900',
+                          letterSpacing: '-0.02em'
+                        }}
                         animate={{ 
                           textShadow: [
-                            "0 0 30px rgba(239, 68, 68, 0.6)",
-                            "0 0 60px rgba(239, 68, 68, 0.4)",
-                            "0 0 30px rgba(239, 68, 68, 0.6)"
+                            "0 0 40px rgba(239, 68, 68, 0.5)",
+                            "0 0 80px rgba(239, 68, 68, 0.3)",
+                            "0 0 40px rgba(239, 68, 68, 0.5)"
                           ]
                         }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                       >
                         10% TRADING FEE
                       </motion.div>
@@ -502,11 +522,14 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         transition={{ duration: 1.5, delay: 2 }}
                       />
                       
-                      <p className={`text-gray-200/90 font-medium leading-relaxed ${
-                        isMobile ? "text-lg mobile-text-base" : "text-2xl"
-                      }`}>
+                      <p className={`text-gray-100/90 font-light leading-relaxed tracking-[0.02em] ${
+                        isMobile ? "text-xl" : "text-3xl"
+                      }`} style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: '300'
+                      }}>
                         But here's where it gets{" "}
-                        <span className="text-yellow-400 font-bold">interesting...</span>
+                        <span className="text-yellow-300 font-medium italic">interesting...</span>
                       </p>
                     </div>
                   </motion.div>
