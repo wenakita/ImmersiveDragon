@@ -681,7 +681,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     <TokenExchangeAnimation
                       key={i}
                       containerStyle={{
-                        position: 'absolute',
+                        position: "absolute",
                         left: `${15 + i * 20}%`,
                         top: `${20 + (i % 2) * 40}%`,
                       }}
@@ -934,16 +934,16 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             delay: i * 0.8 + 0.8,
                           }}
                         >
-                          <div className="text-red-400 font-bold mb-0.5">
+                          <div className="text-red-400 font-bold mb-0.5 whitespace-nowrap">
                             10% Fee
                           </div>
-                          <div className="text-yellow-400 text-xs">
+                          <div className="text-yellow-400 text-xs whitespace-nowrap">
                             6.9% → Jackpot
                           </div>
-                          <div className="text-blue-400 text-xs">
+                          <div className="text-blue-400 text-xs whitespace-nowrap">
                             2.41% → LP
                           </div>
-                          <div className="text-orange-400 text-xs">
+                          <div className="text-orange-400 text-xs whitespace-nowrap">
                             0.69% → Burn
                           </div>
                         </motion.div>
@@ -1066,7 +1066,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     <TokenExchangeAnimation
                       key={i}
                       containerStyle={{
-                        position: 'absolute',
+                        position: "absolute",
                         left: `${10 + i * 18}%`,
                         top: `${15 + (i % 3) * 25}%`,
                       }}
@@ -2381,7 +2381,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           letterSpacing: "0.15em",
                         }}
                       >
-                        docs.sonicreddragon.io
+                        <a
+                          href="https://docs.sonicreddragon.io"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          docs.sonicreddragon.io
+                        </a>
                       </motion.div>
 
                       {/* Subtle underline animation */}
