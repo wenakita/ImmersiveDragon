@@ -481,16 +481,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       width: `${2 + Math.random() * 4}px`,
                       height: `${2 + Math.random() * 4}px`,
                       background: `radial-gradient(circle, ${
-                        i % 5 === 0 ? '#FF6B35' : 
-                        i % 5 === 1 ? '#FFD700' : 
-                        i % 5 === 2 ? '#FF8C42' : 
-                        i % 5 === 3 ? '#FFA500' : '#FF4500'
+                        i % 4 === 0 ? '#FF4500' : 
+                        i % 4 === 1 ? '#FF6347' : 
+                        i % 4 === 2 ? '#DC143C' : '#B22222'
                       } 0%, transparent 70%)`,
                       boxShadow: `0 0 ${8 + Math.random() * 12}px ${
-                        i % 5 === 0 ? '#FF6B35' : 
-                        i % 5 === 1 ? '#FFD700' : 
-                        i % 5 === 2 ? '#FF8C42' : 
-                        i % 5 === 3 ? '#FFA500' : '#FF4500'
+                        i % 4 === 0 ? '#FF4500' : 
+                        i % 4 === 1 ? '#FF6347' : 
+                        i % 4 === 2 ? '#DC143C' : '#B22222'
                       }`,
                       left: `${Math.random() * 100}%`,
                       bottom: `-20px`,
@@ -537,14 +535,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       height: `${4 + Math.random() * 6}px`,
                       background: `radial-gradient(circle, ${
                         i % 3 === 0 ? '#FF4500' : 
-                        i % 3 === 1 ? '#FF6347' : '#FF7F50'
+                        i % 3 === 1 ? '#DC143C' : '#B22222'
                       } 0%, ${
                         i % 3 === 0 ? '#FF4500' : 
-                        i % 3 === 1 ? '#FF6347' : '#FF7F50'
+                        i % 3 === 1 ? '#DC143C' : '#B22222'
                       }40 50%, transparent 80%)`,
                       boxShadow: `0 0 ${15 + Math.random() * 20}px ${
                         i % 3 === 0 ? '#FF4500' : 
-                        i % 3 === 1 ? '#FF6347' : '#FF7F50'
+                        i % 3 === 1 ? '#DC143C' : '#B22222'
                       }`,
                       left: `${Math.random() * 100}%`,
                       bottom: `-30px`,
