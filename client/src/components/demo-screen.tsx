@@ -1386,6 +1386,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         percent: "6.9%",
                         label: "JACKPOT VAULT",
                         description: "in $S to jackpot vault",
+                        tokenSymbol: "$S",
+                        tokenImage: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy",
                         color: "amber",
                         delay: 0.5,
                         size: 120,
@@ -1394,6 +1396,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         percent: "2.41%",
                         label: "veDRAGON REWARDS",
                         description: "in $S to veDRAGON holders",
+                        tokenSymbol: "$S",
+                        tokenImage: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy",
                         color: "blue",
                         delay: 1,
                         size: 84,
@@ -1402,6 +1406,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         percent: "0.69%",
                         label: "DRAGON BURN",
                         description: "in $DRAGON burned",
+                        tokenSymbol: "$DRAGON",
+                        tokenImage: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam",
                         color: "red",
                         delay: 1.5,
                         size: 48,
@@ -1414,100 +1420,174 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           x: i % 2 === 0 ? -600 : 600,
                           opacity: 0,
                           rotateY: 45,
+                          scale: 0.8,
                         }}
-                        animate={{ x: 0, opacity: 1, rotateY: 0 }}
+                        animate={{ 
+                          x: 0, 
+                          opacity: 1, 
+                          rotateY: 0,
+                          scale: 1,
+                        }}
                         transition={{
-                          duration: 1.5,
+                          duration: 2,
                           delay: item.delay,
-                          ease: [0.25, 0.46, 0.45, 0.94],
+                          ease: [0.68, -0.55, 0.265, 1.55], // Dramatic cubic bezier
                         }}
                       >
+                        {/* Token Image and Percentage Circle */}
                         <motion.div
-                          className={`rounded-full border-2 flex items-center justify-center backdrop-blur-sm ${
-                            item.color === "amber"
-                              ? "bg-amber-500/10 border-amber-400/60"
-                              : item.color === "blue"
-                                ? "bg-blue-500/10 border-blue-400/60"
-                                : item.color === "red"
-                                  ? "bg-red-500/10 border-red-400/60"
-                                  : "bg-yellow-500/10 border-yellow-400/60"
-                          }`}
-                          style={{
-                            width: `${item.size}px`,
-                            height: `${item.size}px`,
-                            filter: `drop-shadow(0 0 25px ${
-                              item.color === "amber"
-                                ? "rgba(251,191,36,0.4)"
-                                : item.color === "blue"
-                                  ? "rgba(59,130,246,0.4)"
-                                  : item.color === "red"
-                                    ? "rgba(239,68,68,0.4)"
-                                    : "rgba(234,179,8,0.4)"
-                            })`,
-                            boxShadow: `inset 0 0 20px ${
-                              item.color === "amber"
-                                ? "rgba(251,191,36,0.1)"
-                                : item.color === "blue"
-                                  ? "rgba(59,130,246,0.1)"
-                                  : item.color === "red"
-                                    ? "rgba(239,68,68,0.1)"
-                                    : "rgba(234,179,8,0.1)"
-                            }`,
-                          }}
-                          animate={{
-                            scale: [1, 1.05, 1],
-                          }}
+                          className="relative flex items-center justify-center"
+                          initial={{ rotateZ: -180, scale: 0 }}
+                          animate={{ rotateZ: 0, scale: 1 }}
                           transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: item.delay + 1,
+                            duration: 1.8,
+                            delay: item.delay + 0.5,
+                            ease: [0.25, 0.46, 0.45, 0.94], // Musical cubic bezier
                           }}
                         >
-                          <span
-                            className={`font-medium ${
+                          {/* Background Circle */}
+                          <motion.div
+                            className={`rounded-full border-2 flex items-center justify-center backdrop-blur-sm ${
                               item.color === "amber"
-                                ? "text-amber-400"
+                                ? "bg-amber-500/10 border-amber-400/60"
                                 : item.color === "blue"
-                                  ? "text-blue-400"
+                                  ? "bg-blue-500/10 border-blue-400/60"
                                   : item.color === "red"
-                                    ? "text-red-400"
-                                    : "text-yellow-400"
+                                    ? "bg-red-500/10 border-red-400/60"
+                                    : "bg-yellow-500/10 border-yellow-400/60"
                             }`}
                             style={{
-                              fontSize: `${Math.max(item.size * 0.15, 14)}px`,
+                              width: `${item.size}px`,
+                              height: `${item.size}px`,
+                              filter: `drop-shadow(0 0 25px ${
+                                item.color === "amber"
+                                  ? "rgba(251,191,36,0.4)"
+                                  : item.color === "blue"
+                                    ? "rgba(59,130,246,0.4)"
+                                    : item.color === "red"
+                                      ? "rgba(239,68,68,0.4)"
+                                      : "rgba(234,179,8,0.4)"
+                              })`,
+                            }}
+                            animate={{
+                              scale: [1, 1.08, 1],
+                              rotateZ: [0, 5, -5, 0],
+                            }}
+                            transition={{
+                              duration: 4,
+                              repeat: Infinity,
+                              ease: [0.42, 0, 0.58, 1], // Smooth cubic bezier
+                              delay: item.delay + 2,
                             }}
                           >
-                            {item.percent}
-                          </span>
+                            {/* Token Image */}
+                            <motion.img
+                              src={item.tokenImage}
+                              alt={item.tokenSymbol}
+                              className="w-full h-full object-cover rounded-full"
+                              initial={{ opacity: 0, scale: 0.5 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{
+                                duration: 1.2,
+                                delay: item.delay + 1,
+                                ease: [0.87, 0, 0.13, 1], // Sharp accent cubic bezier
+                              }}
+                            />
+                          </motion.div>
+                          
+                          {/* Percentage Overlay */}
+                          <motion.div
+                            className="absolute inset-0 flex items-center justify-center"
+                            initial={{ opacity: 0, scale: 2 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                              duration: 1,
+                              delay: item.delay + 1.5,
+                              ease: [0.16, 1, 0.3, 1], // Dramatic easing
+                            }}
+                          >
+                            <span
+                              className={`font-bold backdrop-blur-sm rounded px-2 py-1 ${
+                                item.color === "amber"
+                                  ? "text-amber-300 bg-amber-900/60"
+                                  : item.color === "blue"
+                                    ? "text-blue-300 bg-blue-900/60"
+                                    : item.color === "red"
+                                      ? "text-red-300 bg-red-900/60"
+                                      : "text-yellow-300 bg-yellow-900/60"
+                              }`}
+                              style={{
+                                fontSize: `${Math.max(item.size * 0.12, 12)}px`,
+                                textShadow: "0 0 10px rgba(0,0,0,0.8)",
+                              }}
+                            >
+                              {item.percent}
+                            </span>
+                          </motion.div>
                         </motion.div>
 
+                        {/* Label and Token Symbol */}
                         <div className="text-left">
                           <motion.div
-                            className={`text-3xl font-medium tracking-wide ${
-                              item.color === "amber"
-                                ? "text-amber-400"
-                                : item.color === "blue"
-                                  ? "text-blue-400"
-                                  : item.color === "red"
-                                    ? "text-red-400"
-                                    : "text-yellow-400"
-                            }`}
-                            animate={{ x: [0, 8, 0] }}
+                            className="flex items-center space-x-3"
+                            initial={{ x: 100, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
                             transition={{
-                              duration: 3,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                              delay: item.delay + 1,
+                              duration: 1.5,
+                              delay: item.delay + 0.8,
+                              ease: [0.34, 1.56, 0.64, 1], // Bouncy cubic bezier
                             }}
                           >
-                            → {item.label}
+                            <span
+                              className={`text-3xl font-medium tracking-wide ${
+                                item.color === "amber"
+                                  ? "text-amber-400"
+                                  : item.color === "blue"
+                                    ? "text-blue-400"
+                                    : item.color === "red"
+                                      ? "text-red-400"
+                                      : "text-yellow-400"
+                              }`}
+                            >
+                              → {item.label}
+                            </span>
+                            <motion.span
+                              className={`text-xl font-bold px-3 py-1 rounded-full border ${
+                                item.color === "amber"
+                                  ? "text-amber-300 border-amber-400/40 bg-amber-500/10"
+                                  : item.color === "blue"
+                                    ? "text-blue-300 border-blue-400/40 bg-blue-500/10"
+                                    : item.color === "red"
+                                      ? "text-red-300 border-red-400/40 bg-red-500/10"
+                                      : "text-yellow-300 border-yellow-400/40 bg-yellow-500/10"
+                              }`}
+                              animate={{
+                                scale: [1, 1.1, 1],
+                                textShadow: [
+                                  "0 0 10px rgba(255,255,255,0.3)",
+                                  "0 0 20px rgba(255,255,255,0.6)",
+                                  "0 0 10px rgba(255,255,255,0.3)"
+                                ]
+                              }}
+                              transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                ease: [0.25, 0.46, 0.45, 0.94], // Musical cubic bezier
+                                delay: item.delay + 2,
+                              }}
+                            >
+                              {item.tokenSymbol}
+                            </motion.span>
                           </motion.div>
                           <motion.p
                             className="text-lg text-gray-400 font-light mt-2 ml-8"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: item.delay + 1.5 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ 
+                              delay: item.delay + 2,
+                              duration: 1,
+                              ease: [0.25, 0.46, 0.45, 0.94],
+                            }}
                           >
                             {item.description}
                           </motion.p>
@@ -2162,10 +2242,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           ease: "backOut",
                         }}
                       >
-                        <motion.img
-                          src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreiax6jur4gjsevwncuu2tgqlotnc33y5nwxwrv2ggxq3al76xegcqi"
-                          alt="Nethermind DVN"
-                          className="h-12 mb-2"
+                        <motion.div
+                          className="h-12 mb-2 flex items-center justify-center"
+                          style={{
+                            background: `url('https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreiax6jur4gjsevwncuu2tgqlotnc33y5nwxwrv2ggxq3al76xegcqi') center/contain no-repeat`,
+                            width: '48px',
+                            height: '48px',
+                          }}
                           animate={{
                             filter: [
                               "drop-shadow(0 0 10px rgba(155, 89, 182, 0.3))",
