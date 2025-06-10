@@ -398,7 +398,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   />
 
                   <motion.h1
-                    className="text-8xl font-bold tracking-wider bg-gradient-to-r from-white via-amber-400 to-white bg-clip-text text-transparent relative z-10"
+                    className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wider bg-gradient-to-r from-white via-amber-400 to-white bg-clip-text text-transparent relative z-10 px-4"
                     initial={{ scale: 0.3, y: 100, opacity: 0, rotateX: 45 }}
                     animate={{
                       scale: [0.3, 1.1, 1],
@@ -467,8 +467,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 transition={{ duration: 1.5 }}
               >
                 <div className="relative w-full h-96">
-                  <div className="text-center mb-16">
-                    <div className="text-5xl font-light mb-6 tracking-wide">
+                  <div className="text-center mb-8 sm:mb-16 px-4">
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-4 sm:mb-6 tracking-wide">
                       <motion.span
                         className="text-white"
                         initial={{ y: -30, opacity: 0 }}
