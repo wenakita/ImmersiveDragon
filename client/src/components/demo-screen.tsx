@@ -371,303 +371,321 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 3: Revolutionary Lottery Reveal */}
+            {/* Step 3: Immersive Jackpot Discovery */}
             {currentStep === 2 && (
               <motion.div
-                key="lottery-reveal"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-purple-950 to-black"
+                key="jackpot-discovery"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                style={{
+                  background: "radial-gradient(ellipse at center, #1a0b3d 0%, #000000 100%)"
+                }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1.2 }}
               >
-                {/* Quantum Field Background */}
-                <div className="absolute inset-0 pointer-events-none">
-                  {/* Digital Grid Matrix */}
-                  <motion.div
-                    className="absolute inset-0"
-                    style={{
-                      backgroundImage: `
-                        linear-gradient(rgba(168,85,247,0.1) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(168,85,247,0.1) 1px, transparent 1px)
-                      `,
-                      backgroundSize: '60px 60px',
-                    }}
-                    animate={{
-                      opacity: [0.3, 0.6, 0.3],
-                      backgroundPosition: ['0px 0px', '60px 60px'],
-                    }}
-                    transition={{
-                      opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                      backgroundPosition: { duration: 20, repeat: Infinity, ease: "linear" }
-                    }}
-                  />
-                  
-                  {/* Neural Network Connections */}
-                  {[...Array(8)].map((_, i) => (
+                {/* Particle System */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  {[...Array(50)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-px h-full bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"
+                      className="absolute w-1 h-1 bg-yellow-400 rounded-full"
                       style={{
-                        left: `${10 + (i * 10)}%`,
-                        transformOrigin: 'center',
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
                       }}
                       animate={{
-                        scaleY: [0.5, 1.2, 0.5],
-                        opacity: [0.2, 0.8, 0.2],
+                        y: [0, -50, 0],
+                        opacity: [0, 1, 0],
+                        scale: [0, 1.5, 0],
                       }}
                       transition={{
-                        duration: 3 + (i * 0.5),
+                        duration: 3 + Math.random() * 2,
                         repeat: Infinity,
-                        delay: i * 0.3,
+                        delay: Math.random() * 5,
                         ease: "easeInOut"
                       }}
                     />
                   ))}
                 </div>
 
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-7xl"}`}>
-                  {/* Holographic Lottery Interface */}
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl mx-auto"}`}>
+                  {/* Hero Title */}
                   <motion.div
-                    className="relative mb-16"
-                    initial={{ opacity: 0, rotateX: 90 }}
-                    animate={{ opacity: 1, rotateX: 0 }}
-                    transition={{ duration: 1.5, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    style={{ perspective: "1000px" }}
+                    className="mb-20"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                   >
-                    {/* Main Lottery Display */}
-                    <motion.div
-                      className={`relative backdrop-blur-2xl bg-gradient-to-br from-purple-900/20 via-violet-800/10 to-purple-900/20 border border-purple-400/30 rounded-3xl ${
-                        isMobile ? "p-8" : "p-16"
-                      }`}
+                    <motion.h1
+                      className={`font-black mb-6 ${isMobile ? "text-4xl" : "text-8xl"}`}
                       style={{
-                        boxShadow: "0 0 100px rgba(168, 85, 247, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        background: "linear-gradient(135deg, #ffd700 0%, #ffb347 50%, #ff6b35 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        letterSpacing: "-0.02em"
                       }}
                       animate={{
-                        boxShadow: [
-                          "0 0 100px rgba(168, 85, 247, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
-                          "0 0 150px rgba(168, 85, 247, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
-                          "0 0 100px rgba(168, 85, 247, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                        textShadow: [
+                          "0 0 50px rgba(255, 215, 0, 0.5)",
+                          "0 0 100px rgba(255, 215, 0, 0.8)",
+                          "0 0 50px rgba(255, 215, 0, 0.5)"
                         ]
                       }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      {/* Header */}
-                      <motion.h2
-                        className={`font-light text-purple-200 mb-8 tracking-[0.3em] uppercase ${
-                          isMobile ? "text-sm" : "text-lg"
-                        }`}
-                        style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 1 }}
-                      >
-                        Revolutionary Lottery System
-                      </motion.h2>
-
-                      {/* Central Lottery Ball */}
-                      <motion.div
-                        className="relative mx-auto mb-12"
-                        style={{ width: isMobile ? "200px" : "300px", height: isMobile ? "200px" : "300px" }}
-                      >
-                        {/* Rotating Ring */}
-                        <motion.div
-                          className="absolute inset-0 rounded-full border-4 border-gradient-to-r from-purple-400 via-violet-300 to-purple-400"
-                          style={{
-                            background: "conic-gradient(from 0deg, rgba(168,85,247,0.3), rgba(139,69,196,0.5), rgba(168,85,247,0.3))"
-                          }}
-                          animate={{ rotate: [0, 360] }}
-                          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                        />
-                        
-                        {/* Inner Sphere */}
-                        <motion.div
-                          className="absolute inset-4 rounded-full bg-gradient-to-br from-purple-600 via-violet-700 to-purple-800 flex items-center justify-center"
-                          style={{
-                            boxShadow: "inset 0 0 50px rgba(168, 85, 247, 0.5), 0 0 80px rgba(168, 85, 247, 0.3)"
-                          }}
-                          animate={{
-                            scale: [1, 1.05, 1],
-                            boxShadow: [
-                              "inset 0 0 50px rgba(168, 85, 247, 0.5), 0 0 80px rgba(168, 85, 247, 0.3)",
-                              "inset 0 0 70px rgba(168, 85, 247, 0.7), 0 0 120px rgba(168, 85, 247, 0.5)",
-                              "inset 0 0 50px rgba(168, 85, 247, 0.5), 0 0 80px rgba(168, 85, 247, 0.3)"
-                            ]
-                          }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                          <motion.div
-                            className={`text-white font-black ${isMobile ? "text-4xl" : "text-6xl"}`}
-                            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-                            animate={{
-                              textShadow: [
-                                "0 0 20px rgba(255, 255, 255, 0.8)",
-                                "0 0 40px rgba(255, 255, 255, 1)",
-                                "0 0 20px rgba(255, 255, 255, 0.8)"
-                              ]
-                            }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          >
-                            🎲
-                          </motion.div>
-                        </motion.div>
-
-                        {/* Orbiting Elements */}
-                        {[...Array(6)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="absolute w-3 h-3 bg-purple-400 rounded-full"
-                            style={{
-                              left: "50%",
-                              top: "50%",
-                              transformOrigin: isMobile ? "0 100px" : "0 150px",
-                            }}
-                            animate={{
-                              rotate: [0, 360],
-                              scale: [0.5, 1, 0.5],
-                            }}
-                            transition={{
-                              rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-                              scale: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }
-                            }}
-                          />
-                        ))}
-                      </motion.div>
-
-                      {/* Probability Matrix */}
-                      <motion.div
-                        className="grid grid-cols-3 gap-4 mb-8"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.2, delay: 1.5 }}
-                      >
-                        {[
-                          { prize: "JACKPOT", odds: "1:1000", color: "from-yellow-400 to-amber-500" },
-                          { prize: "SUPER", odds: "1:100", color: "from-purple-400 to-violet-500" },
-                          { prize: "MINI", odds: "1:10", color: "from-blue-400 to-cyan-500" }
-                        ].map((item, i) => (
-                          <motion.div
-                            key={i}
-                            className={`backdrop-blur-xl bg-gradient-to-br ${item.color}/10 border border-white/10 rounded-xl p-4`}
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <div className={`text-xs font-semibold text-white/70 mb-1 ${isMobile ? "text-xs" : "text-sm"}`}>
-                              {item.prize}
-                            </div>
-                            <div className={`font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent ${
-                              isMobile ? "text-sm" : "text-lg"
-                            }`}>
-                              {item.odds}
-                            </div>
-                          </motion.div>
-                        ))}
-                      </motion.div>
-
-                      {/* Live Stats */}
-                      <motion.div
-                        className="text-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 2 }}
-                      >
-                        <motion.div
-                          className={`text-purple-200 font-light mb-2 ${isMobile ? "text-sm" : "text-lg"}`}
-                          style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-                        >
-                          Current Pool
-                        </motion.div>
-                        <motion.div
-                          className={`font-black text-white ${isMobile ? "text-3xl" : "text-5xl"}`}
-                          style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-                          animate={{
-                            textShadow: [
-                              "0 0 30px rgba(255, 255, 255, 0.5)",
-                              "0 0 60px rgba(168, 85, 247, 0.8)",
-                              "0 0 30px rgba(255, 255, 255, 0.5)"
-                            ]
-                          }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                          <AnimatedCounter showGrowthIndicator={false} />
-                        </motion.div>
-                      </motion.div>
+                      JACKPOT
+                    </motion.h1>
+                    <motion.div
+                      className={`text-yellow-200 font-light ${isMobile ? "text-lg" : "text-2xl"}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 1 }}
+                    >
+                      Every swap is a chance to win
                     </motion.div>
                   </motion.div>
 
-                  {/* Quantum Mechanics Explanation */}
+                  {/* Interactive Lottery Ball */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    className="relative mx-auto mb-16"
+                    style={{ width: isMobile ? "250px" : "400px", height: isMobile ? "250px" : "400px" }}
+                    initial={{ opacity: 0, rotateY: -90 }}
+                    animate={{ opacity: 1, rotateY: 0 }}
+                    transition={{ duration: 2, delay: 0.8 }}
+                  >
+                    {/* Outer Glow Ring */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: "conic-gradient(from 0deg, #ffd700, #ff6b35, #8b5cf6, #ffd700)",
+                        padding: "4px"
+                      }}
+                      animate={{ rotate: [0, 360] }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    >
+                      <div className="w-full h-full rounded-full bg-black/90" />
+                    </motion.div>
+
+                    {/* Central Orb */}
+                    <motion.div
+                      className="absolute inset-8 rounded-full flex items-center justify-center"
+                      style={{
+                        background: "radial-gradient(circle at 30% 30%, #ffd700, #ff8c00, #1a0b3d)",
+                        boxShadow: "inset 0 0 100px rgba(255, 215, 0, 0.3), 0 0 150px rgba(255, 215, 0, 0.5)"
+                      }}
+                      animate={{
+                        scale: [1, 1.05, 1],
+                        boxShadow: [
+                          "inset 0 0 100px rgba(255, 215, 0, 0.3), 0 0 150px rgba(255, 215, 0, 0.5)",
+                          "inset 0 0 150px rgba(255, 215, 0, 0.5), 0 0 200px rgba(255, 215, 0, 0.8)",
+                          "inset 0 0 100px rgba(255, 215, 0, 0.3), 0 0 150px rgba(255, 215, 0, 0.5)"
+                        ]
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <motion.div
+                        className={`${isMobile ? "text-6xl" : "text-8xl"}`}
+                        animate={{
+                          rotateY: [0, 360],
+                          textShadow: [
+                            "0 0 30px rgba(255, 255, 255, 0.8)",
+                            "0 0 60px rgba(255, 255, 255, 1)",
+                            "0 0 30px rgba(255, 255, 255, 0.8)"
+                          ]
+                        }}
+                        transition={{
+                          rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
+                          textShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                      >
+                        💰
+                      </motion.div>
+                    </motion.div>
+
+                    {/* Orbiting Coins */}
+                    {[...Array(8)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute"
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          transformOrigin: `0 ${isMobile ? "150px" : "220px"}`,
+                        }}
+                        animate={{
+                          rotate: [i * 45, (i * 45) + 360],
+                        }}
+                        transition={{
+                          duration: 12,
+                          repeat: Infinity,
+                          ease: "linear",
+                          delay: i * 0.2
+                        }}
+                      >
+                        <motion.div
+                          className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-xs"
+                          animate={{
+                            scale: [0.8, 1.2, 0.8],
+                            rotateY: [0, 360]
+                          }}
+                          transition={{
+                            scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                            rotateY: { duration: 3, repeat: Infinity, ease: "linear" }
+                          }}
+                        >
+                          $
+                        </motion.div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+
+                  {/* Prize Tiers - Modern Cards */}
+                  <motion.div
+                    className={`grid gap-6 mb-16 ${isMobile ? "grid-cols-1 px-4" : "grid-cols-3"}`}
+                    initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 2.5 }}
+                    transition={{ duration: 1.5, delay: 1.5 }}
+                  >
+                    {[
+                      { 
+                        tier: "MEGA", 
+                        prize: "$50,000+", 
+                        odds: "1:10,000",
+                        gradient: "from-yellow-400 via-orange-500 to-red-500",
+                        glow: "rgba(255, 215, 0, 0.3)"
+                      },
+                      { 
+                        tier: "MAJOR", 
+                        prize: "$5,000+", 
+                        odds: "1:1,000",
+                        gradient: "from-purple-400 via-violet-500 to-purple-600",
+                        glow: "rgba(168, 85, 247, 0.3)"
+                      },
+                      { 
+                        tier: "MINI", 
+                        prize: "$500+", 
+                        odds: "1:100",
+                        gradient: "from-blue-400 via-cyan-500 to-teal-500",
+                        glow: "rgba(59, 130, 246, 0.3)"
+                      }
+                    ].map((item, i) => (
+                      <motion.div
+                        key={i}
+                        className="relative group cursor-pointer"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 1.8 + (i * 0.2) }}
+                        whileHover={{ y: -10, scale: 1.05 }}
+                      >
+                        <div
+                          className={`relative backdrop-blur-xl bg-gradient-to-br ${item.gradient}/10 border border-white/20 rounded-2xl ${
+                            isMobile ? "p-6" : "p-8"
+                          } overflow-hidden`}
+                          style={{
+                            boxShadow: `0 25px 50px -12px ${item.glow}, inset 0 1px 0 rgba(255, 255, 255, 0.1)`
+                          }}
+                        >
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                            style={{
+                              background: `linear-gradient(135deg, ${item.glow} 0%, transparent 100%)`
+                            }}
+                          />
+                          
+                          <div className="relative z-10">
+                            <motion.div
+                              className={`text-white font-black mb-2 ${isMobile ? "text-lg" : "text-xl"}`}
+                              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                              animate={{
+                                textShadow: [
+                                  `0 0 20px ${item.glow}`,
+                                  `0 0 40px ${item.glow}`,
+                                  `0 0 20px ${item.glow}`
+                                ]
+                              }}
+                              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                              {item.tier}
+                            </motion.div>
+                            
+                            <div className={`bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent font-bold mb-3 ${
+                              isMobile ? "text-2xl" : "text-3xl"
+                            }`}>
+                              {item.prize}
+                            </div>
+                            
+                            <div className="text-white/70 font-light">
+                              Odds: {item.odds}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+
+                  {/* Call to Action */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 2.5 }}
                   >
                     <motion.p
-                      className={`text-purple-300 font-light leading-relaxed max-w-4xl mx-auto ${
+                      className={`text-yellow-300/80 font-light leading-relaxed ${
                         isMobile ? "text-lg" : "text-xl"
                       }`}
                       style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-                      animate={{ opacity: [0.7, 1, 0.7] }}
+                      animate={{ opacity: [0.6, 1, 0.6] }}
                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      Every swap triggers quantum randomness through{" "}
-                      <span className="text-purple-100 font-medium">Chainlink VRF 2.5</span>,{" "}
-                      creating provably fair lottery mechanics with instant settlement across{" "}
-                      <span className="text-purple-100 font-medium">LayerZero networks</span>
+                      Powered by <span className="text-yellow-100 font-medium">Chainlink VRF 2.5</span> for{" "}
+                      <span className="text-yellow-100 font-medium">provably fair</span> randomness
                     </motion.p>
                   </motion.div>
                 </div>
               </motion.div>
             )}
 
-            {/* Step 4: Neural Fee Analysis */}
+            {/* Step 4: Intelligent Fee Distribution */}
             {currentStep === 3 && (
               <motion.div
-                key="neural-analysis"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-cyan-950 to-black"
+                key="fee-distribution"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                style={{
+                  background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)"
+                }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1.2 }}
               >
-                {/* AI Processing Environment */}
-                <div className="absolute inset-0 pointer-events-none">
-                  {/* Data Stream Lines */}
-                  {[...Array(12)].map((_, i) => (
+                {/* Modern Background Effects */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  {/* Floating Orbs */}
+                  {[...Array(15)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
-                      style={{
-                        top: `${10 + (i * 7)}%`,
-                        left: '0%',
-                        right: '0%',
-                      }}
-                      animate={{
-                        opacity: [0, 1, 0],
-                        scaleX: [0, 1, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: i * 0.2,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  ))}
-                  
-                  {/* Floating Data Packets */}
-                  {[...Array(20)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                      className="absolute w-2 h-2 bg-blue-400/30 rounded-full"
                       style={{
                         left: `${Math.random() * 100}%`,
                         top: `${Math.random() * 100}%`,
                       }}
                       animate={{
+                        y: [0, -100, 0],
                         opacity: [0, 0.8, 0],
-                        scale: [0, 1.5, 0],
-                        x: [0, (Math.random() - 0.5) * 200],
-                        y: [0, (Math.random() - 0.5) * 200],
+                        scale: [0, 2, 0],
+                      }}
+                      transition={{
+                        duration: 4 + Math.random() * 3,
+                        repeat: Infinity,
+                        delay: Math.random() * 5,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  ))}
                       }}
                       transition={{
                         duration: 4 + Math.random() * 2,
