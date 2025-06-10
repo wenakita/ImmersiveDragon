@@ -48,6 +48,34 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button"
     
     if (animated) {
+      // Create clean props object for motion.button by only including valid HTML button attributes
+      const motionProps = {
+        onClick: props.onClick,
+        onMouseEnter: props.onMouseEnter,
+        onMouseLeave: props.onMouseLeave,
+        onFocus: props.onFocus,
+        onBlur: props.onBlur,
+        disabled: props.disabled,
+        type: props.type,
+        form: props.form,
+        name: props.name,
+        value: props.value,
+        autoFocus: props.autoFocus,
+        tabIndex: props.tabIndex,
+        'aria-label': props['aria-label'],
+        'aria-describedby': props['aria-describedby'],
+        'aria-expanded': props['aria-expanded'],
+        'aria-pressed': props['aria-pressed'],
+        id: props.id,
+        title: props.title,
+        role: props.role,
+        style: props.style,
+        onKeyDown: props.onKeyDown,
+        onKeyUp: props.onKeyUp,
+        onMouseDown: props.onMouseDown,
+        onMouseUp: props.onMouseUp,
+      };
+      
       return (
         <motion.button
           className={cn(
@@ -55,7 +83,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             glow && "shadow-[0_0_30px_rgba(59,130,246,0.4)]",
             className
           )}
-          style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+          style={{ fontFamily: 'Inter, system-ui, sans-serif', ...motionProps.style }}
           ref={ref}
           whileHover={{ 
             scale: 1.05,
@@ -70,7 +98,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          {...props}
+          {...motionProps}
         />
       )
     }

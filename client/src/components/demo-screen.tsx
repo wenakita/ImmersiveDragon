@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
 import { useIsMobile } from "../hooks/use-mobile";
-import { IPFS_ASSETS } from "@/lib/assets";
+import { IPFS_ASSETS, getAssetUrl } from "@/lib/assets";
 import TokenExchangeAnimation from "./token-exchange-animation";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
