@@ -206,8 +206,8 @@ export default function WelcomeScreen({
               )}
             </motion.div>
           </div>
-          <label htmlFor="termsAccept" className={`cursor-pointer text-xs opacity-80 ${
-            isMobile ? "text-[10px]" : "text-[11px]"
+          <label htmlFor="termsAccept" className={`cursor-pointer opacity-75 ${
+            isMobile ? "text-[9px]" : "text-[10px]"
           }`}>
             I accept the terms and conditions for OmniDragon Protocol listed on
             the{" "}
