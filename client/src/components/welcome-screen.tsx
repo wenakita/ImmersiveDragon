@@ -19,7 +19,7 @@ export default function WelcomeScreen({
     useEasterEggs();
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden"
+      className="fixed inset-0 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
