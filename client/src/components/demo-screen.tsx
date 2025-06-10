@@ -123,12 +123,12 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
   const steps = [
     { delay: 0 },      // Pre-credits
-    { delay: 3000 },   // Step 1: Title
-    { delay: 8000 },   // Step 2: Fee Structure Intro
-    { delay: 13000 },  // Step 3: Fee Breakdown Part 1
-    { delay: 18000 },  // Step 4: Fee Breakdown Part 2
-    { delay: 23000 },  // Step 5: LayerZero
-    { delay: 28000 },  // Step 6: Chainlink VRF
+    { delay: 4000 },   // Step 1: Welcome & Introduction
+    { delay: 12000 },  // Step 2: S ↔ DRAGON Swap Focus
+    { delay: 20000 },  // Step 3: Animation Showcase
+    { delay: 28000 },  // Step 4: Fee Structure Deep Dive
+    { delay: 36000 },  // Step 5: LayerZero Integration
+    { delay: 44000 },  // Step 6: Chainlink VRF Mechanics
   ];
 
   useEffect(() => {
@@ -345,20 +345,20 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </h2>
                   </motion.div>
 
-                  {/* Clean Two-Motion Token Swap Animation */}
+                  {/* Featured Token Swap Animation - Extended Display */}
                   <motion.div
-                    className="flex justify-center items-center mb-20"
+                    className="flex justify-center items-center mb-16"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.5 }}
                   >
                     <TokenExchangeAnimation
                       containerClassName="relative"
-                      delay={0.5}
-                      duration={2.8}
+                      delay={0.8}
+                      duration={4.2}
                       repeat={true}
-                      scale={isMobile ? 0.7 : 1.0}
-                      showTradeIndicators={false}
+                      scale={isMobile ? 0.8 : 1.3}
+                      showTradeIndicators={true}
                       showFeeBreakdown={true}
                     />
                   </motion.div>

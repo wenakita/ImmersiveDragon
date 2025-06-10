@@ -8,43 +8,43 @@ export interface DemoStep {
 
 export const demoSteps: DemoStep[] = [
   {
-    title: "Select Tokens",
-    subtitle: "Choose your trading pair",
-    description: "Choose the tokens you want to swap. In DeFi, you can exchange one cryptocurrency for another directly from your wallet.",
-    educationalTitle: "How Token Selection Works",
+    title: "Welcome to Sonic Red Dragon",
+    subtitle: "Revolutionary Token Ecosystem",
+    description: "Experience the next generation of DeFi with Sonic Red Dragon - where speed meets power through innovative tokenomics and cross-chain mechanics.",
+    educationalTitle: "The Sonic Red Dragon Vision",
     educationalContent: [
-      "Decentralized exchanges (DEXs) allow you to trade tokens directly from your wallet without intermediaries. Each trading pair has its own liquidity pool that determines the exchange rate.",
-      "The rates are calculated automatically based on supply and demand, using algorithms like Automated Market Makers (AMM) to ensure fair pricing and sufficient liquidity for trades."
+      "Sonic Red Dragon combines two powerful forces: the lightning-fast speed of Sonic tokens and the raw power of Dragon tokens, creating a unique dual-token ecosystem.",
+      "Our protocol leverages Chainlink VRF 2.5 and LayerZero technology to deliver provably fair gaming mechanics and seamless cross-chain interactions."
     ]
   },
   {
-    title: "Enter Amount",
-    subtitle: "Specify swap quantity",
-    description: "Specify how much you want to swap. The interface automatically calculates the output amount based on current exchange rates.",
-    educationalTitle: "Understanding Swap Calculations",
+    title: "Discover S ↔ DRAGON Swap",
+    subtitle: "The Heart of Our Ecosystem",
+    description: "Watch our signature token swap animation as S (Sonic) tokens transform into DRAGON tokens through our innovative exchange mechanism.",
+    educationalTitle: "Dual-Token Innovation",
     educationalContent: [
-      "When you enter an amount, the DEX calculates the output using the constant product formula (x * y = k). This ensures the pool maintains balance.",
-      "Larger trades may experience slippage - a change in price between when you submit and when the transaction executes due to market movements."
+      "The S ↔ DRAGON swap represents more than a simple exchange - it's the core mechanic that balances speed and power in our ecosystem.",
+      "Each swap triggers our unique fee distribution: 6.9% goes to jackpot rewards, 2.41% to liquidity pools, and 0.69% to token burns, creating deflationary pressure."
     ]
   },
   {
-    title: "Review Rate",
-    subtitle: "Check exchange details",
-    description: "Check the exchange rate, fees, and estimated output. This step helps you understand exactly what you'll receive.",
-    educationalTitle: "Exchange Rate Mechanics",
+    title: "Experience the Animation",
+    subtitle: "Advanced Token Convergence",
+    description: "Our cubic-bezier powered animations showcase the smooth convergence of tokens, representing the harmony between speed and power.",
+    educationalTitle: "Visual Innovation Meets Function",
     educationalContent: [
-      "Exchange rates fluctuate based on liquidity pool ratios. Higher liquidity means more stable rates and lower slippage.",
-      "DEX fees typically range from 0.1% to 0.3% and are distributed to liquidity providers who supply tokens to the pools."
+      "The token exchange animation uses advanced cubic-bezier curves for smooth convergence (0.25, 0.1, 0.25, 1.0) and sharp acceleration exit (0.76, 0, 0.24, 1).",
+      "This visual representation reflects our protocol's efficiency - smooth entry, powerful execution, creating an immersive user experience."
     ]
   },
   {
-    title: "Approve Transaction",
-    subtitle: "Authorize the swap",
-    description: "Authorize the smart contract to access your tokens. This is a security feature that gives you control over your assets.",
-    educationalTitle: "Token Approvals & Security",
+    title: "Smart Fee Distribution",
+    subtitle: "Automatic Reward Mechanics",
+    description: "Every swap automatically distributes fees across jackpot pools, liquidity incentives, and token burns, creating a self-sustaining ecosystem.",
+    educationalTitle: "Tokenomics Excellence",
     educationalContent: [
-      "Token approvals allow smart contracts to move your tokens on your behalf. You can set spending limits to maintain control.",
-      "This two-step process (approve, then swap) prevents unauthorized access to your entire token balance and enhances security."
+      "Our 9.9% total fee structure is carefully designed: 6.9% builds jackpot pools for VRF-powered rewards, 2.41% incentivizes liquidity providers.",
+      "The 0.69% burn mechanism creates deflationary pressure, making remaining tokens more valuable over time while funding ecosystem growth."
     ]
   },
   {
