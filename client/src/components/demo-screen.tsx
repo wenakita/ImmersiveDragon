@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
 import { useIsMobile } from "../hooks/use-mobile";
+import { IPFS_ASSETS } from "@/lib/assets";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
-// Sonic Token Component
+// Modern Sonic Token Component
 const SonicToken = ({
   size = "w-12 h-12",
   borderColor = "border-blue-300",
@@ -25,20 +26,21 @@ const SonicToken = ({
   style?: any;
 }) => (
   <motion.div
-    className={`${size} rounded-full bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center shadow-lg border-2 ${borderColor} overflow-hidden`}
+    className={`${size} rounded-full bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center shadow-2xl border-2 ${borderColor} overflow-hidden relative`}
     animate={animateProps}
     transition={transitionProps}
     style={style}
   >
+    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full" />
     <img
-      src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
+      src={IPFS_ASSETS.S}
       alt="Sonic"
-      className={`${imageSize} object-cover rounded-full`}
+      className={`${imageSize} object-cover rounded-full relative z-10`}
     />
   </motion.div>
 );
 
-// Dragon Token Component
+// Modern Dragon Token Component
 const DragonToken = ({
   size = "w-12 h-12",
   borderColor = "border-red-300",
@@ -59,20 +61,21 @@ const DragonToken = ({
   style?: any;
 }) => (
   <motion.div
-    className={`${size} rounded-full bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center shadow-lg border-2 ${borderColor} overflow-hidden`}
+    className={`${size} rounded-full bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center shadow-2xl border-2 ${borderColor} overflow-hidden relative`}
     animate={animateProps}
     transition={transitionProps}
     style={style}
   >
+    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full" />
     <img
-      src="https://assets.coingecko.com/coins/images/36096/standard/Sonic_Logo.png?1710331404"
+      src={IPFS_ASSETS.DRAGON}
       alt="Dragon"
-      className={`${imageSize} object-cover rounded-full`}
+      className={`${imageSize} object-cover rounded-full relative z-10`}
     />
   </motion.div>
 );
 
-// Animated Counter Component
+// Enhanced Animated Counter Component
 const AnimatedCounter = ({ showGrowthIndicator = true }: { showGrowthIndicator?: boolean }) => {
   const [count, setCount] = useState(142850);
   
@@ -86,7 +89,14 @@ const AnimatedCounter = ({ showGrowthIndicator = true }: { showGrowthIndicator?:
   
   return (
     <div className="flex items-center justify-center space-x-2">
-      <span>${count.toLocaleString()}</span>
+      <motion.span
+        className="text-green-300 font-bold"
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 0.5 }}
+        key={count}
+      >
+        ${count.toLocaleString()}
+      </motion.span>
       {showGrowthIndicator && (
         <motion.span
           className="text-green-300 text-sm"
@@ -237,7 +247,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 1: Title Sequence */}
+            {/* Step 1: Modern Title Sequence */}
             {currentStep === 0 && (
               <motion.div
                 key="title"
@@ -247,41 +257,27 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1.5 }}
               >
-                {/* Simplified background effects */}
-                <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
-                  {[...Array(12)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 bg-gradient-to-r from-red-400 to-orange-500 rounded-full"
-                      style={{
-                        left: `${5 + i * 8}%`,
-                        top: `${10 + (i % 5) * 15}%`,
-                      }}
-                      animate={{
-                        scale: [0, 1.5, 0],
-                        opacity: [0, 0.8, 0],
-                        rotate: [0, 180],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                    />
-                  ))}
-                </div>
-
                 <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
                   <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.5, delay: 0.5 }}
                   >
-                    <h1 className={`font-bold mb-8 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent ${
-                      isMobile ? "text-4xl mobile-text-2xl leading-tight" : "text-8xl leading-tight"
-                    }`}>
+                    <motion.h1 
+                      className={`font-black mb-8 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent ${
+                        isMobile ? "text-5xl mobile-text-3xl leading-tight" : "text-9xl leading-tight"
+                      }`}
+                      animate={{
+                        textShadow: [
+                          "0 0 30px rgba(251, 191, 36, 0.5)",
+                          "0 0 60px rgba(251, 191, 36, 0.3)",
+                          "0 0 30px rgba(251, 191, 36, 0.5)"
+                        ]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    >
                       SONIC RED DRAGON
-                    </h1>
+                    </motion.h1>
                   </motion.div>
 
                   <motion.div
@@ -289,17 +285,26 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 1.5 }}
                   >
-                    <p className={`text-gray-300 font-light tracking-wide ${
-                      isMobile ? "text-base mobile-text-base" : "text-2xl"
+                    <motion.div
+                      className={`w-32 h-1 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 rounded-full mx-auto mb-8 ${
+                        isMobile ? "w-24" : ""
+                      }`}
+                      initial={{ width: 0 }}
+                      animate={{ width: isMobile ? "6rem" : "8rem" }}
+                      transition={{ duration: 1.5, delay: 2 }}
+                    />
+                    
+                    <p className={`text-gray-200/90 font-medium tracking-wide ${
+                      isMobile ? "text-lg mobile-text-base" : "text-3xl"
                     }`}>
-                      The Future of DeFi Gaming
+                      The Future of <span className="text-orange-400 font-bold">DeFi Gaming</span>
                     </p>
                   </motion.div>
                 </div>
               </motion.div>
             )}
 
-            {/* Step 2: Token Swap Animation */}
+            {/* Step 2: Enhanced Token Swap Animation */}
             {currentStep === 1 && (
               <motion.div
                 key="swap-animation"
@@ -309,32 +314,8 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {/* Background effects */}
-                <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
-                  {[...Array(12)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"
-                      style={{
-                        left: `${5 + i * 8}%`,
-                        top: `${10 + (i % 5) * 15}%`,
-                      }}
-                      animate={{
-                        scale: [0, 1.5, 0],
-                        opacity: [0, 0.8, 0],
-                        rotate: [0, 180],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                    />
-                  ))}
-                </div>
-
                 <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
-                  {/* Swap Title */}
+                  {/* Modern Swap Title */}
                   <motion.div
                     className={`mb-16 ${isMobile ? "mb-12" : ""}`}
                     initial={{ opacity: 0, y: 50 }}
@@ -342,129 +323,129 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
                     <h2 className={`font-light mb-6 tracking-wide ${
-                      isMobile ? "text-2xl mobile-text-lg" : "text-5xl"
+                      isMobile ? "text-2xl mobile-text-lg" : "text-6xl"
                     }`}>
-                      Swap <span className="font-bold text-yellow-400">$S</span> for <span className="font-bold text-yellow-400">$DRAGON</span>
+                      Swap <span className="font-black text-yellow-400">$S</span> for <span className="font-black text-yellow-400">$DRAGON</span>
                     </h2>
                   </motion.div>
 
-                  {/* Token Animation Container */}
-                  <div className="relative h-48 flex items-center justify-center overflow-hidden">
-                    {/* S Token - Converging Animation */}
+                  {/* Enhanced Token Animation Container */}
+                  <div className="relative h-56 flex items-center justify-center overflow-hidden mb-16">
+                    {/* S Token - Enhanced Animation */}
                     <motion.div
                       className="absolute"
-                      initial={{ x: -400, opacity: 0, scale: 0.8 }}
+                      initial={{ x: -500, opacity: 0, scale: 0.8 }}
                       animate={{ 
-                        x: [-400, -50, 0, 50, 400],
+                        x: [-500, -60, 0, 60, 500],
                         opacity: [0, 1, 1, 1, 0],
-                        scale: [0.8, 1.1, 1.2, 1.1, 0.8],
-                        rotate: [0, 45, 90, 135, 180]
+                        scale: [0.8, 1.2, 1.4, 1.2, 0.8],
+                        rotate: [0, 90, 180, 270, 360]
                       }}
                       transition={{ 
-                        duration: 4,
-                        times: [0, 0.3, 0.5, 0.7, 1],
-                        ease: [0.68, -0.55, 0.265, 1.55], // Custom cubic bezier for dramatic effect
+                        duration: 5,
+                        times: [0, 0.25, 0.5, 0.75, 1],
+                        ease: [0.68, -0.55, 0.265, 1.55],
                         repeat: Infinity,
                         repeatDelay: 2
                       }}
                     >
                       <SonicToken 
-                        size={isMobile ? "w-16 h-16" : "w-24 h-24"}
+                        size={isMobile ? "w-20 h-20" : "w-32 h-32"}
                         borderColor="border-yellow-300"
                         gradientFrom="from-yellow-400"
                         gradientTo="to-orange-500"
                         style={{
-                          filter: "drop-shadow(0 0 20px rgba(251, 191, 36, 0.6))",
-                          boxShadow: "0 0 30px rgba(251, 191, 36, 0.4)"
+                          filter: "drop-shadow(0 0 30px rgba(251, 191, 36, 0.8))",
+                          boxShadow: "0 0 50px rgba(251, 191, 36, 0.6)"
                         }}
                       />
                     </motion.div>
 
-                    {/* Convergence Point Effects */}
+                    {/* Enhanced Convergence Effects */}
                     <motion.div
-                      className="absolute w-8 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500"
+                      className="absolute w-12 h-12 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500"
                       animate={{
-                        scale: [1, 2, 1],
-                        opacity: [0.3, 0.8, 0.3],
-                        rotate: [0, 180, 360],
+                        scale: [1, 3, 1],
+                        opacity: [0.2, 0.9, 0.2],
+                        rotate: [0, 360],
                       }}
                       transition={{
-                        duration: 2,
+                        duration: 3,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
                       style={{
-                        filter: "blur(4px)",
+                        filter: "blur(8px)",
                       }}
                     />
 
-                    {/* Swap Arrow with Enhanced Animation */}
+                    {/* Modern Swap Icon */}
                     <motion.div
-                      className={`text-yellow-400 font-bold ${isMobile ? "text-3xl" : "text-5xl"} z-10 relative`}
+                      className={`text-yellow-400 font-black z-10 relative ${isMobile ? "text-4xl" : "text-6xl"}`}
                       animate={{
                         opacity: [0.4, 1, 0.4],
-                        scale: [1, 1.3, 1],
+                        scale: [1, 1.4, 1],
                         rotateY: [0, 180, 360],
                       }}
                       transition={{
-                        duration: 2,
+                        duration: 2.5,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
                       style={{
-                        filter: "drop-shadow(0 0 15px rgba(251, 191, 36, 0.8))",
-                        textShadow: "0 0 20px rgba(251, 191, 36, 0.6)"
+                        filter: "drop-shadow(0 0 25px rgba(251, 191, 36, 0.9))",
+                        textShadow: "0 0 30px rgba(251, 191, 36, 0.8)"
                       }}
                     >
                       ⇄
                     </motion.div>
 
-                    {/* Dragon Token - Converging Animation */}
+                    {/* Dragon Token - Enhanced Animation */}
                     <motion.div
                       className="absolute"
-                      initial={{ x: 400, opacity: 0, scale: 0.8 }}
+                      initial={{ x: 500, opacity: 0, scale: 0.8 }}
                       animate={{ 
-                        x: [400, 50, 0, -50, -400],
+                        x: [500, 60, 0, -60, -500],
                         opacity: [0, 1, 1, 1, 0],
-                        scale: [0.8, 1.1, 1.2, 1.1, 0.8],
-                        rotate: [0, -45, -90, -135, -180]
+                        scale: [0.8, 1.2, 1.4, 1.2, 0.8],
+                        rotate: [0, -90, -180, -270, -360]
                       }}
                       transition={{ 
-                        duration: 4,
-                        times: [0, 0.3, 0.5, 0.7, 1],
-                        ease: [0.68, -0.55, 0.265, 1.55], // Matching cubic bezier
+                        duration: 5,
+                        times: [0, 0.25, 0.5, 0.75, 1],
+                        ease: [0.68, -0.55, 0.265, 1.55],
                         repeat: Infinity,
                         repeatDelay: 2
                       }}
                     >
                       <DragonToken 
-                        size={isMobile ? "w-16 h-16" : "w-24 h-24"}
+                        size={isMobile ? "w-20 h-20" : "w-32 h-32"}
                         borderColor="border-yellow-300"
                         gradientFrom="from-yellow-400"
                         gradientTo="to-red-500"
                         style={{
-                          filter: "drop-shadow(0 0 20px rgba(251, 191, 36, 0.6))",
-                          boxShadow: "0 0 30px rgba(239, 68, 68, 0.4)"
+                          filter: "drop-shadow(0 0 30px rgba(251, 191, 36, 0.8))",
+                          boxShadow: "0 0 50px rgba(239, 68, 68, 0.6)"
                         }}
                       />
                     </motion.div>
 
-                    {/* Energy Trails */}
-                    {[...Array(6)].map((_, i) => (
+                    {/* Enhanced Energy Trails */}
+                    {[...Array(8)].map((_, i) => (
                       <motion.div
                         key={i}
-                        className="absolute w-2 h-2 bg-yellow-400 rounded-full"
+                        className="absolute w-3 h-3 bg-yellow-400 rounded-full"
                         style={{
-                          left: `${45 + (i % 2 === 0 ? -i * 8 : i * 8)}%`,
-                          top: `${48 + Math.sin(i) * 10}%`,
+                          left: `${45 + (i % 2 === 0 ? -i * 12 : i * 12)}%`,
+                          top: `${48 + Math.sin(i) * 15}%`,
                         }}
                         animate={{
                           opacity: [0, 1, 0],
-                          scale: [0, 1.5, 0],
-                          x: [0, (i % 2 === 0 ? -100 : 100)],
+                          scale: [0, 2, 0],
+                          x: [0, (i % 2 === 0 ? -150 : 150)],
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 2.5,
                           repeat: Infinity,
                           delay: i * 0.2,
                           ease: [0.25, 0.46, 0.45, 0.94]
@@ -475,50 +456,57 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                   {/* Modern Fee Display Card */}
                   <motion.div
-                    className={`relative overflow-hidden bg-gradient-to-br from-red-900/40 via-red-800/30 to-orange-900/40 backdrop-blur-xl border border-red-500/30 rounded-3xl mt-12 shadow-2xl ${
-                      isMobile ? "p-6 mx-2" : "p-10"
+                    className={`relative overflow-hidden bg-gradient-to-br from-red-900/50 via-red-800/40 to-orange-900/50 backdrop-blur-xl border border-red-500/40 rounded-3xl shadow-2xl ${
+                      isMobile ? "p-8 mx-2" : "p-12"
                     }`}
-                    initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
                     style={{
-                      boxShadow: "0 25px 50px -12px rgba(239, 68, 68, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                      boxShadow: "0 25px 50px -12px rgba(239, 68, 68, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
                     }}
                   >
-                    {/* Subtle glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 via-orange-500/5 to-red-500/10 rounded-3xl" />
+                    {/* Animated background glow */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-red-500/15 via-orange-500/10 to-red-500/15 rounded-3xl"
+                      animate={{ 
+                        opacity: [0.3, 0.6, 0.3],
+                        scale: [1, 1.02, 1]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    />
                     
                     <div className="relative z-10">
                       <motion.div 
-                        className={`font-bold bg-gradient-to-r from-red-400 via-orange-400 to-red-300 bg-clip-text text-transparent ${
-                          isMobile ? "text-3xl" : "text-5xl"
+                        className={`font-black bg-gradient-to-r from-red-300 via-orange-300 to-red-200 bg-clip-text text-transparent ${
+                          isMobile ? "text-4xl" : "text-7xl"
                         }`}
                         animate={{ 
                           textShadow: [
-                            "0 0 20px rgba(239, 68, 68, 0.5)",
-                            "0 0 40px rgba(239, 68, 68, 0.3)",
-                            "0 0 20px rgba(239, 68, 68, 0.5)"
+                            "0 0 30px rgba(239, 68, 68, 0.6)",
+                            "0 0 60px rgba(239, 68, 68, 0.4)",
+                            "0 0 30px rgba(239, 68, 68, 0.6)"
                           ]
                         }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                       >
                         10% TRADING FEE
                       </motion.div>
                       
                       <motion.div
-                        className={`w-16 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full mx-auto my-6 ${
-                          isMobile ? "w-12" : ""
+                        className={`w-20 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full mx-auto my-8 ${
+                          isMobile ? "w-16" : ""
                         }`}
                         initial={{ width: 0 }}
-                        animate={{ width: isMobile ? "3rem" : "4rem" }}
-                        transition={{ duration: 1, delay: 2 }}
+                        animate={{ width: isMobile ? "4rem" : "5rem" }}
+                        transition={{ duration: 1.5, delay: 2 }}
                       />
                       
-                      <p className={`text-gray-300/90 font-medium leading-relaxed ${
-                        isMobile ? "text-base mobile-text-base" : "text-xl"
+                      <p className={`text-gray-200/90 font-medium leading-relaxed ${
+                        isMobile ? "text-lg mobile-text-base" : "text-2xl"
                       }`}>
                         But here's where it gets{" "}
-                        <span className="text-yellow-400 font-semibold">interesting...</span>
+                        <span className="text-yellow-400 font-bold">interesting...</span>
                       </p>
                     </div>
                   </motion.div>
@@ -526,7 +514,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 3: Fee Breakdown Part 1 */}
+            {/* Step 3: Fee Breakdown Intro */}
             {currentStep === 2 && (
               <motion.div
                 key="fee-breakdown-1"
@@ -536,30 +524,6 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {/* Simplified background effects */}
-                <div className="absolute inset-0 opacity-40 pointer-events-none overflow-hidden">
-                  {[...Array(10)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"
-                      style={{
-                        left: `${5 + i * 9}%`,
-                        top: `${15 + (i % 4) * 18}%`,
-                      }}
-                      animate={{
-                        scale: [0, 1.3, 0],
-                        opacity: [0, 0.8, 0],
-                        rotate: [0, 270],
-                      }}
-                      transition={{
-                        duration: 3.5,
-                        repeat: Infinity,
-                        delay: i * 0.4,
-                      }}
-                    />
-                  ))}
-                </div>
-
                 <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-5xl"}`}>
                   <motion.div
                     className={`mb-12 ${isMobile ? "mb-8" : ""}`}
@@ -567,23 +531,44 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <h2 className={`font-light mb-6 text-yellow-400 tracking-wide ${
-                      isMobile ? "text-xl mobile-text-lg" : "text-5xl"
-                    }`}>
+                    <motion.h2 
+                      className={`font-light mb-8 text-yellow-400 tracking-wide ${
+                        isMobile ? "text-2xl mobile-text-lg" : "text-6xl"
+                      }`}
+                      animate={{
+                        textShadow: [
+                          "0 0 20px rgba(251, 191, 36, 0.5)",
+                          "0 0 40px rgba(251, 191, 36, 0.3)",
+                          "0 0 20px rgba(251, 191, 36, 0.5)"
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
                       But here's where it gets interesting
-                    </h2>
-                    <p className={`text-gray-300 font-light max-w-3xl mx-auto leading-relaxed ${
-                      isMobile ? "text-sm mobile-text-sm" : "text-xl"
+                    </motion.h2>
+                    
+                    <motion.div
+                      className={`w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-auto mb-8 ${
+                        isMobile ? "w-16" : ""
+                      }`}
+                      initial={{ width: 0 }}
+                      animate={{ width: isMobile ? "4rem" : "6rem" }}
+                      transition={{ duration: 1.5, delay: 1 }}
+                    />
+                    
+                    <p className={`text-gray-200/90 font-medium max-w-4xl mx-auto leading-relaxed ${
+                      isMobile ? "text-base mobile-text-sm" : "text-2xl"
                     }`}>
-                      On other DEX they just take your fees or give it to farmers, but on Sonic Red Dragon, 
-                      we turn them into opportunities
+                      On other DEX they just take your fees or give it to farmers, but on{" "}
+                      <span className="text-red-400 font-bold">Sonic Red Dragon</span>, 
+                      we turn them into <span className="text-yellow-400 font-bold">opportunities</span>
                     </p>
                   </motion.div>
                 </div>
               </motion.div>
             )}
 
-            {/* Step 4: Fee Breakdown Part 2 */}
+            {/* Step 4: Modern Fee Distribution */}
             {currentStep === 3 && (
               <motion.div
                 key="fee-breakdown-2"
@@ -593,93 +578,79 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {/* Simplified background effects */}
-                <div className="absolute inset-0 opacity-40 pointer-events-none overflow-hidden">
-                  {[...Array(12)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"
-                      style={{
-                        left: `${8 + i * 7}%`,
-                        top: `${12 + (i % 5) * 15}%`,
-                      }}
-                      animate={{
-                        scale: [0, 1.4, 0],
-                        opacity: [0, 0.9, 0],
-                        rotate: [0, 180],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: i * 0.25,
-                      }}
-                    />
-                  ))}
-                </div>
-
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-5xl"}`}>
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
                   <motion.div
-                    className={`mb-12 ${isMobile ? "mb-8" : ""}`}
+                    className={`mb-16 ${isMobile ? "mb-12" : ""}`}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <h2 className={`font-light mb-6 text-green-400 tracking-wide ${
-                      isMobile ? "text-2xl mobile-text-lg" : "text-5xl"
-                    }`}>
+                    <motion.h2 
+                      className={`font-black mb-8 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 bg-clip-text text-transparent tracking-wider ${
+                        isMobile ? "text-3xl mobile-text-xl" : "text-7xl"
+                      }`}
+                      animate={{
+                        textShadow: [
+                          "0 0 30px rgba(34, 197, 94, 0.5)",
+                          "0 0 60px rgba(34, 197, 94, 0.3)",
+                          "0 0 30px rgba(34, 197, 94, 0.5)"
+                        ]
+                      }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
                       FEE DISTRIBUTION
-                    </h2>
+                    </motion.h2>
                   </motion.div>
 
-                  {/* Modern Fee Breakdown Cards */}
-                  <div className={`grid gap-8 ${isMobile ? "grid-cols-1 space-y-6" : "md:grid-cols-3"}`}>
+                  {/* Premium Fee Breakdown Cards */}
+                  <div className={`grid gap-10 ${isMobile ? "grid-cols-1 space-y-8" : "md:grid-cols-3"}`}>
                     {/* Jackpot - Premium Glass Card */}
                     <motion.div
-                      className={`group relative overflow-hidden bg-gradient-to-br from-yellow-900/50 via-yellow-800/40 to-amber-900/50 backdrop-blur-xl border border-yellow-500/40 rounded-3xl shadow-2xl ${
-                        isMobile ? "p-6" : "p-8"
+                      className={`group relative overflow-hidden bg-gradient-to-br from-yellow-900/60 via-yellow-800/50 to-amber-900/60 backdrop-blur-xl border border-yellow-400/50 rounded-3xl shadow-2xl ${
+                        isMobile ? "p-8" : "p-10"
                       }`}
-                      initial={{ opacity: 0, y: 50, rotateX: 15 }}
-                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                      transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      whileHover={{ scale: 1.02, y: -5 }}
+                      initial={{ opacity: 0, y: 80, rotateY: -15 }}
+                      animate={{ opacity: 1, y: 0, rotateY: 0 }}
+                      transition={{ duration: 1.4, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.03, y: -10, rotateY: 5 }}
                       style={{
-                        boxShadow: "0 25px 50px -12px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                        boxShadow: "0 30px 60px -12px rgba(251, 191, 36, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
                       }}
                     >
-                      {/* Animated background glow */}
+                      {/* Enhanced background glow */}
                       <motion.div 
-                        className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 via-transparent to-amber-400/20 rounded-3xl"
+                        className="absolute inset-0 bg-gradient-to-br from-yellow-400/25 via-transparent to-amber-400/25 rounded-3xl"
                         animate={{ 
-                          opacity: [0.2, 0.4, 0.2],
-                          scale: [1, 1.02, 1]
+                          opacity: [0.3, 0.5, 0.3],
+                          scale: [1, 1.03, 1]
                         }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                       />
                       
                       <div className="relative z-10">
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-300 bg-clip-text text-transparent ${
-                            isMobile ? "text-4xl" : "text-6xl"
+                          className={`font-black bg-gradient-to-r from-yellow-200 via-yellow-300 to-amber-200 bg-clip-text text-transparent ${
+                            isMobile ? "text-5xl" : "text-7xl"
                           }`}
                           animate={{ 
-                            scale: [1, 1.05, 1]
+                            scale: [1, 1.08, 1]
                           }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                         >
                           6.9%
                         </motion.div>
                         
-                        <div className={`w-12 h-1 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full my-4 ${
-                          isMobile ? "w-8" : ""
+                        <div className={`w-16 h-1 bg-gradient-to-r from-yellow-300 to-amber-300 rounded-full my-6 ${
+                          isMobile ? "w-12" : ""
                         }`} />
                         
-                        <p className={`text-yellow-100 font-bold tracking-wide ${
-                          isMobile ? "text-lg" : "text-xl"
+                        <p className={`text-yellow-100 font-black tracking-wider ${
+                          isMobile ? "text-xl" : "text-2xl"
                         }`}>
                           JACKPOT POOL
                         </p>
-                        <p className={`text-yellow-200/80 mt-3 leading-relaxed ${
-                          isMobile ? "text-sm" : "text-base"
+                        <p className={`text-yellow-200/90 mt-4 leading-relaxed font-medium ${
+                          isMobile ? "text-sm" : "text-lg"
                         }`}>
                           Every swap becomes a lottery ticket
                         </p>
@@ -688,51 +659,51 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                     {/* Liquidity - Premium Glass Card */}
                     <motion.div
-                      className={`group relative overflow-hidden bg-gradient-to-br from-blue-900/50 via-blue-800/40 to-cyan-900/50 backdrop-blur-xl border border-blue-500/40 rounded-3xl shadow-2xl ${
-                        isMobile ? "p-6" : "p-8"
+                      className={`group relative overflow-hidden bg-gradient-to-br from-blue-900/60 via-blue-800/50 to-cyan-900/60 backdrop-blur-xl border border-blue-400/50 rounded-3xl shadow-2xl ${
+                        isMobile ? "p-8" : "p-10"
                       }`}
-                      initial={{ opacity: 0, y: 50, rotateX: 15 }}
-                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                      transition={{ duration: 1.2, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                      whileHover={{ scale: 1.02, y: -5 }}
+                      initial={{ opacity: 0, y: 80 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.4, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.03, y: -10 }}
                       style={{
-                        boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                        boxShadow: "0 30px 60px -12px rgba(59, 130, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
                       }}
                     >
-                      {/* Animated background glow */}
+                      {/* Enhanced background glow */}
                       <motion.div 
-                        className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-transparent to-cyan-400/20 rounded-3xl"
+                        className="absolute inset-0 bg-gradient-to-br from-blue-400/25 via-transparent to-cyan-400/25 rounded-3xl"
                         animate={{ 
-                          opacity: [0.2, 0.4, 0.2],
-                          scale: [1, 1.02, 1]
+                          opacity: [0.3, 0.5, 0.3],
+                          scale: [1, 1.03, 1]
                         }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                       />
                       
                       <div className="relative z-10">
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent ${
-                            isMobile ? "text-4xl" : "text-6xl"
+                          className={`font-black bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent ${
+                            isMobile ? "text-5xl" : "text-7xl"
                           }`}
                           animate={{ 
-                            scale: [1, 1.05, 1]
+                            scale: [1, 1.08, 1]
                           }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                         >
                           2.41%
                         </motion.div>
                         
-                        <div className={`w-12 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full my-4 ${
-                          isMobile ? "w-8" : ""
+                        <div className={`w-16 h-1 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full my-6 ${
+                          isMobile ? "w-12" : ""
                         }`} />
                         
-                        <p className={`text-blue-100 font-bold tracking-wide ${
-                          isMobile ? "text-lg" : "text-xl"
+                        <p className={`text-blue-100 font-black tracking-wider ${
+                          isMobile ? "text-xl" : "text-2xl"
                         }`}>
                           LIQUIDITY POOL
                         </p>
-                        <p className={`text-blue-200/80 mt-3 leading-relaxed ${
-                          isMobile ? "text-sm" : "text-base"
+                        <p className={`text-blue-200/90 mt-4 leading-relaxed font-medium ${
+                          isMobile ? "text-sm" : "text-lg"
                         }`}>
                           Maintains stable trading pairs
                         </p>
@@ -741,51 +712,51 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                     {/* Burn - Premium Glass Card */}
                     <motion.div
-                      className={`group relative overflow-hidden bg-gradient-to-br from-orange-900/50 via-red-900/40 to-orange-900/50 backdrop-blur-xl border border-orange-500/40 rounded-3xl shadow-2xl ${
-                        isMobile ? "p-6" : "p-8"
+                      className={`group relative overflow-hidden bg-gradient-to-br from-orange-900/60 via-red-900/50 to-orange-900/60 backdrop-blur-xl border border-orange-400/50 rounded-3xl shadow-2xl ${
+                        isMobile ? "p-8" : "p-10"
                       }`}
-                      initial={{ opacity: 0, y: 50, rotateX: 15 }}
-                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                      transition={{ duration: 1.2, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                      whileHover={{ scale: 1.02, y: -5 }}
+                      initial={{ opacity: 0, y: 80, rotateY: 15 }}
+                      animate={{ opacity: 1, y: 0, rotateY: 0 }}
+                      transition={{ duration: 1.4, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.03, y: -10, rotateY: -5 }}
                       style={{
-                        boxShadow: "0 25px 50px -12px rgba(251, 146, 60, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                        boxShadow: "0 30px 60px -12px rgba(251, 146, 60, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
                       }}
                     >
-                      {/* Animated background glow */}
+                      {/* Enhanced background glow */}
                       <motion.div 
-                        className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-transparent to-red-400/20 rounded-3xl"
+                        className="absolute inset-0 bg-gradient-to-br from-orange-400/25 via-transparent to-red-400/25 rounded-3xl"
                         animate={{ 
-                          opacity: [0.2, 0.4, 0.2],
-                          scale: [1, 1.02, 1]
+                          opacity: [0.3, 0.5, 0.3],
+                          scale: [1, 1.03, 1]
                         }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
                       />
                       
                       <div className="relative z-10">
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-orange-300 via-orange-400 to-red-300 bg-clip-text text-transparent ${
-                            isMobile ? "text-4xl" : "text-6xl"
+                          className={`font-black bg-gradient-to-r from-orange-200 via-orange-300 to-red-200 bg-clip-text text-transparent ${
+                            isMobile ? "text-5xl" : "text-7xl"
                           }`}
                           animate={{ 
-                            scale: [1, 1.05, 1]
+                            scale: [1, 1.08, 1]
                           }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                         >
                           0.69%
                         </motion.div>
                         
-                        <div className={`w-12 h-1 bg-gradient-to-r from-orange-400 to-red-400 rounded-full my-4 ${
-                          isMobile ? "w-8" : ""
+                        <div className={`w-16 h-1 bg-gradient-to-r from-orange-300 to-red-300 rounded-full my-6 ${
+                          isMobile ? "w-12" : ""
                         }`} />
                         
-                        <p className={`text-orange-100 font-bold tracking-wide ${
-                          isMobile ? "text-lg" : "text-xl"
+                        <p className={`text-orange-100 font-black tracking-wider ${
+                          isMobile ? "text-xl" : "text-2xl"
                         }`}>
                           TOKEN BURN
                         </p>
-                        <p className={`text-orange-200/80 mt-3 leading-relaxed ${
-                          isMobile ? "text-sm" : "text-base"
+                        <p className={`text-orange-200/90 mt-4 leading-relaxed font-medium ${
+                          isMobile ? "text-sm" : "text-lg"
                         }`}>
                           Deflationary mechanism
                         </p>
@@ -796,7 +767,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 5: LayerZero Integration */}
+            {/* Step 5: Modern LayerZero Integration */}
             {currentStep === 4 && (
               <motion.div
                 key="layerzero"
@@ -806,31 +777,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {/* Simplified background effects */}
-                <div className="absolute inset-0 opacity-40 pointer-events-none overflow-hidden">
-                  {[...Array(10)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
-                      style={{
-                        left: `${6 + i * 9}%`,
-                        top: `${18 + (i % 4) * 16}%`,
-                      }}
-                      animate={{
-                        scale: [0, 1.3, 0],
-                        opacity: [0, 0.8, 0],
-                        rotate: [0, 360],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        delay: i * 0.4,
-                      }}
-                    />
-                  ))}
-                </div>
-
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-4xl"}`}>
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-5xl"}`}>
                   {/* Modern LayerZero Header */}
                   <motion.div
                     className={`mb-16 ${isMobile ? "mb-12" : ""}`}
@@ -839,107 +786,108 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
                     <motion.div 
-                      className="flex items-center justify-center mb-8"
+                      className="flex items-center justify-center mb-10"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
                     >
                       <motion.div
-                        className={`relative ${isMobile ? "w-20 h-20 mr-4" : "w-28 h-28 mr-6"}`}
+                        className={`relative ${isMobile ? "w-24 h-24 mr-6" : "w-32 h-32 mr-8"}`}
                         animate={{ 
                           rotate: [0, 360],
                           scale: [1, 1.05, 1]
                         }}
                         transition={{ 
-                          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                          scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                          rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
                         }}
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full p-1">
                           <img
-                            src="https://pbs.twimg.com/profile_images/1671947962681049088/3Ld32mOx_400x400.jpg"
+                            src={IPFS_ASSETS.LAYER_ZERO.WHITE_LOGO}
                             alt="LayerZero"
                             className="w-full h-full rounded-full object-cover"
                           />
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full animate-pulse" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-blue-500/30 rounded-full animate-pulse" />
                       </motion.div>
                       
                       <motion.h2 
-                        className={`font-black bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent tracking-wider ${
-                          isMobile ? "text-3xl" : "text-7xl"
+                        className={`font-black bg-gradient-to-r from-cyan-200 via-blue-300 to-purple-300 bg-clip-text text-transparent tracking-wider ${
+                          isMobile ? "text-4xl" : "text-8xl"
                         }`}
                         animate={{
                           textShadow: [
-                            "0 0 20px rgba(34, 211, 238, 0.5)",
-                            "0 0 40px rgba(34, 211, 238, 0.3)",
-                            "0 0 20px rgba(34, 211, 238, 0.5)"
+                            "0 0 30px rgba(34, 211, 238, 0.6)",
+                            "0 0 60px rgba(34, 211, 238, 0.4)",
+                            "0 0 30px rgba(34, 211, 238, 0.6)"
                           ]
                         }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                       >
                         LAYERZERO
                       </motion.h2>
                     </motion.div>
                     
                     <motion.div
-                      className={`w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mx-auto mb-8 ${
-                        isMobile ? "w-16" : ""
+                      className={`w-28 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mx-auto mb-10 ${
+                        isMobile ? "w-20" : ""
                       }`}
                       initial={{ width: 0 }}
-                      animate={{ width: isMobile ? "4rem" : "6rem" }}
-                      transition={{ duration: 1.5, delay: 1 }}
+                      animate={{ width: isMobile ? "5rem" : "7rem" }}
+                      transition={{ duration: 1.8, delay: 1 }}
                     />
                     
                     <p className={`text-gray-200/90 font-medium max-w-4xl mx-auto leading-relaxed ${
-                      isMobile ? "text-base" : "text-2xl"
+                      isMobile ? "text-lg" : "text-3xl"
                     }`}>
-                      Seamless <span className="text-cyan-400 font-semibold">cross-chain messaging</span> and{" "}
-                      <span className="text-blue-400 font-semibold">interoperability</span>
+                      Seamless <span className="text-cyan-400 font-bold">cross-chain messaging</span> and{" "}
+                      <span className="text-blue-400 font-bold">interoperability</span>
                     </p>
                   </motion.div>
 
                   {/* Premium LayerZero Features Card */}
                   <motion.div
-                    className={`relative overflow-hidden bg-gradient-to-br from-cyan-900/50 via-blue-900/40 to-purple-900/50 backdrop-blur-xl border border-cyan-500/40 rounded-3xl shadow-2xl ${
-                      isMobile ? "p-6 mx-2" : "p-12"
+                    className={`relative overflow-hidden bg-gradient-to-br from-cyan-900/60 via-blue-900/50 to-purple-900/60 backdrop-blur-xl border border-cyan-400/50 rounded-3xl shadow-2xl ${
+                      isMobile ? "p-8 mx-2" : "p-12"
                     }`}
-                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                    initial={{ opacity: 0, scale: 0.9, y: 60 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     style={{
-                      boxShadow: "0 25px 50px -12px rgba(34, 211, 238, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                      boxShadow: "0 30px 60px -12px rgba(34, 211, 238, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
                     }}
                   >
-                    {/* Animated background glow */}
+                    {/* Enhanced background glow */}
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-blue-500/10 to-purple-500/20 rounded-3xl"
+                      className="absolute inset-0 bg-gradient-to-br from-cyan-400/25 via-blue-500/15 to-purple-500/25 rounded-3xl"
                       animate={{ 
-                        opacity: [0.3, 0.6, 0.3],
+                        opacity: [0.4, 0.7, 0.4],
                         scale: [1, 1.02, 1]
                       }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
                     />
                     
                     <div className="relative z-10">
-                      <div className={`grid gap-8 ${isMobile ? "grid-cols-1 space-y-6" : "md:grid-cols-2"}`}>
+                      <div className={`grid gap-10 ${isMobile ? "grid-cols-1 space-y-8" : "md:grid-cols-2"}`}>
                         {/* Cross-Chain Messaging Feature */}
                         <motion.div 
-                          className="text-center p-6 rounded-2xl bg-gradient-to-br from-cyan-800/30 to-blue-800/30 border border-cyan-400/20"
-                          initial={{ opacity: 0, x: -50 }}
+                          className="text-center p-8 rounded-2xl bg-gradient-to-br from-cyan-800/40 to-blue-800/40 border border-cyan-400/30"
+                          initial={{ opacity: 0, x: -60 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 1, delay: 1 }}
+                          transition={{ duration: 1.2, delay: 1.2 }}
+                          whileHover={{ scale: 1.05, y: -5 }}
                         >
                           <motion.div 
-                            className={`font-black text-cyan-300 mb-4 ${
-                              isMobile ? "text-xl" : "text-2xl"
+                            className={`font-black text-cyan-200 mb-6 ${
+                              isMobile ? "text-xl" : "text-3xl"
                             }`}
                             animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                           >
                             CROSS-CHAIN MESSAGING
                           </motion.div>
-                          <p className={`text-cyan-100/80 leading-relaxed ${
-                            isMobile ? "text-sm" : "text-base"
+                          <p className={`text-cyan-100/90 leading-relaxed font-medium ${
+                            isMobile ? "text-sm" : "text-lg"
                           }`}>
                             Connect multiple blockchains seamlessly
                           </p>
@@ -947,22 +895,23 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                         {/* Universal Liquidity Feature */}
                         <motion.div 
-                          className="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-800/30 to-purple-800/30 border border-blue-400/20"
-                          initial={{ opacity: 0, x: 50 }}
+                          className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-800/40 to-purple-800/40 border border-blue-400/30"
+                          initial={{ opacity: 0, x: 60 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 1, delay: 1.2 }}
+                          transition={{ duration: 1.2, delay: 1.4 }}
+                          whileHover={{ scale: 1.05, y: -5 }}
                         >
                           <motion.div 
-                            className={`font-black text-blue-300 mb-4 ${
-                              isMobile ? "text-xl" : "text-2xl"
+                            className={`font-black text-blue-200 mb-6 ${
+                              isMobile ? "text-xl" : "text-3xl"
                             }`}
                             animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
                           >
                             UNIVERSAL LIQUIDITY
                           </motion.div>
-                          <p className={`text-blue-100/80 leading-relaxed ${
-                            isMobile ? "text-sm" : "text-base"
+                          <p className={`text-blue-100/90 leading-relaxed font-medium ${
+                            isMobile ? "text-sm" : "text-lg"
                           }`}>
                             Access liquidity across all chains
                           </p>
@@ -974,7 +923,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 6: Chainlink VRF Lottery */}
+            {/* Step 6: Modern Chainlink VRF Lottery */}
             {currentStep === 5 && (
               <motion.div
                 key="lottery"
@@ -984,116 +933,170 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {/* Simplified background effects */}
-                <div className="absolute inset-0 opacity-40 pointer-events-none overflow-hidden">
-                  {[...Array(8)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full"
-                      style={{
-                        left: `${8 + i * 11}%`,
-                        top: `${15 + (i % 4) * 18}%`,
-                      }}
-                      animate={{
-                        scale: [0, 1.2, 0],
-                        opacity: [0, 0.7, 0],
-                        rotate: [0, 360],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        delay: i * 0.5,
-                      }}
-                    />
-                  ))}
-                </div>
-
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-4xl"}`}>
-                  {/* Chainlink Logo and Title */}
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-5xl"}`}>
+                  {/* Modern Chainlink Header */}
                   <motion.div
-                    className={`mb-12 ${isMobile ? "mb-8" : ""}`}
+                    className={`mb-16 ${isMobile ? "mb-12" : ""}`}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <div className="flex items-center justify-center mb-6">
-                      <img
-                        src="https://cryptologos.cc/logos/chainlink-link-logo.png"
-                        alt="Chainlink"
-                        className={`${isMobile ? "w-16 h-16" : "w-20 h-20"} mr-4`}
-                      />
-                      <h2 className={`font-light text-blue-400 tracking-wide ${
-                        isMobile ? "text-xl mobile-text-lg" : "text-4xl"
-                      }`}>
+                    <motion.div 
+                      className="flex items-center justify-center mb-10"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <motion.div
+                        className={`relative ${isMobile ? "w-24 h-24 mr-6" : "w-32 h-32 mr-8"}`}
+                        animate={{ 
+                          rotate: [0, 360],
+                          scale: [1, 1.08, 1]
+                        }}
+                        transition={{ 
+                          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 rounded-full p-1">
+                          <img
+                            src={IPFS_ASSETS.CHAINLINK.BLUE_LOGO}
+                            alt="Chainlink"
+                            className="w-full h-full rounded-full object-cover"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/30 to-purple-500/30 rounded-full animate-pulse" />
+                      </motion.div>
+                      
+                      <motion.h2 
+                        className={`font-black bg-gradient-to-r from-blue-200 via-purple-300 to-pink-300 bg-clip-text text-transparent tracking-wider ${
+                          isMobile ? "text-3xl" : "text-7xl"
+                        }`}
+                        animate={{
+                          textShadow: [
+                            "0 0 30px rgba(147, 51, 234, 0.6)",
+                            "0 0 60px rgba(147, 51, 234, 0.4)",
+                            "0 0 30px rgba(147, 51, 234, 0.6)"
+                          ]
+                        }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
                         CHAINLINK VRF 2.5
-                      </h2>
-                    </div>
-                    <h3 className={`font-bold mb-4 text-yellow-400 tracking-wide ${
-                      isMobile ? "text-xl mobile-text-lg" : "text-3xl"
+                      </motion.h2>
+                    </motion.div>
+                    
+                    <motion.div
+                      className={`w-28 h-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 rounded-full mx-auto mb-10 ${
+                        isMobile ? "w-20" : ""
+                      }`}
+                      initial={{ width: 0 }}
+                      animate={{ width: isMobile ? "5rem" : "7rem" }}
+                      transition={{ duration: 1.8, delay: 1 }}
+                    />
+                    
+                    <p className={`text-gray-200/90 font-medium max-w-4xl mx-auto leading-relaxed ${
+                      isMobile ? "text-lg" : "text-3xl"
                     }`}>
-                      PROVABLY FAIR LOTTERY
-                    </h3>
-                    <p className={`text-gray-300 font-light max-w-3xl mx-auto leading-relaxed ${
-                      isMobile ? "text-sm mobile-text-sm" : "text-xl"
-                    }`}>
-                      Every swap enters you into our jackpot with verifiable randomness
+                      Truly <span className="text-purple-400 font-bold">random</span> and{" "}
+                      <span className="text-pink-400 font-bold">verifiable</span> lottery system
                     </p>
                   </motion.div>
 
-                  {/* Lottery Mechanism */}
+                  {/* Premium Chainlink Features Card */}
                   <motion.div
-                    className={`bg-dark-surface/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl ${
-                      isMobile ? "p-4 mx-2" : "p-8"
+                    className={`relative overflow-hidden bg-gradient-to-br from-purple-900/60 via-blue-900/50 to-pink-900/60 backdrop-blur-xl border border-purple-400/50 rounded-3xl shadow-2xl ${
+                      isMobile ? "p-8 mx-2" : "p-12"
                     }`}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.9, y: 60 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    style={{
+                      boxShadow: "0 30px 60px -12px rgba(147, 51, 234, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+                    }}
                   >
-                    <div className={`grid gap-6 ${isMobile ? "grid-cols-1" : "md:grid-cols-3"}`}>
-                      {/* Current Jackpot */}
-                      <div className="text-center">
+                    {/* Enhanced background glow */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-br from-purple-400/25 via-blue-500/15 to-pink-500/25 rounded-3xl"
+                      animate={{ 
+                        opacity: [0.4, 0.7, 0.4],
+                        scale: [1, 1.02, 1]
+                      }}
+                      transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    
+                    <div className="relative z-10">
+                      <motion.div
+                        className={`font-black text-purple-200 mb-8 ${
+                          isMobile ? "text-2xl" : "text-4xl"
+                        }`}
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        DECENTRALIZED LOTTERY
+                      </motion.div>
+                      
+                      <div className={`grid gap-8 ${isMobile ? "grid-cols-1 space-y-6" : "md:grid-cols-2"}`}>
+                        <motion.div 
+                          className="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-800/40 to-blue-800/40 border border-purple-400/30"
+                          initial={{ opacity: 0, rotate: -5 }}
+                          animate={{ opacity: 1, rotate: 0 }}
+                          transition={{ duration: 1.2, delay: 1.2 }}
+                          whileHover={{ scale: 1.05, rotate: 2 }}
+                        >
+                          <p className={`text-purple-200 font-bold mb-3 ${
+                            isMobile ? "text-lg" : "text-xl"
+                          }`}>
+                            PROVABLY FAIR
+                          </p>
+                          <p className={`text-purple-100/90 ${
+                            isMobile ? "text-sm" : "text-base"
+                          }`}>
+                            Cryptographically secure randomness
+                          </p>
+                        </motion.div>
+
+                        <motion.div 
+                          className="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-800/40 to-pink-800/40 border border-pink-400/30"
+                          initial={{ opacity: 0, rotate: 5 }}
+                          animate={{ opacity: 1, rotate: 0 }}
+                          transition={{ duration: 1.2, delay: 1.4 }}
+                          whileHover={{ scale: 1.05, rotate: -2 }}
+                        >
+                          <p className={`text-pink-200 font-bold mb-3 ${
+                            isMobile ? "text-lg" : "text-xl"
+                          }`}>
+                            INSTANT PAYOUTS
+                          </p>
+                          <p className={`text-pink-100/90 ${
+                            isMobile ? "text-sm" : "text-base"
+                          }`}>
+                            Automated smart contract execution
+                          </p>
+                        </motion.div>
+                      </div>
+
+                      {/* Lottery Animation */}
+                      <motion.div
+                        className="mt-12 flex justify-center"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 1.6 }}
+                      >
                         <motion.div
-                          className={`font-bold text-green-400 ${
-                            isMobile ? "text-xl jackpot-mobile" : "text-3xl"
+                          className={`bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-black ${
+                            isMobile ? "w-24 h-24 text-lg" : "w-32 h-32 text-2xl"
                           }`}
                           animate={{
-                            scale: [1, 1.05, 1],
+                            rotate: [0, 360],
+                            scale: [1, 1.1, 1],
                           }}
                           transition={{
-                            duration: 2,
-                            repeat: Infinity,
+                            rotate: { duration: 3, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
                           }}
                         >
-                          <AnimatedCounter showGrowthIndicator={!isMobile} />
+                          <AnimatedCounter showGrowthIndicator={false} />
                         </motion.div>
-                        <p className={`text-gray-400 ${
-                          isMobile ? "text-xs mobile-text-sm" : "text-sm"
-                        }`}>Current Jackpot</p>
-                      </div>
-
-                      {/* Odds */}
-                      <div className="text-center">
-                        <div className={`font-bold text-blue-400 ${
-                          isMobile ? "text-lg" : "text-2xl"
-                        }`}>
-                          1:420
-                        </div>
-                        <p className={`text-gray-400 ${
-                          isMobile ? "text-xs mobile-text-sm" : "text-sm"
-                        }`}>Win Odds</p>
-                      </div>
-
-                      {/* Next Draw */}
-                      <div className="text-center">
-                        <div className={`font-bold text-orange-400 ${
-                          isMobile ? "text-lg" : "text-2xl"
-                        }`}>
-                          2:34
-                        </div>
-                        <p className={`text-gray-400 ${
-                          isMobile ? "text-xs mobile-text-sm" : "text-sm"
-                        }`}>Next Draw</p>
-                      </div>
+                      </motion.div>
                     </div>
                   </motion.div>
                 </div>
