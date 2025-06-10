@@ -1359,7 +1359,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 <div className="text-center relative z-10">
                   <div className="mb-16">
                     <motion.h2
-                      className="text-6xl font-light mb-12 text-yellow-400 tracking-wide"
+                      className="text-6xl font-light mb-6 text-yellow-400 tracking-wide"
                       initial={{ y: -40, opacity: 0, rotateX: 45 }}
                       animate={{
                         y: 0,
@@ -1378,6 +1378,23 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       YOUR 10% FEE BECOMES
                     </motion.h2>
+
+                    <motion.p
+                      className="text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 1,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        delay: 0.8,
+                      }}
+                    >
+                      Unlike traditional DEXs that route fees to farmers,
+                      <span className="text-amber-400 font-medium">
+                        {" "}
+                        Sonic Red Dragon transforms them into opportunities
+                      </span>
+                    </motion.p>
                   </div>
 
                   <div className="space-y-12">
@@ -1507,18 +1524,18 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             }}
                           >
                             <span
-                              className={`font-bold backdrop-blur-sm rounded px-2 py-1 ${
+                              className={`font-bold ${
                                 item.color === "amber"
-                                  ? "text-amber-300 bg-amber-900/60"
+                                  ? "text-amber-300/70"
                                   : item.color === "blue"
-                                    ? "text-blue-300 bg-blue-900/60"
+                                    ? "text-blue-300/70"
                                     : item.color === "red"
-                                      ? "text-red-300 bg-red-900/60"
-                                      : "text-yellow-300 bg-yellow-900/60"
+                                      ? "text-red-300/70"
+                                      : "text-yellow-300/70"
                               }`}
                               style={{
                                 fontSize: `${Math.max(item.size * 0.12, 12)}px`,
-                                textShadow: "0 0 10px rgba(0,0,0,0.8)",
+                                textShadow: "0 0 15px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6)",
                               }}
                             >
                               {item.percent}
