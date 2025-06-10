@@ -37,8 +37,8 @@ export default function WelcomeScreen({
       <motion.div
         className={`subtle-border rounded-3xl text-center ${
           isMobile 
-            ? "p-6 max-w-sm w-full mx-4" 
-            : "p-8 max-w-md w-full"
+            ? "p-6 max-w-md w-full mx-4" 
+            : "p-8 max-w-lg w-full"
         }`}
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
