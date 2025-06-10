@@ -176,12 +176,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     { delay: 0, duration: 6500 }, // [0:00–0:06.5] Step 0: Sophisticated Title Reveal
     { delay: 6500, duration: 7500 }, // [0:06.5–0:14] Step 1: Elegant Token Interaction
     { delay: 14000, duration: 12000 }, // [0:14–0:26] Step 2: Epic Jackpot Reveal with Screen Impact
-    { delay: 26000, duration: 8000 }, // [0:26–0:34] Step 3: Bridge to Fee Structure
-    { delay: 34000, duration: 12000 }, // [0:34–0:46] Step 4: Enhanced Fee Breakdown with Transition
-    { delay: 46000, duration: 15000 }, // [0:46–1:00] Step 5: Chainlink VRF Lottery - Immersive Camera Dive
-    { delay: 61000, duration: 9000 }, // [1:00–1:09] Step 6: Refined Odds Table
-    { delay: 70000, duration: 10000 }, // [1:09–1:19] Step 7: LayerZero Cross-Chain Implementation - Immersive Deep Dive
-    { delay: 80000, duration: 8000 }, // [1:19–1:27] Step 8: Epic Finale with CTA
+    { delay: 26000, duration: 6000 }, // [0:26–0:32] Step 3: Hook - Transforming Fees into Opportunities
+    { delay: 32000, duration: 8000 }, // [0:32–0:40] Step 4: Bridge to Fee Structure
+    { delay: 40000, duration: 12000 }, // [0:40–0:52] Step 5: Enhanced Fee Breakdown with Transition
+    { delay: 52000, duration: 13000 }, // [0:52–1:05] Step 6: Chainlink VRF Lottery - Immersive Camera Dive
+    { delay: 65000, duration: 9000 }, // [1:05–1:14] Step 7: Modern Minimalist Odds Table
+    { delay: 74000, duration: 10000 }, // [1:14–1:24] Step 8: LayerZero Cross-Chain Implementation - Immersive Deep Dive
+    { delay: 84000, duration: 8000 }, // [1:24–1:32] Step 9: Epic Finale with CTA
   ];
 
   useEffect(() => {
@@ -1074,8 +1075,125 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 3: Bridge to Fee Structure */}
+            {/* Step 3: Hook - Transforming Fees into Opportunities */}
             {currentStep === 3 && (
+              <motion.div
+                key="hook"
+                className="flex items-center justify-center min-h-screen px-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <div className="text-center max-w-4xl">
+                  <motion.div
+                    className="mb-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <motion.h2
+                      className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-6 leading-tight"
+                      animate={{
+                        textShadow: [
+                          "0 0 20px rgba(255,255,255,0.1)",
+                          "0 0 30px rgba(255,255,255,0.2)",
+                          "0 0 20px rgba(255,255,255,0.1)"
+                        ]
+                      }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                    >
+                      Here's where it gets interesting,
+                    </motion.h2>
+                  </motion.div>
+
+                  <motion.div
+                    className="relative"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, delay: 1 }}
+                  >
+                    <motion.p
+                      className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 leading-relaxed"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.2, delay: 1.5 }}
+                    >
+                      Unlike traditional DEXs that just{" "}
+                      <motion.span
+                        className="text-red-400"
+                        animate={{ 
+                          color: ["#f87171", "#ef4444", "#dc2626", "#f87171"],
+                          textShadow: [
+                            "0 0 10px rgba(239,68,68,0.3)",
+                            "0 0 20px rgba(239,68,68,0.6)",
+                            "0 0 10px rgba(239,68,68,0.3)"
+                          ]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      >
+                        take your fees
+                      </motion.span>
+                      ,
+                    </motion.p>
+
+                    <motion.p
+                      className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 leading-relaxed mt-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.2, delay: 2.5 }}
+                    >
+                      Sonic Red Dragon{" "}
+                      <motion.span
+                        className="text-yellow-400 font-medium"
+                        animate={{
+                          textShadow: [
+                            "0 0 20px rgba(251,191,36,0.4)",
+                            "0 0 40px rgba(251,191,36,0.8)",
+                            "0 0 20px rgba(251,191,36,0.4)"
+                          ]
+                        }}
+                        transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+                      >
+                        transforms them into opportunities
+                      </motion.span>
+                    </motion.p>
+                  </motion.div>
+
+                  {/* Subtle animated elements */}
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 3, duration: 2 }}
+                  >
+                    {[...Array(8)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 rounded-full bg-yellow-400/40"
+                        style={{
+                          left: `${20 + Math.random() * 60}%`,
+                          top: `${20 + Math.random() * 60}%`,
+                        }}
+                        animate={{
+                          scale: [0, 1, 0],
+                          opacity: [0, 0.6, 0],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: i * 0.4,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    ))}
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 4: Bridge to Fee Structure */}
+            {currentStep === 4 && (
               <motion.div
                 key="fee-bridge"
                 className="flex items-center justify-center min-h-screen relative overflow-hidden"
@@ -1728,8 +1846,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 7: LayerZero Cross-Chain Implementation - Immersive Deep Dive */}
-            {currentStep === 7 && (
+            {/* Step 8: LayerZero Cross-Chain Implementation - Immersive Deep Dive */}
+            {currentStep === 8 && (
               <motion.div
                 key="layerzero"
                 className="flex items-center justify-center min-h-screen relative overflow-hidden"
@@ -1939,13 +2057,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       >
                         <motion.img
                           src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreiax6jur4gjsevwncuu2tgqlotnc33y5nwxwrv2ggxq3al76xegcqi"
-                          alt="Google Cloud"
+                          alt="Nethermind DVN"
                           className="h-12 mb-2"
                           animate={{
                             filter: [
-                              "drop-shadow(0 0 10px rgba(66, 133, 244, 0.3))",
-                              "drop-shadow(0 0 20px rgba(66, 133, 244, 0.6))",
-                              "drop-shadow(0 0 10px rgba(66, 133, 244, 0.3))",
+                              "drop-shadow(0 0 10px rgba(155, 89, 182, 0.3))",
+                              "drop-shadow(0 0 20px rgba(155, 89, 182, 0.6))",
+                              "drop-shadow(0 0 10px rgba(155, 89, 182, 0.3))",
                             ],
                           }}
                           transition={{
@@ -1955,12 +2073,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           }}
                         />
                         <motion.div
-                          className="text-blue-300 text-sm font-medium"
+                          className="text-purple-300 text-sm font-medium"
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           transition={{ delay: 6.8, duration: 0.8 }}
                         >
-                          Google Cloud
+                          Nethermind DVN
                         </motion.div>
                       </motion.div>
                     </div>
@@ -1992,8 +2110,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 8: Epic Finale with CTA */}
-            {currentStep === 8 && (
+            {/* Step 9: Epic Finale with CTA */}
+            {currentStep === 9 && (
               <motion.div
                 key="finale"
                 className="flex items-center justify-center min-h-screen"
