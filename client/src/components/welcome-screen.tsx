@@ -44,7 +44,7 @@ export default function WelcomeScreen({
         animate={{ scale: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        {/* Enhanced Dragon Logo with Token Integration */}
+        {/* Clean Dragon Logo with Faint Glow */}
         <motion.div
           className="relative mb-8 flex justify-center"
           initial={{ scale: 0.6, opacity: 0, rotateY: -180 }}
@@ -52,76 +52,47 @@ export default function WelcomeScreen({
           transition={{ 
             duration: 1.2, 
             delay: 0.4,
-            ease: [0.25, 0.46, 0.45, 0.94] // Custom cubic-bezier
+            ease: [0.25, 0.46, 0.45, 0.94]
           }}
         >
           <div className="relative">
-            {/* Dragon Token with Enhanced Effects */}
+            {/* Simple Background Glow */}
+            <motion.div
+              className={`absolute rounded-full ${
+                isMobile ? "w-32 h-32" : "w-40 h-40"
+              }`}
+              style={{
+                background: "radial-gradient(circle, rgba(251, 146, 60, 0.3) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                filter: "blur(8px)"
+              }}
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            
+            {/* Dragon Token - Clean and Simple */}
             <motion.img
               src={getAssetUrl('DRAGON')}
               alt="Dragon Token"
-              className={`rounded-full object-cover cursor-pointer border-2 border-amber-400/60 ${
+              className={`relative z-10 rounded-full object-cover cursor-pointer ${
                 isMobile ? "w-24 h-24" : "w-32 h-32"
               }`}
-              style={{
-                filter: 'drop-shadow(0 0 40px rgba(251, 191, 36, 0.8))',
-                boxShadow: "0 0 60px rgba(251, 191, 36, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1)"
-              }}
               onClick={() => handleClick("dragon-logo")}
               whileHover={{ 
-                scale: 1.1,
-                rotate: 5,
+                scale: 1.05,
                 transition: { duration: 0.3, ease: [0.68, -0.55, 0.265, 1.55] }
               }}
               whileTap={{ scale: 0.95 }}
-              animate={{
-                boxShadow: [
-                  "0 0 60px rgba(251, 191, 36, 0.6)",
-                  "0 0 80px rgba(251, 191, 36, 0.8)",
-                  "0 0 60px rgba(251, 191, 36, 0.6)"
-                ]
-              }}
-              transition={{
-                boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-              }}
             />
-            
-            {/* Orbital Ring Effect */}
-            <motion.div 
-              className="absolute inset-0 rounded-full border border-amber-300/40"
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              style={{
-                width: isMobile ? "120px" : "160px",
-                height: isMobile ? "120px" : "160px",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)"
-              }}
-            />
-            
-            {/* Floating Particles */}
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-amber-400 rounded-full"
-                style={{
-                  left: `${50 + Math.cos(i * 60 * Math.PI / 180) * (isMobile ? 40 : 55)}%`,
-                  top: `${50 + Math.sin(i * 60 * Math.PI / 180) * (isMobile ? 40 : 55)}%`
-                }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  scale: [0, 1.5, 0],
-                  rotate: [0, 360]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: i * 0.3,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-              />
-            ))}
           </div>
         </motion.div>
 
