@@ -80,496 +80,360 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
       {showAnimations && (
         <div className="fixed inset-0 z-10">
           <AnimatePresence mode="wait">
-            {/* Step 3: Immersive Jackpot Discovery */}
+            {/* Step 3: Elegant Jackpot Reveal */}
             {currentStep === 2 && (
               <motion.div
-                key="jackpot-discovery"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
-                style={{
-                  background: "radial-gradient(ellipse at center, #1a0b3d 0%, #000000 100%)"
-                }}
+                key="jackpot-reveal"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-black"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
+                transition={{ duration: 1.5 }}
               >
-                {/* Particle System */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                  {[...Array(50)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-1 h-1 bg-yellow-400 rounded-full"
-                      style={{
-                        left: `${Math.random() * 100}%`,
-                        top: `${Math.random() * 100}%`,
-                      }}
-                      animate={{
-                        y: [0, -50, 0],
-                        opacity: [0, 1, 0],
-                        scale: [0, 1.5, 0],
-                      }}
-                      transition={{
-                        duration: 3 + Math.random() * 2,
-                        repeat: Infinity,
-                        delay: Math.random() * 5,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  ))}
-                </div>
-
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl mx-auto"}`}>
-                  {/* Hero Title */}
+                <div className={`text-center relative z-10 ${isMobile ? "px-6 max-w-sm mx-auto" : "max-w-4xl mx-auto"}`}>
+                  {/* Minimal Typography */}
                   <motion.div
-                    className="mb-20"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
                   >
                     <motion.h1
-                      className={`font-black mb-6 ${isMobile ? "text-4xl" : "text-8xl"}`}
+                      className={`font-light text-white mb-4 ${isMobile ? "text-5xl" : "text-8xl"}`}
                       style={{
                         fontFamily: 'Inter, system-ui, sans-serif',
-                        background: "linear-gradient(135deg, #ffd700 0%, #ffb347 50%, #ff6b35 100%)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                        letterSpacing: "-0.02em"
+                        fontWeight: '300',
+                        letterSpacing: '-0.02em'
                       }}
-                      animate={{
-                        textShadow: [
-                          "0 0 50px rgba(255, 215, 0, 0.5)",
-                          "0 0 100px rgba(255, 215, 0, 0.8)",
-                          "0 0 50px rgba(255, 215, 0, 0.5)"
-                        ]
-                      }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      JACKPOT
+                      Every Swap
                     </motion.h1>
-                    <motion.div
-                      className={`text-yellow-200 font-light ${isMobile ? "text-lg" : "text-2xl"}`}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 1 }}
-                    >
-                      Every swap is a chance to win
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Interactive Lottery Ball */}
-                  <motion.div
-                    className="relative mx-auto mb-16"
-                    style={{ width: isMobile ? "250px" : "400px", height: isMobile ? "250px" : "400px" }}
-                    initial={{ opacity: 0, rotateY: -90 }}
-                    animate={{ opacity: 1, rotateY: 0 }}
-                    transition={{ duration: 2, delay: 0.8 }}
-                  >
-                    {/* Central Orb */}
-                    <motion.div
-                      className="absolute inset-8 rounded-full flex items-center justify-center"
+                    
+                    <motion.h2
+                      className={`font-black text-amber-400 mb-16 ${isMobile ? "text-3xl" : "text-6xl"}`}
                       style={{
-                        background: "radial-gradient(circle at 30% 30%, #ffd700, #ff8c00, #1a0b3d)",
-                        boxShadow: "inset 0 0 100px rgba(255, 215, 0, 0.3), 0 0 150px rgba(255, 215, 0, 0.5)"
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        letterSpacing: '-0.01em'
                       }}
-                      animate={{
-                        scale: [1, 1.05, 1],
-                        boxShadow: [
-                          "inset 0 0 100px rgba(255, 215, 0, 0.3), 0 0 150px rgba(255, 215, 0, 0.5)",
-                          "inset 0 0 150px rgba(255, 215, 0, 0.5), 0 0 200px rgba(255, 215, 0, 0.8)",
-                          "inset 0 0 100px rgba(255, 215, 0, 0.3), 0 0 150px rgba(255, 215, 0, 0.5)"
-                        ]
-                      }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      whileHover={{ scale: 1.1 }}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 1, delay: 0.8 }}
                     >
-                      <motion.div
-                        className={`${isMobile ? "text-6xl" : "text-8xl"}`}
-                        animate={{
-                          rotateY: [0, 360],
-                          textShadow: [
-                            "0 0 30px rgba(255, 255, 255, 0.8)",
-                            "0 0 60px rgba(255, 255, 255, 1)",
-                            "0 0 30px rgba(255, 255, 255, 0.8)"
-                          ]
-                        }}
-                        transition={{
-                          rotateY: { duration: 8, repeat: Infinity, ease: "linear" },
-                          textShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-                        }}
-                      >
-                        💰
-                      </motion.div>
-                    </motion.div>
+                      Wins
+                    </motion.h2>
                   </motion.div>
 
-                  {/* Prize Tiers */}
+                  {/* Clean Prize Display */}
                   <motion.div
-                    className={`grid gap-6 mb-16 ${isMobile ? "grid-cols-1 px-4" : "grid-cols-3"}`}
-                    initial={{ opacity: 0, y: 50 }}
+                    className="space-y-8"
+                    initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 1.5 }}
+                    transition={{ duration: 1.2, delay: 1.2 }}
                   >
-                    {[
-                      { 
-                        tier: "MEGA", 
-                        prize: "$50,000+", 
-                        odds: "1:10,000",
-                        gradient: "from-yellow-400 via-orange-500 to-red-500",
-                        glow: "rgba(255, 215, 0, 0.3)"
-                      },
-                      { 
-                        tier: "MAJOR", 
-                        prize: "$5,000+", 
-                        odds: "1:1,000",
-                        gradient: "from-purple-400 via-violet-500 to-purple-600",
-                        glow: "rgba(168, 85, 247, 0.3)"
-                      },
-                      { 
-                        tier: "MINI", 
-                        prize: "$500+", 
-                        odds: "1:100",
-                        gradient: "from-blue-400 via-cyan-500 to-teal-500",
-                        glow: "rgba(59, 130, 246, 0.3)"
-                      }
-                    ].map((item, i) => (
-                      <motion.div
-                        key={i}
-                        className="relative group cursor-pointer"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 1.8 + (i * 0.2) }}
-                        whileHover={{ y: -10, scale: 1.05 }}
-                      >
-                        <div
-                          className={`relative backdrop-blur-xl bg-gradient-to-br ${item.gradient}/10 border border-white/20 rounded-2xl ${
-                            isMobile ? "p-6" : "p-8"
-                          } overflow-hidden`}
-                          style={{
-                            boxShadow: `0 25px 50px -12px ${item.glow}, inset 0 1px 0 rgba(255, 255, 255, 0.1)`
-                          }}
+                    <div className="border border-gray-800 rounded-lg bg-gray-900/50 backdrop-blur-sm p-8">
+                      <div className="text-gray-400 text-sm uppercase tracking-wider mb-2">Current Pool</div>
+                      <div className={`text-white font-mono ${isMobile ? "text-3xl" : "text-5xl"}`}>
+                        $2,847,563
+                      </div>
+                    </div>
+                    
+                    <div className={`grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
+                      {[
+                        { label: "Mega", odds: "1:10,000", prize: "$50K+" },
+                        { label: "Major", odds: "1:1,000", prize: "$5K+" },
+                        { label: "Mini", odds: "1:100", prize: "$500+" }
+                      ].map((tier, i) => (
+                        <motion.div
+                          key={i}
+                          className="border border-gray-800 rounded-lg bg-gray-900/30 p-6"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.8, delay: 1.5 + (i * 0.1) }}
                         >
-                          <div className="relative z-10">
-                            <motion.div
-                              className={`text-white font-black mb-2 ${isMobile ? "text-lg" : "text-xl"}`}
-                              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-                            >
-                              {item.tier}
-                            </motion.div>
-                            
-                            <div className={`bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent font-bold mb-3 ${
-                              isMobile ? "text-2xl" : "text-3xl"
-                            }`}>
-                              {item.prize}
-                            </div>
-                            
-                            <div className="text-white/70 font-light">
-                              Odds: {item.odds}
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
+                          <div className="text-gray-400 text-xs uppercase tracking-wider mb-2">{tier.label}</div>
+                          <div className="text-white text-xl font-semibold mb-1">{tier.prize}</div>
+                          <div className="text-gray-500 text-sm">{tier.odds}</div>
+                        </motion.div>
+                      ))}
+                    </div>
                   </motion.div>
                 </div>
               </motion.div>
             )}
 
-            {/* Step 4: Smart Fee Distribution */}
+            {/* Step 4: Clean Fee Structure */}
             {currentStep === 3 && (
               <motion.div
-                key="fee-distribution"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
-                style={{
-                  background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)"
-                }}
+                key="fee-structure"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-black"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
+                transition={{ duration: 1.5 }}
               >
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl mx-auto"}`}>
-                  <motion.h1
-                    className={`font-black mb-16 ${isMobile ? "text-4xl" : "text-7xl"}`}
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      background: "linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #8b5cf6 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text"
-                    }}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 0.3 }}
-                  >
-                    SMART FEES
-                  </motion.h1>
-
-                  {/* Fee Distribution Grid */}
+                <div className={`text-center relative z-10 ${isMobile ? "px-6 max-w-sm mx-auto" : "max-w-5xl mx-auto"}`}>
                   <motion.div
-                    className={`grid gap-8 ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 0.8 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <h1 className={`font-light text-white mb-20 ${isMobile ? "text-4xl" : "text-7xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: '300' }}>
+                      Fee Distribution
+                    </h1>
+                  </motion.div>
+
+                  <motion.div
+                    className={`grid gap-6 ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
                   >
                     {[
-                      { label: "Jackpot Pool", percentage: "2.5%", color: "yellow", icon: "🎰" },
-                      { label: "Liquidity", percentage: "1.5%", color: "blue", icon: "💧" },
-                      { label: "Token Burn", percentage: "1.0%", color: "red", icon: "🔥" }
+                      { label: "Jackpot Pool", percentage: "2.5%" },
+                      { label: "Liquidity", percentage: "1.5%" },
+                      { label: "Token Burn", percentage: "1.0%" }
                     ].map((item, i) => (
                       <motion.div
                         key={i}
-                        className="relative group"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, delay: 1.2 + (i * 0.2) }}
-                        whileHover={{ scale: 1.05, y: -10 }}
+                        className="border border-gray-800 rounded-lg bg-gray-900/30 p-8 text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 1.1 + (i * 0.1) }}
                       >
-                        <div className="backdrop-blur-xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-600/30 rounded-3xl p-8">
-                          <motion.div
-                            className="text-5xl mb-4"
-                            animate={{ scale: [1, 1.1, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
-                          >
-                            {item.icon}
-                          </motion.div>
-                          
-                          <div className={`text-4xl font-black mb-3 text-${item.color}-400`}>
-                            {item.percentage}
-                          </div>
-                          
-                          <div className="text-slate-300 font-medium text-lg">
-                            {item.label}
-                          </div>
-                        </div>
+                        <div className="text-gray-400 text-sm uppercase tracking-wider mb-4">{item.label}</div>
+                        <div className="text-white text-4xl font-mono font-bold">{item.percentage}</div>
                       </motion.div>
                     ))}
+                  </motion.div>
+
+                  <motion.div
+                    className="mt-16 text-gray-400 text-sm"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 1.8 }}
+                  >
+                    Transparent, automated distribution on every transaction
                   </motion.div>
                 </div>
               </motion.div>
             )}
 
-            {/* Step 5: Token Flow Visualization */}
+            {/* Step 5: Minimal Token Flow */}
             {currentStep === 4 && (
               <motion.div
                 key="token-flow"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
-                style={{
-                  background: "radial-gradient(ellipse at center, #0d1421 0%, #000000 100%)"
-                }}
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-black"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
+                transition={{ duration: 1.5 }}
               >
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl mx-auto"}`}>
-                  <motion.h1
-                    className={`font-black mb-20 ${isMobile ? "text-4xl" : "text-7xl"}`}
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      background: "linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text"
-                    }}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 0.3 }}
-                  >
-                    TOKEN FLOW
-                  </motion.h1>
-
-                  <TokenExchangeAnimation
-                    containerClassName="relative mx-auto"
-                    delay={0.5}
-                    duration={5}
-                    repeat={true}
-                    scale={isMobile ? 1 : 1.5}
-                    showTradeIndicators={true}
-                    showFeeBreakdown={true}
-                  />
-                </div>
-              </motion.div>
-            )}
-
-            {/* Step 6: Lottery Mechanics */}
-            {currentStep === 5 && (
-              <motion.div
-                key="lottery-mechanics"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
-                style={{
-                  background: "linear-gradient(135deg, #1a0033 0%, #000000 100%)"
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
-              >
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl mx-auto"}`}>
-                  <motion.h1
-                    className={`font-black mb-16 ${isMobile ? "text-4xl" : "text-7xl"}`}
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      background: "linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f59e0b 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text"
-                    }}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 0.3 }}
-                  >
-                    LOTTERY ODDS
-                  </motion.h1>
-
+                <div className={`text-center relative z-10 ${isMobile ? "px-6 max-w-sm mx-auto" : "max-w-4xl mx-auto"}`}>
                   <motion.div
-                    className="backdrop-blur-xl bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-purple-400/30 rounded-3xl p-12"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.5, delay: 0.8 }}
-                  >
-                    <AnimatedCounter showGrowthIndicator={true} />
-                  </motion.div>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Step 7: Chainlink VRF */}
-            {currentStep === 6 && (
-              <motion.div
-                key="chainlink-vrf"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
-                style={{
-                  background: "linear-gradient(135deg, #0a1628 0%, #000000 100%)"
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
-              >
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl mx-auto"}`}>
-                  <motion.h1
-                    className={`font-black mb-8 ${isMobile ? "text-4xl" : "text-7xl"}`}
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      color: "#375bd2"
-                    }}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 0.3 }}
-                  >
-                    CHAINLINK VRF 2.5
-                  </motion.h1>
-                  
-                  <motion.p
-                    className={`text-blue-300 font-light ${isMobile ? "text-lg" : "text-2xl"}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 1 }}
-                  >
-                    Provably fair randomness for every lottery draw
-                  </motion.p>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Step 8: LayerZero Cross-Chain */}
-            {currentStep === 7 && (
-              <motion.div
-                key="layerzero"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
-                style={{
-                  background: "linear-gradient(135deg, #1a0f2e 0%, #000000 100%)"
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
-              >
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl mx-auto"}`}>
-                  <motion.h1
-                    className={`font-black mb-8 ${isMobile ? "text-4xl" : "text-7xl"}`}
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      background: "linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text"
-                    }}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, delay: 0.3 }}
-                  >
-                    LAYERZERO
-                  </motion.h1>
-                  
-                  <motion.p
-                    className={`text-purple-300 font-light ${isMobile ? "text-lg" : "text-2xl"}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 1 }}
-                  >
-                    Seamless cross-chain gaming experience
-                  </motion.p>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Step 9: Final CTA */}
-            {currentStep === 8 && (
-              <motion.div
-                key="final-cta"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
-                style={{
-                  background: "radial-gradient(ellipse at center, #1a0b3d 0%, #000000 100%)"
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
-              >
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl mx-auto"}`}>
-                  <motion.h1
-                    className={`font-black mb-12 ${isMobile ? "text-5xl" : "text-9xl"}`}
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      background: "linear-gradient(135deg, #ff6b35 0%, #f59e0b 50%, #eab308 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text"
-                    }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.5, delay: 0.3 }}
-                  >
-                    SONIC RED DRAGON
-                  </motion.h1>
-
-                  <motion.div
-                    className="mb-12"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 1 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <motion.button
-                      className={`backdrop-blur-xl bg-gradient-to-r from-orange-500 to-red-500 border border-orange-400/30 rounded-2xl font-bold text-white ${
-                        isMobile ? "px-8 py-4 text-xl" : "px-16 py-6 text-2xl"
-                      }`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      START TRADING NOW
-                    </motion.button>
+                    <h1 className={`font-light text-white mb-20 ${isMobile ? "text-4xl" : "text-7xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: '300' }}>
+                      Seamless Exchange
+                    </h1>
                   </motion.div>
 
-                  <motion.p
-                    className={`text-orange-300 font-light ${isMobile ? "text-lg" : "text-2xl"}`}
+                  <motion.div
+                    className="max-w-md mx-auto"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
+                  >
+                    <div className="border border-gray-800 rounded-lg bg-gray-900/30 p-8 space-y-6">
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <div className="text-gray-400 text-sm">From</div>
+                          <div className="text-white text-2xl font-semibold">SONIC</div>
+                        </div>
+                        <div className="text-gray-600 text-2xl">→</div>
+                        <div>
+                          <div className="text-gray-400 text-sm">To</div>
+                          <div className="text-amber-400 text-2xl font-semibold">DRAGON</div>
+                        </div>
+                      </div>
+                      
+                      <div className="pt-4 border-t border-gray-800">
+                        <div className="text-gray-400 text-sm mb-2">Exchange Rate</div>
+                        <div className="text-white text-lg font-mono">1 SONIC = 0.847 DRAGON</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 6: Clean Lottery Display */}
+            {currentStep === 5 && (
+              <motion.div
+                key="lottery-display"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-black"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5 }}
+              >
+                <div className={`text-center relative z-10 ${isMobile ? "px-6 max-w-sm mx-auto" : "max-w-4xl mx-auto"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <h1 className={`font-light text-white mb-16 ${isMobile ? "text-4xl" : "text-7xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: '300' }}>
+                      Live Pool
+                    </h1>
+                  </motion.div>
+
+                  <motion.div
+                    className="border border-gray-800 rounded-lg bg-gray-900/30 p-12"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
+                  >
+                    <AnimatedCounter showGrowthIndicator={false} />
+                  </motion.div>
+
+                  <motion.div
+                    className="mt-12 text-gray-400 text-sm"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 1.5 }}
                   >
-                    The future of DeFi gaming is here
-                  </motion.p>
+                    Growing with every transaction
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 7: Chainlink Integration */}
+            {currentStep === 6 && (
+              <motion.div
+                key="chainlink"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-black"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5 }}
+              >
+                <div className={`text-center relative z-10 ${isMobile ? "px-6 max-w-sm mx-auto" : "max-w-4xl mx-auto"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <h1 className={`font-light text-white mb-8 ${isMobile ? "text-4xl" : "text-7xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: '300' }}>
+                      Powered by
+                    </h1>
+                    <h2 className={`font-semibold text-blue-400 mb-16 ${isMobile ? "text-3xl" : "text-5xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                      Chainlink VRF 2.5
+                    </h2>
+                  </motion.div>
+
+                  <motion.div
+                    className="border border-gray-800 rounded-lg bg-gray-900/30 p-8"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
+                  >
+                    <div className="text-gray-400 text-sm uppercase tracking-wider mb-4">Randomness Source</div>
+                    <div className="text-white text-xl">Verifiable Random Function</div>
+                    <div className="text-gray-500 text-sm mt-2">Cryptographically secure and tamper-proof</div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 8: LayerZero Network */}
+            {currentStep === 7 && (
+              <motion.div
+                key="layerzero"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-black"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5 }}
+              >
+                <div className={`text-center relative z-10 ${isMobile ? "px-6 max-w-sm mx-auto" : "max-w-4xl mx-auto"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <h1 className={`font-light text-white mb-8 ${isMobile ? "text-4xl" : "text-7xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: '300' }}>
+                      Built on
+                    </h1>
+                    <h2 className={`font-semibold text-purple-400 mb-16 ${isMobile ? "text-3xl" : "text-5xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                      LayerZero
+                    </h2>
+                  </motion.div>
+
+                  <motion.div
+                    className="border border-gray-800 rounded-lg bg-gray-900/30 p-8"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
+                  >
+                    <div className="text-gray-400 text-sm uppercase tracking-wider mb-4">Cross-Chain Protocol</div>
+                    <div className="text-white text-xl">Omnichain Interoperability</div>
+                    <div className="text-gray-500 text-sm mt-2">Unified liquidity across all networks</div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 9: Elegant Final CTA */}
+            {currentStep === 8 && (
+              <motion.div
+                key="final-cta"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-black"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5 }}
+              >
+                <div className={`text-center relative z-10 ${isMobile ? "px-6 max-w-sm mx-auto" : "max-w-4xl mx-auto"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <h1 className={`font-light text-white mb-4 ${isMobile ? "text-4xl" : "text-8xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: '300' }}>
+                      Sonic Red
+                    </h1>
+                    <h2 className={`font-black text-amber-400 mb-20 ${isMobile ? "text-5xl" : "text-9xl"}`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                      Dragon
+                    </h2>
+                  </motion.div>
+
+                  <motion.div
+                    className="space-y-8"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
+                  >
+                    <button className={`w-full border border-amber-400 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 rounded-lg font-medium transition-colors ${
+                      isMobile ? "py-4 text-lg" : "py-6 text-xl"
+                    }`}>
+                      Enter App
+                    </button>
+                    
+                    <div className="text-gray-400 text-sm">
+                      Experience the future of DeFi gaming
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             )}
