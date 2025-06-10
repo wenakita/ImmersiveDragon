@@ -1385,6 +1385,342 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 </div>
               </motion.div>
             )}
+
+            {/* Step 7: Chainlink VRF */}
+            {currentStep === 6 && (
+              <motion.div
+                key="chainlink-vrf"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-pink-900/30"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <motion.div 
+                      className="flex items-center justify-center mb-12"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <motion.div
+                        className={`relative ${isMobile ? "w-20 h-20 mr-4" : "w-28 h-28 mr-6"}`}
+                        animate={{ 
+                          rotate: [0, 360],
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                      >
+                        <img
+                          src={getAssetUrl('CHAINLINK.WHITE_LOGO')}
+                          alt="Chainlink"
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-400/30 to-pink-400/30 rounded-full animate-pulse" />
+                      </motion.div>
+                      
+                      <motion.h2 
+                        className={`font-black bg-gradient-to-r from-purple-200 via-pink-200 to-purple-300 bg-clip-text text-transparent ${
+                          isMobile ? "text-4xl" : "text-7xl"
+                        }`}
+                        style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '900',
+                          letterSpacing: '-0.02em'
+                        }}
+                        animate={{
+                          textShadow: [
+                            "0 0 40px rgba(147, 51, 234, 0.6)",
+                            "0 0 80px rgba(236, 72, 153, 0.4)",
+                            "0 0 40px rgba(147, 51, 234, 0.6)"
+                          ]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        CHAINLINK VRF 2.5
+                      </motion.h2>
+                    </motion.div>
+
+                    <motion.p
+                      className={`text-gray-200 font-light leading-relaxed mb-16 ${
+                        isMobile ? "text-xl" : "text-3xl"
+                      }`}
+                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 1 }}
+                    >
+                      Provably fair randomness for{" "}
+                      <span className="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent font-medium">
+                        tamper-proof lottery results
+                      </span>
+                    </motion.p>
+
+                    <motion.div
+                      className={`bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold px-10 py-5 rounded-full shadow-2xl ${
+                        isMobile ? "px-8 py-4 text-lg" : "text-xl"
+                      }`}
+                      style={{
+                        boxShadow: '0 0 50px rgba(147, 51, 234, 0.6)',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                      }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        opacity: 1, 
+                        scale: 1,
+                        boxShadow: [
+                          '0 0 50px rgba(147, 51, 234, 0.6)',
+                          '0 0 100px rgba(236, 72, 153, 0.8)',
+                          '0 0 50px rgba(147, 51, 234, 0.6)'
+                        ]
+                      }}
+                      transition={{ 
+                        opacity: { duration: 1, delay: 1.5 },
+                        scale: { duration: 1, delay: 1.5 },
+                        boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                    >
+                      CRYPTOGRAPHICALLY SECURE
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 8: LayerZero Cross-Chain */}
+            {currentStep === 7 && (
+              <motion.div
+                key="layerzero-crosschain"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-blue-900/20 to-cyan-900/30"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <motion.div 
+                      className="flex items-center justify-center mb-12"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <motion.div
+                        className={`relative ${isMobile ? "w-20 h-20 mr-4" : "w-28 h-28 mr-6"}`}
+                        animate={{ 
+                          rotate: [0, 360],
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full p-1">
+                          <img
+                            src={getAssetUrl('LAYER_ZERO.WHITE_LOGO')}
+                            alt="LayerZero"
+                            className="w-full h-full rounded-full object-cover bg-black"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-blue-500/30 rounded-full animate-pulse" />
+                      </motion.div>
+                      
+                      <motion.h2 
+                        className={`font-black bg-gradient-to-r from-cyan-200 via-blue-200 to-cyan-300 bg-clip-text text-transparent ${
+                          isMobile ? "text-4xl" : "text-7xl"
+                        }`}
+                        style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '900',
+                          letterSpacing: '-0.02em'
+                        }}
+                        animate={{
+                          textShadow: [
+                            "0 0 40px rgba(34, 211, 238, 0.6)",
+                            "0 0 80px rgba(59, 130, 246, 0.4)",
+                            "0 0 40px rgba(34, 211, 238, 0.6)"
+                          ]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        LAYERZERO
+                      </motion.h2>
+                    </motion.div>
+
+                    <motion.p
+                      className={`text-gray-200 font-light leading-relaxed mb-16 ${
+                        isMobile ? "text-xl" : "text-3xl"
+                      }`}
+                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 1 }}
+                    >
+                      Seamless cross-chain messaging for{" "}
+                      <span className="bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent font-medium">
+                        universal interoperability
+                      </span>
+                    </motion.p>
+
+                    <motion.div
+                      className={`bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold px-10 py-5 rounded-full shadow-2xl ${
+                        isMobile ? "px-8 py-4 text-lg" : "text-xl"
+                      }`}
+                      style={{
+                        boxShadow: '0 0 50px rgba(34, 211, 238, 0.6)',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                      }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        opacity: 1, 
+                        scale: 1,
+                        boxShadow: [
+                          '0 0 50px rgba(34, 211, 238, 0.6)',
+                          '0 0 100px rgba(59, 130, 246, 0.8)',
+                          '0 0 50px rgba(34, 211, 238, 0.6)'
+                        ]
+                      }}
+                      transition={{ 
+                        opacity: { duration: 1, delay: 1.5 },
+                        scale: { duration: 1, delay: 1.5 },
+                        boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                    >
+                      CROSS-CHAIN ENABLED
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 9: Final CTA + Logo Out */}
+            {currentStep === 8 && (
+              <motion.div
+                key="final-cta"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-red-900/20 to-orange-900/30"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, delay: 0.5 }}
+                  >
+                    <motion.h1
+                      className={`font-black bg-gradient-to-r from-red-200 via-orange-200 to-yellow-200 bg-clip-text text-transparent mb-16 ${
+                        isMobile ? "text-6xl leading-[1.1]" : "text-[8rem] leading-[0.9]"
+                      }`}
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: '900',
+                        letterSpacing: '-0.03em',
+                        textShadow: '0 0 100px rgba(251, 191, 36, 0.8)',
+                      }}
+                      animate={{
+                        scale: [1, 1.05, 1],
+                        textShadow: [
+                          "0 0 100px rgba(251, 191, 36, 0.8)",
+                          "0 0 200px rgba(251, 146, 60, 1)",
+                          "0 0 100px rgba(251, 191, 36, 0.8)"
+                        ],
+                      }}
+                      transition={{ 
+                        duration: 3, 
+                        repeat: Infinity, 
+                        ease: "easeInOut"
+                      }}
+                    >
+                      SONIC RED DRAGON
+                    </motion.h1>
+
+                    <motion.div
+                      className="flex items-center justify-center mb-16"
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.2, delay: 1.5 }}
+                    >
+                      <DragonToken
+                        size={isMobile ? "w-24 h-24" : "w-32 h-32"}
+                        animateProps={{
+                          rotate: [0, 360],
+                          scale: [1, 1.2, 1],
+                        }}
+                        transitionProps={{
+                          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                        style={{
+                          boxShadow: '0 0 60px rgba(251, 146, 60, 0.8)',
+                        }}
+                      />
+                    </motion.div>
+
+                    <motion.div
+                      className="space-y-8"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 2 }}
+                    >
+                      <motion.div
+                        className={`bg-gradient-to-r from-red-500 to-orange-500 text-white font-black px-16 py-8 rounded-full shadow-2xl ${
+                          isMobile ? "px-12 py-6 text-xl" : "text-3xl"
+                        }`}
+                        style={{
+                          boxShadow: '0 0 80px rgba(251, 146, 60, 0.8)',
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                        }}
+                        animate={{
+                          scale: [1, 1.05, 1],
+                          boxShadow: [
+                            '0 0 80px rgba(251, 146, 60, 0.8)',
+                            '0 0 120px rgba(239, 68, 68, 1)',
+                            '0 0 80px rgba(251, 146, 60, 0.8)'
+                          ],
+                        }}
+                        transition={{ 
+                          duration: 2, 
+                          repeat: Infinity, 
+                          ease: "easeInOut"
+                        }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        START TRADING NOW
+                      </motion.div>
+
+                      <motion.p
+                        className={`text-gray-300 font-light ${
+                          isMobile ? "text-lg" : "text-2xl"
+                        }`}
+                        style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                        animate={{
+                          opacity: [0.7, 1, 0.7],
+                        }}
+                        transition={{ 
+                          duration: 3, 
+                          repeat: Infinity, 
+                          ease: "easeInOut"
+                        }}
+                      >
+                        The future of DeFi gaming is here
+                      </motion.p>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
       )}
