@@ -718,7 +718,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         <img
                           src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
                           alt="S Token"
-                          className="w-24 h-24"
+                          className="w-full h-full object-cover rounded-full"
                         />
                       </motion.div>
 
@@ -761,7 +761,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         <img
                           src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                           alt="DRAGON Token"
-                          className="w-20 h-20"
+                          className="w-full h-full object-cover rounded-full"
                         />
                       </motion.div>
 
@@ -855,7 +855,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       <img
                         src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy"
                         alt="S Token"
-                        className="w-16 h-16"
+                        className="w-full h-full object-cover rounded-full"
                       />
                     </motion.div>
 
@@ -894,7 +894,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       <img
                         src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
                         alt="DRAGON Token"
-                        className="w-14 h-14"
+                        className="w-full h-full object-cover rounded-full"
                       />
                     </motion.div>
 
