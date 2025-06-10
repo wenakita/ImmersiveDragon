@@ -687,21 +687,21 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           boxShadow: "0 0 40px rgba(234,179,8,0.3), inset 0 0 20px rgba(234,179,8,0.1)",
                         }}
                         animate={{
-                          x: loopIndex === 0 ? [-800, -100, 100, 800] :
-                             loopIndex === 1 ? [-600, 300, -300, 600] :
-                             [-1000, 0, 0, 1000],
-                          y: loopIndex === 0 ? [0, 0, 0, 0] :
-                             loopIndex === 1 ? [-200, 50, -50, 200] :
-                             [300, -100, 100, -300],
-                          scale: [0.3, 1, 1.1, 0.8],
-                          opacity: [0, 0.9, 0.9, 0],
-                          rotateZ: loopIndex === 0 ? [-180, 0, 180, 360] :
-                                   loopIndex === 1 ? [90, 270, 450, 630] :
-                                   [-90, 90, 270, 450],
+                          x: loopIndex === 0 ? [-800, 0, 1200] :
+                             loopIndex === 1 ? [-600, 0, 900] :
+                             [-1000, 0, 1500],
+                          y: loopIndex === 0 ? [0, 0, 0] :
+                             loopIndex === 1 ? [-200, 0, 300] :
+                             [300, 0, -400],
+                          scale: [0.3, 1.2, 0.6],
+                          opacity: [0, 1, 0],
+                          rotateZ: loopIndex === 0 ? [-180, 0, 540] :
+                                   loopIndex === 1 ? [90, 0, 450] :
+                                   [-90, 0, 360],
                         }}
                         transition={{
                           duration: 8 + loopIndex * 2,
-                          times: [0, 0.3, 0.7, 1],
+                          times: [0, 0.5, 1],
                           ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
                                 loopIndex === 1 ? [0.42, 0, 0.58, 1] :
                                 [0.68, -0.55, 0.265, 1.55],
@@ -730,21 +730,21 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           boxShadow: "0 0 40px rgba(251,191,36,0.3), inset 0 0 20px rgba(251,191,36,0.1)",
                         }}
                         animate={{
-                          x: loopIndex === 0 ? [800, 100, -100, -800] :
-                             loopIndex === 1 ? [600, -300, 300, -600] :
-                             [1000, 0, 0, -1000],
-                          y: loopIndex === 0 ? [0, 0, 0, 0] :
-                             loopIndex === 1 ? [200, -50, 50, -200] :
-                             [-300, 100, -100, 300],
-                          scale: [0.3, 1, 1.1, 0.8],
-                          opacity: [0, 0.9, 0.9, 0],
-                          rotateZ: loopIndex === 0 ? [180, 0, -180, -360] :
-                                   loopIndex === 1 ? [-90, -270, -450, -630] :
-                                   [90, -90, -270, -450],
+                          x: loopIndex === 0 ? [800, 0, -1200] :
+                             loopIndex === 1 ? [600, 0, -900] :
+                             [1000, 0, -1500],
+                          y: loopIndex === 0 ? [0, 0, 0] :
+                             loopIndex === 1 ? [200, 0, -300] :
+                             [-300, 0, 400],
+                          scale: [0.3, 1.2, 0.6],
+                          opacity: [0, 1, 0],
+                          rotateZ: loopIndex === 0 ? [180, 0, -540] :
+                                   loopIndex === 1 ? [-90, 0, -450] :
+                                   [90, 0, -360],
                         }}
                         transition={{
                           duration: 8 + loopIndex * 2,
-                          times: [0, 0.3, 0.7, 1],
+                          times: [0, 0.5, 1],
                           ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
                                 loopIndex === 1 ? [0.42, 0, 0.58, 1] :
                                 [0.68, -0.55, 0.265, 1.55],
