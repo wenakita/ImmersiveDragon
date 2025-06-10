@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useEasterEggs } from "../hooks/use-easter-eggs";
+import { useIsMobile } from "../hooks/use-mobile";
 import EasterEggHints from "./easter-egg-hints";
 import EasterEggRewards from "./easter-egg-rewards";
 
@@ -17,12 +18,15 @@ export default function WelcomeScreen({
 }: WelcomeScreenProps) {
   const { easterEggs, showEasterEggNotification, handleClick, triggeredCount } =
     useEasterEggs();
+  const isMobile = useIsMobile();
+
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center p-6"
+      className="fixed inset-0 flex items-center justify-center mobile-container no-select"
       style={{
         background:
           "radial-gradient(ellipse at center, rgba(41, 27, 12, 0.4) 0%, rgba(0, 0, 0, 0.9) 70%)",
+        padding: isMobile ? "1rem" : "1.5rem",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -30,7 +34,11 @@ export default function WelcomeScreen({
       transition={{ duration: 0.8 }}
     >
       <motion.div
-        className="subtle-border rounded-3xl p-8 max-w-md w-full text-center"
+        className={`subtle-border rounded-3xl text-center ${
+          isMobile 
+            ? "p-6 max-w-sm w-full mx-4" 
+            : "p-8 max-w-md w-full"
+        }`}
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -46,7 +54,9 @@ export default function WelcomeScreen({
             <img
               src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
               alt="Sonic Red Dragon Logo"
-              className="dragon-logo-glow w-24 h-24 rounded-full object-cover cursor-pointer"
+              className={`dragon-logo-glow rounded-full object-cover cursor-pointer touch-target ${
+                isMobile ? "w-20 h-20" : "w-24 h-24"
+              }`}
               onClick={() => handleClick("dragon-logo")}
             />
           </div>
@@ -54,7 +64,9 @@ export default function WelcomeScreen({
 
         {/* Welcome Text */}
         <motion.h1
-          className="text-2xl font-semibold mb-4"
+          className={`font-semibold mb-4 ${
+            isMobile ? "text-xl mobile-text-lg" : "text-2xl"
+          }`}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -63,7 +75,9 @@ export default function WelcomeScreen({
         </motion.h1>
 
         <motion.p
-          className="text-soft-gray text-sm leading-relaxed mb-8"
+          className={`text-soft-gray leading-relaxed mb-8 ${
+            isMobile ? "text-sm mobile-text-sm" : "text-sm"
+          }`}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
@@ -75,7 +89,9 @@ export default function WelcomeScreen({
 
         {/* Terms Checkbox */}
         <motion.div
-          className="flex items-start gap-3 mb-8 text-left"
+          className={`flex items-start gap-3 mb-8 text-left ${
+            isMobile ? "mobile-spacing" : ""
+          }`}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -89,7 +105,9 @@ export default function WelcomeScreen({
               onChange={(e) => onTermsChange(e.target.checked)}
             />
             <motion.div
-              className={`w-5 h-5 border-2 rounded cursor-pointer flex items-center justify-center transition-all duration-200 ${
+              className={`border-2 rounded cursor-pointer flex items-center justify-center transition-all duration-200 touch-target ${
+                isMobile ? "w-6 h-6" : "w-5 h-5"
+              } ${
                 termsAccepted
                   ? "bg-electric-blue border-electric-blue"
                   : "border-electric-blue bg-transparent"
@@ -118,17 +136,19 @@ export default function WelcomeScreen({
               )}
             </motion.div>
           </div>
-          <label htmlFor="termsAccept" className="text-sm cursor-pointer">
+          <label htmlFor="termsAccept" className={`cursor-pointer ${
+            isMobile ? "text-sm mobile-text-sm" : "text-sm"
+          }`}>
             I accept the terms and conditions for OmniDragon Protocol listed on
             the{" "}
             <span
-              className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer"
+              className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer touch-target"
               onClick={() => handleClick("terms-link")}
             >
               Terms of Service
             </span>{" "}
             page and the{" "}
-            <span className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer">
+            <span className="text-yellow-400 hover:text-yellow-300 transition-colors cursor-pointer touch-target">
               Privacy Policy
             </span>
           </label>
