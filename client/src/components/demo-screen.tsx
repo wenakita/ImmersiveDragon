@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "@/components/ui/typewriter";
 import { useIsMobile } from "../hooks/use-mobile";
-import TokenExchangeAnimation from "./token-exchange-animation";
 import audioFile from "@assets/hybrid-epic-hollywood-trailer-247114_1749361601412.mp3";
 
 // Sonic Token Component
@@ -179,12 +178,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
     { delay: 0, duration: 6500 }, // [0:00–0:06.5] Step 0: Sophisticated Title Reveal
     { delay: 6500, duration: 7500 }, // [0:06.5–0:14] Step 1: Elegant Token Interaction
     { delay: 14000, duration: 12000 }, // [0:14–0:26] Step 2: Epic Jackpot Reveal with Screen Impact
-    { delay: 26000, duration: 8000 }, // [0:26–0:34] Step 3: Bridge to Fee Structure
-    { delay: 34000, duration: 12000 }, // [0:34–0:46] Step 4: Enhanced Fee Breakdown with Transition
-    { delay: 46000, duration: 15000 }, // [0:46–1:00] Step 5: Chainlink VRF Lottery - Immersive Camera Dive
-    { delay: 61000, duration: 9000 }, // [1:00–1:09] Step 6: Refined Odds Table
-    { delay: 70000, duration: 10000 }, // [1:09–1:19] Step 7: LayerZero Cross-Chain Implementation - Immersive Deep Dive
-    { delay: 80000, duration: 8000 }, // [1:19–1:27] Step 8: Epic Finale with CTA
+    { delay: 26000, duration: 6000 }, // [0:26–0:32] Step 3: Bridge to Fee Structure
+    { delay: 32000, duration: 6000 }, // [0:32–0:38] Step 4: Fee Opportunities Introduction
+    { delay: 38000, duration: 8000 }, // [0:38–0:46] Step 5: Enhanced Fee Breakdown Details
+    { delay: 46000, duration: 15000 }, // [0:46–1:00] Step 6: Chainlink VRF Lottery - Immersive Camera Dive
+    { delay: 61000, duration: 9000 }, // [1:00–1:09] Step 7: Refined Odds Table
+    { delay: 70000, duration: 10000 }, // [1:09–1:19] Step 8: LayerZero Cross-Chain Implementation - Immersive Deep Dive
+    { delay: 80000, duration: 8000 }, // [1:19–1:27] Step 9: Epic Finale with CTA
   ];
 
   useEffect(() => {
@@ -677,21 +677,25 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   y: { duration: 0.4, delay: 1 },
                 }}
               >
-                {/* Trading animation */}
+                {/* Simplified visual effects */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {[...Array(3)].map((_, i) => (
-                    <TokenExchangeAnimation
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
                       key={i}
-                      containerStyle={{
-                        position: "absolute",
-                        left: `${15 + i * 20}%`,
-                        top: `${20 + (i % 2) * 40}%`,
+                      className="absolute w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"
+                      style={{
+                        left: `${10 + i * 15}%`,
+                        top: `${15 + (i % 3) * 25}%`,
                       }}
-                      index={i}
-                      duration={4}
-                      scale={1}
-                      showTradeIndicators={true}
-                      showFeeBreakdown={true}
+                      animate={{
+                        scale: [0, 1.5, 0],
+                        opacity: [0, 0.8, 0],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: i * 0.3,
+                      }}
                     />
                   ))}
                 </div>
@@ -1052,46 +1056,50 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 4: Enhanced Fee Breakdown with Transition */}
+            {/* Step 4: Fee Opportunities Introduction */}
             {currentStep === 4 && (
               <motion.div
-                key="breakdown"
+                key="fee-opportunities"
                 className="flex items-center justify-center min-h-screen relative overflow-hidden"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
                 transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                {/* Continuous Background Swap Animation */}
-                <div className="absolute inset-0 opacity-60 pointer-events-none overflow-hidden">
-                  {[...Array(5)].map((_, i) => (
-                    <TokenExchangeAnimation
+                {/* Background visual effects */}
+                <div className="absolute inset-0 opacity-40 pointer-events-none overflow-hidden">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
                       key={i}
-                      containerStyle={{
-                        position: "absolute",
-                        left: `${10 + i * 18}%`,
-                        top: `${15 + (i % 3) * 25}%`,
+                      className="absolute w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"
+                      style={{
+                        left: `${10 + i * 15}%`,
+                        top: `${20 + (i % 3) * 20}%`,
                       }}
-                      index={i}
-                      duration={8}
-                      delay={i * 1.2}
-                      scale={0.8}
-                      showTradeIndicators={true}
-                      showFeeBreakdown={true}
+                      animate={{
+                        scale: [0, 1.2, 0],
+                        opacity: [0, 0.7, 0],
+                        rotate: [0, 360],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: i * 0.4,
+                      }}
                     />
                   ))}
                 </div>
 
                 <div className="text-center relative z-10">
                   <div className="mb-16">
-                    {/* Transition from previous slide */}
+                    {/* Main message */}
                     <motion.div
-                      className="text-3xl text-gray-400 mb-8 font-light"
+                      className="text-4xl text-gray-300 mb-12 font-light"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 1, delay: 0.2 }}
                     >
-                      Here's where it gets interesting...
+                      But here's where it gets interesting...
                     </motion.div>
 
                     <motion.h2
