@@ -121,14 +121,17 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const isMobile = useIsMobile();
 
+  // Enhanced timing based on waveform analysis - Extended for better comprehension
   const steps = [
-    { delay: 0 },      // Pre-credits
-    { delay: 4000 },   // Step 1: Welcome & Introduction
-    { delay: 12000 },  // Step 2: S ↔ DRAGON Swap Focus
-    { delay: 20000 },  // Step 3: Animation Showcase
-    { delay: 28000 },  // Step 4: Fee Structure Deep Dive
-    { delay: 36000 },  // Step 5: LayerZero Integration
-    { delay: 44000 },  // Step 6: Chainlink VRF Mechanics
+    { delay: 0, duration: 6500 }, // [0:00–0:06.5] Step 1: Title intro: swell begins
+    { delay: 6500, duration: 7500 }, // [0:06.5–0:14] Step2: Swap animation buildup
+    { delay: 14000, duration: 12000 }, // [0:14–0:26] Step 3: Jackpot reveal at first drop
+    { delay: 26000, duration: 8000 }, // [0:26–0:34] Step 4: Fee tension – ambient mood 
+    { delay: 34000, duration: 12000 }, // [0:34–0:46] Step 5: Fee breakdown – cinematic swell
+    { delay: 46000, duration: 15000 }, // [0:46–1:00] Step 6: Lottery mechanice - Odds Table
+    { delay: 61000, duration: 7000 }, // [1:00–1:07] Step 7: Chainlink VRF
+    { delay: 68000, duration: 8000 }, // [1:07–1:15] Step 8: LayerZero cross-chain
+    { delay: 76000, duration: 8000 }, // [1:15–1:23] Step 9: Final CTA + logo out
   ];
 
   useEffect(() => {
@@ -140,11 +143,11 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
         audioRef.current.play().catch(console.warn);
       }
 
-      // Set up step progression
+      // Set up step progression with new timing
       steps.forEach((step, index) => {
         setTimeout(() => {
           setCurrentStep(index);
-        }, step.delay + 3000); // Add 3 seconds for pre-credits
+        }, step.delay);
       });
     }
   }, [autoStart]);
@@ -368,68 +371,237 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 3: Fee Breakdown Intro */}
+            {/* Step 3: EPIC WIN THE JACKPOT */}
             {currentStep === 2 && (
               <motion.div
-                key="fee-breakdown-1"
-                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                key="win-jackpot"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-yellow-900/20 to-amber-900/30"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
               >
-                <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-5xl"}`}>
+                {/* Explosive Background Effects */}
+                <div className="absolute inset-0 pointer-events-none">
+                  {/* Gold particle explosion */}
+                  {[...Array(50)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-2 h-2 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full"
+                      style={{
+                        left: `${50 + (Math.random() - 0.5) * 20}%`,
+                        top: `${50 + (Math.random() - 0.5) * 20}%`,
+                      }}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{
+                        scale: [0, 1.5, 0],
+                        opacity: [0, 1, 0],
+                        x: [(Math.random() - 0.5) * 100, (Math.random() - 0.5) * 800],
+                        y: [(Math.random() - 0.5) * 100, (Math.random() - 0.5) * 800],
+                        rotate: [0, 360],
+                      }}
+                      transition={{
+                        duration: 3 + Math.random() * 2,
+                        delay: Math.random() * 2,
+                        repeat: Infinity,
+                        repeatDelay: Math.random() * 3,
+                      }}
+                    />
+                  ))}
+                  
+                  {/* Radial burst effect */}
                   <motion.div
-                    className={`mb-12 ${isMobile ? "mb-8" : ""}`}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: 0.3 }}
+                    className="absolute inset-0 bg-gradient-radial from-yellow-400/30 via-amber-400/10 to-transparent"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ 
+                      scale: [0, 3, 0],
+                      opacity: [0, 0.8, 0]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 1,
+                      ease: "easeOut"
+                    }}
+                  />
+                  
+                  {/* Screen shake effect */}
+                  <motion.div
+                    className="absolute inset-0"
+                    animate={{
+                      x: [0, -5, 5, -3, 3, 0],
+                      y: [0, 3, -3, 2, -2, 0],
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      repeat: Infinity,
+                      repeatDelay: 1.5,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
+
+                <div className={`text-center relative z-20 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-6xl"}`}>
+                  {/* EPIC WIN THE JACKPOT Text */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5, y: 100 }}
+                    animate={{ 
+                      opacity: 1, 
+                      scale: 1, 
+                      y: 0,
+                    }}
+                    transition={{ 
+                      duration: 1.5, 
+                      delay: 0.5,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
                   >
-                    <motion.h2 
-                      className={`font-extralight mb-12 bg-gradient-to-r from-yellow-200 via-amber-200 to-yellow-100 bg-clip-text text-transparent tracking-[-0.01em] ${
-                        isMobile ? "text-3xl" : "text-7xl"
+                    <motion.h1
+                      className={`font-black bg-gradient-to-r from-yellow-200 via-amber-300 to-yellow-400 bg-clip-text text-transparent tracking-tight ${
+                        isMobile ? "text-7xl leading-[0.9]" : "text-[12rem] leading-[0.8]"
                       }`}
                       style={{
                         fontFamily: 'Inter, system-ui, sans-serif',
-                        fontWeight: '200'
+                        fontWeight: '900',
+                        letterSpacing: '-0.04em',
+                        textShadow: '0 0 100px rgba(251, 191, 36, 0.8)',
                       }}
                       animate={{
+                        scale: [1, 1.05, 1],
                         textShadow: [
-                          "0 0 40px rgba(251, 191, 36, 0.4)",
-                          "0 0 80px rgba(251, 191, 36, 0.2)",
-                          "0 0 40px rgba(251, 191, 36, 0.4)"
-                        ]
+                          "0 0 100px rgba(251, 191, 36, 0.8)",
+                          "0 0 200px rgba(251, 191, 36, 1)",
+                          "0 0 100px rgba(251, 191, 36, 0.8)"
+                        ],
                       }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        ease: "easeInOut"
+                      }}
                     >
-                      But here's where it gets interesting
-                    </motion.h2>
+                      WIN THE
+                    </motion.h1>
                     
-                    <motion.div
-                      className={`w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-auto mb-8 ${
-                        isMobile ? "w-16" : ""
+                    <motion.h1
+                      className={`font-black bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent tracking-tight mt-4 ${
+                        isMobile ? "text-8xl leading-[0.9]" : "text-[15rem] leading-[0.8]"
                       }`}
-                      initial={{ width: 0 }}
-                      animate={{ width: isMobile ? "4rem" : "6rem" }}
-                      transition={{ duration: 1.5, delay: 1 }}
-                    />
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: '900',
+                        letterSpacing: '-0.04em',
+                        textShadow: '0 0 150px rgba(251, 191, 36, 1)',
+                      }}
+                      animate={{
+                        scale: [1, 1.08, 1],
+                        textShadow: [
+                          "0 0 150px rgba(251, 191, 36, 1)",
+                          "0 0 300px rgba(251, 191, 36, 1.2)",
+                          "0 0 150px rgba(251, 191, 36, 1)"
+                        ],
+                      }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: 0.2
+                      }}
+                    >
+                      JACKPOT
+                    </motion.h1>
+                  </motion.div>
+
+                  {/* Jackpot Amount Display */}
+                  <motion.div
+                    className={`mt-16 ${isMobile ? "mt-12" : ""}`}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 1.5 }}
+                  >
+                    <motion.div
+                      className={`font-black text-green-400 ${
+                        isMobile ? "text-5xl" : "text-8xl"
+                      }`}
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        textShadow: '0 0 50px rgba(34, 197, 94, 0.8)',
+                      }}
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        textShadow: [
+                          "0 0 50px rgba(34, 197, 94, 0.8)",
+                          "0 0 100px rgba(34, 197, 94, 1)",
+                          "0 0 50px rgba(34, 197, 94, 0.8)"
+                        ],
+                      }}
+                      transition={{ 
+                        duration: 1.8, 
+                        repeat: Infinity, 
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <AnimatedCounter showGrowthIndicator={false} />
+                    </motion.div>
                     
-                    <p className={`text-gray-200/95 font-light max-w-5xl mx-auto leading-relaxed tracking-[0.01em] ${
-                      isMobile ? "text-lg" : "text-3xl"
-                    }`} style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      fontWeight: '300'
-                    }}>
-                      On other DEX they just take your fees or give it to farmers, but on{" "}
-                      <span className="bg-gradient-to-r from-red-300 to-orange-300 bg-clip-text text-transparent font-medium">Sonic Red Dragon</span>,{" "}
-                      we turn them into <span className="bg-gradient-to-r from-yellow-300 to-amber-300 bg-clip-text text-transparent font-medium italic">opportunities</span>
-                    </p>
+                    <motion.p
+                      className={`text-yellow-200 font-bold tracking-[0.1em] uppercase mt-8 ${
+                        isMobile ? "text-xl" : "text-3xl"
+                      }`}
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        textShadow: '0 0 30px rgba(251, 191, 36, 0.6)',
+                      }}
+                      animate={{
+                        opacity: [0.8, 1, 0.8],
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        ease: "easeInOut"
+                      }}
+                    >
+                      Every swap = lottery ticket
+                    </motion.p>
+                  </motion.div>
+
+                  {/* Call to Action */}
+                  <motion.div
+                    className={`mt-20 ${isMobile ? "mt-16" : ""}`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 2.5 }}
+                  >
+                    <motion.div
+                      className={`bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-black px-12 py-6 rounded-full border-4 border-yellow-300 shadow-2xl ${
+                        isMobile ? "px-8 py-4 text-lg" : "text-2xl"
+                      }`}
+                      style={{
+                        boxShadow: '0 0 60px rgba(251, 191, 36, 0.8)',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                      }}
+                      animate={{
+                        scale: [1, 1.05, 1],
+                        boxShadow: [
+                          '0 0 60px rgba(251, 191, 36, 0.8)',
+                          '0 0 120px rgba(251, 191, 36, 1)',
+                          '0 0 60px rgba(251, 191, 36, 0.8)'
+                        ],
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        ease: "easeInOut"
+                      }}
+                    >
+                      TRADE NOW TO WIN!
+                    </motion.div>
                   </motion.div>
                 </div>
               </motion.div>
             )}
 
-            {/* Step 4: Modern Fee Distribution */}
+            {/* Step 4: Fee Tension – Ambient Mood */}
             {currentStep === 3 && (
               <motion.div
                 key="fee-breakdown-2"
@@ -666,7 +838,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 5: Modern LayerZero Integration */}
+            {/* Step 5: Fee Breakdown – Cinematic Swell */}
             {currentStep === 4 && (
               <motion.div
                 key="layerzero"
@@ -900,7 +1072,7 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 6: Modern Chainlink VRF Lottery */}
+            {/* Step 6: Lottery Mechanics - Odds Table */}
             {currentStep === 5 && (
               <motion.div
                 key="lottery"
