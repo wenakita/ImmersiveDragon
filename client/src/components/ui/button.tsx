@@ -49,31 +49,31 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     
     if (animated) {
       // Create clean props object for motion.button by only including valid HTML button attributes
+      const { style: propsStyle, ...otherProps } = props;
       const motionProps = {
-        onClick: props.onClick,
-        onMouseEnter: props.onMouseEnter,
-        onMouseLeave: props.onMouseLeave,
-        onFocus: props.onFocus,
-        onBlur: props.onBlur,
-        disabled: props.disabled,
-        type: props.type,
-        form: props.form,
-        name: props.name,
-        value: props.value,
-        autoFocus: props.autoFocus,
-        tabIndex: props.tabIndex,
-        'aria-label': props['aria-label'],
-        'aria-describedby': props['aria-describedby'],
-        'aria-expanded': props['aria-expanded'],
-        'aria-pressed': props['aria-pressed'],
-        id: props.id,
-        title: props.title,
-        role: props.role,
-        style: props.style,
-        onKeyDown: props.onKeyDown,
-        onKeyUp: props.onKeyUp,
-        onMouseDown: props.onMouseDown,
-        onMouseUp: props.onMouseUp,
+        onClick: otherProps.onClick,
+        onMouseEnter: otherProps.onMouseEnter,
+        onMouseLeave: otherProps.onMouseLeave,
+        onFocus: otherProps.onFocus,
+        onBlur: otherProps.onBlur,
+        disabled: otherProps.disabled,
+        type: otherProps.type,
+        form: otherProps.form,
+        name: otherProps.name,
+        value: otherProps.value,
+        autoFocus: otherProps.autoFocus,
+        tabIndex: otherProps.tabIndex,
+        'aria-label': otherProps['aria-label'],
+        'aria-describedby': otherProps['aria-describedby'],
+        'aria-expanded': otherProps['aria-expanded'],
+        'aria-pressed': otherProps['aria-pressed'],
+        id: otherProps.id,
+        title: otherProps.title,
+        role: otherProps.role,
+        onKeyDown: otherProps.onKeyDown,
+        onKeyUp: otherProps.onKeyUp,
+        onMouseDown: otherProps.onMouseDown,
+        onMouseUp: otherProps.onMouseUp,
       };
       
       return (
@@ -83,7 +83,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             glow && "shadow-[0_0_30px_rgba(59,130,246,0.4)]",
             className
           )}
-          style={{ fontFamily: 'Inter, system-ui, sans-serif', ...motionProps.style }}
+          style={{ fontFamily: 'Inter, system-ui, sans-serif', ...(propsStyle || {}) }}
           ref={ref}
           whileHover={{ 
             scale: 1.05,

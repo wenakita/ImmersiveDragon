@@ -159,7 +159,7 @@ export default function WelcomeScreen({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <div className="relative mt-0.5">
+          <div className="relative mt-1">
             <input
               type="checkbox"
               id="termsAccept"
@@ -168,32 +168,69 @@ export default function WelcomeScreen({
               onChange={(e) => onTermsChange(e.target.checked)}
             />
             <motion.div
-              className={`border-2 rounded cursor-pointer flex items-center justify-center transition-all duration-200 touch-target ${
-                isMobile ? "w-6 h-6" : "w-5 h-5"
-              } ${
-                termsAccepted
-                  ? "bg-electric-blue border-electric-blue"
-                  : "border-electric-blue bg-transparent"
+              className={`relative cursor-pointer flex items-center justify-center transition-all duration-300 ${
+                isMobile ? "w-7 h-7" : "w-6 h-6"
               }`}
               onClick={() => onTermsChange(!termsAccepted)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ 
+                scale: 1.1,
+                transition: { duration: 0.2, ease: [0.68, -0.55, 0.265, 1.55] }
+              }}
+              whileTap={{ scale: 0.9 }}
             >
+              {/* Elegant Glass Background */}
+              <motion.div
+                className={`absolute inset-0 rounded-xl backdrop-blur-sm border transition-all duration-300 ${
+                  termsAccepted
+                    ? "bg-gradient-to-br from-blue-500/30 to-cyan-500/30 border-blue-400/60 shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                    : "bg-white/5 border-gray-400/30 hover:border-blue-400/40"
+                }`}
+                animate={termsAccepted ? {
+                  boxShadow: [
+                    "0 0 20px rgba(59, 130, 246, 0.4)",
+                    "0 0 30px rgba(59, 130, 246, 0.6)",
+                    "0 0 20px rgba(59, 130, 246, 0.4)"
+                  ]
+                } : {}}
+                transition={{
+                  boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                }}
+              />
+              
+              {/* Checkmark with Smooth Animation */}
               {termsAccepted && (
                 <motion.svg
-                  className="w-3 h-3 text-white"
+                  className={`relative z-10 text-blue-100 ${isMobile ? "w-4 h-4" : "w-3.5 h-3.5"}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  strokeWidth={3}
+                  initial={{ 
+                    opacity: 0, 
+                    scale: 0.3,
+                    rotate: -90
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                    rotate: 0
+                  }}
+                  transition={{ 
+                    duration: 0.4,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }}
                 >
-                  <path
+                  <motion.path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={3}
                     d="M5 13l4 4L19 7"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ 
+                      duration: 0.3, 
+                      delay: 0.1,
+                      ease: "easeOut" 
+                    }}
                   />
                 </motion.svg>
               )}
@@ -238,15 +275,15 @@ export default function WelcomeScreen({
           Play Demo
         </motion.button>
 
-        {/* Hidden Easter Egg Counter */}
+        {/* Hidden Easter Egg Counter - Removed yellow circle */}
         {triggeredCount > 0 && (
           <motion.div
-            className="absolute bottom-4 left-4 text-xs text-yellow-400 opacity-50"
+            className="absolute bottom-4 left-4 text-xs text-amber-200/60 opacity-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            🐉 {triggeredCount}/4 dragons awakened
+            {triggeredCount}/4 dragons awakened
           </motion.div>
         )}
       </motion.div>
