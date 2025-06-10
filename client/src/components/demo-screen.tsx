@@ -552,8 +552,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     }}
                     transition={{
                       duration: 5,
-                      times: [0, 0.4, 0.6, 1],
-                      ease: [0.25, 0.1, 0.25, 1],
+                      times: [0, 0.35, 0.65, 1],
+                      ease: [0.12, 0.6, 0.8, 0.1],
                       delay: 2,
                     }}
                     style={{
@@ -580,8 +580,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     }}
                     transition={{
                       duration: 5,
-                      times: [0, 0.4, 0.6, 1],
-                      ease: [0.25, 0.1, 0.25, 1],
+                      times: [0, 0.38, 0.62, 1],
+                      ease: [0.08, 0.72, 0.9, 0.15],
                       delay: 2,
                     }}
                     style={{
@@ -609,7 +609,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{
                       duration: 1.5,
                       delay: 4,
-                      ease: [0.25, 0.1, 0.25, 1],
+                      ease: [0.95, 0.05, 0.8, 0.04],
                     }}
                   ></motion.div>
 
@@ -623,7 +623,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{
                       duration: 0.4,
                       delay: 4,
-                      ease: [0.25, 0.1, 0.25, 1],
+                      ease: [0.68, -0.55, 0.265, 1.55],
                     }}
                   />
 
@@ -652,7 +652,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{
                         duration: 2,
                         delay: 4 + i * 0.03,
-                        ease: [0.25, 0.1, 0.25, 1],
+                        ease: [0.87, 0, 0.13, 1],
                       }}
                     />
                   ))}
