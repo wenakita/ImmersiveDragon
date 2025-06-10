@@ -1180,7 +1180,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1.2, delay: 1.5 }}
                     >
-                      Unlike traditional DEXs that just{" "}
+                      Unlike traditional DEXs that{" "}
                       <motion.span
                         className="text-red-400"
                         animate={{ 
@@ -1193,7 +1193,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         }}
                         transition={{ duration: 3, repeat: Infinity }}
                       >
-                        take your fees
+                        route fees to farmers
                       </motion.span>
                       ,
                     </motion.p>
