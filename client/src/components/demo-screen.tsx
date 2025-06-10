@@ -1102,6 +1102,82 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       But here's where it gets interesting...
                     </motion.div>
 
+                    <motion.p
+                      className="text-3xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed mb-8"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 1,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        delay: 0.8,
+                      }}
+                    >
+                      On other DEXs they just take your fees or give them to farmers, but on{" "}
+                      <span className="text-yellow-400 font-semibold">
+                        Sonic Red Dragon
+                      </span>
+                      , we turn them into{" "}
+                      <span className="text-amber-400 font-bold">
+                        opportunities
+                      </span>
+                    </motion.p>
+
+                    <motion.div
+                      className="text-5xl font-light text-yellow-400 tracking-wide"
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{
+                        duration: 1.2,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        delay: 1.5,
+                      }}
+                      style={{
+                        filter: "drop-shadow(0 0 30px rgba(255,235,59,0.5))",
+                      }}
+                    >
+                      ✨ OPPORTUNITIES ✨
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 5: Enhanced Fee Breakdown Details */}
+            {currentStep === 5 && (
+              <motion.div
+                key="fee-breakdown"
+                className="flex items-center justify-center min-h-screen relative overflow-hidden"
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
+                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                {/* Background visual effects */}
+                <div className="absolute inset-0 opacity-60 pointer-events-none overflow-hidden">
+                  {[...Array(8)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-4 h-4 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"
+                      style={{
+                        left: `${5 + i * 12}%`,
+                        top: `${10 + (i % 4) * 20}%`,
+                      }}
+                      animate={{
+                        scale: [0, 1, 0],
+                        opacity: [0, 0.6, 0],
+                        rotate: [0, 180, 360],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: i * 0.5,
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <div className="text-center relative z-10">
+                  <div className="mb-16">
                     <motion.h2
                       className="text-6xl font-light mb-6 text-yellow-400 tracking-wide"
                       initial={{ y: -40, opacity: 0, rotateX: 45 }}
@@ -1113,7 +1189,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{
                         duration: 1.5,
                         ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 0.8,
+                        delay: 0.3,
                       }}
                       style={{
                         filter: "drop-shadow(0 0 40px rgba(255,235,59,0.6))",
@@ -1122,23 +1198,6 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       YOUR 10% FEE BECOMES
                     </motion.h2>
-
-                    <motion.p
-                      className="text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 1,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 1.3,
-                      }}
-                    >
-                      Unlike traditional DEXs that just take your fees,
-                      <span className="text-amber-400 font-medium">
-                        {" "}
-                        Sonic Red Dragon transforms them into opportunities
-                      </span>
-                    </motion.p>
                   </div>
 
                   <div className="space-y-12">
@@ -1150,7 +1209,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         color: "amber",
                         delay: 0.5,
                         size: 120,
-                      }, // Base size * 6.9
+                      },
                       {
                         percent: "2.41%",
                         label: "LP REWARDS",
@@ -1158,7 +1217,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         color: "blue",
                         delay: 1,
                         size: 84,
-                      }, // Base size * 2.41
+                      },
                       {
                         percent: "0.69%",
                         label: "TOKEN BURN",
@@ -1166,7 +1225,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         color: "red",
                         delay: 1.5,
                         size: 48,
-                      }, // Base size * 0.69
+                      },
                     ].map((item, i) => (
                       <motion.div
                         key={i}
@@ -1280,8 +1339,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 5: Chainlink VRF Lottery - Immersive Camera Dive */}
-            {currentStep === 5 && (
+            {/* Step 6: Chainlink VRF Lottery - Immersive Camera Dive */}
+            {currentStep === 6 && (
               <motion.div
                 key="lottery"
                 className="flex items-center justify-center min-h-screen relative overflow-hidden"
@@ -1695,8 +1754,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 6: Refined Odds Table */}
-            {currentStep === 6 && (
+            {/* Step 7: Refined Odds Table */}
+            {currentStep === 7 && (
               <motion.div
                 key="odds"
                 className="flex items-center justify-center min-h-screen"
@@ -1897,8 +1956,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 7: LayerZero Cross-Chain Implementation - Immersive Deep Dive */}
-            {currentStep === 7 && (
+            {/* Step 8: LayerZero Cross-Chain Implementation - Immersive Deep Dive */}
+            {currentStep === 8 && (
               <motion.div
                 key="layerzero"
                 className="flex items-center justify-center min-h-screen relative overflow-hidden"
@@ -2161,8 +2220,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               </motion.div>
             )}
 
-            {/* Step 8: Epic Finale with CTA */}
-            {currentStep === 8 && (
+            {/* Step 9: Epic Finale with CTA */}
+            {currentStep === 9 && (
               <motion.div
                 key="finale"
                 className="flex items-center justify-center min-h-screen"
