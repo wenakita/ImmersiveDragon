@@ -677,42 +677,52 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </motion.p>
                   </div>
 
-                  {/* Continuous Token Interaction Loop - Multiple Angles */}
+                  {/* Enhanced Token Interaction - Meet in Center & Accelerate Out */}
                   {[...Array(3)].map((_, loopIndex) => (
                     <div key={`token-loop-${loopIndex}`}>
-                      {/* S Token from different angles */}
+                      {/* S Token - Left to Center to Right */}
                       <motion.div
                         className="absolute w-32 h-32 rounded-full border-2 border-yellow-400/60 flex items-center justify-center backdrop-blur-sm"
                         style={{
                           filter: "drop-shadow(0 0 30px rgba(234,179,8,0.6))",
                           boxShadow: "0 0 40px rgba(234,179,8,0.3), inset 0 0 20px rgba(234,179,8,0.1)",
+                          left: "50%",
+                          top: "50%",
+                          transform: "translate(-50%, -50%)",
                         }}
                         animate={{
-                          x: loopIndex === 0 ? [-800, 0, 1200] :
-                             loopIndex === 1 ? [-600, 0, 900] :
-                             [-1000, 0, 1500],
-                          y: loopIndex === 0 ? [0, 0, 0] :
-                             loopIndex === 1 ? [-200, 0, 300] :
-                             [300, 0, -400],
-                          scale: [0.3, 1.2, 0.6],
-                          opacity: [0, 1, 0],
-                          rotateZ: loopIndex === 0 ? [-180, 0, 540] :
-                                   loopIndex === 1 ? [90, 0, 450] :
-                                   [-90, 0, 360],
+                          x: loopIndex === 0 ? [-600, 0, 0, 800] :
+                             loopIndex === 1 ? [-500, 0, 0, 700] :
+                             [-700, 0, 0, 900],
+                          y: loopIndex === 0 ? [0, 0, 0, -100] :
+                             loopIndex === 1 ? [-150, 0, 0, 200] :
+                             [200, 0, 0, -300],
+                          scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.3] :
+                                 loopIndex === 1 ? [0.3, 0.9, 1.1, 0.4] :
+                                 [0.5, 1.1, 1.3, 0.2],
+                          opacity: [0, 0.8, 1, 0],
+                          rotateZ: loopIndex === 0 ? [-180, -90, 0, 270] :
+                                   loopIndex === 1 ? [90, 45, 0, -180] :
+                                   [-90, -45, 0, 180],
                         }}
                         transition={{
-                          duration: 8 + loopIndex * 2,
-                          times: [0, 0.5, 1],
-                          ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
-                                loopIndex === 1 ? [0.42, 0, 0.58, 1] :
-                                [0.68, -0.55, 0.265, 1.55],
-                          delay: loopIndex * 3,
+                          duration: loopIndex === 0 ? 6 : 7 + loopIndex,
+                          times: loopIndex === 0 ? [0, 0.4, 0.6, 1] : [0, 0.35, 0.65, 1],
+                          ease: loopIndex === 0 ? 
+                            // First loop: musical cubic bezier for dramatic effect
+                            [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.95, 0.05, 0.795, 0.035]] :
+                            loopIndex === 1 ?
+                            // Second loop: flowing melody curve
+                            [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.9, 0.03, 0.69, 0.22]] :
+                            // Third loop: sharp accent timing
+                            [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.87, 0, 0.13, 1]],
+                          delay: loopIndex * 4,
                           repeat: Infinity,
                         }}
                         initial={{
-                          x: loopIndex === 0 ? -800 : loopIndex === 1 ? -600 : -1000,
-                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? -200 : 300,
-                          scale: 0.3,
+                          x: loopIndex === 0 ? -600 : loopIndex === 1 ? -500 : -700,
+                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? -150 : 200,
+                          scale: loopIndex === 0 ? 0.4 : loopIndex === 1 ? 0.3 : 0.5,
                           opacity: 0,
                         }}
                       >
@@ -723,39 +733,49 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         />
                       </motion.div>
 
-                      {/* DRAGON Token from different angles */}
+                      {/* DRAGON Token - Right to Center to Left */}
                       <motion.div
                         className="absolute w-32 h-32 rounded-full border-2 border-amber-400/60 flex items-center justify-center backdrop-blur-sm"
                         style={{
                           filter: "drop-shadow(0 0 30px rgba(251,191,36,0.6))",
                           boxShadow: "0 0 40px rgba(251,191,36,0.3), inset 0 0 20px rgba(251,191,36,0.1)",
+                          left: "50%",
+                          top: "50%",
+                          transform: "translate(-50%, -50%)",
                         }}
                         animate={{
-                          x: loopIndex === 0 ? [800, 0, -1200] :
-                             loopIndex === 1 ? [600, 0, -900] :
-                             [1000, 0, -1500],
-                          y: loopIndex === 0 ? [0, 0, 0] :
-                             loopIndex === 1 ? [200, 0, -300] :
-                             [-300, 0, 400],
-                          scale: [0.3, 1.2, 0.6],
-                          opacity: [0, 1, 0],
-                          rotateZ: loopIndex === 0 ? [180, 0, -540] :
-                                   loopIndex === 1 ? [-90, 0, -450] :
-                                   [90, 0, -360],
+                          x: loopIndex === 0 ? [600, 0, 0, -800] :
+                             loopIndex === 1 ? [500, 0, 0, -700] :
+                             [700, 0, 0, -900],
+                          y: loopIndex === 0 ? [0, 0, 0, 100] :
+                             loopIndex === 1 ? [150, 0, 0, -200] :
+                             [-200, 0, 0, 300],
+                          scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.3] :
+                                 loopIndex === 1 ? [0.3, 0.9, 1.1, 0.4] :
+                                 [0.5, 1.1, 1.3, 0.2],
+                          opacity: [0, 0.8, 1, 0],
+                          rotateZ: loopIndex === 0 ? [180, 90, 0, -270] :
+                                   loopIndex === 1 ? [-90, -45, 0, 180] :
+                                   [90, 45, 0, -180],
                         }}
                         transition={{
-                          duration: 8 + loopIndex * 2,
-                          times: [0, 0.5, 1],
-                          ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
-                                loopIndex === 1 ? [0.42, 0, 0.58, 1] :
-                                [0.68, -0.55, 0.265, 1.55],
-                          delay: loopIndex * 3,
+                          duration: loopIndex === 0 ? 6 : 7 + loopIndex,
+                          times: loopIndex === 0 ? [0, 0.4, 0.6, 1] : [0, 0.35, 0.65, 1],
+                          ease: loopIndex === 0 ? 
+                            // First loop: musical cubic bezier for dramatic effect
+                            [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.95, 0.05, 0.795, 0.035]] :
+                            loopIndex === 1 ?
+                            // Second loop: flowing melody curve
+                            [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.9, 0.03, 0.69, 0.22]] :
+                            // Third loop: sharp accent timing
+                            [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.87, 0, 0.13, 1]],
+                          delay: loopIndex * 4,
                           repeat: Infinity,
                         }}
                         initial={{
-                          x: loopIndex === 0 ? 800 : loopIndex === 1 ? 600 : 1000,
-                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? 200 : -300,
-                          scale: 0.3,
+                          x: loopIndex === 0 ? 600 : loopIndex === 1 ? 500 : 700,
+                          y: loopIndex === 0 ? 0 : loopIndex === 1 ? 150 : -200,
+                          scale: loopIndex === 0 ? 0.4 : loopIndex === 1 ? 0.3 : 0.5,
                           opacity: 0,
                         }}
                       >
@@ -766,32 +786,65 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         />
                       </motion.div>
 
-                      {/* Collision Effect at Center */}
+                      {/* Enhanced Center Collision Effect */}
                       <motion.div
-                        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full"
+                        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full"
                         style={{
                           background: `radial-gradient(circle, ${
                             loopIndex === 0 ? '#FFD700' :
                             loopIndex === 1 ? '#FF6B35' : '#FF4500'
-                          } 0%, transparent 70%)`,
-                          boxShadow: `0 0 30px ${
+                          } 0%, ${
+                            loopIndex === 0 ? '#FFA500' :
+                            loopIndex === 1 ? '#FF8C00' : '#DC143C'
+                          } 40%, transparent 70%)`,
+                          boxShadow: `0 0 40px ${
                             loopIndex === 0 ? '#FFD700' :
                             loopIndex === 1 ? '#FF6B35' : '#FF4500'
+                          }, 0 0 80px ${
+                            loopIndex === 0 ? '#FFA500' :
+                            loopIndex === 1 ? '#FF8C00' : '#DC143C'
                           }`,
                         }}
                         animate={{
-                          scale: [0, 4, 2, 0],
-                          opacity: [0, 1, 0.5, 0],
-                          rotateZ: [0, 180, 360],
+                          scale: [0, 6, 4, 1, 0],
+                          opacity: [0, 0.9, 0.7, 0.3, 0],
+                          rotateZ: [0, 180, 270, 360],
                         }}
                         transition={{
-                          duration: 1.2,
-                          delay: (loopIndex * 3) + 2.4,
+                          duration: 2,
+                          delay: (loopIndex * 4) + 2.4,
                           ease: [0.87, 0, 0.13, 1],
                           repeat: Infinity,
-                          repeatDelay: 5.8 + loopIndex * 2,
+                          times: [0, 0.2, 0.4, 0.7, 1],
                         }}
                       />
+
+                      {/* Explosion Particles */}
+                      {[...Array(8)].map((_, particleIndex) => (
+                        <motion.div
+                          key={`particle-${loopIndex}-${particleIndex}`}
+                          className="absolute w-2 h-2 rounded-full"
+                          style={{
+                            background: loopIndex === 0 ? '#FFD700' :
+                                       loopIndex === 1 ? '#FF6B35' : '#FF4500',
+                            left: "50%",
+                            top: "50%",
+                            transform: "translate(-50%, -50%)",
+                          }}
+                          animate={{
+                            x: [0, (Math.cos(particleIndex * 45 * Math.PI / 180) * 120)],
+                            y: [0, (Math.sin(particleIndex * 45 * Math.PI / 180) * 120)],
+                            scale: [0, 1, 0],
+                            opacity: [0, 1, 0],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            delay: (loopIndex * 4) + 2.6,
+                            ease: [0.25, 0.46, 0.45, 0.94],
+                            repeat: Infinity,
+                          }}
+                        />
+                      ))}
                     </div>
                   ))}
                 </div>
@@ -2340,7 +2393,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           letterSpacing: "0.15em",
                         }}
                       >
-                        docs.sonicreddragon.io
+                        <a href="https://docs.sonicreddragon.io" target="_blank" rel="noopener noreferrer">docs.sonicreddragon.io</a>
                       </motion.div>
 
                       {/* Subtle underline animation */}
