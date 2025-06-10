@@ -1412,27 +1412,27 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       {
                         percent: "6.9%",
                         label: "JACKPOT VAULT",
-                        description: "Win massive prizes every trade",
+                        description: "in $S to jackpot vault",
                         color: "amber",
                         delay: 0.5,
                         size: 120,
-                      }, // Base size * 6.9
+                      },
                       {
                         percent: "2.41%",
-                        label: "LP REWARDS",
-                        description: "Earn passive income",
+                        label: "veDRAGON REWARDS",
+                        description: "in $S to veDRAGON holders",
                         color: "blue",
                         delay: 1,
                         size: 84,
-                      }, // Base size * 2.41
+                      },
                       {
                         percent: "0.69%",
-                        label: "TOKEN BURN",
-                        description: "Increase scarcity & value",
+                        label: "DRAGON BURN",
+                        description: "in $DRAGON burned",
                         color: "red",
                         delay: 1.5,
                         size: 48,
-                      }, // Base size * 0.69
+                      },
                     ].map((item, i) => (
                       <motion.div
                         key={i}
