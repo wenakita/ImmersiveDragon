@@ -19,16 +19,21 @@ export default function WelcomeScreen({
     useEasterEggs();
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center p-4 sm:p-6"
-      style={{
-        background:
-          "radial-gradient(ellipse at center, rgba(41, 27, 12, 0.4) 0%, rgba(0, 0, 0, 0.9) 70%)",
-      }}
+      className="fixed inset-0 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 1 }}
     >
+      {/* Simple Background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(41, 27, 12, 0.4) 0%, rgba(0, 0, 0, 0.9) 70%)",
+        }}
+      />
+
       <motion.div
         className="subtle-border rounded-3xl p-6 sm:p-8 max-w-md w-full text-center"
         initial={{ scale: 0.9, y: 20 }}
@@ -46,7 +51,7 @@ export default function WelcomeScreen({
             <img
               src="https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam"
               alt="Sonic Red Dragon Logo"
-              className="dragon-logo-glow w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover cursor-pointer"
+              className="dragon-logo-glow w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover cursor-pointer"
               onClick={() => handleClick("dragon-logo")}
             />
           </div>
