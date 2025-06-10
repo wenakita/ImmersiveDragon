@@ -1358,18 +1358,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               >
                 <div className="text-center relative z-10">
                   <div className="mb-16">
-                    {/* Transition from previous slide */}
-                    <motion.div
-                      className="text-3xl text-gray-400 mb-8 font-light"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 1, delay: 0.2 }}
-                    >
-                      Here's where it gets interesting...
-                    </motion.div>
-
                     <motion.h2
-                      className="text-6xl font-light mb-6 text-yellow-400 tracking-wide"
+                      className="text-6xl font-light mb-12 text-yellow-400 tracking-wide"
                       initial={{ y: -40, opacity: 0, rotateX: 45 }}
                       animate={{
                         y: 0,
@@ -1379,7 +1369,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{
                         duration: 1.5,
                         ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 0.8,
+                        delay: 0.3,
                       }}
                       style={{
                         filter: "drop-shadow(0 0 40px rgba(255,235,59,0.6))",
@@ -1388,23 +1378,6 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       YOUR 10% FEE BECOMES
                     </motion.h2>
-
-                    <motion.p
-                      className="text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 1,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 1.3,
-                      }}
-                    >
-                      Unlike traditional DEXs that just take your fees,
-                      <span className="text-amber-400 font-medium">
-                        {" "}
-                        Sonic Red Dragon transforms them into opportunities
-                      </span>
-                    </motion.p>
                   </div>
 
                   <div className="space-y-12">
