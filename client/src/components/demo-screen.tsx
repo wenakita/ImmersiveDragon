@@ -553,7 +553,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{
                       duration: 5,
                       times: [0, 0.4, 0.6, 1],
-                      ease: [0.16, 1, 0.3, 1],
+                      ease: [0.25, 0.1, 0.25, 1],
                       delay: 2,
                     }}
                     style={{
@@ -581,7 +581,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{
                       duration: 5,
                       times: [0, 0.4, 0.6, 1],
-                      ease: [0.16, 1, 0.3, 1],
+                      ease: [0.25, 0.1, 0.25, 1],
                       delay: 2,
                     }}
                     style={{
@@ -609,7 +609,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{
                       duration: 1.5,
                       delay: 4,
-                      ease: [0.16, 1, 0.3, 1],
+                      ease: [0.25, 0.1, 0.25, 1],
                     }}
                   ></motion.div>
 
@@ -623,7 +623,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{
                       duration: 0.4,
                       delay: 4,
-                      ease: "easeInOut",
+                      ease: [0.25, 0.1, 0.25, 1],
                     }}
                   />
 
@@ -652,7 +652,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{
                         duration: 2,
                         delay: 4 + i * 0.03,
-                        ease: "easeOut",
+                        ease: [0.25, 0.1, 0.25, 1],
                       }}
                     />
                   ))}
