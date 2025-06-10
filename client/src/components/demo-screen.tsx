@@ -473,25 +473,54 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     ))}
                   </div>
 
-                  {/* Fee Display */}
+                  {/* Modern Fee Display Card */}
                   <motion.div
-                    className={`bg-red-900/30 backdrop-blur-sm border border-red-800/50 rounded-2xl mt-12 ${
-                      isMobile ? "p-4 mx-2" : "p-8"
+                    className={`relative overflow-hidden bg-gradient-to-br from-red-900/40 via-red-800/30 to-orange-900/40 backdrop-blur-xl border border-red-500/30 rounded-3xl mt-12 shadow-2xl ${
+                      isMobile ? "p-6 mx-2" : "p-10"
                     }`}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 1.5 }}
+                    initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                    style={{
+                      boxShadow: "0 25px 50px -12px rgba(239, 68, 68, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                    }}
                   >
-                    <div className={`font-bold text-red-400 ${
-                      isMobile ? "text-2xl" : "text-4xl"
-                    }`}>
-                      10% TRADING FEE
+                    {/* Subtle glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 via-orange-500/5 to-red-500/10 rounded-3xl" />
+                    
+                    <div className="relative z-10">
+                      <motion.div 
+                        className={`font-bold bg-gradient-to-r from-red-400 via-orange-400 to-red-300 bg-clip-text text-transparent ${
+                          isMobile ? "text-3xl" : "text-5xl"
+                        }`}
+                        animate={{ 
+                          textShadow: [
+                            "0 0 20px rgba(239, 68, 68, 0.5)",
+                            "0 0 40px rgba(239, 68, 68, 0.3)",
+                            "0 0 20px rgba(239, 68, 68, 0.5)"
+                          ]
+                        }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        10% TRADING FEE
+                      </motion.div>
+                      
+                      <motion.div
+                        className={`w-16 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full mx-auto my-6 ${
+                          isMobile ? "w-12" : ""
+                        }`}
+                        initial={{ width: 0 }}
+                        animate={{ width: isMobile ? "3rem" : "4rem" }}
+                        transition={{ duration: 1, delay: 2 }}
+                      />
+                      
+                      <p className={`text-gray-300/90 font-medium leading-relaxed ${
+                        isMobile ? "text-base mobile-text-base" : "text-xl"
+                      }`}>
+                        But here's where it gets{" "}
+                        <span className="text-yellow-400 font-semibold">interesting...</span>
+                      </p>
                     </div>
-                    <p className={`text-gray-400 mt-4 ${
-                      isMobile ? "text-sm mobile-text-sm" : "text-lg"
-                    }`}>
-                      But here's where it gets interesting...
-                    </p>
                   </motion.div>
                 </div>
               </motion.div>
@@ -602,84 +631,165 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     </h2>
                   </motion.div>
 
-                  {/* Fee Breakdown Cards */}
-                  <div className={`grid gap-6 ${isMobile ? "grid-cols-1 space-y-4" : "md:grid-cols-3"}`}>
-                    {/* Jackpot */}
+                  {/* Modern Fee Breakdown Cards */}
+                  <div className={`grid gap-8 ${isMobile ? "grid-cols-1 space-y-6" : "md:grid-cols-3"}`}>
+                    {/* Jackpot - Premium Glass Card */}
                     <motion.div
-                      className={`bg-yellow-900/30 backdrop-blur-sm border border-yellow-800/50 rounded-2xl ${
-                        isMobile ? "p-4" : "p-6"
+                      className={`group relative overflow-hidden bg-gradient-to-br from-yellow-900/50 via-yellow-800/40 to-amber-900/50 backdrop-blur-xl border border-yellow-500/40 rounded-3xl shadow-2xl ${
+                        isMobile ? "p-6" : "p-8"
                       }`}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 0.5 }}
+                      initial={{ opacity: 0, y: 50, rotateX: 15 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                      transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      style={{
+                        boxShadow: "0 25px 50px -12px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                      }}
                     >
-                      <div className={`font-bold text-yellow-400 ${
-                        isMobile ? "text-2xl" : "text-4xl"
-                      }`}>
-                        6.9%
+                      {/* Animated background glow */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 via-transparent to-amber-400/20 rounded-3xl"
+                        animate={{ 
+                          opacity: [0.2, 0.4, 0.2],
+                          scale: [1, 1.02, 1]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      
+                      <div className="relative z-10">
+                        <motion.div 
+                          className={`font-black bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-300 bg-clip-text text-transparent ${
+                            isMobile ? "text-4xl" : "text-6xl"
+                          }`}
+                          animate={{ 
+                            scale: [1, 1.05, 1]
+                          }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                          6.9%
+                        </motion.div>
+                        
+                        <div className={`w-12 h-1 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full my-4 ${
+                          isMobile ? "w-8" : ""
+                        }`} />
+                        
+                        <p className={`text-yellow-100 font-bold tracking-wide ${
+                          isMobile ? "text-lg" : "text-xl"
+                        }`}>
+                          JACKPOT POOL
+                        </p>
+                        <p className={`text-yellow-200/80 mt-3 leading-relaxed ${
+                          isMobile ? "text-sm" : "text-base"
+                        }`}>
+                          Every swap becomes a lottery ticket
+                        </p>
                       </div>
-                      <p className={`text-yellow-200 font-medium ${
-                        isMobile ? "text-sm mobile-text-sm" : "text-lg"
-                      }`}>
-                        Jackpot Pool
-                      </p>
-                      <p className={`text-gray-400 mt-2 ${
-                        isMobile ? "text-xs mobile-text-xs" : "text-sm"
-                      }`}>
-                        Every swap = lottery ticket
-                      </p>
                     </motion.div>
 
-                    {/* Liquidity */}
+                    {/* Liquidity - Premium Glass Card */}
                     <motion.div
-                      className={`bg-blue-900/30 backdrop-blur-sm border border-blue-800/50 rounded-2xl ${
-                        isMobile ? "p-4" : "p-6"
+                      className={`group relative overflow-hidden bg-gradient-to-br from-blue-900/50 via-blue-800/40 to-cyan-900/50 backdrop-blur-xl border border-blue-500/40 rounded-3xl shadow-2xl ${
+                        isMobile ? "p-6" : "p-8"
                       }`}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 0.7 }}
+                      initial={{ opacity: 0, y: 50, rotateX: 15 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                      transition={{ duration: 1.2, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      style={{
+                        boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                      }}
                     >
-                      <div className={`font-bold text-blue-400 ${
-                        isMobile ? "text-2xl" : "text-4xl"
-                      }`}>
-                        2.41%
+                      {/* Animated background glow */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-transparent to-cyan-400/20 rounded-3xl"
+                        animate={{ 
+                          opacity: [0.2, 0.4, 0.2],
+                          scale: [1, 1.02, 1]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                      />
+                      
+                      <div className="relative z-10">
+                        <motion.div 
+                          className={`font-black bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent ${
+                            isMobile ? "text-4xl" : "text-6xl"
+                          }`}
+                          animate={{ 
+                            scale: [1, 1.05, 1]
+                          }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                        >
+                          2.41%
+                        </motion.div>
+                        
+                        <div className={`w-12 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full my-4 ${
+                          isMobile ? "w-8" : ""
+                        }`} />
+                        
+                        <p className={`text-blue-100 font-bold tracking-wide ${
+                          isMobile ? "text-lg" : "text-xl"
+                        }`}>
+                          LIQUIDITY POOL
+                        </p>
+                        <p className={`text-blue-200/80 mt-3 leading-relaxed ${
+                          isMobile ? "text-sm" : "text-base"
+                        }`}>
+                          Maintains stable trading pairs
+                        </p>
                       </div>
-                      <p className={`text-blue-200 font-medium ${
-                        isMobile ? "text-sm mobile-text-sm" : "text-lg"
-                      }`}>
-                        Liquidity Pool
-                      </p>
-                      <p className={`text-gray-400 mt-2 ${
-                        isMobile ? "text-xs mobile-text-xs" : "text-sm"
-                      }`}>
-                        Stable trading pairs
-                      </p>
                     </motion.div>
 
-                    {/* Burn */}
+                    {/* Burn - Premium Glass Card */}
                     <motion.div
-                      className={`bg-orange-900/30 backdrop-blur-sm border border-orange-800/50 rounded-2xl ${
-                        isMobile ? "p-4" : "p-6"
+                      className={`group relative overflow-hidden bg-gradient-to-br from-orange-900/50 via-red-900/40 to-orange-900/50 backdrop-blur-xl border border-orange-500/40 rounded-3xl shadow-2xl ${
+                        isMobile ? "p-6" : "p-8"
                       }`}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 0.9 }}
+                      initial={{ opacity: 0, y: 50, rotateX: 15 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                      transition={{ duration: 1.2, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      style={{
+                        boxShadow: "0 25px 50px -12px rgba(251, 146, 60, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                      }}
                     >
-                      <div className={`font-bold text-orange-400 ${
-                        isMobile ? "text-2xl" : "text-4xl"
-                      }`}>
-                        0.69%
+                      {/* Animated background glow */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-transparent to-red-400/20 rounded-3xl"
+                        animate={{ 
+                          opacity: [0.2, 0.4, 0.2],
+                          scale: [1, 1.02, 1]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                      />
+                      
+                      <div className="relative z-10">
+                        <motion.div 
+                          className={`font-black bg-gradient-to-r from-orange-300 via-orange-400 to-red-300 bg-clip-text text-transparent ${
+                            isMobile ? "text-4xl" : "text-6xl"
+                          }`}
+                          animate={{ 
+                            scale: [1, 1.05, 1]
+                          }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                        >
+                          0.69%
+                        </motion.div>
+                        
+                        <div className={`w-12 h-1 bg-gradient-to-r from-orange-400 to-red-400 rounded-full my-4 ${
+                          isMobile ? "w-8" : ""
+                        }`} />
+                        
+                        <p className={`text-orange-100 font-bold tracking-wide ${
+                          isMobile ? "text-lg" : "text-xl"
+                        }`}>
+                          TOKEN BURN
+                        </p>
+                        <p className={`text-orange-200/80 mt-3 leading-relaxed ${
+                          isMobile ? "text-sm" : "text-base"
+                        }`}>
+                          Deflationary mechanism
+                        </p>
                       </div>
-                      <p className={`text-orange-200 font-medium ${
-                        isMobile ? "text-sm mobile-text-sm" : "text-lg"
-                      }`}>
-                        Token Burn
-                      </p>
-                      <p className={`text-gray-400 mt-2 ${
-                        isMobile ? "text-xs mobile-text-xs" : "text-sm"
-                      }`}>
-                        Deflationary mechanism
-                      </p>
                     </motion.div>
                   </div>
                 </div>
@@ -721,89 +831,143 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                 </div>
 
                 <div className={`text-center relative z-10 ${isMobile ? "px-4 max-w-sm mx-auto" : "max-w-4xl"}`}>
-                  {/* LayerZero Logo and Title */}
+                  {/* Modern LayerZero Header */}
                   <motion.div
-                    className={`mb-12 ${isMobile ? "mb-8" : ""}`}
+                    className={`mb-16 ${isMobile ? "mb-12" : ""}`}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
-                    <div className="flex items-center justify-center mb-6">
-                      <img
-                        src="https://pbs.twimg.com/profile_images/1671947962681049088/3Ld32mOx_400x400.jpg"
-                        alt="LayerZero"
-                        className={`${isMobile ? "w-16 h-16" : "w-20 h-20"} rounded-full mr-4`}
-                      />
-                      <h2 className={`font-light text-cyan-400 tracking-wide ${
-                        isMobile ? "text-xl mobile-text-lg" : "text-5xl"
-                      }`}>
+                    <motion.div 
+                      className="flex items-center justify-center mb-8"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <motion.div
+                        className={`relative ${isMobile ? "w-20 h-20 mr-4" : "w-28 h-28 mr-6"}`}
+                        animate={{ 
+                          rotate: [0, 360],
+                          scale: [1, 1.05, 1]
+                        }}
+                        transition={{ 
+                          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full p-1">
+                          <img
+                            src="https://pbs.twimg.com/profile_images/1671947962681049088/3Ld32mOx_400x400.jpg"
+                            alt="LayerZero"
+                            className="w-full h-full rounded-full object-cover"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full animate-pulse" />
+                      </motion.div>
+                      
+                      <motion.h2 
+                        className={`font-black bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent tracking-wider ${
+                          isMobile ? "text-3xl" : "text-7xl"
+                        }`}
+                        animate={{
+                          textShadow: [
+                            "0 0 20px rgba(34, 211, 238, 0.5)",
+                            "0 0 40px rgba(34, 211, 238, 0.3)",
+                            "0 0 20px rgba(34, 211, 238, 0.5)"
+                          ]
+                        }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
                         LAYERZERO
-                      </h2>
-                    </div>
-                    <p className={`text-gray-300 font-light max-w-3xl mx-auto leading-relaxed ${
-                      isMobile ? "text-sm mobile-text-sm" : "text-xl"
+                      </motion.h2>
+                    </motion.div>
+                    
+                    <motion.div
+                      className={`w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mx-auto mb-8 ${
+                        isMobile ? "w-16" : ""
+                      }`}
+                      initial={{ width: 0 }}
+                      animate={{ width: isMobile ? "4rem" : "6rem" }}
+                      transition={{ duration: 1.5, delay: 1 }}
+                    />
+                    
+                    <p className={`text-gray-200/90 font-medium max-w-4xl mx-auto leading-relaxed ${
+                      isMobile ? "text-base" : "text-2xl"
                     }`}>
-                      Seamless cross-chain messaging and interoperability
+                      Seamless <span className="text-cyan-400 font-semibold">cross-chain messaging</span> and{" "}
+                      <span className="text-blue-400 font-semibold">interoperability</span>
                     </p>
                   </motion.div>
 
-                  {/* LayerZero Features */}
+                  {/* Premium LayerZero Features Card */}
                   <motion.div
-                    className={`bg-cyan-900/30 backdrop-blur-sm border border-cyan-800/50 rounded-2xl ${
-                      isMobile ? "p-4 mx-2" : "p-8"
+                    className={`relative overflow-hidden bg-gradient-to-br from-cyan-900/50 via-blue-900/40 to-purple-900/50 backdrop-blur-xl border border-cyan-500/40 rounded-3xl shadow-2xl ${
+                      isMobile ? "p-6 mx-2" : "p-12"
                     }`}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    style={{
+                      boxShadow: "0 25px 50px -12px rgba(34, 211, 238, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                    }}
                   >
-                    <div className={`grid gap-6 ${isMobile ? "grid-cols-1" : "md:grid-cols-2"}`}>
-                      <div className="text-center">
-                        <div className={`font-bold text-cyan-400 ${
-                          isMobile ? "text-xl" : "text-2xl"
-                        }`}>
-                          Cross-Chain Messaging
-                        </div>
-                        <p className={`text-gray-400 mt-2 ${
-                          isMobile ? "text-xs mobile-text-sm" : "text-sm"
-                        }`}>
-                          Connect multiple blockchains seamlessly
-                        </p>
-                      </div>
-                      <div className="text-center">
-                        <div className={`font-bold text-cyan-400 ${
-                          isMobile ? "text-xl" : "text-2xl"
-                        }`}>
-                          Universal Liquidity
-                        </div>
-                        <p className={`text-gray-400 mt-2 ${
-                          isMobile ? "text-xs mobile-text-sm" : "text-sm"
-                        }`}>
-                          Access liquidity across all chains
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Chain Connection Animation */}
-                    <div className="mt-8 flex items-center justify-center space-x-4">
-                      {['Ethereum', 'Polygon', 'Arbitrum', 'Optimism'].map((chain, i) => (
-                        <motion.div
-                          key={chain}
-                          className={`bg-cyan-500/20 border border-cyan-400/30 rounded-lg px-3 py-2 ${
-                            isMobile ? "text-xs" : "text-sm"
-                          }`}
-                          animate={{
-                            opacity: [0.5, 1, 0.5],
-                            scale: [0.95, 1.05, 0.95],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: i * 0.3,
-                          }}
+                    {/* Animated background glow */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-blue-500/10 to-purple-500/20 rounded-3xl"
+                      animate={{ 
+                        opacity: [0.3, 0.6, 0.3],
+                        scale: [1, 1.02, 1]
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    
+                    <div className="relative z-10">
+                      <div className={`grid gap-8 ${isMobile ? "grid-cols-1 space-y-6" : "md:grid-cols-2"}`}>
+                        {/* Cross-Chain Messaging Feature */}
+                        <motion.div 
+                          className="text-center p-6 rounded-2xl bg-gradient-to-br from-cyan-800/30 to-blue-800/30 border border-cyan-400/20"
+                          initial={{ opacity: 0, x: -50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 1, delay: 1 }}
                         >
-                          {chain}
+                          <motion.div 
+                            className={`font-black text-cyan-300 mb-4 ${
+                              isMobile ? "text-xl" : "text-2xl"
+                            }`}
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          >
+                            CROSS-CHAIN MESSAGING
+                          </motion.div>
+                          <p className={`text-cyan-100/80 leading-relaxed ${
+                            isMobile ? "text-sm" : "text-base"
+                          }`}>
+                            Connect multiple blockchains seamlessly
+                          </p>
                         </motion.div>
-                      ))}
+
+                        {/* Universal Liquidity Feature */}
+                        <motion.div 
+                          className="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-800/30 to-purple-800/30 border border-blue-400/20"
+                          initial={{ opacity: 0, x: 50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 1, delay: 1.2 }}
+                        >
+                          <motion.div 
+                            className={`font-black text-blue-300 mb-4 ${
+                              isMobile ? "text-xl" : "text-2xl"
+                            }`}
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                          >
+                            UNIVERSAL LIQUIDITY
+                          </motion.div>
+                          <p className={`text-blue-100/80 leading-relaxed ${
+                            isMobile ? "text-sm" : "text-base"
+                          }`}>
+                            Access liquidity across all chains
+                          </p>
+                        </motion.div>
+                      </div>
                     </div>
                   </motion.div>
                 </div>
