@@ -555,17 +555,21 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
                     <motion.h2 
-                      className={`font-light mb-8 text-yellow-400 tracking-wide ${
-                        isMobile ? "text-2xl mobile-text-lg" : "text-6xl"
+                      className={`font-extralight mb-12 bg-gradient-to-r from-yellow-200 via-amber-200 to-yellow-100 bg-clip-text text-transparent tracking-[-0.01em] ${
+                        isMobile ? "text-3xl" : "text-7xl"
                       }`}
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: '200'
+                      }}
                       animate={{
                         textShadow: [
-                          "0 0 20px rgba(251, 191, 36, 0.5)",
-                          "0 0 40px rgba(251, 191, 36, 0.3)",
-                          "0 0 20px rgba(251, 191, 36, 0.5)"
+                          "0 0 40px rgba(251, 191, 36, 0.4)",
+                          "0 0 80px rgba(251, 191, 36, 0.2)",
+                          "0 0 40px rgba(251, 191, 36, 0.4)"
                         ]
                       }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
                       But here's where it gets interesting
                     </motion.h2>
@@ -579,12 +583,15 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{ duration: 1.5, delay: 1 }}
                     />
                     
-                    <p className={`text-gray-200/90 font-medium max-w-4xl mx-auto leading-relaxed ${
-                      isMobile ? "text-base mobile-text-sm" : "text-2xl"
-                    }`}>
+                    <p className={`text-gray-200/95 font-light max-w-5xl mx-auto leading-relaxed tracking-[0.01em] ${
+                      isMobile ? "text-lg" : "text-3xl"
+                    }`} style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontWeight: '300'
+                    }}>
                       On other DEX they just take your fees or give it to farmers, but on{" "}
-                      <span className="text-red-400 font-bold">Sonic Red Dragon</span>, 
-                      we turn them into <span className="text-yellow-400 font-bold">opportunities</span>
+                      <span className="bg-gradient-to-r from-red-300 to-orange-300 bg-clip-text text-transparent font-medium">Sonic Red Dragon</span>, 
+                      we turn them into <span className="bg-gradient-to-r from-yellow-300 to-amber-300 bg-clip-text text-transparent font-medium italic">opportunities</span>
                     </p>
                   </motion.div>
                 </div>
@@ -609,17 +616,22 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ duration: 1.2, delay: 0.3 }}
                   >
                     <motion.h2 
-                      className={`font-black mb-8 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 bg-clip-text text-transparent tracking-wider ${
-                        isMobile ? "text-3xl mobile-text-xl" : "text-7xl"
+                      className={`font-black mb-12 bg-gradient-to-r from-emerald-200 via-green-200 to-emerald-100 bg-clip-text text-transparent tracking-[-0.02em] ${
+                        isMobile ? "text-4xl" : "text-8xl"
                       }`}
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontWeight: '900',
+                        letterSpacing: '-0.03em'
+                      }}
                       animate={{
                         textShadow: [
-                          "0 0 30px rgba(34, 197, 94, 0.5)",
-                          "0 0 60px rgba(34, 197, 94, 0.3)",
-                          "0 0 30px rgba(34, 197, 94, 0.5)"
+                          "0 0 50px rgba(34, 197, 94, 0.4)",
+                          "0 0 100px rgba(34, 197, 94, 0.2)",
+                          "0 0 50px rgba(34, 197, 94, 0.4)"
                         ]
                       }}
-                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                     >
                       FEE DISTRIBUTION
                     </motion.h2>
@@ -652,29 +664,40 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       
                       <div className="relative z-10">
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-yellow-200 via-yellow-300 to-amber-200 bg-clip-text text-transparent ${
-                            isMobile ? "text-5xl" : "text-7xl"
+                          className={`font-black bg-gradient-to-r from-yellow-100 via-yellow-200 to-amber-100 bg-clip-text text-transparent ${
+                            isMobile ? "text-6xl" : "text-8xl"
                           }`}
-                          animate={{ 
-                            scale: [1, 1.08, 1]
+                          style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '900',
+                            letterSpacing: '-0.03em'
                           }}
-                          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                          animate={{ 
+                            scale: [1, 1.05, 1]
+                          }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         >
                           6.9%
                         </motion.div>
                         
-                        <div className={`w-16 h-1 bg-gradient-to-r from-yellow-300 to-amber-300 rounded-full my-6 ${
-                          isMobile ? "w-12" : ""
+                        <div className={`w-20 h-[2px] bg-gradient-to-r from-yellow-300 to-amber-300 rounded-full my-8 ${
+                          isMobile ? "w-16" : ""
                         }`} />
                         
-                        <p className={`text-yellow-100 font-black tracking-wider ${
+                        <p className={`text-yellow-50 font-black tracking-[0.1em] uppercase ${
                           isMobile ? "text-xl" : "text-2xl"
-                        }`}>
-                          JACKPOT POOL
+                        }`} style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '800'
+                        }}>
+                          Jackpot Pool
                         </p>
-                        <p className={`text-yellow-200/90 mt-4 leading-relaxed font-medium ${
-                          isMobile ? "text-sm" : "text-lg"
-                        }`}>
+                        <p className={`text-yellow-100/90 mt-6 leading-relaxed font-light tracking-[0.01em] ${
+                          isMobile ? "text-base" : "text-xl"
+                        }`} style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '300'
+                        }}>
                           Every swap becomes a lottery ticket
                         </p>
                       </div>
@@ -705,29 +728,40 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       
                       <div className="relative z-10">
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-blue-200 via-blue-300 to-cyan-200 bg-clip-text text-transparent ${
-                            isMobile ? "text-5xl" : "text-7xl"
+                          className={`font-black bg-gradient-to-r from-blue-100 via-blue-200 to-cyan-100 bg-clip-text text-transparent ${
+                            isMobile ? "text-6xl" : "text-8xl"
                           }`}
-                          animate={{ 
-                            scale: [1, 1.08, 1]
+                          style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '900',
+                            letterSpacing: '-0.03em'
                           }}
-                          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                          animate={{ 
+                            scale: [1, 1.05, 1]
+                          }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                         >
                           2.41%
                         </motion.div>
                         
-                        <div className={`w-16 h-1 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full my-6 ${
-                          isMobile ? "w-12" : ""
+                        <div className={`w-20 h-[2px] bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full my-8 ${
+                          isMobile ? "w-16" : ""
                         }`} />
                         
-                        <p className={`text-blue-100 font-black tracking-wider ${
+                        <p className={`text-blue-50 font-black tracking-[0.1em] uppercase ${
                           isMobile ? "text-xl" : "text-2xl"
-                        }`}>
-                          LIQUIDITY POOL
+                        }`} style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '800'
+                        }}>
+                          Liquidity Pool
                         </p>
-                        <p className={`text-blue-200/90 mt-4 leading-relaxed font-medium ${
-                          isMobile ? "text-sm" : "text-lg"
-                        }`}>
+                        <p className={`text-blue-100/90 mt-6 leading-relaxed font-light tracking-[0.01em] ${
+                          isMobile ? "text-base" : "text-xl"
+                        }`} style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '300'
+                        }}>
                           Maintains stable trading pairs
                         </p>
                       </div>
@@ -758,29 +792,40 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       
                       <div className="relative z-10">
                         <motion.div 
-                          className={`font-black bg-gradient-to-r from-orange-200 via-orange-300 to-red-200 bg-clip-text text-transparent ${
-                            isMobile ? "text-5xl" : "text-7xl"
+                          className={`font-black bg-gradient-to-r from-orange-100 via-orange-200 to-red-100 bg-clip-text text-transparent ${
+                            isMobile ? "text-6xl" : "text-8xl"
                           }`}
-                          animate={{ 
-                            scale: [1, 1.08, 1]
+                          style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '900',
+                            letterSpacing: '-0.03em'
                           }}
-                          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                          animate={{ 
+                            scale: [1, 1.05, 1]
+                          }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                         >
                           0.69%
                         </motion.div>
                         
-                        <div className={`w-16 h-1 bg-gradient-to-r from-orange-300 to-red-300 rounded-full my-6 ${
-                          isMobile ? "w-12" : ""
+                        <div className={`w-20 h-[2px] bg-gradient-to-r from-orange-300 to-red-300 rounded-full my-8 ${
+                          isMobile ? "w-16" : ""
                         }`} />
                         
-                        <p className={`text-orange-100 font-black tracking-wider ${
+                        <p className={`text-orange-50 font-black tracking-[0.1em] uppercase ${
                           isMobile ? "text-xl" : "text-2xl"
-                        }`}>
-                          TOKEN BURN
+                        }`} style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '800'
+                        }}>
+                          Token Burn
                         </p>
-                        <p className={`text-orange-200/90 mt-4 leading-relaxed font-medium ${
-                          isMobile ? "text-sm" : "text-lg"
-                        }`}>
+                        <p className={`text-orange-100/90 mt-6 leading-relaxed font-light tracking-[0.01em] ${
+                          isMobile ? "text-base" : "text-xl"
+                        }`} style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '300'
+                        }}>
                           Deflationary mechanism
                         </p>
                       </div>
@@ -835,17 +880,22 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </motion.div>
                       
                       <motion.h2 
-                        className={`font-black bg-gradient-to-r from-cyan-200 via-blue-300 to-purple-300 bg-clip-text text-transparent tracking-wider ${
-                          isMobile ? "text-4xl" : "text-8xl"
+                        className={`font-black bg-gradient-to-r from-cyan-100 via-blue-200 to-purple-200 bg-clip-text text-transparent tracking-[-0.02em] ${
+                          isMobile ? "text-5xl" : "text-9xl"
                         }`}
+                        style={{
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          fontWeight: '900',
+                          letterSpacing: '-0.025em'
+                        }}
                         animate={{
                           textShadow: [
-                            "0 0 30px rgba(34, 211, 238, 0.6)",
-                            "0 0 60px rgba(34, 211, 238, 0.4)",
-                            "0 0 30px rgba(34, 211, 238, 0.6)"
+                            "0 0 50px rgba(34, 211, 238, 0.5)",
+                            "0 0 100px rgba(34, 211, 238, 0.3)",
+                            "0 0 50px rgba(34, 211, 238, 0.5)"
                           ]
                         }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                       >
                         LAYERZERO
                       </motion.h2>
@@ -860,11 +910,14 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{ duration: 1.8, delay: 1 }}
                     />
                     
-                    <p className={`text-gray-200/90 font-medium max-w-4xl mx-auto leading-relaxed ${
-                      isMobile ? "text-lg" : "text-3xl"
-                    }`}>
-                      Seamless <span className="text-cyan-400 font-bold">cross-chain messaging</span> and{" "}
-                      <span className="text-blue-400 font-bold">interoperability</span>
+                    <p className={`text-gray-200/95 font-light max-w-5xl mx-auto leading-relaxed tracking-[0.01em] ${
+                      isMobile ? "text-xl" : "text-4xl"
+                    }`} style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontWeight: '300'
+                    }}>
+                      Seamless <span className="bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent font-medium italic">cross-chain messaging</span> and{" "}
+                      <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent font-medium italic">interoperability</span>
                     </p>
                   </motion.div>
 
@@ -901,17 +954,24 @@ function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           whileHover={{ scale: 1.05, y: -5 }}
                         >
                           <motion.div 
-                            className={`font-black text-cyan-200 mb-6 ${
-                              isMobile ? "text-xl" : "text-3xl"
+                            className={`font-black text-cyan-100 mb-6 tracking-[0.1em] uppercase ${
+                              isMobile ? "text-xl" : "text-2xl"
                             }`}
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                            style={{
+                              fontFamily: 'Inter, system-ui, sans-serif',
+                              fontWeight: '800'
+                            }}
+                            animate={{ scale: [1, 1.03, 1] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                           >
-                            CROSS-CHAIN MESSAGING
+                            Cross-Chain Messaging
                           </motion.div>
-                          <p className={`text-cyan-100/90 leading-relaxed font-medium ${
-                            isMobile ? "text-sm" : "text-lg"
-                          }`}>
+                          <p className={`text-cyan-200/90 leading-relaxed font-light tracking-[0.01em] ${
+                            isMobile ? "text-base" : "text-xl"
+                          }`} style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontWeight: '300'
+                          }}>
                             Connect multiple blockchains seamlessly
                           </p>
                         </motion.div>
