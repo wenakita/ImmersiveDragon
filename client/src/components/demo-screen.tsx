@@ -368,8 +368,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     filter: "drop-shadow(0 0 20px rgba(156,163,175,0.3))",
                   }}
                 >
-                  From the creator of $AKITA V2, $AKITA V3, $oooOOO GODDOG aka
-                  Vitalik's Mum's Doge, $WAIT aka We're All In Together, etc..
+                  Swap to Trigger Lottery, Instant Results, Recover up to 81%!
                 </motion.p>
               </motion.div>
             )}
@@ -685,42 +684,69 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         className="absolute w-32 h-32 rounded-full border-2 border-yellow-400/60 flex items-center justify-center backdrop-blur-sm"
                         style={{
                           filter: "drop-shadow(0 0 30px rgba(234,179,8,0.6))",
-                          boxShadow: "0 0 40px rgba(234,179,8,0.3), inset 0 0 20px rgba(234,179,8,0.1)",
+                          boxShadow:
+                            "0 0 40px rgba(234,179,8,0.3), inset 0 0 20px rgba(234,179,8,0.1)",
                           left: "50%",
                           top: "50%",
                           transform: "translate(-50%, -50%)",
                         }}
                         animate={{
                           x: [-600, -50, 0, 1000],
-                          y: loopIndex === 0 ? [0, -10, 0, -120] :
-                             loopIndex === 1 ? [-120, -15, 0, 180] :
-                             [150, 20, 0, -300],
-                          scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.2] :
-                                 loopIndex === 1 ? [0.3, 0.9, 1.1, 0.3] :
-                                 [0.5, 1.1, 1.3, 0.1],
+                          y:
+                            loopIndex === 0
+                              ? [0, -10, 0, -120]
+                              : loopIndex === 1
+                                ? [-120, -15, 0, 180]
+                                : [150, 20, 0, -300],
+                          scale:
+                            loopIndex === 0
+                              ? [0.4, 1, 1.2, 0.2]
+                              : loopIndex === 1
+                                ? [0.3, 0.9, 1.1, 0.3]
+                                : [0.5, 1.1, 1.3, 0.1],
                           opacity: [0, 0.8, 1, 0],
-                          rotateZ: loopIndex === 0 ? [-180, -90, 0, 360] :
-                                   loopIndex === 1 ? [90, 45, 0, -270] :
-                                   [-90, -45, 0, 270],
+                          rotateZ:
+                            loopIndex === 0
+                              ? [-180, -90, 0, 360]
+                              : loopIndex === 1
+                                ? [90, 45, 0, -270]
+                                : [-90, -45, 0, 270],
                         }}
                         transition={{
                           duration: 5.5,
                           times: [0, 0.4, 0.55, 1],
-                          ease: loopIndex === 0 ? 
-                            // First loop: explosive exit after convergence
-                            [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.99, 0.01, 0.99, 0.01]] :
-                            loopIndex === 1 ?
-                            // Second loop: rapid acceleration exit
-                            [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.97, 0.03, 0.97, 0.03]] :
-                            // Third loop: instant launch exit
-                            [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.99, 0.01, 0.99, 0.01]],
+                          ease:
+                            loopIndex === 0
+                              ? // First loop: explosive exit after convergence
+                                [
+                                  [0.25, 0.46, 0.45, 0.94],
+                                  [0.25, 0.46, 0.45, 0.94],
+                                  [0.87, 0, 0.13, 1],
+                                  [0.99, 0.01, 0.99, 0.01],
+                                ]
+                              : loopIndex === 1
+                                ? // Second loop: rapid acceleration exit
+                                  [
+                                    [0.42, 0, 0.58, 1],
+                                    [0.42, 0, 0.58, 1],
+                                    [0.76, 0, 0.24, 1],
+                                    [0.97, 0.03, 0.97, 0.03],
+                                  ]
+                                : // Third loop: instant launch exit
+                                  [
+                                    [0.68, -0.55, 0.265, 1.55],
+                                    [0.68, -0.55, 0.265, 1.55],
+                                    [0.95, 0.05, 0.795, 0.035],
+                                    [0.99, 0.01, 0.99, 0.01],
+                                  ],
                           delay: loopIndex * 2.5,
                           repeat: Infinity,
                         }}
                         initial={{
                           x: -600,
                           y: loopIndex === 0 ? 0 : loopIndex === 1 ? -120 : 150,
-                          scale: loopIndex === 0 ? 0.4 : loopIndex === 1 ? 0.3 : 0.5,
+                          scale:
+                            loopIndex === 0 ? 0.4 : loopIndex === 1 ? 0.3 : 0.5,
                           opacity: 0,
                         }}
                       >
@@ -736,42 +762,69 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         className="absolute w-32 h-32 rounded-full border-2 border-amber-400/60 flex items-center justify-center backdrop-blur-sm"
                         style={{
                           filter: "drop-shadow(0 0 30px rgba(251,191,36,0.6))",
-                          boxShadow: "0 0 40px rgba(251,191,36,0.3), inset 0 0 20px rgba(251,191,36,0.1)",
+                          boxShadow:
+                            "0 0 40px rgba(251,191,36,0.3), inset 0 0 20px rgba(251,191,36,0.1)",
                           left: "50%",
                           top: "50%",
                           transform: "translate(-50%, -50%)",
                         }}
                         animate={{
                           x: [600, 50, 0, -1000],
-                          y: loopIndex === 0 ? [0, 10, 0, 120] :
-                             loopIndex === 1 ? [120, 15, 0, -180] :
-                             [-150, -20, 0, 300],
-                          scale: loopIndex === 0 ? [0.4, 1, 1.2, 0.2] :
-                                 loopIndex === 1 ? [0.3, 0.9, 1.1, 0.3] :
-                                 [0.5, 1.1, 1.3, 0.1],
+                          y:
+                            loopIndex === 0
+                              ? [0, 10, 0, 120]
+                              : loopIndex === 1
+                                ? [120, 15, 0, -180]
+                                : [-150, -20, 0, 300],
+                          scale:
+                            loopIndex === 0
+                              ? [0.4, 1, 1.2, 0.2]
+                              : loopIndex === 1
+                                ? [0.3, 0.9, 1.1, 0.3]
+                                : [0.5, 1.1, 1.3, 0.1],
                           opacity: [0, 0.8, 1, 0],
-                          rotateZ: loopIndex === 0 ? [180, 90, 0, -360] :
-                                   loopIndex === 1 ? [-90, -45, 0, 270] :
-                                   [90, 45, 0, -270],
+                          rotateZ:
+                            loopIndex === 0
+                              ? [180, 90, 0, -360]
+                              : loopIndex === 1
+                                ? [-90, -45, 0, 270]
+                                : [90, 45, 0, -270],
                         }}
                         transition={{
                           duration: 5.5,
                           times: [0, 0.4, 0.55, 1],
-                          ease: loopIndex === 0 ? 
-                            // First loop: explosive exit after convergence
-                            [[0.25, 0.46, 0.45, 0.94], [0.25, 0.46, 0.45, 0.94], [0.87, 0, 0.13, 1], [0.99, 0.01, 0.99, 0.01]] :
-                            loopIndex === 1 ?
-                            // Second loop: rapid acceleration exit
-                            [[0.42, 0, 0.58, 1], [0.42, 0, 0.58, 1], [0.76, 0, 0.24, 1], [0.97, 0.03, 0.97, 0.03]] :
-                            // Third loop: instant launch exit
-                            [[0.68, -0.55, 0.265, 1.55], [0.68, -0.55, 0.265, 1.55], [0.95, 0.05, 0.795, 0.035], [0.99, 0.01, 0.99, 0.01]],
+                          ease:
+                            loopIndex === 0
+                              ? // First loop: explosive exit after convergence
+                                [
+                                  [0.25, 0.46, 0.45, 0.94],
+                                  [0.25, 0.46, 0.45, 0.94],
+                                  [0.87, 0, 0.13, 1],
+                                  [0.99, 0.01, 0.99, 0.01],
+                                ]
+                              : loopIndex === 1
+                                ? // Second loop: rapid acceleration exit
+                                  [
+                                    [0.42, 0, 0.58, 1],
+                                    [0.42, 0, 0.58, 1],
+                                    [0.76, 0, 0.24, 1],
+                                    [0.97, 0.03, 0.97, 0.03],
+                                  ]
+                                : // Third loop: instant launch exit
+                                  [
+                                    [0.68, -0.55, 0.265, 1.55],
+                                    [0.68, -0.55, 0.265, 1.55],
+                                    [0.95, 0.05, 0.795, 0.035],
+                                    [0.99, 0.01, 0.99, 0.01],
+                                  ],
                           delay: loopIndex * 2.5,
                           repeat: Infinity,
                         }}
                         initial={{
                           x: 600,
                           y: loopIndex === 0 ? 0 : loopIndex === 1 ? 120 : -150,
-                          scale: loopIndex === 0 ? 0.4 : loopIndex === 1 ? 0.3 : 0.5,
+                          scale:
+                            loopIndex === 0 ? 0.4 : loopIndex === 1 ? 0.3 : 0.5,
                           opacity: 0,
                         }}
                       >
@@ -787,18 +840,30 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full"
                         style={{
                           background: `radial-gradient(circle, ${
-                            loopIndex === 0 ? '#FFD700' :
-                            loopIndex === 1 ? '#FF6B35' : '#FF4500'
+                            loopIndex === 0
+                              ? "#FFD700"
+                              : loopIndex === 1
+                                ? "#FF6B35"
+                                : "#FF4500"
                           } 0%, ${
-                            loopIndex === 0 ? '#FFA500' :
-                            loopIndex === 1 ? '#FF8C00' : '#DC143C'
+                            loopIndex === 0
+                              ? "#FFA500"
+                              : loopIndex === 1
+                                ? "#FF8C00"
+                                : "#DC143C"
                           } 40%, transparent 70%)`,
                           boxShadow: `0 0 40px ${
-                            loopIndex === 0 ? '#FFD700' :
-                            loopIndex === 1 ? '#FF6B35' : '#FF4500'
+                            loopIndex === 0
+                              ? "#FFD700"
+                              : loopIndex === 1
+                                ? "#FF6B35"
+                                : "#FF4500"
                           }, 0 0 80px ${
-                            loopIndex === 0 ? '#FFA500' :
-                            loopIndex === 1 ? '#FF8C00' : '#DC143C'
+                            loopIndex === 0
+                              ? "#FFA500"
+                              : loopIndex === 1
+                                ? "#FF8C00"
+                                : "#DC143C"
                           }`,
                         }}
                         animate={{
@@ -808,7 +873,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         }}
                         transition={{
                           duration: 2,
-                          delay: (loopIndex * 4) + 2.4,
+                          delay: loopIndex * 4 + 2.4,
                           ease: [0.87, 0, 0.13, 1],
                           repeat: Infinity,
                           times: [0, 0.2, 0.4, 0.7, 1],
@@ -821,21 +886,33 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           key={`particle-${loopIndex}-${particleIndex}`}
                           className="absolute w-2 h-2 rounded-full"
                           style={{
-                            background: loopIndex === 0 ? '#FFD700' :
-                                       loopIndex === 1 ? '#FF6B35' : '#FF4500',
+                            background:
+                              loopIndex === 0
+                                ? "#FFD700"
+                                : loopIndex === 1
+                                  ? "#FF6B35"
+                                  : "#FF4500",
                             left: "50%",
                             top: "50%",
                             transform: "translate(-50%, -50%)",
                           }}
                           animate={{
-                            x: [0, (Math.cos(particleIndex * 45 * Math.PI / 180) * 120)],
-                            y: [0, (Math.sin(particleIndex * 45 * Math.PI / 180) * 120)],
+                            x: [
+                              0,
+                              Math.cos((particleIndex * 45 * Math.PI) / 180) *
+                                120,
+                            ],
+                            y: [
+                              0,
+                              Math.sin((particleIndex * 45 * Math.PI) / 180) *
+                                120,
+                            ],
                             scale: [0, 1, 0],
                             opacity: [0, 1, 0],
                           }}
                           transition={{
                             duration: 1.5,
-                            delay: (loopIndex * 4) + 2.6,
+                            delay: loopIndex * 4 + 2.6,
                             ease: [0.25, 0.46, 0.45, 0.94],
                             repeat: Infinity,
                           }}
@@ -869,7 +946,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
               >
                 {/* Continuous Token Interaction Loop - Background Layer */}
                 {[...Array(2)].map((_, loopIndex) => (
-                  <div key={`token-loop-step2-${loopIndex}`} className="absolute inset-0 opacity-30">
+                  <div
+                    key={`token-loop-step2-${loopIndex}`}
+                    className="absolute inset-0 opacity-30"
+                  >
                     {/* S Token from different angles */}
                     <motion.div
                       className="absolute w-24 h-24 rounded-full border border-yellow-400/40 flex items-center justify-center backdrop-blur-sm"
@@ -879,18 +959,24 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       }}
                       animate={{
                         x: [-600, -50, 0, 600],
-                        y: loopIndex === 0 ? [0, -10, 0, -100] :
-                           [-120, -15, 0, 150],
+                        y:
+                          loopIndex === 0
+                            ? [0, -10, 0, -100]
+                            : [-120, -15, 0, 150],
                         scale: [0.2, 0.8, 0.9, 0.6],
                         opacity: [0, 0.6, 0.6, 0],
-                        rotateZ: loopIndex === 0 ? [-120, 60, 240, 420] :
-                                 [60, 180, 360, 540],
+                        rotateZ:
+                          loopIndex === 0
+                            ? [-120, 60, 240, 420]
+                            : [60, 180, 360, 540],
                       }}
                       transition={{
                         duration: 10 + loopIndex * 3,
                         times: [0, 0.35, 0.65, 1],
-                        ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
-                              [0.42, 0, 0.58, 1],
+                        ease:
+                          loopIndex === 0
+                            ? [0.25, 0.1, 0.25, 1]
+                            : [0.42, 0, 0.58, 1],
                         delay: loopIndex * 2.5,
                         repeat: Infinity,
                       }}
@@ -917,18 +1003,24 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       }}
                       animate={{
                         x: [600, 50, 0, -600],
-                        y: loopIndex === 0 ? [0, 10, 0, 100] :
-                           [120, 15, 0, -150],
+                        y:
+                          loopIndex === 0
+                            ? [0, 10, 0, 100]
+                            : [120, 15, 0, -150],
                         scale: [0.2, 0.8, 0.9, 0.6],
                         opacity: [0, 0.6, 0.6, 0],
-                        rotateZ: loopIndex === 0 ? [120, -60, -240, -420] :
-                                 [-60, -180, -360, -540],
+                        rotateZ:
+                          loopIndex === 0
+                            ? [120, -60, -240, -420]
+                            : [-60, -180, -360, -540],
                       }}
                       transition={{
                         duration: 10 + loopIndex * 3,
                         times: [0, 0.35, 0.65, 1],
-                        ease: loopIndex === 0 ? [0.25, 0.1, 0.25, 1] :
-                              [0.42, 0, 0.58, 1],
+                        ease:
+                          loopIndex === 0
+                            ? [0.25, 0.1, 0.25, 1]
+                            : [0.42, 0, 0.58, 1],
                         delay: loopIndex * 2.5,
                         repeat: Infinity,
                       }}
@@ -951,10 +1043,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
                       style={{
                         background: `radial-gradient(circle, ${
-                          loopIndex === 0 ? '#FFD700' : '#FF6B35'
+                          loopIndex === 0 ? "#FFD700" : "#FF6B35"
                         } 0%, transparent 70%)`,
                         boxShadow: `0 0 20px ${
-                          loopIndex === 0 ? '#FFD700' : '#FF6B35'
+                          loopIndex === 0 ? "#FFD700" : "#FF6B35"
                         }`,
                       }}
                       animate={{
@@ -964,7 +1056,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       }}
                       transition={{
                         duration: 1,
-                        delay: (loopIndex * 2.5) + 3.5,
+                        delay: loopIndex * 2.5 + 3.5,
                         ease: [0.87, 0, 0.13, 1],
                         repeat: Infinity,
                         repeatDelay: 9.5 + loopIndex * 3,
@@ -1000,7 +1092,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       fontWeight: 900,
                     }}
                   >
-                    <span 
+                    <span
                       className="text-white"
                       style={{
                         filter: "drop-shadow(0 0 60px rgba(255,255,255,0.8))",
@@ -1009,10 +1101,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       WIN THE{" "}
                     </span>
-                    <span 
+                    <span
                       className="text-amber-400"
                       style={{
-                        filter: "drop-shadow(0 0 100px rgba(251,191,36,1)) drop-shadow(0 0 150px rgba(251,191,36,0.8))",
+                        filter:
+                          "drop-shadow(0 0 100px rgba(251,191,36,1)) drop-shadow(0 0 150px rgba(251,191,36,0.8))",
                         textShadow: "0 0 80px rgba(251,191,36,1)",
                       }}
                     >
@@ -1159,8 +1252,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         textShadow: [
                           "0 0 20px rgba(255,255,255,0.1)",
                           "0 0 30px rgba(255,255,255,0.2)",
-                          "0 0 20px rgba(255,255,255,0.1)"
-                        ]
+                          "0 0 20px rgba(255,255,255,0.1)",
+                        ],
                       }}
                       transition={{ duration: 4, repeat: Infinity }}
                     >
@@ -1183,13 +1276,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       Unlike traditional DEXs that{" "}
                       <motion.span
                         className="text-red-400"
-                        animate={{ 
+                        animate={{
                           color: ["#f87171", "#ef4444", "#dc2626", "#f87171"],
                           textShadow: [
                             "0 0 10px rgba(239,68,68,0.3)",
                             "0 0 20px rgba(239,68,68,0.6)",
-                            "0 0 10px rgba(239,68,68,0.3)"
-                          ]
+                            "0 0 10px rgba(239,68,68,0.3)",
+                          ],
                         }}
                         transition={{ duration: 3, repeat: Infinity }}
                       >
@@ -1211,10 +1304,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           textShadow: [
                             "0 0 20px rgba(251,191,36,0.4)",
                             "0 0 40px rgba(251,191,36,0.8)",
-                            "0 0 20px rgba(251,191,36,0.4)"
-                          ]
+                            "0 0 20px rgba(251,191,36,0.4)",
+                          ],
                         }}
-                        transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          delay: 1,
+                        }}
                       >
                         transforms them into opportunities
                       </motion.span>
@@ -1244,7 +1341,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           duration: 3,
                           repeat: Infinity,
                           delay: i * 0.4,
-                          ease: "easeInOut"
+                          ease: "easeInOut",
                         }}
                       />
                     ))}
@@ -1277,7 +1374,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   >
                     You might be wondering...
                   </motion.h2>
-                  
+
                   <motion.p
                     className="text-2xl text-gray-400 mb-12 font-light italic"
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -1390,8 +1487,6 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       YOUR 10% FEE BECOMES
                     </motion.h2>
-
-
                   </div>
 
                   <div className="space-y-12">
@@ -1401,7 +1496,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         label: "JACKPOT VAULT",
                         description: "in $S to jackpot vault",
                         tokenSymbol: "$S",
-                        tokenImage: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy",
+                        tokenImage:
+                          "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy",
                         color: "amber",
                         delay: 0.5,
                         size: 120,
@@ -1411,7 +1507,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         label: "veDRAGON REWARDS",
                         description: "in $S to veDRAGON holders",
                         tokenSymbol: "$S",
-                        tokenImage: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy",
+                        tokenImage:
+                          "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreih643el43uv4qeadtvklx4yyfc2rcbasz2uaxe4uar6635c7lukcy",
                         color: "blue",
                         delay: 1,
                         size: 84,
@@ -1421,7 +1518,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         label: "DRAGON BURN",
                         description: "in $DRAGON burned",
                         tokenSymbol: "$DRAGON",
-                        tokenImage: "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam",
+                        tokenImage:
+                          "https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafybeifb35ia5dbpnerqmz32za5yi7uc2lwlhoucyl2zkavkusd6qrbxam",
                         color: "red",
                         delay: 1.5,
                         size: 48,
@@ -1436,9 +1534,9 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           rotateY: 45,
                           scale: 0.8,
                         }}
-                        animate={{ 
-                          x: 0, 
-                          opacity: 1, 
+                        animate={{
+                          x: 0,
+                          opacity: 1,
                           rotateY: 0,
                           scale: 1,
                         }}
@@ -1508,7 +1606,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                               }}
                             />
                           </motion.div>
-                          
+
                           {/* Percentage Overlay */}
                           <motion.div
                             className="absolute inset-0 flex items-center justify-center"
@@ -1532,7 +1630,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                               }`}
                               style={{
                                 fontSize: `${Math.max(item.size * 0.12, 12)}px`,
-                                textShadow: "0 0 15px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6)",
+                                textShadow:
+                                  "0 0 15px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6)",
                               }}
                             >
                               {item.percent}
@@ -1580,8 +1679,8 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                                 textShadow: [
                                   "0 0 10px rgba(255,255,255,0.3)",
                                   "0 0 20px rgba(255,255,255,0.6)",
-                                  "0 0 10px rgba(255,255,255,0.3)"
-                                ]
+                                  "0 0 10px rgba(255,255,255,0.3)",
+                                ],
                               }}
                               transition={{
                                 duration: 3,
@@ -1597,7 +1696,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             className="text-lg text-gray-400 font-light mt-2 ml-8"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ 
+                            transition={{
                               delay: item.delay + 2,
                               duration: 1,
                               ease: [0.25, 0.46, 0.45, 0.94],
@@ -1772,7 +1871,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         Chromion: A Chainlink Hackathon Participant
                       </div>
                       <div className="text-blue-400/80 text-sm mt-1">
-                        Multi-agent & Orchestration Category
+                        Onchain Finance & Cross-Chain Solutions
                       </div>
                     </motion.div>
                   </motion.div>
@@ -1842,12 +1941,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                   >
                     <motion.h2
                       className="text-4xl font-extralight mb-4 text-white tracking-wider"
-                      animate={{ 
+                      animate={{
                         textShadow: [
                           "0 0 20px rgba(255,255,255,0.1)",
                           "0 0 30px rgba(255,255,255,0.2)",
-                          "0 0 20px rgba(255,255,255,0.1)"
-                        ]
+                          "0 0 20px rgba(255,255,255,0.1)",
+                        ],
                       }}
                       transition={{ duration: 4, repeat: Infinity }}
                     >
@@ -1864,25 +1963,53 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ delay: 0.6, duration: 1 }}
                   >
                     {[
-                      { amount: "$10", odds: "0.004%", boosted: "0.01%", gradient: "from-red-500/20 to-red-600/20", border: "border-red-500/30", text: "text-red-300" },
-                      { amount: "$100", odds: "0.04%", boosted: "0.1%", gradient: "from-orange-500/20 to-orange-600/20", border: "border-orange-500/30", text: "text-orange-300" },
-                      { amount: "$1,000", odds: "0.4%", boosted: "1%", gradient: "from-yellow-500/20 to-yellow-600/20", border: "border-yellow-500/30", text: "text-yellow-300" },
-                      { amount: "$10,000", odds: "4%", boosted: "10%", gradient: "from-green-500/20 to-green-600/20", border: "border-green-500/30", text: "text-green-300" }
+                      {
+                        amount: "$10",
+                        odds: "0.004%",
+                        boosted: "0.01%",
+                        gradient: "from-red-500/20 to-red-600/20",
+                        border: "border-red-500/30",
+                        text: "text-red-300",
+                      },
+                      {
+                        amount: "$100",
+                        odds: "0.04%",
+                        boosted: "0.1%",
+                        gradient: "from-orange-500/20 to-orange-600/20",
+                        border: "border-orange-500/30",
+                        text: "text-orange-300",
+                      },
+                      {
+                        amount: "$1,000",
+                        odds: "0.4%",
+                        boosted: "1%",
+                        gradient: "from-yellow-500/20 to-yellow-600/20",
+                        border: "border-yellow-500/30",
+                        text: "text-yellow-300",
+                      },
+                      {
+                        amount: "$10,000",
+                        odds: "4%",
+                        boosted: "10%",
+                        gradient: "from-green-500/20 to-green-600/20",
+                        border: "border-green-500/30",
+                        text: "text-green-300",
+                      },
                     ].map((item, i) => (
                       <motion.div
                         key={i}
                         className={`group relative overflow-hidden rounded-2xl border ${item.border} bg-gradient-to-br ${item.gradient} backdrop-blur-sm cursor-pointer`}
                         initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ 
-                          duration: 0.6, 
-                          delay: 0.8 + (i * 0.1),
-                          ease: [0.25, 0.46, 0.45, 0.94]
+                        transition={{
+                          duration: 0.6,
+                          delay: 0.8 + i * 0.1,
+                          ease: [0.25, 0.46, 0.45, 0.94],
                         }}
-                        whileHover={{ 
-                          scale: 1.02, 
+                        whileHover={{
+                          scale: 1.02,
                           y: -4,
-                          boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
+                          boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
                         }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -1890,25 +2017,35 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent"
                           animate={{ x: ["-100%", "100%"] }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                         />
-                        
+
                         <div className="relative p-6 md:p-8">
                           <div className="flex items-center justify-between">
                             {/* Swap Amount */}
                             <div className="flex-1">
-                              <div className="text-sm text-white/60 font-light mb-1">Swap Amount</div>
-                              <motion.div 
+                              <div className="text-sm text-white/60 font-light mb-1">
+                                Swap Amount
+                              </div>
+                              <motion.div
                                 className={`text-2xl md:text-3xl font-light ${item.text}`}
                                 animate={{ scale: [1, 1.02, 1] }}
-                                transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  delay: i * 0.2,
+                                }}
                               >
                                 {item.amount}
                               </motion.div>
                             </div>
 
                             {/* Arrow */}
-                            <motion.div 
+                            <motion.div
                               className="text-white/40 mx-4 md:mx-6"
                               animate={{ x: [0, 4, 0] }}
                               transition={{ duration: 2, repeat: Infinity }}
@@ -1918,8 +2055,10 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                             {/* Base Odds */}
                             <div className="flex-1 text-center">
-                              <div className="text-sm text-white/60 font-light mb-1">Base Odds</div>
-                              <motion.div 
+                              <div className="text-sm text-white/60 font-light mb-1">
+                                Base Odds
+                              </div>
+                              <motion.div
                                 className={`text-xl md:text-2xl font-light ${item.text}`}
                                 animate={{ opacity: [0.8, 1, 0.8] }}
                                 transition={{ duration: 2, repeat: Infinity }}
@@ -1929,7 +2068,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                             </div>
 
                             {/* Boost Arrow */}
-                            <motion.div 
+                            <motion.div
                               className="text-blue-400/60 mx-4 md:mx-6"
                               animate={{ scale: [1, 1.1, 1] }}
                               transition={{ duration: 1.5, repeat: Infinity }}
@@ -1939,30 +2078,44 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
 
                             {/* veDRAGON Boosted */}
                             <div className="flex-1 text-right">
-                              <motion.div 
+                              <motion.div
                                 className="text-xs text-blue-300/80 font-light mb-1"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 1 + (i * 0.1), duration: 0.6 }}
+                                transition={{
+                                  delay: 1 + i * 0.1,
+                                  duration: 0.6,
+                                }}
                               >
                                 veDRAGON 2.5x
                               </motion.div>
-                              <motion.div 
+                              <motion.div
                                 className="text-xl md:text-2xl font-medium text-blue-300"
                                 initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ 
-                                  opacity: 1, 
+                                animate={{
+                                  opacity: 1,
                                   scale: 1,
                                   textShadow: [
                                     "0 0 10px rgba(147,197,253,0.3)",
                                     "0 0 20px rgba(147,197,253,0.5)",
-                                    "0 0 10px rgba(147,197,253,0.3)"
-                                  ]
+                                    "0 0 10px rgba(147,197,253,0.3)",
+                                  ],
                                 }}
-                                transition={{ 
-                                  opacity: { delay: 1.2 + (i * 0.1), duration: 0.8 },
-                                  scale: { delay: 1.2 + (i * 0.1), duration: 0.8, ease: "backOut" },
-                                  textShadow: { duration: 3, repeat: Infinity, delay: 2 }
+                                transition={{
+                                  opacity: {
+                                    delay: 1.2 + i * 0.1,
+                                    duration: 0.8,
+                                  },
+                                  scale: {
+                                    delay: 1.2 + i * 0.1,
+                                    duration: 0.8,
+                                    ease: "backOut",
+                                  },
+                                  textShadow: {
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    delay: 2,
+                                  },
                                 }}
                               >
                                 {item.boosted}
@@ -2087,9 +2240,11 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     animate={{ x: 0, opacity: 1, rotateY: 0 }}
                     transition={{ delay: 2, duration: 2, ease: "easeOut" }}
                   >
-                    Sonic Red Dragon leverages LayerZero V2's omnichain protocol to enable secure cross-chain 
-                    randomness generation. Our implementation bridges Chainlink VRF 2.5 from Arbitrum to Sonic, 
-                    ensuring cryptographically verifiable lottery results across networks.
+                    Sonic Red Dragon leverages LayerZero V2's omnichain protocol
+                    to enable secure cross-chain randomness generation. Our
+                    implementation bridges Chainlink VRF 2.5 from Arbitrum to
+                    Sonic, ensuring cryptographically verifiable lottery results
+                    across networks.
                   </motion.p>
 
                   {/* Technical Benefits */}
@@ -2100,34 +2255,39 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     transition={{ delay: 2.5, duration: 1.5 }}
                   >
                     <div className="text-center p-4">
-                      <motion.div 
+                      <motion.div
                         className="text-blue-400 text-lg font-semibold mb-2"
                         animate={{
                           textShadow: [
                             "0 0 10px rgba(59,130,246,0.3)",
                             "0 0 20px rgba(59,130,246,0.5)",
-                            "0 0 10px rgba(59,130,246,0.3)"
-                          ]
+                            "0 0 10px rgba(59,130,246,0.3)",
+                          ],
                         }}
                         transition={{ duration: 3, repeat: Infinity }}
                       >
                         Security First
                       </motion.div>
                       <p className="text-sm text-gray-400 leading-relaxed">
-                        Multi-DVN validation ensures message integrity across chains
+                        Multi-DVN validation ensures message integrity across
+                        chains
                       </p>
                     </div>
                     <div className="text-center p-4">
-                      <motion.div 
+                      <motion.div
                         className="text-green-400 text-lg font-semibold mb-2"
                         animate={{
                           textShadow: [
                             "0 0 10px rgba(34,197,94,0.3)",
                             "0 0 20px rgba(34,197,94,0.5)",
-                            "0 0 10px rgba(34,197,94,0.3)"
-                          ]
+                            "0 0 10px rgba(34,197,94,0.3)",
+                          ],
                         }}
-                        transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: 0.5,
+                        }}
                       >
                         Gas Optimized
                       </motion.div>
@@ -2136,14 +2296,14 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       </p>
                     </div>
                     <div className="text-center p-4">
-                      <motion.div 
+                      <motion.div
                         className="text-purple-400 text-lg font-semibold mb-2"
                         animate={{
                           textShadow: [
                             "0 0 10px rgba(147,51,234,0.3)",
                             "0 0 20px rgba(147,51,234,0.5)",
-                            "0 0 10px rgba(147,51,234,0.3)"
-                          ]
+                            "0 0 10px rgba(147,51,234,0.3)",
+                          ],
                         }}
                         transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                       >
@@ -2214,15 +2374,17 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       Decentralized Verification Network
                     </motion.h3>
-                    
+
                     <motion.p
                       className="text-sm text-gray-400 mb-6 max-w-3xl mx-auto leading-relaxed"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 5, duration: 1 }}
                     >
-                      Multiple independent DVNs validate each cross-chain message, providing institutional-grade 
-                      security through redundant verification and eliminating single points of failure.
+                      Multiple independent DVNs validate each cross-chain
+                      message, providing institutional-grade security through
+                      redundant verification and eliminating single points of
+                      failure.
                     </motion.p>
 
                     <div className="flex items-center justify-center space-x-12">
@@ -2260,7 +2422,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         </motion.div>
                       </motion.div>
 
-                      {/* Nethermind DVN with Mirror Effect */}
+                      {/* CCIP DVN with Mirror Effect */}
                       <motion.div
                         className="flex flex-col items-center"
                         initial={{ scale: 0, rotateZ: 45, opacity: 0 }}
@@ -2274,15 +2436,15 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         <motion.div
                           className="h-12 mb-2 flex items-center justify-center"
                           style={{
-                            background: `url('https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreiax6jur4gjsevwncuu2tgqlotnc33y5nwxwrv2ggxq3al76xegcqi') center/contain no-repeat`,
-                            width: '48px',
-                            height: '48px',
+                            background: `url('https://teal-working-dormouse-113.mypinata.cloud/ipfs/bafkreia6gvcvo7bk52hr7pphega2i63rxh5xbijlkjko7wf24ycutfelfm') center/contain no-repeat`,
+                            width: "48px",
+                            height: "48px",
                           }}
                           animate={{
                             filter: [
-                              "drop-shadow(0 0 10px rgba(155, 89, 182, 0.3))",
-                              "drop-shadow(0 0 20px rgba(155, 89, 182, 0.6))",
-                              "drop-shadow(0 0 10px rgba(155, 89, 182, 0.3))",
+                              "drop-shadow(0 0 10px rgba(74, 144, 226, 0.3))",
+                              "drop-shadow(0 0 20px rgba(74, 144, 226, 0.6))",
+                              "drop-shadow(0 0 10px rgba(74, 144, 226, 0.3))",
                             ],
                           }}
                           transition={{
@@ -2292,12 +2454,12 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           }}
                         />
                         <motion.div
-                          className="text-purple-300 text-sm font-medium"
+                          className="text-blue-300 text-sm font-medium"
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           transition={{ delay: 6.8, duration: 0.8 }}
                         >
-                          Nethermind DVN
+                          CCIP DVN
                         </motion.div>
                       </motion.div>
                     </div>
@@ -2318,7 +2480,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                     >
                       Message Flow Architecture
                     </motion.h4>
-                    
+
                     <motion.div
                       className="space-y-3 text-sm text-gray-300 max-w-4xl mx-auto"
                       initial={{ opacity: 0, y: 20 }}
@@ -2326,19 +2488,27 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                       transition={{ delay: 8, duration: 1.5 }}
                     >
                       <div className="flex items-center justify-between bg-gray-800/40 rounded p-3">
-                        <span className="font-mono text-orange-400">1. Request Initiation</span>
+                        <span className="font-mono text-orange-400">
+                          1. Request Initiation
+                        </span>
                         <span>Sonic → LayerZero Endpoint</span>
                       </div>
                       <div className="flex items-center justify-between bg-gray-800/40 rounded p-3">
-                        <span className="font-mono text-blue-400">2. DVN Validation</span>
+                        <span className="font-mono text-blue-400">
+                          2. DVN Validation
+                        </span>
                         <span>Multi-signature verification</span>
                       </div>
                       <div className="flex items-center justify-between bg-gray-800/40 rounded p-3">
-                        <span className="font-mono text-green-400">3. VRF Generation</span>
+                        <span className="font-mono text-green-400">
+                          3. VRF Generation
+                        </span>
                         <span>Chainlink VRF 2.5 on Arbitrum</span>
                       </div>
                       <div className="flex items-center justify-between bg-gray-800/40 rounded p-3">
-                        <span className="font-mono text-purple-400">4. Result Delivery</span>
+                        <span className="font-mono text-purple-400">
+                          4. Result Delivery
+                        </span>
                         <span>Verified randomness to Sonic</span>
                       </div>
                     </motion.div>
@@ -2519,8 +2689,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         filter: "drop-shadow(0 0 15px rgba(59,130,246,0.4))",
                       }}
                     >
-                      ⚡ Chainlink VRF2.5 • LayerZero V2 • drand League of
-                      Entropy
+                      ⚡ Chainlink VRF2.5 • LayerZero V2
                     </motion.p>
                     <motion.p
                       className="text-xl text-warm-orange font-light tracking-wide"
@@ -2555,7 +2724,7 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                         letterSpacing: "0.1em",
                       }}
                     >
-                      LAUNCHING Q2 2025
+                      LAUNCHING Q3 2025
                     </motion.div>
 
                     <motion.div
@@ -2589,7 +2758,13 @@ export default function DemoScreen({ autoStart = false }: DemoScreenProps) {
                           letterSpacing: "0.15em",
                         }}
                       >
-                        <a href="https://docs.sonicreddragon.io" target="_blank" rel="noopener noreferrer">docs.sonicreddragon.io</a>
+                        <a
+                          href="https://docs.sonicreddragon.io"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          docs.sonicreddragon.io
+                        </a>
                       </motion.div>
 
                       {/* Subtle underline animation */}
